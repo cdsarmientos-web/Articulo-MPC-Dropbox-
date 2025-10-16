@@ -1,0 +1,2261 @@
+ 
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts,amscd,mathrsfs}
+%\usepackage{mathtools}
+\usepackage{url}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+%\usepackage{hyperref}
+%\usepackage{quiver}
+
+%\usepackage{bibliography}
+
+
+\usepackage{comment}
+
+\newtheorem{defn}{Definition}[section]
+\newtheorem{defns}[defn]{Definitions}
+\newtheorem{exam}[defn]{Example}
+\newtheorem{remark}[defn]{Remark}
+\newtheorem{note}[defn]{Note}
+
+
+
+\theoremstyle{plain}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{cl}[defn]{Claim}
+
+
+
+\title{A model of geometric K-homology using groupoids}
+\author{Mario Velasquez, Paulo Carrillo \& Cristian Sarmiento}
+\date{October 16, 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{$\Gamma$-CW proper complexes}
+
+
+
+\begin{comment}
+we list, for a continuous map between topologial spaces $f:X\to Y$, some equivalent definitions about $f$ being a {\bf proper} map:
+\begin{enumerate}
+    \item For every topological space $U$, the map $f\times Id_{U}: X\times U\to Y\times U$ is closed.
+    \item $f$ is closed and for each $y\in Y$, the pre-image $f^{-1}(y)$ is quasi-compact\footnote{A space is called {\bf quasi-compact} if any open cover admits a finite subcover. This is an usual definition for compact spaces and whet both differs occurs that the space is not Hausdorff.%https://planetmath.org/quasicompact
+    }.
+    \item $f$ is closed and for each quasi-compact subset $K\subseteq Y$, the pre-image $f^{-1}(K)$ is quasi-compact.
+\end{enumerate}
+\end{comment}
+
+First, we introduce some facts about actions on topological spaces.
+
+\begin{enumerate}
+    \item Let $G$ acts on $X$, being $q:X\to X/G$ its quotient map, $p:X\to Y$ be a surjective continuous map such that $p(x)=p(x')$ if and only if $q(x)=q(x')$. If $p$ is open then $p$ induce an homeomorphism $h:X/G\to Y$ between the topological spaces $X/G$ and $Y$, where $h(q(x))=p(x)$ for all $x\in X$.
+    \item Let $G$ acts on $X$, being $q:X\to X/G$ its quotient map, $p:X\to Y$ be a surjective continuous map such that $p(x)=p(x')$ if and only if $q(x)=q(x')$. If there exists a compact subset $K$ of $X$ that intersects every orbit for the action of $G$ on $X$, then $p$ induce an homeomorphism $h:X/G\to Y$ between the topological spaces $X/G$ and $Y$, where $h(q(x))=p(x)$ for all $x\in X$.
+\end{enumerate}
+
+
+
+\begin{defn}
+    A group is said to acts freely ans properly discontinuously on $X$ if each element for all $g\not = e$ hold that given any $x\in X$ there exists an open set $U$ in $X$ such that $x\in U$ and $(gU)\cap U=\emptyset$ .
+\end{defn}
+
+Now some examples:
+\begin{enumerate}
+    \item $\mathbb{Z}_{2}$ acts freely and properly discontinuously on $S^{n}$ by the antipodal action. In this case $\mathbb{R}P^{n}$ is identified with $S^{n}/\mathbb{Z}_{2}$, and with the quotient topology of $q:S^{n}\to S^{n}/\mathbb{Z}_{2}$.
+\end{enumerate}
+
+\begin{defn}{(\rm \cite{RP61})}\label{proper action} The action $\rho: G\times X\to X:(g,x)\mapsto g\cdot x$ is called proper ($X$ being locally compact and Hausdorff) if some of the following equivalent condition hold
+    \begin{enumerate}
+        \item The map $G\times X\to X\times X:(g,x)\mapsto (g\cdot x,x)$ is a proper\footnote{A continuous map $f:X\to Y$ is called {\bf proper} if for every compact $K\subseteq Y$, we have that $f^{-1}(K)$ is a compact of $X$. In \cite{EM10} its adding the condition that $f$ must be closed. \textcolor{red}{Al igual que con la noción de quasi-compacto, se incluye esto por la posibilidad de trabajar sobre espacios no Hausdorff (Creo)}} continuous function.
+        \item  Every point $x\in X$ has a neighborhood $U_{x}$ such that every point $y\in U_{x}$ has a neighborhood $V_{y}$ such that $(U_{x}|V_{y}):=\{g\in G|gU_{x}\cap V_{y}\not=\emptyset\}$ has compact closure.
+        \item For every compact subspace $K\subseteq X$, the subset $(K|K):=\{g\in G|gK\cap K\not=\emptyset\}\subseteq G$ is compact.
+        \item (\cite{BCH94}, p. 6) If for every $p\in X$ there exists a triple ($U, H,\rho$) such that 
+        \begin{enumerate}
+            \item $U$ is an open neighborhood of $p$ in $X$, with $gu\in U$ for all $(g,u)\in G\times U$,
+            \item $H$ is a compact subgroup of $G$,
+            \item  $\rho:U\to G/H$ is a $G$-map from $U$ to the homogeneous space $G/H$.
+        \end{enumerate}
+    \end{enumerate}
+\end{defn}
+
+\begin{remark}
+  The equivalence between conditions 1. and 2. in Definition \ref{proper action} is obtained in Theorem 21 in \cite{Die87}.
+\end{remark}
+
+
+\begin{defn} The following are definitions of a model of a classifying space for proper actions of a group:
+\begin{enumerate}
+    \item (\cite{BCH94}, pg 6) A universal example for proper actions of $G$, denoted $\underline{E}G$, is a proper $G$-space with the following property: If $X$ is any proper $G$-space, then there exists a $G$-map $\phi_{X}:X\to \underline{E}G$, and any two $G$-maps from $X$ to $\underline{E}G$ are $G$-homotopic.
+    \item (\cite{DL17}, p. 131) For a family of finite subgroups of $G$, the classifying space for proper actions $\underline{E}G$ is a proper $G-CW$ complex such that the fixed point set $\underline{E}G^{H}$ is contractible for every $H\in \mathcal{F}$. 
+    \item A model of $\underline{E}\Gamma$ is a $\Gamma$-proper space with fixed points relative to subgroups of $\Gamma$ are contractibles.
+\end{enumerate}
+
+\end{defn}
+
+
+\begin{prop}(\cite{BCH94}, p. 7) A proper $G$-space $Y$ is universal if and only if the following both axioms hold:
+\begin{enumerate}
+    \item If $H$ is any compact subgroup of $G$, then there exist $p\in Y$ such that $H\subseteq G_{p}$.
+    \item Considering $Y\times Y$ with the $G$-action, $g(y,y')=(gy,gy')$, then the oriyections $\rho_{0},\rho_{1}:Y\times Y\to Y$ are $G$-homotopic.
+\end{enumerate}
+\end{prop}
+
+\begin{exam}(\cite{BCH94}, p. 7)
+    If $\Gamma$ is a discrete group , then there is a model of $\underline{E}\Gamma$ defined by
+    \begin{align*}
+        X_{\Gamma}=\{f:\Gamma \to [0,1]: f \text{ has finite support and} \sum_{\gamma\in \Gamma } f(\gamma)=1\},
+    \end{align*}
+    with the $\Gamma$-action by translation and topology heredited by the metric
+    \begin{align*}
+        d(f_{1},f_{2})=\sup_{\gamma\in \Gamma} |f_{1}(\gamma)-f_{2}(\gamma)|.
+    \end{align*}
+\end{exam}
+
+\noindent For instance, if we consider $(\mathbb{Z}_{2},+)$, we get 
+\begin{align*}
+    X_{\mathbb{Z}_{2}}:=\{f:\mathbb{Z}_{2}\to [0,1]|f(0)+f(1)=1\},
+\end{align*}
+where the metric is
+ \begin{align*}
+        d(f_{1},f_{2})&=\sup_{\gamma\in \mathbb{Z}_{2}} |f_{1}(\gamma)-f_{2}(\gamma)|\\
+        &= \sup \{|f_{1}(0)-f_{2}(0)|, |f_{1}(1)-f_{2}(1)|\}\\
+        &= \sup \{|f_{1}(0)-f_{2}(0)|, |1-f_{1}(0)-1+f_{2}(0)|\}\\
+        &= \sup \{|f_{1}(0)-f_{2}(0)|, |f_{2}(0)-f_{1}(0)|\}\\
+        &=|f_{1}(0)-f_{2}(0)|.
+    \end{align*}
+With this, we claim that $X_{\mathbb{Z}_{2}}\cong [0,1]$.
+
+
+\begin{defn}
+A $\Gamma$-vector bundle $p:E\to X$ over a $\Gamma$-space $X$ is a vector bundle $p:E\to X$ such that, $E$ is a $\Gamma$-space and $p$ is a $\Gamma$-equivariant map. 
+\end{defn}
+
+
+\begin{remark}\label{remark fibrados}
+    For a $\Gamma$-vector bundle $p:E\to X$ over a proper $\Gamma$-space $X$, it satisfies that $E$ is a $\Gamma$-proper space: consider a compact set $K\subset E$, then $p(K)$ is a compact set in $X$, and by the  $\Gamma$-proper structure of $X$, we get that the set
+    \begin{align*}
+        B:=\{g\in \Gamma: g\ p(K)\cap p(K)\not = \emptyset\}
+    \end{align*}
+    is finite. Let $A:=\{g\in \Gamma: g\ K\cap K\not = \emptyset\}$. We have that $A\subseteq B$, because if $g\in A$, then $\emptyset \not = p(gK\cap K)\subseteq p(gK)\cap p(K)= gp(K)\cap p(K)$, where the last equality is because $p$ is $\Gamma$-equivariant.
+\end{remark}
+
+\begin{defn}
+For $X,Y$ proper $\Gamma$-spaces we construct the fiber proper product $X\times_{\underline{E}\Gamma} Y$ as the $\Gamma$-equivariant fiber product (or equivariant pullback) of $$\phi_{X}:X\to \underline{E}\Gamma\leftarrow Y:\phi_{Y}.$$
+\end{defn}    
+
+
+\begin{lemma}(\cite{LO01}, p. 599)\label{integral lemma}
+If $\Gamma$ is a discrete group and $f:X\to Y$ is an equivariant map between finite proper $\Gamma$-CW complexes, and $E\to X$ is a $\Gamma$-vector bundle. Then There is a $\Gamma$-vector bundle $F\to Y$ such that $E$ is summand of $f^{*}F$.
+\end{lemma}
+\begin{remark} 
+We list two relevant observations about equivariant proper spaces.
+\begin{enumerate}
+    \item If $X$ is $\Gamma$-proper space, and $\Gamma$ acts trivially on $Y$, then $X\times Y$ is a $\Gamma$-proper space.
+    \item By Remark \ref{remark fibrados}. if $X$ is $\Gamma$-proper space, $E\to X$ is a vector bundle, then $E\oplus \mathbb{R}^{n}$ is a proper $\Gamma$-vector bundle, where $\Gamma$ acts trivialy over the real components.
+\end{enumerate}
+    
+\end{remark}
+
+\subsubsection{Groupoids}
+
+In this section we discuss about groupoid and groupoid actions where our main reference will be \cite{EM10}. A {\bf groupoid} is a small category such that any arrow is an isomorphism. In this way a groupoid $\mathcal{G}$ is compossed by a class of objects $Z$ and a class of morphisms denoted $\mathcal{G}$ too. 
+Now we present some spaces with groupoid actions.
+\begin{defn}
+    Let $\mathcal{G}$ be a topological groupoid\footnote{A topological groupoid is a groupoid $\mathcal{G}$ such that $Z$ and $\mathcal{G}$ are Hausdorff and the structure maps source and target $s,t:\mathcal{G}\to Z$ are continuous and open (see \cite{FSW20}, p. 2).}.
+    \begin{itemize}
+        \item A topological space $X$ is called a {\bf $\mathcal{G}$-space} if there is a continuous map $a:X\to Z$ called the {\bf anchor} map and a homeomorphism
+        \begin{align*}
+             \mathcal{G}_{s}\times_{a} X\to \mathcal{G}_{t}\times_{a} X: (g,x)\mapsto (g,g\cdot x),
+        \end{align*}
+        which determines the {\bf action}, and holds associativity and unitality conditions.
+        
+        \item A topological groupoid is called a (numerable) {\bf proper groupoid} (see \cite{EM10}, p. 6) if there is a family of compactly supported probability measures\footnote{A compactly supported probability measure on a space $X$ is a positive, unital, linear functional on $C(X,\mathbb{C})$ that factors through $C(K,\mathbb{C})$ for any compact $K\subseteq X$.} $(\mu^{z})_{z\in Z}$ on the fibres $\mathcal{G}^{z}=t^{-1}(z)$ of the target map $t:\mathcal{G}\to Z$ with the following properties 
+\begin{enumerate}
+    \item $(\mu^{z})_{z\in Z}$ is $\mathcal{G}$-invariant, i.e., $g_{*}(\mu^{s(g)})=\mu^{t(g)}$ for all $g\in \mathcal{G}$,
+    \item the map $t:supp\ \mu \to Z$ is proper, where $supp\ \mu\subseteq$ is the closure of $\bigcup_{z\in Z} supp\ \mu^{z}\subseteq \bigcup_{z\in Z}\mathcal{G}^{z}\subseteq \mathcal{G}$,
+    \item $(\mu^{z})_{z\in Z}$ depends continuously on $z$ in the sense that for each $f\in C(\mathcal{G})$, the function $z\mapsto \int_{\mathcal{G}^{z}}f(g)d\mu^{z}(g)$ on $Z$ is continuous.
+\end{enumerate}
+
+    \end{itemize}
+\end{defn}
+
+
+
+
+\begin{exam}
+For a group $\Gamma$, consider the groupoid $\mathcal{G}:=\Gamma^{*}$, where $\mathcal{G}^{0}:=\{*\}$ and $\mathcal{G}^{1}:=\Gamma$.
+\end{exam}
+
+\begin{exam}
+    The transformation groupoid $\mathcal{G}\ltimes X$ (see \cite{EM10}, p. 4, Definition 2.2) is defined by $X$ as its object space, morphisms the elements of $\mathcal{G}_{s}\times_{a} X$; the range and source maps are defined by $r(g,x)= g\cdot x$ and $s(g,x)= x$  respectively ; and its composition  is given by $(g,x)\cdot (h,y) = (gh,y)$.
+\end{exam}
+
+
+
+\begin{defn}
+    A $\mathcal{G}$-space $X$ is called {\bf proper} if the transformation groupoid $\mathcal{G}\ltimes X$ is a proper groupoid.
+\end{defn}
+In groupoid case, there still a relation between the definition of proper $\mathcal{G}$-space and the fact that the action map be a proper map, as follows:.
+% https://q.uiver.app/#q=WzAsMixbMSwwLCJcXHRleHR7VGhlIGFjdGlvbiBtYXAgfSBcXFxcIFxcbWF0aGNhbHtHfV97c31cXHRpbWVzX3tcXHJob30gWFxcdG8gWFxcdGltZXMgWFxcXFwgKGcseClcXG1hcHN0byAoZ3gseClcXFxcIFxcdGV4dHtpcyBhIHByb3BlciBtYXB9Il0sWzAsMCwiWCBcXHRleHR7aXMgYSBwcm9wZXJseX1cXFxcIFxcdGV4dHtudW1lcmFibGUgfSBcXG1hdGhjYWx7R31cXHRleHR7LXNwYWNlfSAiXSxbMCwxLCIyIiwwLHsib2Zmc2V0IjotNSwibGV2ZWwiOjJ9XSxbMSwwLCIxIiwwLHsib2Zmc2V0IjotNSwibGV2ZWwiOjJ9XV0=
+\[\begin{tikzcd}
+	\begin{array}{c} X \text{is a properly}\\ \text{numerable } \mathcal{G}\text{-space}  \end{array} & \begin{array}{c} \text{The action map } \\ \mathcal{G}_{s}\times_{\rho} X\to X\times X\\ (g,x)\mapsto (gx,x)\\ \text{is a proper map} \end{array}
+	\arrow["1", shift left=5, Rightarrow, from=1-1, to=1-2]
+	\arrow["2", shift left=5, Rightarrow, from=1-2, to=1-1]
+\end{tikzcd}\]
+
+\noindent where, the implication 1. is allways true (see \cite{EM10}, p. 6, Theorem 2.13), but for the converse 2 (see \cite{EM10}, p. 7, Theorem 2.16) we need that 
+\begin{itemize}
+    \item $\mathcal{G}$ be a locally compact groupoid with a Haar System.
+    \item $X$ be a locally compact space.
+    \item $\mathcal{G}\backslash X$ be a paracompact space.
+\end{itemize}
+
+\begin{defn}{\cite{EM10}, p. 9}
+    A properly numerable $\mathcal{G}$-space $E\mathcal{G}$ is {\bf universal} if and only if, any properly numerable $\mathcal{G}$-space $X$ admits a $\mathcal{G}$-map $X\to E\mathcal{G}$ and if there are two $\mathcal{G}$-maps $f,g:X\to E\mathcal{G}$, then $f$ and $g$ are $\mathcal{G}$-equivariantly homotopic. 
+\end{defn}
+
+With this notion of universal space we have that:
+\begin{enumerate}
+    \item $\mathcal{G}$ is properly numerable if and only if $E\mathcal{G}=Z$
+    \item If $\mathcal{G}$ is a locally compact groupoid, then there exist a construction of $E\mathcal{G}$.
+\end{enumerate}
+
+
+\begin{remark}\label{remark grupo 1}
+Let $\Gamma$ be a group
+\begin{enumerate}
+  \item If $X$ is a $\Gamma$-space, it coincides with the notion of $X$ being a $\Gamma^{*}$-space as a space with a groupoid action.
+  \item $X$ is a $\Gamma$-space if and only if $X$ is a $(\Gamma^{*}\ltimes X)$-space: If $X$ is a $\Gamma$-space, define for $x\in X$ and for $(\gamma,y)\in \Gamma\times X$ such that $s(\gamma, y)=x$ (by the fact that the anchor map is the identity of $X$),
+\begin{align*}
+(\gamma,x)x := r((\gamma,x))=\gamma x;
+\end{align*}  
+Conversely,   if $X$ is a $(\Gamma^{*}\ltimes X)$-space we define
+\begin{align*}
+ \gamma x:=(\gamma,x)x.
+\end{align*}
+  \item If $X$ is a $\Gamma$-space, and considering the transform groupoid $\Gamma^{*}\ltimes X$, we get that for any $x\in X$, $\Gamma_{x}\cong (\Gamma\ltimes X)_{x}$, this because
+\begin{align*}
+(\Gamma\ltimes X)_{x}&=\{(\gamma,x)\in \Gamma^{*}_{s}\times_{a} X: r((\gamma,x))= x = s((\gamma,x))\}\\
+&=\{(\gamma,x)\in \Gamma\times X: \gamma\cdot x= x \}=\Gamma_{x}
+\end{align*}  
+  
+  \item We say that a $\Gamma$-space $X$ is proper if the transformation groupoid $\Gamma^{*}\ltimes X$ is a proper groupoid. When $\Gamma$ is a discrete group, \textcolor{red}{coincide con la definicion de $\Gamma$ espacio propio (espacio con accion propia)}.  
+\end{enumerate}
+ 
+\end{remark}
+
+
+
+
+\section{Embedding theorems}
+
+In order to present and understand the {\it Factorization Theorem} (see \cite{EM10}, p. 18) then, we have to give some preliminaries. First, we remember the following definitions.
+
+\begin{defn}
+    Let $\mathcal{G}$ be a topological groupoid.
+    \begin{itemize}
+        \item A {\bf $\mathcal{G}$-vector bundle} over a $\mathcal{G}$-space $X$ is a vector bundle with $\mathcal{G}$-action such that the bundle projection, addition and scalar product are $\mathcal{G}$-equivariant.
+        \item The {\bf pull back} of a $\mathcal{G}$-vector bundle $E$ over $Z$ along the anchor map $a:X\to Z$ to obtain a $\mathcal{G}$-vector bundle over the $\mathcal{G}$-space $X$ is denoted by $E^{X}$, and defined by
+        \begin{align*}
+            E^{X}:=X\times_{Z} E= X_{a}\times_{\pi_{E}} E = \{(x,e)\in X\times Z:a(x)=\pi_{Z}(e)\}
+        \end{align*}
+        A $\mathcal{G}$-vector bundle is called {\bf trivial} if it is isomorphic to $E^{X}$ for some $\mathcal{G}$-vector bundle $E$ over $Z$.
+
+        \vspace{0.2cm}
+
+        A $\mathcal{G}$-vector bundle $F$ is called {\bf subtrivial} if it is a direct summand of a trivial $\mathcal{G}$-vector bundle (i.e., if there exist a $\mathcal{G}$-vector bundle $P\to X$ such that $F\oplus P\cong E^{X}$).
+    \end{itemize}
+\end{defn}
+
+
+\begin{remark}\label{remark grupo 2}
+When $\mathcal{G}$ is the transformation groupoid (or action groupoid) of a group, we recover the notion of a $\Gamma$-vector bundle. For $\Gamma$ be a discrete group, and $X$ be a $\Gamma$-space, there is a bijection: 
+\begin{align*}
+\{\Gamma{\rm -vector\ bundles\ over\ }X\}\leftrightarrow \{(\Gamma^{*}\ltimes X){\rm -vector\ bundles\ over\ }X\} 
+\end{align*}
+$(\leftarrow):$ For a $(\Gamma^{*}\ltimes X)$-vector bundle $\rho:E\to X$, we note the $\Gamma$-vector bundle structure with action on $E$ given by
+\begin{align*}
+\gamma e:= (\gamma, \rho(e))e, 
+\end{align*}
+where this action and Remark \ref{remark grupo 1} make $\rho$ a $\Gamma$-equivariant map
+\begin{align*}
+\rho(\gamma e)=\rho((\gamma,\rho(e))e)=(\gamma,\rho(e))\rho(e)=\gamma\rho(e).
+\end{align*} 
+
+\vspace{0.2cm}
+
+\noindent $(\rightarrow):$ If $\rho:E\to X$ is a $\Gamma$-vector bundle we note that it has a $(\Gamma^{*}\ltimes X)$-vector bundle structure by the anchor map $a:=\rho:E\to X$, and the natural action
+\begin{align*}
+(\gamma, x)e:= \gamma e\ \ \ when\ s((\gamma,x))=a(e),\ i.e.,\ e\in E_{x}=\rho^{-1}(x)
+\end{align*}
+where this implies that $\rho$ is a $(\Gamma^{*}\ltimes X)$-equivariant map by
+\begin{align*}
+\rho((\gamma,x)e)=\rho(\gamma e)=\gamma\rho(e)=\gamma x\ \ \Leftrightarrow\ \  (\gamma,x)e\in E_{\gamma x}=\rho^{-1}(\gamma x).
+\end{align*}
+
+\end{remark}
+
+
+
+\begin{defn}[\cite{EM10}, p. 10] Let $\mathcal{G}$-be a topological groupoid and let $X$ be a numerably proper $\mathcal{G}$-space. 
+\begin{itemize}
+    \item There are {\bf enough $\mathcal{G}$-vector bundles} on $X$ if for every $x\in X$ and every finite dimensional representation\footnote{An introduction on representations of groups can be consulted in \cite{Se77}.} of the stabilizer $\mathcal{G}_{x}^{x}$, there is a $\mathcal{G}$-vector bundle over $X$ whose fibre at $x$ contains the given representation of $\mathcal{G}_{x}^{x}$.
+    \item A $\mathcal{G}$-vector bundle $V$ on $X$ is {\bf full} if for every $x\in X$, the fibre $V_{x}$ contains all irreducible representations of the stabilizer $\mathcal{G}_{x}^{x}$.
+\end{itemize}
+
+\begin{remark}
+    If there is a full $\mathcal{G}$-vector bundle over $X$, then $X$ has enough $\mathcal{G}$-vector bundles: Suppose that $V\to X$ is a full $\mathcal{G}$-vector bundle over $X$. We have that $X$ has enough $\mathcal{G}$-vector bundles on $X$ because for a finite dimensional representation $\pi_{x}$ of $\mathcal{G}_{x}^{x}$, we can decompose $\pi_{x}=\alpha_{1}\rho_{1}+\cdots+\alpha_{k}\rho_{k}$ into irreducible representations $\rho$'s. Then, by the fullness of $V\to X$, these representations are summands of $V_{x}$ as $\mathcal{G}_{x}^{x}$-representation, i.e., $V_{x}=(\rho_{1}+\cdots +\rho_{k})+s$. Therefore considering $\beta = max\{\alpha_{i}\}$, we have that $\beta V_{x}=\pi_{x}+s'$. This imply that, $\bigoplus^{\beta}V\to X$ is a $\mathcal{G}$-vector bundle which contains $\pi_{x}$ for each $x\in X$.    
+\end{remark}
+
+
+\begin{remark}[\cite{EM10}, p.10]
+    If $\mathcal{G}$ is a compact group, any $\mathcal{G}$-space has enough $\mathcal{G}$-vector bundles by the trivial $\mathcal{G}$-vector bundles:  Consider a $\mathcal{G}$-space $X$ and a representation $\pi_{x}:\mathcal{G}_{x}^{x}\to GL(V')$ for a finite dimensional space $V'$, we have that there exist a representation\footnote{This representation exist by applying Theorem 3.1 of \cite{Pal61} the compactness of the closed $\mathcal{G}_{x}^{x}$ in the compact $\mathcal{G}$.} $\rho:\mathcal{G}\to GL(V)$, such that the double restriction $(\rho|_{\mathcal{G}_{x}^{x}})|_{V'}$ coincides with $\pi_{x}$. Considering the trivial vector bundle, we get the desired vector bundle:
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJYIl0sWzEsMSwiWlxcY29uZ1xce3hcXH0iXSxbMSwwLCJcXHt4XFx9XFx0aW1lcyBWIl0sWzAsMCwiWFxcdGltZXNfe1p9ViJdLFswLDEsImEiLDJdLFsyLDFdLFszLDBdXQ==
+    \begin{center}
+    \begin{tikzcd}
+	{X\times_{Z}V} & {\{x\}\times V} \\
+	X & {Z\cong\{x\}}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["a"', from=2-1, to=2-2]
+\end{tikzcd}    
+    \end{center}
+
+\end{remark}
+
+    
+\end{defn}
+
+
+
+
+
+\begin{comment}
+\begin{remark}
+    \textcolor{red}{Idea:} If $M$ is a smooth manifold, then the covering dimension of $M$ is finite: 
+    \begin{itemize}
+        \item By The Fundamental Theorem of Dimension Theory (\cite{Eng78}, 73), we have that $\mathbb{R}^{n}$ has covering dimension $n$.
+        \item If $A$ and $B$ are disjoint topological spaces, then $$covdim(A\cup B)=max\{covdim(A),covdim(B)\}.$$
+        \item Since $\mathbb{H}^{n}\cong \mathbb{R}^{n}\sqcup \mathbb{R}^{n-1}$, then $covdim(\mathbb{H}^{n})=n$.
+        \item If $A\cong \mathbb{R}^{n}\cong B$, not necessarily disjoint spaces, then $$cov(A\cup B)=n.$$
+        \item If $\{A_{i}\}_{i\in \mathbb{N}}$ is an family of topolical spaces with $A_{i}\cong \mathbb{R}^{n}$ for all $i\in \mathbb{N}$, then $covdim(\bigcup_{i\in \mathbb{N}}A_{i})=n$ thinking $\bigcup_{i\in \mathbb{N}}A_{i}=\lim_{i\to \infty}B_{i}$ the colimit of the filtration $B_{i}=\bigcup_{k=0}^{i}A_{i}$.
+        \item If $M$ is an $n$-dimensional smooth manifold, then $covdim(M)=n$.
+    \end{itemize}
+    
+\end{remark}
+\end{comment}
+
+
+
+
+\begin{remark}\label{triviality of bundles}
+    We list some important facts that will be useful about the proof of Theorem \ref{Emerson-Mayer} in \cite{EM10}.
+    \begin{enumerate}
+        \item The vector bundle $E^{W}$ is the $\mathcal{G}$-vector bundle with total space $Y\times_{Z} E$, which coincides with the pullback through the maps $a$ and the bundle projection $\rho_{E}$:
+    % https://q.uiver.app/#q=WzAsNCxbMSwxLCJaIl0sWzEsMCwiRSJdLFswLDEsIlkiXSxbMCwwLCJZXFx0aW1lc197Wn0gRSJdLFszLDJdLFsyLDAsImEiLDJdLFsxLDAsIlxccmhvX3tFfSJdLFszLDFdXQ==
+\[\begin{tikzcd}
+	{E^{W}:=Y\times_{Z} E} & E \\
+	Y & Z
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["{\rho_{E}}", from=1-2, to=2-2]
+	\arrow["a"', from=2-1, to=2-2]
+\end{tikzcd}\]
+    This means that if $Z=\{*\}$, then any vector bundle $E\to Z$ must be trivial, $E=\{*\}\times \mathbb{R}^{n}$, and therefore $E^{Y}=Y\times_{Z}E=Y\times (\{*\}\times \mathbb{R}^{n})\cong Y\times \mathbb{R}^{n}$ is also a trivial bundle over $Y$.  
+
+    \item The $\mathcal{G}$-vector bundle $E\to Z$ is picked such that we can get a fibrewise smooth embedding $X\hookrightarrow E$ (this is guaranteed by Theorem 3.22 in \cite{EM10} when $X$ is a smooth $\mathcal{G}$-manifold, such that $\mathcal{G}\backslash X$ has finite covering dimension and there is a full $\mathcal{G}$-vector bundle on $Z$).
+
+% https://q.uiver.app/#q=WzAsNyxbMCwwLCJYXFxob29rcmlnaHRhcnJvdyBFIl0sWzEsMCwiXFxSaWdodGFycm93Il0sWzIsMSwiWCJdLFszLDEsIlkiXSxbNCwxLCJaIl0sWzQsMCwiRSJdLFszLDAsIkVee1l9PWFeeyp9RSJdLFsyLDMsImYiXSxbMyw0LCJhIl0sWzUsNF0sWzYsM11d
+\[\begin{tikzcd}
+	{X\hookrightarrow E} & \Rightarrow && {E^{Y}=a^{*}E} & E \\
+	&& X & Y & Z
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=1-5, to=2-5]
+	\arrow["f", from=2-3, to=2-4]
+	\arrow["a", from=2-4, to=2-5]
+\end{tikzcd}\]
+
+Note that the choice of $E$ is independent of the space $Y$.
+    \item The total space $V$ of the vector bundle $V\to X$ is the normal bundle\footnote{For an introduction to normal bundles, see \cite{GP10}.} $\nu_{f\times g}$ of the embedding $(f\times g):X\to E^{Y}$ constructed using the embedding $g: X\hookrightarrow E$.
+   
+    \end{enumerate} 
+\end{remark}
+
+
+Now, we present an argument that let us to use the theory of Emmerson - Meyer, mainly Theorem \ref{Emerson-Mayer} in the principal objects of our problem of interest. First we present an important result of Luck.
+
+\begin{thm}(\cite{LO01}, p. 595)\label{suficientes}
+Assume that $\Gamma$ is a discrete group, and let $X$ be any finite dimensional proper $\Gamma$-CW-complex whose isotropy subgroups have bounded order. Then there is a $\Gamma$-vector bundle $E\to X$ such that for each $x\in X$, the fiber $E|_{x}$ is a multiple of the regular representation of $G_{x}$.
+\end{thm}
+
+\begin{remark}
+
+\noindent Then, we conclude that if $\Gamma$ is a discrete group and $X$ is a finite dimensional cocompact proper $\Gamma$-CW complex, $X$ has enough $\mathcal{G}$-vector bundles, where $\mathcal{G}=\Gamma^{*}\ltimes X$:
+\begin{itemize}
+    \item Since $X$ is a proper cocompact $\Gamma$-CW complex it has finite isotropy groups and by the compactness of $\Gamma\setminus X$, it has finite $CW$-cells, and then the isotropy groups has bounded order.   
+	\item  By Theorem \ref{suficientes}, there is a $\Gamma$-vector bundle $E\to X$ such that for each $x\in X$, the fiber $E|_{x}$ is a multiple of the regular representation of $G_{x}$. Then by the Remark \ref{representaciones}, it contains all the irreducible representations (as summands) of the stabilizers $\Gamma_{x}$.
+	\item By Remark \ref{remark grupo 1} and Remark \ref{remark grupo 2}, there is a $\mathcal{G}$-vector bundle $E\to X$ such that for each $x\in X$ it contains (as summands) all the irreducible representations of the stabilizers $\mathcal{G}_{x}$.
+\end{itemize}
+
+\end{remark}
+
+\begin{thm}[\cite{EM10}, p. 18]\label{Emerson-Mayer} Let $\mathcal{G}$ be a proper groupoid, let $X$ and $Y$ be smooth $\mathcal{G}$-manifolds, and let $f:X\to Y$ be a smooth $\mathcal{G}$-equivariant map. Suppose that
+\begin{itemize}
+    \item $Z$ has enough $\mathcal{G}$-vector bundles and $\mathcal{G}\backslash X$ is compact.
+    \item $Z$ has a full $\mathcal{G}$-vector bundle and $\mathcal{G}\backslash X$ has finite covering dimension.
+\end{itemize}
+    Then, there are
+    \begin{itemize}
+        \item a smooth $\mathcal{G}$-vector bundle $V$ over $X$,
+        \item a smooth $\mathcal{G}$-vector bundle $E$ over $Z$,
+        \item a smoth $\mathcal{G}$-equivariant, open embedding $\eta_{f}:V\to E^{Y}$,
+    \end{itemize}
+    such that $f=\rho_{E^{Y}}\circ \eta_{f}\circ \xi_{V}$, where $\xi_{V}:X\to V$ is the $zero$-section of the fiber bundle $\rho_{V}:V\to X$.
+    % https://q.uiver.app/#q=WzAsNixbMCwxLCJYIl0sWzEsMSwiWSJdLFswLDAsIlYiXSxbMSwwLCJFXntZfSJdLFsyLDEsIloiXSxbMiwwLCJFIl0sWzAsMSwiZiIsMl0sWzIsMCwiXFxwaV97Vn0iLDJdLFszLDEsIlxccGlfe0Vee1l9fSJdLFsyLDMsIlxcaGF0e2Z9Il0sWzEsNCwiYSIsMl0sWzUsNF1d
+\[\begin{tikzcd}
+	V & {E^{Y}} & E \\
+	X & Y & Z
+	\arrow["{\eta_{f}}", from=1-1, to=1-2]
+	\arrow["{\rho_{V}}"', from=1-1, to=2-1]
+	\arrow["{\rho_{E^{Y}}}", from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["a"', from=2-2, to=2-3]
+\end{tikzcd}\]
+\end{thm}
+
+
+
+
+\section{Useful constructions}
+
+\subsection{Connected sum generalization}
+
+In \cite{Kos92}, p. 99, we found a generalization of connected sum of manifolds called the {\it joining manifolds along submanifolds} (also called the {\it pasting}) which is as follows: Consider 
+\begin{enumerate}
+    \item $M_{1}$ and $M_{2}$ are two $(n+k)$-dimensional smooth manifolds, 
+    \item $E\to N$ being a $k$-dimensional Riemannian vector bundle over the $n$-dimensional closed compact submanifold $N$,
+    \item define $\alpha_{E}:E\setminus \xi_{E}(N)\to E\setminus \xi_{E}(N)$ by  $\alpha_{E}(v)=\alpha(v)\cdot \frac{v}{||v||}$, where $\alpha:(0,\infty)\to (0,\infty)$ an orientation reversing diffeomorphism, 
+    \item If $h_{i}:E\to int(M_{i})\subseteq M_{i}$ are embeddings into the interior of $M_{i}$ respectively.
+\end{enumerate}
+With these, we define $M(h_{1},h_{2})$ the join manifold along $N$ as $M_{1}\cup M_{2}/\sim$, where for $v\in h_{1}(E\setminus \xi_{E}(N))$ we consider the identification $v\sim h_{2}\circ \alpha_{E}\circ h_{1}^{-1}(v)$.
+\begin{remark}[\cite{Kos92}, p. 100]
+    \begin{enumerate}
+        \item $M(h_{1},h_{2})$ is a smooth manifold.
+        \item If $N=S^{n}\subset S^{n+m}$, then the join of $M$ and $S^{n+m}$ along $S^{n}$ (when $S\cong S^{n}$ in $M$ has a trivial normal bundle) is called the surgery or a spherical modification on the sphere $S$.
+    \end{enumerate}
+\end{remark}
+
+\begin{remark}\label{Tangente de un fibrado vector}
+    If $\rho:E\to W$ is a vector bundle, then $TE\cong TW\oplus E$: we have the exact sequence $0\to \rho^{*}E\to TE \to \rho^{*}TW \to 0$ (see \cite{SP99}, p. 103), then the restricted exact sequence $0\to \rho^{*}E|_{W}\to TE|_{W} \to \rho^{*}TW|_{W} \to 0$, where $W\subseteq E$ by the zero section $s$, is identified with $0\to E\to TE|_{W}\to TW\to 0$, by the fact that $\rho^{*}E|_{W}\cong E$ and $(\rho^{*}TW)|_{W}\cong TW$. We have that this sequence split, because the map $d\rho:TE|_{W}\to TW$ has right inverse by $\rho \circ s = id_{W}$. 
+\end{remark}
+
+\subsection{Deformation to the normal cone}
+Let be $M$ a manifold and $N\subseteq M$ a submanifold of $M$. The deformation to the normal cone of $N$ in $M$ (see \cite{DS19}) is 
+\begin{align*}
+    DNC(M,N)=(M\times \mathbb{R}^{*})\sqcup (\nu_{N}^{M}\times \{0\})
+\end{align*}
+as set and with smooth structure given by the diffeomorphism (onto its image) $\Theta:W'\to M\times\mathbb{R}$, where $W'=\{(x,\xi,t)\in\nu_{N}^{M}\times \mathbb{R}:(x,t\xi)\in U'\}$ is an open neighbourhood of $\nu_{N}^{M}\times\{0\}$ in $\nu_{N}^{M}\times\mathbb{R}$, and where $\Theta$ is defined using an exponential map $\theta:U'\subseteq \nu_{N}^{M}\to U\subseteq M$ as
+\begin{align*}
+    \Theta(x,\xi,t)=\left\{
+	       \begin{array}{ll}
+	       (\theta(x,t\xi),t)& \mathrm{for\ } t\not=0\\
+		   (x,\xi,0)&  \mathrm{for\ } t=0\\
+	       \end{array}
+	     \right.
+\end{align*}
+
+
+\begin{exam}\label{Deformation to the normal cone example}
+    Consider a smooth map $f:\partial M \to W$ for $M$ and $W$ manifolds with boundary. By Theorem \ref{Emerson-Mayer}, we have the commutative diagram
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIlciXSxbMSwwLCJFIl0sWzAsMCwiViJdLFswLDMsIlxceGlfe1xccGFydGlhbCBNfSJdLFsyLDEsIlxccmhvX3tFfSJdLFswLDEsImYiLDJdLFszLDIsIlxcZXRhX3tmfSJdLFswLDIsIlxcdGlsZGV7Z30iLDFdXQ==
+\[\begin{tikzcd}
+	V & E \\
+	{\partial M} & W
+	\arrow["{\eta_{f}}", from=1-1, to=1-2]
+	\arrow["{\rho_{E}}", from=1-2, to=2-2]
+	\arrow["{\xi_{\partial M}}", from=2-1, to=1-1]
+	\arrow["{\tilde{g}}"{description}, from=2-1, to=1-2]
+	\arrow["f"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+\noindent where $\eta_{f}$ is an embedding. Then in this case
+\begin{align*}
+    DNC(E,\partial M)|_{[0,1]}=(E\times (0,1])\sqcup (\nu_{\partial M}^{E}\times \{0\})=(E\times (0,1])\sqcup (V\times \{0\}),
+\end{align*}
+where 
+$\partial(DNC(E,\partial M)|_{[0,1]})= (V\times \{0\})\cup (E\times \{1\})\cup (E|_{\partial W}\times (0,1))$.
+
+\end{exam}
+
+
+\section{Pushforward homology}
+
+\begin{defn}\label{homologia}
+A \textit{$\Gamma$-homology theory} $\mathscr{H}_*^\Gamma$ with values in $R$-modules is a collection of covariant functors $\mathscr{H}_n^\Gamma$ from the category of $\Gamma$-CW cocompact pairs to the category of $R$-modules, indexed by $n\in \mathbb{Z}$, together with natural transformations called the boundary maps $$\partial_n^\Gamma:\mathscr{H}_n^\Gamma(X,A)\rightarrow\mathscr{H}_{n-1}^\Gamma(A)$$
+  for $n\in\mathbb{Z}$ (where $\mathscr{H}_{*}^{\Gamma}(A):=\mathscr{H}_{*}^{\Gamma}(A,\emptyset)$), such that the following axioms are satisfied:
+    \begin{enumerate}
+    \item \textbf{$\Gamma$-homotopy invariance.}\\    
+    If $f$ and $g$ are proper $\Gamma$-homotopic maps 
+    $(X,A)\rightarrow(Y,B)$ of proper $\Gamma$-pairs, then the induced maps 
+    $$f_{*},g_{*}:\mathscr{H}_n^\Gamma(X,A)\rightarrow \mathscr{H}_n^\Gamma(Y,B)$$
+    are the same for all $n\in\mathbb{Z}$.
+    \item \textbf{Long exact sequence of a pair.}\\
+    Given a proper $\Gamma$-CW cocompact pair $(X,A)$, there is a long exact sequence
+    $$\ldots\xrightarrow{j_*}\mathscr{H}_{n+1}^\Gamma(X,A)\xrightarrow{\partial_{n+1}^\Gamma}\mathscr{H}_n^\Gamma(A)
+    \xrightarrow{i_*}\mathscr{H}_n^\Gamma(X)\xrightarrow{j_*}\mathscr{H}_n^\Gamma(X,A)\xrightarrow{\partial_n^\Gamma}\ldots,$$where $i:A\rightarrow X$ and $j:X\rightarrow(X,A)$ are the inclusions.  
+    \item \textbf{Excision.}
+     
+    Let $(X,A)$ be a $\Gamma$-CW cocompact proper pair and let $f:A\rightarrow B$ be a cellular $\Gamma$-map of proper $\Gamma$-CW cocompact pairs. Equip $(X\cup_f B,B)$ with the induced structure of a 
+    proper $\Gamma$-CW cocompact pair. Then the canonical map $F:(X,A)\rightarrow( X\cup_f B,B)$ induces an isomorphism
+    $$F_*:\mathscr{H}_n^\Gamma(X,A)\rightarrow\mathscr{H}_n^\Gamma(X\cup_f B,B).$$
+    \item\textbf{Disjoint union axiom.}\\
+    Let $\{X_i\mid  i\in I\}$ be a family of proper $\Gamma$-CW-complexes. Denote by $$j_i:X_i\rightarrow \coprod_{i\in I}X_i$$ the
+    canonical inclusion. Then the map
+    $$\bigoplus_{i\in I}j_{i}^{*}:\bigoplus_{i\in I}\mathscr{H}^{n}_{\Gamma}(X_i)\rightarrow\mathscr{H}^{n}_{\Gamma}(\coprod_{i\in I}X_i)$$
+    is a group isomorphism.
+    \end{enumerate}
+  \end{defn}  
+
+\begin{defn}[\cite{Luck05}]
+  A \textit{$\Gamma$-cohomology theory} $\mathscr{H}_{\Gamma}^{*}$ with values in $R$-modules is a collection of covariant
+  functors $\mathscr{H}_{\Gamma}^{n}$
+  from the category of $\Gamma$-pairs to the category of $R$-modules, indexed by
+  $n\in \mathbb{Z}$, together with natural transformations called the boundary maps
+$$\delta^n_\Gamma:\mathscr{H}_{\Gamma}^{n}(X,A)\rightarrow\mathscr{H}^{n+1}_{\Gamma}(A)$$
+  for $n\in\mathbb{Z}$, such that the following axioms are satisfied:
+    \begin{enumerate}
+    \item \textbf{$\Gamma$-homotopy invariance.}\\    
+    If $f_0$ and $f_1$ are proper $\Gamma$-homotopic maps 
+    $(X,A)\rightarrow(Y,B)$ of proper $\Gamma$-pairs, then the induced maps 
+    $$f_{0}^{n},f_{1}^{n}:\mathscr{H}_{\Gamma}^{n}(X,A)\rightarrow \mathscr{H}_{\Gamma}^{n}(Y,B)$$
+    are the same for all $n\in\mathbb{Z}$.
+    \item \textbf{Long exact sequence of a pair.}\\
+    Given a proper $\Gamma$-pair $(X,A)$, there is a long exact sequence
+    $$\ldots\xrightarrow{j^{n-1}}\mathscr{H}_{\Gamma}^{n-1}(X,A)\xrightarrow{\delta^{n-1}_{\Gamma}}\mathscr{H}_{\Gamma}^{n}(X)
+    \xrightarrow{i^{n}}\mathscr{H}_{\Gamma}^{n}(A)\xrightarrow{j^{n}}\mathscr{H}_{\Gamma}^{n}(X,A)\xrightarrow{\delta^{n}_{\Gamma}}\ldots,$$where $i:A\rightarrow X$ and $j:X\rightarrow(X,A)$ are the inclusions.  
+    \item \textbf{Excision.}
+     
+    Let $(X,A)$ be a $\Gamma$-CW cocompact properpair and let $f:A\rightarrow B$ be a cellular $\Gamma$-map of proper $\Gamma$-pairs. Equip $(X\cup_f B,B)$ with the induced structure of a 
+    proper $\Gamma$-pair. Then the canonical map $F:(X,A)\rightarrow( X\cup_f B,B)$ induces an isomorphism
+    $$F^{n}:\mathscr{H}_{\Gamma}^{n}(X\cup_f B,B)\rightarrow\mathscr{H}_{\Gamma}^{n}(X,A).$$
+    \item\textbf{Disjoint union axiom.}\\
+    Let $\{X_i\mid  i\in I\}$ be a family of proper $\Gamma$-CW-complexes. Denote by $$j_i:X_i\rightarrow \coprod_{i\in I}X_i$$ the
+    canonical inclusion. Then the map
+    $$\prod_{i\in I}j_{i}^{*}:\mathscr{H}_{\Gamma}^{n}(\coprod_{i\in I}X_i) \rightarrow    \prod_{i\in I}\mathscr{H}^n_\Gamma(X_i)$$
+    is a group isomorphism.
+    \end{enumerate}
+   
+  \end{defn}  
+
+
+\begin{defn}
+    A $\Gamma$-cohomology theory $\mathscr{H}_{\Gamma}^{*}$ is called multiplicative if holds:
+    \begin{enumerate}
+        \item For any proper $\Gamma$-pair $(X,A)$, it satisfy for $C_{A}$, a direct set of closed $\Gamma$-invariant neighborhoods of $A$, that
+        \begin{align*}
+            \mathscr{H}_{\Gamma}^{*}(X,A)\cong \varinjlim_{U\in C_{A}}\mathscr{H}_{\Gamma}^{*}(X,U).
+        \end{align*}
+        \item $\mathscr{H}_{\Gamma}^{*}$ is endowed with a graded commutative exterior product
+        % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XntpfShYX3sxfSxBX3sxfSlcXG90aW1lcyBcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XntqfShYX3syfSxBX3syfSkiXSxbMCwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XntpK2p9KFhfezF9XFx0aW1lc197XFx1bmRlcmxpbmV7RX1cXEdhbW1hfVhfezJ9LFhfezF9XFx0aW1lc197XFx1bmRlcmxpbmV7RX1cXEdhbW1hfUFfezJ9XFxjdXAgQV97MX1cXHRpbWVzX3tcXHVuZGVybGluZXtFfVxcR2FtbWF9WF97Mn0pIl0sWzAsMV1d
+  \[\begin{tikzcd}
+	{\mathscr{H}_{\Gamma}^{i}(X_{1},A_{1})\otimes \mathscr{H}_{\Gamma}^{j}(X_{2},A_{2})} \\
+	{\mathscr{H}_{\Gamma}^{i+j}(X_{1}\times_{\underline{E}\Gamma}X_{2},X_{1}\times_{\underline{E}\Gamma}A_{2}\cup A_{1}\times_{\underline{E}\Gamma}X_{2})}
+	\arrow[from=1-1, to=2-1]
+\end{tikzcd}\]
+for all $i,j\in\mathbb{Z}$, which are compatible with the boundary maps.
+        \item There is a $1\in \mathscr{H}_{\Gamma}^{0}(\underline{E}\Gamma)$ such that for every pair $(X,A)$ and any $\eta\in \mathscr{H}^{i}_{\Gamma}(X,A)$, $1\otimes \eta = \eta \otimes 1=\eta$.
+        
+    \end{enumerate}
+\end{defn}
+
+%\varinjlim and \varprojlim
+\begin{defn}\label{thom}
+    For a $d$-dimensional real $\Gamma$-vector bundle  $E\to X$ over a proper $\Gamma$-space $X$, a $\mathscr{H}_{\Gamma}$-orientation for $E$ is a class $\tau\in \mathscr{H}_{\Gamma}^{d}(E)$ such that for each proper $\Gamma$-map $f:Y\to X$, multiplication with $f^{*}\tau \in \mathscr{H}_{\Gamma}^{d}(f^{*}E)$ induces an isomorphism (refered as Thom-isomorphism)
+    \begin{align*}
+        -\otimes \tau:\mathscr{H}_{\Gamma}^{*}(Y)\to \mathscr{H}_{\Gamma}^{*+d}(f^{*}E).
+    \end{align*}
+    We say that a smooth manifold with boundary $M$ is a $\mathscr{H}_{\Gamma}$-orientable if $TM$ is $\mathscr{H}_{\Gamma}$-orientable. When is chosen a fixed $\mathscr{H}_{\Gamma}$-orientation for a real $\Gamma$-vector bundle (or particularly for a manifold), we say that it is a $\mathscr{H}_{\Gamma}$-oriented bundle (or manifold).
+\end{defn}
+
+\begin{remark}
+    Note that in conditions of Definition \ref{thom}, if we run the multiplicative structure in order to get the map by multiplication of $\tau$, we need that 
+\begin{align*}
+    \mathscr{H}_{\Gamma}^{*+d}(Y\times_{\underline{E}\Gamma} E)\cong \mathscr{H}_{\Gamma}^{*+d}(f^{*}E)
+\end{align*}
+\textcolor{red}{Idea:}
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJZXFx0aW1lc197XFx1bmRlcmxpbmV7RX1cXEdhbW1hfUUiXSxbMSwwLCJFIl0sWzAsMSwiWSJdLFsxLDEsIlgiXSxbMSwyLCJcXHVuZGVybGluZXtFfVxcR2FtbWEiXSxbMiwzLCJmIl0sWzMsNCwiYV97WH0iXSxbMiw0LCJhX3tZfSIsMl0sWzEsMywiXFxyaG9fe0V9IiwyXSxbMCwyLCJcXHJob197WX0iLDJdXQ==
+\[\begin{tikzcd}
+	{Y\times_{\underline{E}\Gamma}E} & E \\
+	Y & X \\
+	& {\underline{E}\Gamma}
+	\arrow["{\rho_{Y}}"', from=1-1, to=2-1]
+	\arrow["{\rho_{E}}"', from=1-2, to=2-2]
+	\arrow["f", from=2-1, to=2-2]
+	\arrow["{a_{Y}}"', from=2-1, to=3-2]
+	\arrow["{a_{X}}", from=2-2, to=3-2]
+\end{tikzcd}\]
+We can consider the model of $\underline{E}\Gamma\cong CX\times\underline{E}\Gamma$ (where the structure of $\Gamma$-CW of this space is....) \textcolor{red}{tenemos problemas con punto fijo en $CX$, utilizar en reemplazo $(X\times[0,1], X\times \{1\})$}. With this model we recall that
+\begin{align*}
+Y\times_{\underline{E}\Gamma} E&=\{(y,e)\in Y\times E: a_{Y}(y)=a_{X}\circ f(y)=a_{X}\circ \rho_{E}(e)\},\\
+f^{*}E&=\{(y,e)\in Y\times E: f(y)=\rho_{E}(e)\}.
+\end{align*}
+\end{remark}
+
+We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, and denote manifold dimension by $dim$, without the subscript.
+
+
+\begin{defn}\label{pushforward definition}
+    A {\it Pushforward structure} over a multiplicative $\Gamma$-cohomology theory $\mathscr{H}_{\Gamma}^{*}$ is an assign for any proper $\Gamma$-equivariant, orientation preserving smooth map $f:M\to N$ of manifolds with boundary, a homomorphism
+    \begin{align*}
+        f!:\mathscr{H}_{\Gamma}^{*}(M)\to\mathscr{H}_{\Gamma}^{*+dim(N)-dim(M)}(N),
+    \end{align*}
+    such that
+    \begin{enumerate}
+        \item For a composable proper $\Gamma$-equivariant, orientation preserving smooth maps we have that $(f\circ g)!=f!\circ g!$ and $Id_{X}!=Id_{\mathscr{H}_{\Gamma}^{*}(X)}$.
+        \item If $F:\mathbb{R}\times M\to N$ is a smooth $\Gamma$-equivariant orientation preserving map, then $F(0,-)!=F(1,-)!$.
+        \item  If $E\to M$ is a smooth real $\mathscr{H}_{\Gamma}$-oriented $\Gamma$-vector bundle over a manifold with boundary $M$, then if $s:M\to E$ is the zero section, the pushforward map 
+        \begin{align*}
+            s!:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+dim(E)-dim(M)}(E)
+        \end{align*}
+        is the Thom isomorphism described in Definition \ref{thom}.
+        \item Let $N$ be a manifold with boundary and consider $N^{0}=N\setminus\partial N$. If $i^{0}:N^{0}\to N$ the inclusion, and if $U$ is an open collar around $\partial N$ in $N$ and let $l:\partial N\to U\to N^0$, the inclusion through the collar, then the pushforwards $i^0_!$ and $l_!$ corresponds to the maps appearing in the long exact sequence of the pair $(N,\partial N)$,
+    \begin{align*} 
+    \cdots\to\mathscr{H}_{\Gamma}^{*-1}(\partial N)\xrightarrow{l_!}\mathscr{H}_{\Gamma}^*(N^0)\xrightarrow{i^0_!}\mathscr{H}_{\Gamma}^*(N)\to\cdots
+    \end{align*}
+    Here we are using the identification $\mathscr{H}_{\Gamma}^*(N^0)\cong\mathscr{H}_\Gamma^*(N,\partial N)$. Then, we mean that for the long exact sequence for the maps $i:\partial N \to N$ and $j:N\to (N,\partial N)$, we get that $l!=\partial^{*}$ and $i^{0}!=j^{*}$.
+    \end{enumerate}
+\end{defn}
+
+\begin{comment}
+    
+\begin{defn}\label{pushforward 1}
+    Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a proper $\Gamma$-pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
+\begin{enumerate}
+    \item $(M,\partial M)$ is a $\Gamma$-proper manifold with boundary (non necessarily cocompact) with a $\mathscr{H}_{\Gamma}$-orientation.
+    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map of pairs.
+    \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. 
+    \item The equivalence relation is symmetrically generated by the following relation: we have that
+    \begin{align*}
+        (M,\partial M, \pi_{M}, x_{M}) \sim (N,\partial N, \pi_{N}, x_{N}),
+    \end{align*}
+    if there is a proper smooth, $\Gamma$-equivariant, manifold orientation preserving map $f:M\to N$ such that $\pi= \pi'\circ f$ and $f!(x)=x'$.
+    \item The operation of cycles $[M, \partial M, \pi, x]+[N, \partial N, \pi', x']$ is defined by
+        $$[M\sqcup N, \partial M\sqcup \partial N, \pi\sqcup \pi', x\sqcup x'].$$
+\end{enumerate}
+\end{defn}
+
+\end{comment}
+
+
+\begin{defn}\label{pushforward 2}
+    Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a cocompact proper $\Gamma$-CW pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
+\begin{enumerate}
+    \item $(M,\partial M)$ is a $\Gamma$-proper manifold with boundary (non necessarily cocompact) with a $\mathscr{H}_{\Gamma}$-orientation.
+    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map of pairs.
+    \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. 
+    \item The equivalence relation
+    \begin{align*}
+        (M,\partial M, \pi_{M}, x_{M}) \sim (N,\partial N, \pi_{N}, x_{N}),
+    \end{align*}
+    is given if there is a $k$-cycle $(W,\partial W, \pi_{W},x_{W})$ and proper smooth, $\Gamma$-equivariant, $\mathscr{H}_{\Gamma}$-orientation preserving maps $f_{M}:M\to W$ and $f_{N}:N\to W$ such that, $\pi_{M}=\pi_{W}\circ f_{M}$, $\pi_{N}=\pi_{W}\circ f_{N}$ and $f_{M}!(x_{M})=x_{W}=f_{N}!(x_{N})\in \mathscr{H}_{\Gamma}^{ }(W,\partial M)$, as shown in the following diagram
+
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCIoTSxcXHBhcnRpYWwgTSkiXSxbMSwyLCIoWCxBKSJdLFsyLDEsIihOLFxccGFydGlhbCBOKSJdLFsxLDAsIihXLFxccGFydGlhbCBXKSJdLFszLDEsIlxccGlfe1d9Il0sWzAsMywiZl97TX0iXSxbMiwzLCJmX3tOfSIsMl0sWzAsMSwiXFxwaV97TX0iLDJdLFsyLDEsIlxccGlfe059Il1d
+    \begin{center}
+    \begin{tikzcd}
+	& {(W,\partial W)} \\
+	{(M,\partial M)} && {(N,\partial N)} \\
+	& {(X,A)}
+	\arrow["{\pi_{W}}", from=1-2, to=3-2]
+	\arrow["{f_{M}}", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["{f_{N}}"', from=2-3, to=1-2]
+	\arrow["{\pi_{N}}", from=2-3, to=3-2]
+    \end{tikzcd}
+    \end{center}
+    
+    \item The operation of cycles $[M, \partial M, \pi, x]+[N, \partial N, \pi', x']\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ is defined by
+        $$[M\sqcup N, \partial M\sqcup \partial N, \pi\sqcup \pi', x\oplus x'],$$
+        where $M\sqcup N$ has the induced $\mathscr{H}_{\Gamma}$-orientation and the cohomology element $x\oplus y\in \mathscr{H}_{\Gamma}^{*+dim(M)}(M)\bigoplus \mathscr{H}_{\Gamma}^{*+dim(N)}(N)$.
+
+\end{enumerate}
+\end{defn}
+
+
+
+
+%\begin{proof}
+%    Consider maps between good pairs $g_{1}:(X_{1},A_{1})\to (X_{2},A_{2})$ and $g_{2}:(X_{2},A_{2})\to (X_{3},A_{3})$, then we want to construct $\mathscr{H}_{*}^{pf}(g_{i}): \mathscr{H}_{*}^{pf}(X_{i},A_{i};\Gamma)\to \mathscr{H}_{*}^{pf}(X_{i+1},A_{i+1};\Gamma)$ for $i=1,2$ and $\mathscr{H}_{*}^{pf}(g_{2}\circ g_{1}): \mathscr{H}_{*}^{pf}(X_{1},A_{1};\Gamma)\to \mathscr{H}_{*}^{pf}(X_{3},A_{3};\Gamma)$ such that $\mathscr{H}_{*}^{pf}(g_{2}\circ g_{1})=\mathscr{H}_{*}^{pf}(g_{2})\circ \mathscr{H}_{*}^{pf}(g_{1})$
+%\end{proof}
+
+
+\begin{comment}
+    
+\begin{prop}
+    The relation in Definition \ref{pushforward 1} is an equivalence relation. 
+\end{prop}
+\begin{proof}
+    \begin{itemize}
+        \item Reflexivity: $(M,\partial M, \pi, x)\sim (M,\partial M, \pi, x)$ by the map $f=Id_{M}$.
+        \item Symmetry: is given by considering the symmetric Closure of the relation $\sim$.
+        \item Transitivity: If $(M_{1},\partial M_{1}, \pi_{1}, x_{1})\sim (M_{2},\partial M_{2}, \pi_{2}, x_{2})$ by a map $f:M_{1}\to M_{2}$ and $(M_{2},\partial M_{2}, \pi_{2}, x_{2})\sim (M_{3},\partial M_{3}, \pi_{3}, x_{3})$ by a map $g:M_{2}\to M_{3}$, we get that $(M_{1},\partial M_{1}, \pi_{1}, x_{1})\sim (M_{3},\partial M_{3}, \pi_{3}, x_{3})$ by the map $g\circ f:M_{1}\to M_{3}$, where $\pi_{1}= \pi_{2} \circ f = \pi_{3}\circ (g \circ f)$ and by functoriality of the pushforward structure $(g\circ f)!(x_{1})= g!\circ f!(x_{1})= g!(x_{2})=x_{3}$. ({\bf QUE PASA EN LA TRANSITIVIDAD CON LA CLAUSURA SIMETRICA, ¿APARECE LA DEFINICIÓN 2?})
+    \end{itemize}
+\end{proof}
+
+\end{comment}
+
+
+\begin{lemma}\label{EM-Embedding}
+    If $(M,\partial M, \pi_{M},x_{M})\sim (N,\partial N, \pi_{N},x_{N})$ by the maps $f_{M}:M\to W$ and $f_{N}:N\to W$, then we get that $(M,\partial M, \pi_{M},x_{M})\sim (N,\partial N, \pi_{N},x_{N})$ by maps $\phi_{M}:M\to E^{W}$ and $\phi_{N}:N\to E^{W}$ with $\phi_{N}$ being an embedding and $E^{W}\to W$ is a vector bundle. 
+\end{lemma}
+\begin{proof}
+Applying Theorem \ref{Emerson-Mayer} to the map $f_{N}:N\to W$, we get that $f_{N}=\rho_{E^{W}}\circ \eta_{f_{N}}\circ \xi_{V}$ with $\eta_{f_{N}}:V\to E^{W}$ is an embedding,
+    % https://q.uiver.app/#q=WzAsNixbMSwzLCJYIl0sWzAsMiwiTSJdLFsyLDIsIk4iXSxbMSwxLCJXIl0sWzEsMCwiRV57V30iXSxbMiwxLCJWIl0sWzEsMywiZl97TX0iXSxbMiwzLCJmX3tOfSIsMl0sWzIsMCwiXFxwaV97Tn0iXSxbMSwwLCJcXHBpX3tNfSIsMl0sWzMsMCwiXFxwaV97V30iXSxbNCwzLCJcXHJob197RV57V319IiwyXSxbNSwyLCJcXHJob197Vn0iXSxbNSw0LCJcXGhhdHtmfV97Tn0iLDJdXQ==
+    
+\begin{center}
+\begin{tikzcd}
+	& {E^{W}} \\
+	& W & V \\
+	M && N \\
+	& X
+	\arrow["{\rho_{E^{W}}}"', from=1-2, to=2-2]
+	\arrow["{\pi_{W}}", from=2-2, to=4-2]
+	\arrow["{\eta_{f_{N}}}"', from=2-3, to=1-2]
+	\arrow["{\rho_{V}}", from=2-3, to=3-3]
+	\arrow["{f_{M}}", from=3-1, to=2-2]
+	\arrow["{\pi_{M}}"', from=3-1, to=4-2]
+	\arrow["{f_{N}}"', from=3-3, to=2-2]
+	\arrow["{\pi_{N}}", from=3-3, to=4-2]
+\end{tikzcd}
+\end{center}
+where $\xi_{V}:N\to V$ denotes the zero section of the vector bundle $\rho:V\to N$. 
+We want to show that $(M,\partial M,\pi_{M},x_{M})\sim (N,\partial M,\pi_{N},x_{N})$ through the vector bundle $E^{W}$ rather than $W$, using a diagram
+
+\begin{center}
+% https://q.uiver.app/#q=WzAsNCxbMSwyLCJYIl0sWzAsMSwiTSJdLFsyLDEsIk4iXSxbMSwwLCJFXntXfSJdLFsxLDMsIlxccGhpX3tNfSJdLFsyLDMsIlxccGhpX3tOfSIsMl0sWzEsMCwiXFxwaV97TX0iLDJdLFsyLDAsIlxccGlfe059Il0sWzMsMCwiXFxwaV97RV57V319Il1d
+\begin{tikzcd}
+	& {E^{W}} \\
+	M && N \\
+	& X
+	\arrow["{\pi_{E^{W}}}", from=1-2, to=3-2]
+	\arrow["{\phi_{M}}", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["{\phi_{N}}"', from=2-3, to=1-2]
+	\arrow["{\pi_{N}}", from=2-3, to=3-2]
+\end{tikzcd}
+\end{center}
+where, $\phi_{M}=\xi_{E^{W}}\circ f_{M}$, $\phi_{N}=\eta_{f_{N}}\circ \xi_{V}$ and $\pi_{E^{W}}=\pi_{W}\circ \rho_{E^{W}}$. We conclude the proof verifying the following six conditions in order to stablish the relation exhibited in the previous diagram. 
+\begin{itemize}
+\item $\pi_{E^{W}}$ is a continuous $\Gamma$-equivariant map, by composition of continuous $\Gamma$-equivariant maps. 
+   \item $\phi_{M}$ and $\phi_{N}$ are proper smooth, $\Gamma$-equivariant and $\mathscr{H}_{\Gamma}$-orientation preserving maps, because zero sections are (locally) smooth such as $f_{M}$ and $\eta_{f_{N}}$ by definition, composition of equivariant maps is equivariant too and $\mathscr{H}_{\Gamma}$-orientation preserving. 
+   \item $\phi_{N}$ is an embedding by composition of embeddings, because $\xi_{V}$ is an embedding by the fact that $\rho_{V}\circ \xi_{V}=id_{N}$ implies that $\xi_{V}$ is inyective and for any $n\in N$, the derivative $d_{n}\xi_{V}$ is inyective by the composition  $d_{\xi_{V}(n)}\rho_{V}\circ d_{n}\xi_{V}=id_{T_{n}N}$. 
+    \item Since $\xi_{E^{W}}:W\to E^{W}$ is the zero section, we have that $\rho_{E^{W}}\circ \xi_{E^{W}}=id_{W}$, then $\rho_{E^{W}}!\circ \xi_{E^{W}}!=id_{W}!$ by the pushforward structure, where $\xi_{E^{W}}!$ is the Thom isomorphism mentioned in Definition \ref{pushforward definition}, we get that  $\xi_{E^{W}}!\circ    \rho_{E^{W}}!=id_{E^{W}}!$, and since $f_{N}!(x_{N})=\rho_{E^{W}}!\circ \eta_{f_{N}}!\circ \xi_{V}!(x_{N})$ and $f_{M}!(x_{M})=f_{N}!(x_{N})$, we obtain
+\begin{align*}
+    \phi_{N}!(x_{N})&=\eta_{f_{N}}!\circ \xi_{V}!(x_{N})\\
+    &=\xi_{E^{W}}!\circ \rho_{E^{W}}! \circ \eta_{f_{N}}!\circ \xi_{V}!(x_{N})\\
+    &=\xi_{E^{W}}!\circ {f}_{N}!(x_{N})\\
+    &=\xi_{E^{W}}!\circ {f}_{M}!(x_{M})\\
+    &=\phi_{M}!(x_{M}).
+\end{align*} 
+   \item We have that $\pi_{E^{W}}\circ \phi_{M}=\pi_{W}\circ (\rho_{E^{W}} \circ \xi_{E^{W}})\circ f_{M}=\pi_{W}\circ f_{M}=\pi_{M}$.
+   \item We have that $\pi_{E^{W}}\circ \phi_{N}=\pi_{W}\circ (\rho_{E^{W}} \circ \eta_{f_{N}}\circ \xi_{V})=\pi_{W}\circ f_{N}=\pi_{N}$.
+   
+\end{itemize}
+
+\end{proof}
+
+
+\begin{prop}\label{Equivalence relation 1}
+    The relation in Definition \ref{pushforward 2} is an equivalence relation. 
+\end{prop}
+\begin{proof}
+    \begin{enumerate}
+        \item Reflexivity. 
+        % https://q.uiver.app/#q=WzAsNCxbMSwyLCIoWCxBKSJdLFswLDEsIihNLFxccGFydGlhbCBNKSJdLFsyLDEsIihNLFxccGFydGlhbCBNKSJdLFsxLDAsIihNLFxccGFydGlhbCBNKSJdLFsxLDAsIlxccGkiLDJdLFsyLDAsIlxccGkiXSxbMywwLCJcXHBpIl0sWzEsMywiSWQiXSxbMiwzLCJJZCIsMl1d
+\[\begin{tikzcd}
+	& {(M,\partial M)} \\
+	{(M,\partial M)} && {(M,\partial M)} \\
+	& {(X,A)}
+	\arrow["\pi", from=1-2, to=3-2]
+	\arrow["Id", from=2-1, to=1-2]
+	\arrow["\pi"', from=2-1, to=3-2]
+	\arrow["Id"', from=2-3, to=1-2]
+	\arrow["\pi", from=2-3, to=3-2]
+\end{tikzcd}\]
+        \item Symmetry: Since the conditions for the relation $\sim_{2}$ have no laterally, it is a symmetric relation.
+
+        \begin{comment}
+            
+        \item Consider the cycles related as follows
+        \begin{align*}
+        &(M,\partial M, \pi_{M}, x_{M})\sim(N,\partial N, \pi_{N}, x_{N})\\
+        &(N,\partial N, \pi_{N}, x_{N})\sim(P,\partial P, \pi_{P}, x_{P}),
+        \end{align*}
+        then we get the diagram
+        
+        % https://q.uiver.app/#q=WzAsNixbMCwxLCIoTSxcXHBhcnRpYWwgTSkiXSxbMiwxLCIoTixcXHBhcnRpYWwgTikiXSxbNCwxLCIoUCxcXHBhcnRpYWwgUCkiXSxbMSwwLCIoVyxcXHBhcnRpYWwgVykiXSxbMywwLCIoXFx0aWxkZXtXfSxcXHBhcnRpYWwgXFx0aWxkZXtXfSkiXSxbMiwzLCIoWCxBKSJdLFswLDMsImZfe019Il0sWzIsNCwiXFx0aWxkZXtmfV97UH0iLDJdLFsxLDMsImZfe059IiwyXSxbMSw0LCJcXHRpbGRle2Z9X3tOfSIsMl0sWzEsNSwiXFxwaV97Tn0iXSxbMCw1LCJcXHBpX3tNfSIsMl0sWzIsNSwiXFxwaV97UH0iXSxbMyw1LCJcXHBpX3tXfSIsMl0sWzQsNSwiXFxwaV97XFx0aWxkZXtXfX0iXV0=
+\begin{tikzcd}
+	& {(W,\partial W)} && {(\tilde{W},\partial \tilde{W})} \\
+	{(M,\partial M)} && {(N,\partial N)} && {(P,\partial P)} \\
+	\\
+	&& {(X,A)}
+	\arrow["{\pi_{W}}"', from=1-2, to=4-3]
+	\arrow["{\pi_{\tilde{W}}}", from=1-4, to=4-3]
+	\arrow["{f_{M}}", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=4-3]
+	\arrow["{f_{N}}"', from=2-3, to=1-2]
+	\arrow["{\tilde{f}_{N}}"', from=2-3, to=1-4]
+	\arrow["{\pi_{N}}", from=2-3, to=4-3]
+	\arrow["{\tilde{f}_{P}}"', from=2-5, to=1-4]
+	\arrow["{\pi_{P}}", from=2-5, to=4-3]
+\end{tikzcd}
+
+By Lemma \ref{EM-Embedding} applied to $\mathcal{G}$-map $f_{N}:N\to W$, and $\tilde{f}_{N}:N\to \tilde{W}$ we obtain a diagram
+
+\begin{tikzcd}
+	& {(E^{W},\partial E^{W})} && {(E^{\tilde{W}},\partial E^{\tilde{W}})} \\
+	{(M,\partial M)} && {(N,\partial N)} && {(P,\partial P)} \\
+	\\
+	&& {(X,A)}
+	\arrow["{\pi_{W}}"', from=1-2, to=4-3]
+	\arrow["{\pi_{\tilde{W}}}", from=1-4, to=4-3]
+	\arrow["{\phi_{M}}", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=4-3]
+	\arrow["{\phi_{N}}"', from=2-3, to=1-2]
+	\arrow["{\tilde{\phi}_{N}}"', from=2-3, to=1-4]
+	\arrow["{\pi_{N}}", from=2-3, to=4-3]
+	\arrow["{\tilde{\phi}_{P}}"', from=2-5, to=1-4]
+	\arrow["{\pi_{P}}", from=2-5, to=4-3]
+\end{tikzcd}
+
+where $\phi_{N}$ and $\tilde{\phi}_{N}$ are embeddings and $E^{W}$ and $E^{\tilde{W}}$ are vector bundles over smooth manifolds, therefore, are smooth manifolds too \textcolor{red}{Revisar}. 
+
+\textcolor{green}{Opcion 0}
+
+By the Remark \ref{triviality of bundles} we have that $E^{W}=W\times \mathbb{R}^{m}$, and with this, $TE^{W}=TW\times \mathbb{R}^{2m}$. Considering the tubular neighborhood of $N$ in $E^{W}$, denoted by $N^{W}$, which coincides  with the Normal bundle of $N$ in $E^{W}$, we get that $N^{W}\oplus TN\cong TE^{W}|_{N}$.
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJOIl0sWzEsMSwiRV57V30iXSxbMSwwLCJURV57V31cXGNvbmcgVChXXFx0aW1lcyBcXG1hdGhiYntSfV57bX0pIl0sWzAsMCwiTl57V31cXG9wbHVzIFROXFxjb25nIFQoV1xcdGltZXMgXFxtYXRoYmJ7Un1ee219KXxfe059Il0sWzAsMSwiXFxldGFfe2Zfe059fVxcY2lyYyBcXHhpX3tWfSIsMl0sWzIsMV0sWzMsMF1d
+\[\begin{tikzcd}
+	{N^{W}\oplus TN\cong T(W\times \mathbb{R}^{m})|_{N}} & {TE^{W}\cong T(W\times \mathbb{R}^{m})} \\
+	N & {E^{W}}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{\eta_{f_{N}}\circ \xi_{V}}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+
+\textcolor{green}{Opción 1}
+
+Considering the tubular neighborhood of $N$ in $E^{W}$, denoted by $N^{W}$, which coincides  with the Normal bundle of $N$ in $E^{W}$, we get that $N^{W}\oplus TN\cong TE^{W}|_{N}$. 
+% https://q.uiver.app/#q=WzAsOCxbMCwxLCJOIl0sWzAsMCwiTl57V31cXG9wbHVzIFROXFxjb25nIFRFXntXfXxfe059Il0sWzEsMSwiRV57V30iXSxbMSwwLCJURV57V30iXSxbMiwxLCJOXFxjb25nX3tofU5cXHRpbWVzXFxtYXRoYmJ7Un1ee3R9Il0sWzMsMSwiRV57XFx0aWxkZXtXfX1cXHRpbWVzXFxtYXRoYmJ7Un1ee3R9Il0sWzMsMCwiVEVee1xcdGlsZGV7V319XFxvcGx1cyBcXG1hdGhiYntSfV57dH0iXSxbMiwwLCJOXntcXHRpbGRle1d9fVxcb3BsdXMgVE5cXG9wbHVzIFxcbWF0aGJie1J9Xnt0fSJdLFsxLDBdLFswLDIsIlxcZXRhX3tmX3tOfX1cXGNpcmMgXFx4aV97Vn0iLDJdLFszLDJdLFs0LDVdLFs2LDVdLFs3LDRdXQ==
+\[\begin{tikzcd}
+	{N^{W}\oplus TN\cong TE^{W}|_{N}} & {TE^{W}} & {N^{\tilde{W}}\oplus TN\oplus \mathbb{R}^{t}} & {TE^{\tilde{W}}\oplus \mathbb{R}^{t}} \\
+	N & {E^{W}} & {N\cong_{h}N\times\mathbb{R}^{t}} & {E^{\tilde{W}}\times\mathbb{R}^{t}}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-4, to=2-4]
+	\arrow["{\eta_{f_{N}}\circ \xi_{V}}"', from=2-1, to=2-2]
+	\arrow[from=2-3, to=2-4]
+\end{tikzcd}\]
+
+Here $t$ is proposed in  order to get that $dim(N^{W})=dim(N^{\tilde{W}}\times \mathbb{R}^{t})$, and where we obtain that the the tubular neighborhood of $N$ in $E^{\tilde{W}}\times \mathbb{R}^{t}$ is the normal bundle $N^{\tilde{W}}\times \mathbb{R}^{t}$.
+
+If $K\to E^{W}$ is the vector bundle such that $TE^{W}\oplus K\cong E^{W}\times \mathbb{R}^{w}$, and $L\to E^{\tilde{W}}\times \mathbb{R}^{t}$ is the vector bundle such that $T(E^{\tilde{W}}\times \mathbb{R}^{t})\oplus \mathbb{R}^{w'}\cong (TE^{\tilde{W}}\oplus \mathbb{R}^{t})\oplus \mathbb{R}^{w'}\cong (E^{\tilde{W}}\times \mathbb{R}^{t})\times \mathbb{R}^{w'}\cong E^{\tilde{W}}\times \mathbb{R}^{t+w'}$.
+
+
+Then we consider the connect sum $\widehat{W}:=W\#\tilde{W}$ by the identification of two open tubular neighborhoods of $Img(f_{N})$ and $Img(\tilde{f}_{N})$. $\widehat{W}$ is a smooth manifold because... 
+Also we have that $\partial \widehat{W} = \partial W \sqcup \partial \tilde{W}$ because...
+
+% https://q.uiver.app/#q=WzAsNyxbMCwyLCIoTSxcXHBhcnRpYWwgTSkiXSxbMiwyLCIoTixcXHBhcnRpYWwgTikiXSxbNCwyLCIoUCxcXHBhcnRpYWwgUCkiXSxbMSwxLCIoVyxcXHBhcnRpYWwgVykiXSxbMywxLCIoXFx0aWxkZXtXfSxcXHBhcnRpYWwgXFx0aWxkZXtXfSkiXSxbMiw0LCIoWCxBKSJdLFsyLDAsIihcXHdpZGVoYXR7V30sXFxwYXJ0aWFsIFxcd2lkZWhhdHtXfSkiXSxbMCwzLCJmX3tNfSJdLFsyLDQsIlxcdGlsZGV7Zn1fe1B9IiwyXSxbMSwzLCJmX3tOfSIsMl0sWzEsNCwiXFx0aWxkZXtmfV97Tn0iLDJdLFsxLDUsIlxccGlfe059Il0sWzAsNSwiXFxwaV97TX0iLDJdLFsyLDUsIlxccGlfe1B9Il0sWzMsNSwiXFxwaV97V30iLDJdLFs0LDUsIlxccGlfe1xcdGlsZGV7V319Il0sWzMsNiwiaV97V30iXSxbNCw2LCJpX3tcXHRpbGRle1d9fSIsMl1d
+\begin{tikzcd}
+	&& {(\widehat{W},\partial \widehat{W})} \\
+	& {(W,\partial W)} && {(\tilde{W},\partial \tilde{W})} \\
+	{(M,\partial M)} && {(N,\partial N)} && {(P,\partial P)} \\
+	\\
+	&& {(X,A)}
+	\arrow["{i_{W}}", from=2-2, to=1-3]
+	\arrow["{\pi_{W}}"', from=2-2, to=5-3]
+	\arrow["{i_{\tilde{W}}}"', from=2-4, to=1-3]
+	\arrow["{\pi_{\tilde{W}}}", from=2-4, to=5-3]
+	\arrow["{f_{M}}", from=3-1, to=2-2]
+	\arrow["{\pi_{M}}"', from=3-1, to=5-3]
+	\arrow["{f_{N}}"', from=3-3, to=2-2]
+	\arrow["{\tilde{f}_{N}}"', from=3-3, to=2-4]
+	\arrow["{\pi_{N}}", from=3-3, to=5-3]
+	\arrow["{\tilde{f}_{P}}"', from=3-5, to=2-4]
+	\arrow["{\pi_{P}}", from=3-5, to=5-3]
+\end{tikzcd}
+
+Now, defining $$f_{M}^{\#}:(M,\partial M)\to (\widehat{W},\partial \widehat{W})$$ as $f_{M}^{\#}=i_{W}\circ f_{M}$ and in a similar way $f_{N}^{\#}=i_{\tilde{W}}\circ \tilde{f}_{P}$; also, consider $$\pi_{\widehat{W}}=\pi_{W}\# \pi_{\tilde{W}}:(\widehat{W},\partial \widehat{W})\to (X,A),$$
+where we get that $\pi_{\widehat{W}}\circ i_{W}=\pi_{W}$ and $\pi_{\widehat{W}}\circ i_{\tilde{W}}=\pi_{\tilde{W}}$, and with this,
+\begin{align*}
+    \pi_{\widehat{W}}\circ f_{M}^{\#} &= \pi_{M},\\
+    \pi_{\widehat{W}}\circ \tilde{f}_{P}^{\#} &= \pi_{P},\\
+    f_{M}^{\#}!(x_{M})&=f_{P}^{\#}!(x_{P}).
+\end{align*}
+
+
+
+\begin{comment}        
+        \item Transitivity: If 
+        \begin{align*}
+        &(M,\partial M, \pi_{M}, x_{M})\sim_{2}(N,\partial N, \pi_{N}, x_{N})\\
+        &(N,\partial N, \pi_{N}, x_{N})\sim_{2}(P,\partial P, \pi_{P}, x_{P}),
+        \end{align*}
+        then we get the diagram
+        % https://q.uiver.app/#q=WzAsNyxbMCwyLCIoTSxcXHBhcnRpYWwgTSkiXSxbMiwyLCIoTixcXHBhcnRpYWwgTikiXSxbNCwyLCIoUCxcXHBhcnRpYWwgUCkiXSxbMSwxLCIoVyxcXHBhcnRpYWwgVykiXSxbMywxLCIoXFx0aWxkZXtXfSxcXHBhcnRpYWwgXFx0aWxkZXtXfSkiXSxbMiwwLCIoV1xcc3FjdXAgXFx0aWxkZXtXfSxcXHBhcnRpYWwgV1xcc3FjdXAgXFxwYXJ0aWFsIFxcdGlsZGV7V30pIl0sWzIsNCwiKFgsQSkiXSxbMCwzLCJmX3tNfSJdLFszLDUsImlfe1d9Il0sWzQsNSwiaV97XFx0aWxkZXtXfX0iLDJdLFsyLDQsIlxcdGlsZGV7Zn1fe1B9IiwyXSxbMSwzLCJmX3tOfSIsMl0sWzEsNCwiXFx0aWxkZXtmfV97Tn0iLDJdLFsxLDYsIlxccGlfe059Il0sWzAsNiwiXFxwaV97TX0iLDJdLFsyLDYsIlxccGlfe1B9Il0sWzMsNiwiXFxwaV97V30iLDJdLFs0LDYsIlxccGlfe1xcdGlsZGV7V319Il1d
+
+\[\begin{tikzcd}
+	&& {(W\sqcup \tilde{W},\partial W\sqcup \partial \tilde{W})} \\
+	& {(W,\partial W)} && {(\tilde{W},\partial \tilde{W})} \\
+	{(M,\partial M)} && {(N,\partial N)} && {(P,\partial P)} \\
+	\\
+	&& {(X,A)}
+	\arrow["{i_{W}}", from=2-2, to=1-3]
+	\arrow["{\pi_{W}}"', from=2-2, to=5-3]
+	\arrow["{i_{\tilde{W}}}"', from=2-4, to=1-3]
+	\arrow["{\pi_{\tilde{W}}}", from=2-4, to=5-3]
+	\arrow["{f_{M}}", from=3-1, to=2-2]
+	\arrow["{\pi_{M}}"', from=3-1, to=5-3]
+	\arrow["{f_{N}}"', from=3-3, to=2-2]
+	\arrow["{\tilde{f}_{N}}"', from=3-3, to=2-4]
+	\arrow["{\pi_{N}}", from=3-3, to=5-3]
+	\arrow["{\tilde{f}_{P}}"', from=3-5, to=2-4]
+	\arrow["{\pi_{P}}", from=3-5, to=5-3]
+\end{tikzcd}\]
+we get that $(M,\partial M, \pi_{M}, x_{M})\sim_{2}(P,\partial P, \pi_{P}, x_{P})$ defining $$f_{M}^{\sqcup}:(M,\partial)\to (W\sqcup \tilde{W},\partial W\sqcup \partial \tilde{W})$$ as $f_{M}^{\sqcup}=i_{W}\circ f_{M}$ and in a similar way $f_{N}^{\sqcup}=i_{\tilde{W}}\circ \tilde{f}_{P}$; also, consider $$\pi_{W\sqcup \tilde{W}}=\pi_{W}\sqcup \pi_{\tilde{W}}:(W\sqcup \tilde{W},\partial W\sqcup \partial \tilde{W})\to (X,A),$$
+where we get that $\pi_{W\sqcup \tilde{W}}\circ i_{W}=\pi_{W}$ and $\pi_{W\sqcup \tilde{W}}\circ i_{\tilde{W}}=\pi_{\tilde{W}}$, and with this,
+\begin{align*}
+    \pi_{W\sqcup \tilde{W}}\circ f_{M}^{\sqcup} &= \pi_{M},\\
+    \pi_{W\sqcup \tilde{W}}\circ \tilde{f}_{P}^{\sqcup} &= \pi_{P}.
+\end{align*}
+{\bf AAAAAAAAAA It is not enought to obtain $f_{M}^{\sqcup}!(x_{M})=f_{P}^{\sqcup}!(x_{P}).$}
+
+
+
+\textcolor{green}{Opción 2}
+
+With those vector bundles structures over $W$ and $\tilde{W}$, we consider the vector bundles $K\to W$ and $\tilde{K}\to \tilde{W}$ such that $E^{W}\oplus K\cong W\times \mathbb{R}^{m}$ and $E^{\tilde{W}}\oplus \tilde{K}\cong \tilde{W}\times \mathbb{R}^{p}$. Without loss of generality, we suppose that $dim(W\times \mathbb{R}^{m})\geq dim(\tilde{W}\times \mathbb{R}^{p})$, and in order to obtain the same dimension as a manifold we consider the addition of $\mathbb{R}^{t}$, getting the diagram     
+
+% https://q.uiver.app/#q=WzAsNixbMSwyLCJYIl0sWzAsMSwiTSJdLFsxLDEsIk4iXSxbMiwxLCJQIl0sWzAsMCwiRV57V31cXG9wbHVzIEsgXFxjb25nIFdcXHRpbWVzIFxcbWF0aGJie1J9XnttfSJdLFsyLDAsIkVee1xcdGlsZGV7V319XFxvcGx1cyBcXHRpbGRle0t9XFxjb25nIFxcdGlsZGV7V31cXHRpbWVzIFxcbWF0aGJie1J9XntwK3R9ICJdLFsxLDQsIlxcdGF1X3tXfSJdLFsxLDAsIlxccGlfe019IiwyXSxbMiwwLCJcXHBpX3tOfSJdLFszLDAsIlxccGlfe1B9Il0sWzIsNCwiXFx0aGV0YV97V30iLDJdLFsyLDUsIlxcdGhldGFfe1xcdGlsZGV7V319IiwyXSxbMyw1LCJcXHRhdV97XFx0aWxkZXtXfX0iLDJdXQ==
+\[\begin{tikzcd}
+	{E^{W}\oplus K \cong W\times \mathbb{R}^{m}} && {E^{\tilde{W}}\oplus \tilde{K}\cong \tilde{W}\times \mathbb{R}^{p+t} } \\
+	M & N & P \\
+	& X
+	\arrow["{\tau_{W}}", from=2-1, to=1-1]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["{\theta_{W}}"', from=2-2, to=1-1]
+	\arrow["{\theta_{\tilde{W}}}"', from=2-2, to=1-3]
+	\arrow["{\pi_{N}}", from=2-2, to=3-2]
+	\arrow["{\tau_{\tilde{W}}}"', from=2-3, to=1-3]
+	\arrow["{\pi_{P}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+
+in a more precised way, we get the following diagram
+% https://q.uiver.app/#q=WzAsMTIsWzEsNiwiWCJdLFswLDQsIk0iXSxbMSw0LCJOIl0sWzIsNCwiUCJdLFswLDMsIlciXSxbMCwyLCJFXntXfSJdLFsyLDMsIlxcdGlsZGV7V30iXSxbMiwyLCJFXntcXHRpbGRle1d9fSJdLFswLDEsIkVee1d9XFx0aW1lcyBcXG1hdGhiYntSfV57bX0iXSxbMiwxLCJFXntcXHRpbGRle1d9fVxcdGltZXMgXFxtYXRoYmJ7Un1ee3B9ICJdLFswLDAsIldcXHRpbWVzXFxtYXRoYmJ7Un1ee219Il0sWzIsMCwiXFx0aWxkZXtXfVxcdGltZXNcXG1hdGhiYntSfV57cCt0fSJdLFsxLDAsIlxccGlfe019IiwyXSxbMiwwLCJcXHBpX3tOfSIsMV0sWzMsMCwiXFxwaV97UH0iXSxbMSw0LCJmX3tNfSJdLFs0LDUsIlxceGlfe0Vee1d9fSJdLFsyLDUsIlxcZXRhX3tmX3tOfX1cXGNpcmMgXFx4aV97Vn0iLDEseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMiw3LCJcXGV0YV97XFx0aWxkZXtmfV97Tn19XFxjaXJjIFxceGlfe1xcdGlsZGV7Vn19IiwxLHsibGFiZWxfcG9zaXRpb24iOjMwLCJvZmZzZXQiOi0xfV0sWzMsNiwiXFx0aWxkZXtmfV97UH0iLDJdLFs2LDcsIlxceGlfe0Vee1xcdGlsZGV7V319fSIsMl0sWzUsOCwiaV97V30iXSxbOCwxMCwiXFx2YXJwaGlfe1d9IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNyw5LCJpX3tcXHRpbGRle1d9fSIsMl0sWzksMTEsIlxcdmFycGhpX3tcXHRpbGRle1d9fSIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzgsNSwiXFxwaV97MX0iLDAseyJjdXJ2ZSI6LTJ9XSxbOSw3LCJcXHBpX3sxfSIsMix7ImN1cnZlIjoyfV0sWzUsMCwiXFxwaV97RV57V319IiwxXSxbNywwLCJcXHBpX3tFXntcXHRpbGRle1d9fX0iLDFdXQ==
+\[\begin{tikzcd}
+	{W\times\mathbb{R}^{m}} && {\tilde{W}\times\mathbb{R}^{p+t}} \\
+	{E^{W}\oplus K} && {E^{\tilde{W}}\oplus \tilde{K}}  \\
+	{E^{W}} && {E^{\tilde{W}}} \\
+	W && {\tilde{W}} \\
+	M & N & P \\
+	\\
+	& X
+	\arrow["{\varphi_{W}}", tail, two heads, from=2-1, to=1-1]
+	\arrow["{\pi_{1}}", curve={height=-12pt}, from=2-1, to=3-1]
+	\arrow["{\varphi_{\tilde{W}}}"', tail, two heads, from=2-3, to=1-3]
+	\arrow["{\pi_{1}}"', curve={height=12pt}, from=2-3, to=3-3]
+	\arrow["{i_{W}}", from=3-1, to=2-1]
+	\arrow["{\pi_{E^{W}}}"{description}, from=3-1, to=7-2]
+	\arrow["{i_{\tilde{W}}}"', from=3-3, to=2-3]
+	\arrow["{\pi_{E^{\tilde{W}}}}"{description}, from=3-3, to=7-2]
+	\arrow["{\xi_{E^{W}}}", from=4-1, to=3-1]
+	\arrow["{\xi_{E^{\tilde{W}}}}"', from=4-3, to=3-3]
+	\arrow["{f_{M}}", from=5-1, to=4-1]
+	\arrow["{\pi_{M}}"', from=5-1, to=7-2]
+	\arrow["{\eta_{f_{N}}\circ \xi_{V}}"{description, pos=0.3}, from=5-2, to=3-1]
+	\arrow["{\eta_{\tilde{f}_{N}}\circ \xi_{\tilde{V}}}"{description, pos=0.3}, shift left, from=5-2, to=3-3]
+	\arrow["{\pi_{N}}"{description}, from=5-2, to=7-2]
+	\arrow["{\tilde{f}_{P}}"', from=5-3, to=4-3]
+	\arrow["{\pi_{P}}", from=5-3, to=7-2]
+\end{tikzcd}\]
+
+These maps hold that: 
+\begin{enumerate}
+    \item For $\tau_{W}:=\varphi_{W}\circ i_{W}\circ \xi_{E^{W}}\circ f_{M}$, we have that $\pi_{E^{W}}\circ \pi_{1}\circ \varphi_{W}^{-1}\circ \tau_{W} =\pi_{M}$, and $\pi_{E^{W}}\circ \pi_{1}\circ \varphi_{W}^{-1}\circ \theta_{W}=\pi_{N}$.
+    \item For $\tau_{\tilde{W}}:=\varphi_{\tilde{W}}\circ i_{\tilde{W}}\circ \xi_{E^{\tilde{W}}}\circ \tilde{f}_{M}$, we have that $\pi_{E^{\tilde{W}}}\circ \pi_{1}\circ \varphi_{\tilde{W}}^{-1}\circ \tau_{\tilde{W}} =\pi_{P}$, and $\pi_{E^{\tilde{W}}}\circ \pi_{1}\circ \varphi_{\tilde{W}}^{-1}\circ \theta_{\tilde{W}}=\pi_{N}$.
+    \item $\theta_{W}:=\varphi_{W}\circ i_{W}\circ \eta_{f_{N}}\circ \xi_{V}:N\to W\times \mathbb{R}^{m}$ is an embedding.
+    \item $\theta_{\tilde{W}}:=\varphi_{\tilde{W}}\circ i_{\tilde{W}}\circ \eta_{\tilde{f}_{N}}\circ \xi_{\tilde{V}}:N\to \tilde{W}\times \mathbb{R}^{p+t}$ is an embedding.
+\end{enumerate}
+With this, we obtain that there exist an open neighborhood of $N$ in $W\times \mathbb{R}^{m}$ and  $\tilde{W}\times \mathbb{R}^{p+t}$, denoted $N^{W}\cong N\times(-\varepsilon,\varepsilon)^{w}$ and $N^{\tilde{W}}\cong N\times(-\varepsilon,\varepsilon)^{w'}$ respectively, and since $dim(W\times \mathbb{R}^{m})=dim(\tilde{W}\times \mathbb{R}^{p+t})$, we get that $w=w'$.
+
+
+Consider the connected sum ${\bf W}:=(W\times \mathbb{R}^{m})\#(\tilde{W}\times \mathbb{R}^{p+t})$, where the identification is given by the map $N^{W}\cong N\times(-\varepsilon,\varepsilon)^{w}\cong N^{\tilde{W}}$. Note that ${\bf W}$ is a smooth manifold because \textcolor{red}{(....revisar)} Now we have the diagram
+
+% https://q.uiver.app/#q=WzAsNyxbMiw0LCJYIl0sWzAsMiwiTSJdLFsyLDIsIk4iXSxbNCwyLCJQIl0sWzEsMSwiV1xcdGltZXNcXG1hdGhiYntSfV57bX0iXSxbMywxLCJcXHRpbGRle1d9XFx0aW1lc1xcbWF0aGJie1J9XntwK3R9Il0sWzIsMCwie1xcYmYgV30iXSxbNCw2LCJcXGlvdGFfe1d9Il0sWzUsNiwiXFxpb3RhX3tcXHRpbGRle1d9fSIsMl0sWzEsNCwiXFx2YXJwaGlfe1d9XFxjaXJjIGlfe1d9XFxjaXJjIFxceGlfe0Vee1d9fVxcY2lyYyBmX3tNfSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjowfV0sWzMsNSwiXFx2YXJwaGlfe1xcdGlsZGV7V319XFxjaXJjIGlfe1xcdGlsZGV7V319XFxjaXJjIFxceGlfe0Vee1xcdGlsZGV7V319fVxcY2lyYyBcXHRpbGRle2Z9X3tNfSIsMix7ImxhYmVsX3Bvc2l0aW9uIjowfV0sWzIsNCwiXFx0aGV0YV97V30iLDJdLFsyLDUsIlxcdGhldGFfe1xcdGlsZGV7V319Il0sWzEsMCwiXFxwaV97TX0iLDJdLFsyLDAsIlxccGlfe059IiwxXSxbMywwLCJcXHBpX3tQfSJdLFs0LDAsIlxccGlfe0Vee1d9fVxcY2lyYyBcXHBpX3sxfVxcY2lyYyBcXHZhcnBoaV97V31eey0xfSIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo0MH1dLFs1LDAsIlxccGlfe0Vee1xcdGlsZGV7V319fVxcY2lyYyBcXHBpX3sxfVxcY2lyYyBcXHZhcnBoaV97XFx0aWxkZXtXfX1eey0xfSIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo0MH1dLFs2LDJdXQ==
+\[\begin{tikzcd}
+	&& {{\bf W}} \\
+	& {W\times\mathbb{R}^{m}} && {\tilde{W}\times\mathbb{R}^{p+t}} \\
+	M && N && P \\
+	\\
+	&& X
+	\arrow[from=1-3, to=3-3]
+	\arrow["{\iota_{W}}", from=2-2, to=1-3]
+	\arrow["{\pi_{E^{W}}\circ \pi_{1}\circ \varphi_{W}^{-1}}"{description, pos=0.4}, from=2-2, to=5-3]
+	\arrow["{\iota_{\tilde{W}}}"', from=2-4, to=1-3]
+	\arrow["{\pi_{E^{\tilde{W}}}\circ \pi_{1}\circ \varphi_{\tilde{W}}^{-1}}"{description, pos=0.4}, from=2-4, to=5-3]
+	\arrow["{\tau_{W}}"{pos=0.5}, from=3-1, to=2-2]
+	\arrow["{\pi_{M}}"', from=3-1, to=5-3]
+	\arrow["{\theta_{W}}"', from=3-3, to=2-2]
+	\arrow["{\theta_{\tilde{W}}}", from=3-3, to=2-4]
+	\arrow["{\pi_{N}}"{description}, from=3-3, to=5-3]
+	\arrow["{\tau_{\tilde{W}}}"'{pos=0.5}, from=3-5, to=2-4]
+	\arrow["{\pi_{P}}", from=3-5, to=5-3]
+\end{tikzcd}\]
+
+with this construction we define $\pi_{{\bf W}}:{\bf W}\to X$ as $$(\pi_{E^{W}}\circ \pi_{1}\circ \varphi_{W}^{-1})\#({\pi_{E^{\tilde{W}}}\circ \pi_{1}\circ \varphi_{\tilde{W}}^{-1}}).$$
+
+We claim that the cycles $(M,\partial M,\pi_{M},x_{M})$ and $(P,\partial P,\pi_{P},x_{P})$ are related by the cycle $({\bf W},\partial {\bf W},\pi_{{\bf W}}, x_{{\bf W}})$, and the maps $\iota_{W}\circ \tau_{W}$ and $\iota_{\tilde{W}}\circ \tau_{\tilde{W}}$.
+% https://q.uiver.app/#q=WzAsNCxbMSwyLCJYIl0sWzAsMSwiTSJdLFsxLDAsIntcXGJmIFd9Il0sWzIsMSwiUCJdLFsxLDIsIlxcaW90YV97V31cXGNpcmMgXFx0YXVfe1d9Il0sWzMsMiwiXFxpb3RhX3tcXHRpbGRle1d9fVxcY2lyYyBcXHRhdV97XFx0aWxkZXtXfX0iLDJdLFsxLDAsIlxccGlfe019IiwyXSxbMywwLCJcXHBpX3tQfSJdLFsyLDAsIlxccGlfe3tcXGJmIFd9fSIsMV1d
+\[\begin{tikzcd}
+	& {{\bf W}} \\
+	M && P \\
+	& X
+	\arrow["{\pi_{{\bf W}}}"{description}, from=1-2, to=3-2]
+	\arrow["{\iota_{W}\circ \tau_{W}}", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["{\iota_{\tilde{W}}\circ \tau_{\tilde{W}}}"', from=2-3, to=1-2]
+	\arrow["{\pi_{P}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+
+To prove that $(\iota_{W}\circ \tau_{W})!(x_{M})=(\iota_{\tilde{W}}\circ \tau_{\tilde{W}})!(x_{P})$:
+\begin{enumerate}
+    \item $\tau_{W}!(x_{M})=\theta_{W}!(x_{N})$, because such as in the proof of Lemma \ref{EM-Embedding}, $(\xi_{E^{W}}\circ f_{M})!(x_{M})=(\eta_{f_{N}}\circ \xi_{V})!(x_{N})$  and applying $(\varphi_{W}\circ i_{W})!$ on both sides of the equation we get the desired equation.
+    \item $\tau_{\tilde{W}}!(x_{P})=\theta_{\tilde{W}}!(x_{N})$, is analogous to the previous case.
+    \item $(\iota_{W}\circ \theta_{W})!(x_{N})=(\iota_{\tilde{W}}\circ \theta_{\tilde{W}})!(x_{N})$
+
+% https://q.uiver.app/#q=WzAsNyxbMCwyLCJIXntwZn1feyp9KE4pIl0sWzEsMCwiSF57cGZ9X3sqfShXXFx0aW1lcyBcXG1hdGhiYntSfV57bn0pIl0sWzIsMiwiSF57cGZ9X3sqfSh7XFxiZiBXfSkiXSxbMSw0LCJIXntwZn1feyp9KFxcdGlsZGV7V31cXHRpbWVzIFxcbWF0aGJie1J9XntwK3R9KSJdLFsxLDIsIkhee3BmfV97Kn0oTlxcdGltZXMgKC1cXHZhcmVwc2lsb24sXFx2YXJlcHNpbG9uKSkiXSxbMSwxLCJIXntwZn1feyp9KE5ee1d9KSJdLFsxLDMsIkhee3BmfV97Kn0oTl57XFx0aWxkZXtXfX0pIl0sWzAsMV0sWzEsMl0sWzAsM10sWzMsMl0sWzAsNCwiIiwyLHsibGV2ZWwiOjJ9XSxbNCw1LCIiLDIseyJsZXZlbCI6Mn1dLFs1LDEsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzQsNiwiIiwyLHsibGV2ZWwiOjJ9XSxbNiwzLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dXQ==
+\begin{tikzcd}
+	& {H^{pf}_{*}(W\times \mathbb{R}^{n})} \\
+	& {H^{pf}_{*}(N^{W})} \\
+	{H^{pf}_{*}(N)} & {H^{pf}_{*}(N\times (-\varepsilon,\varepsilon))} & {H^{pf}_{*}({\bf W})} \\
+	& {H^{pf}_{*}(N^{\tilde{W}})} \\
+	& {H^{pf}_{*}(\tilde{W}\times \mathbb{R}^{p+t})}
+	\arrow[from=1-2, to=3-3]
+	\arrow[hook, from=2-2, to=1-2]
+	\arrow[from=3-1, to=1-2]
+	\arrow[Rightarrow, from=3-1, to=3-2]
+	\arrow[from=3-1, to=5-2]
+	\arrow[Rightarrow, from=3-2, to=2-2]
+	\arrow[Rightarrow, from=3-2, to=4-2]
+	\arrow[hook', from=4-2, to=5-2]
+	\arrow[from=5-2, to=3-3]
+\end{tikzcd}
+
+\vspace{0.6 cm}
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJXXFx0aW1lcyBcXG1hdGhiYntSfV57bX0iXSxbMSwyLCJOIl0sWzIsMCwiXFx0aWxkZXtXfVxcdGltZXMgXFxtYXRoYmJ7Un1ee3ArdH0iXSxbMCwxLCJOXntXfVxcY29uZyBOXFx0aW1lcygtXFx2YXJlcHNpbG9uLFxcdmFyZXBzaWxvbilee3d9Il0sWzIsMSwiTlxcdGltZXMoLVxcdmFyZXBzaWxvbixcXHZhcmVwc2lsb24pXnt3fVxcY29uZyBOXntcXHRpbGRle1d9fSJdLFsxLDQsIlxcdGhldGFfe1xcdGlsZGV7V319IiwyXSxbMSwzLCJcXHRoZXRhX3tXfSJdLFszLDAsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoiYm90dG9tIn19fV0sWzQsMiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XSxbMyw0LCJkaWZlbyIsMl1d
+\[\begin{tikzcd}
+	{W\times \mathbb{R}^{m}} && {\tilde{W}\times \mathbb{R}^{p+t}} \\
+	{N^{W}\cong N\times(-\varepsilon,\varepsilon)^{w}} && {N\times(-\varepsilon,\varepsilon)^{w}\cong N^{\tilde{W}}} \\
+	& N
+	\arrow[hook', from=2-1, to=1-1]
+	\arrow["difeo"', from=2-1, to=2-3]
+	\arrow[hook', from=2-3, to=1-3]
+	\arrow["{\theta_{W}}", from=3-2, to=2-1]
+	\arrow["{\theta_{\tilde{W}}}"', from=3-2, to=2-3]
+\end{tikzcd}\]
+
+
+% https://q.uiver.app/#q=WzAsNSxbMCwzLCJOIl0sWzEsMywiRV57V30iXSxbMCwyLCJOXntXfVxcb3BsdXMgVE5cXGNvbmcgVEVee1d9fF97Tn1cXGNvbmcgV1xcdGltZXMgXFxtYXRoYmJ7Un1ee219fE5cXGNvbmcgTlxcdGltZXMgXFxtYXRoYmJ7Un1ee219Il0sWzAsNCwiTl57XFx0aWxkZXtXfX1cXG9wbHVzIFROXFxjb25nIFRFXntcXHRpbGRle1d9fXxfe059XFxjb25nIFxcdGlsZGV7V31cXHRpbWVzIFxcbWF0aGJie1J9XntwK3R9fE5cXGNvbmcgTlxcdGltZXMgXFxtYXRoYmJ7Un1ee3ArdH0iXSxbMCwwLCJOXntXfVxcb3BsdXMgVE5cXGNvbmcgTl57XFx0aWxkZXtXfX1cXG9wbHVzIFROIl0sWzAsMV0sWzIsMF0sWzMsMF1d
+\begin{tikzcd}
+	{N^{W}\oplus TN\cong N^{\tilde{W}}\oplus TN} \\
+	\\
+	{N^{W}\oplus TN\cong TE^{W}|_{N}\cong W\times \mathbb{R}^{m}|N\cong N\times \mathbb{R}^{m}} \\
+	N & {E^{W}} \\
+	{N^{\tilde{W}}\oplus TN\cong TE^{\tilde{W}}|_{N}\cong \tilde{W}\times \mathbb{R}^{p+t}|N\cong N\times \mathbb{R}^{p+t}}
+	\arrow[from=3-1, to=4-1]
+	\arrow[from=4-1, to=4-2]
+	\arrow[from=5-1, to=4-1]
+\end{tikzcd}
+
+
+    
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{comment}
+
+
+
+\item Transitivity:
+    Consider the following $\Gamma$-maps:
+    \begin{enumerate}
+        \item The embeddings $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$.%Son morfismos de pares porque as� los da la relaci�n de equivalencia. 
+        \item The unique up to equivariant homotopy maps $a_{1}:W_{1}\to Z$, and $a_{2}:W_{2}\to Z$, by the universal property of $Z=\underline{E}\Gamma$.
+        \item The tangent vector bundles $TW_{1}\to W_{1}$ and $TW_{2}\to W_{2}$. 
+    \end{enumerate}
+    By the Lemma \ref{integral lemma}, we get that $a^{*}_{1}E_{1}\cong TW_{1}\oplus C_{1}$ and $a^{*}_{2}E_{2}\cong TW_{2}\oplus C_{2}$, for $\Gamma$-vector bundles $E_{1},E_{2}\to Z$, $C_{1}\to W_{1}$ and $C_{2}\to W_{2}$, as shows the following diagram:
+    % https://q.uiver.app/#q=WzAsOSxbMiwxLCJOIl0sWzMsMSwiV197Mn0iXSxbNCwxLCJaIl0sWzEsMSwiV197MX0iXSxbMCwxLCJaIl0sWzAsMCwiRV97MX0iXSxbNCwwLCJFX3syfSJdLFsxLDAsImFfezF9XnsqfUVfezF9XFxjb25nIFRXX3sxfVxcb3BsdXMgQ197MX0iXSxbMywwLCJhX3syfV57Kn1FX3syfVxcY29uZyBUV197Mn1cXG9wbHVzIENfezJ9Il0sWzUsNF0sWzMsNCwiYV97MX0iXSxbMCwzLCJpX3sxfSJdLFswLDEsImlfezJ9IiwyXSxbMSwyLCJhX3syfSIsMl0sWzYsMl0sWzcsM10sWzgsMV1d
+\[\begin{tikzcd}
+	{E_{1}} & {a_{1}^{*}E_{1}\cong TW_{1}\oplus C_{1}} && {a_{2}^{*}E_{2}\cong TW_{2}\oplus C_{2}} & {E_{2}} \\
+	Z & {W_{1}} & N & {W_{2}} & Z
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=1-5, to=2-5]
+	\arrow["{a_{1}}", from=2-2, to=2-1]
+	\arrow["{i_{1}}", from=2-3, to=2-2]
+	\arrow["{i_{2}}"', from=2-3, to=2-4]
+	\arrow["{a_{2}}"', from=2-4, to=2-5]
+\end{tikzcd}\]
+If we consider the $\Gamma$-vector bundles $D_{1}:=a_{1}^{*}E_{2}\oplus C_{1}$ and $D_{2}:=a_{2}^{*}E_{1}\oplus C_{2}$ over $W_{1}$ and $W_{2}$, respectively. With this in mind, denoting $E:=E_{1}\oplus E_{2}$, we note that:
+\begin{enumerate}
+    \item $TD_{1}|_{N}\cong TD_{2}|_{N}$: by one hand we have $TD_{1}\cong TW_{1}\oplus D_{1}$ by Remark \ref{Tangente de un fibrado vector}, and by the other hand \begin{align*}
+        (a_{1}\circ i_{1})^{*}E&=i_{1}^{*}(a_{1}^{*}E_{1}\oplus a_{1}^{*}E_{2})\\
+        &=i_{1}^{*}(TW_{1}\oplus C_{1} \oplus a_{1}^{*}E_{2})\\
+        &\cong i_{1}^{*}(TW_{1}\oplus D_{1})\\
+        &\cong TW_{1}|_{N}\oplus D_{1}|_{N}.
+    \end{align*}
+    Therefore, $TD_{1}|_{N}\cong  (a_{1}\circ i_{1})^{*}E$, and analogously, $TD_{2}|_{N}\cong(a_{2}\circ i_{2})^{*}E$. By the universal property of $Z$, we get that the maps $a_{1}\circ i_{1}, a_{2}\circ i_{2}:N\to Z$ are $\Gamma$-homotopical, then $TD_{1}|_{N}\cong TD_{2}|_{N}$.
+    \item $TN\leq TD_{i}|_{N}$: Since $D_{1}$ is a vector bundle over $W_{1}$, using the composition of its zero section and the map $i_{1}$, we find that there is an embedding $N\hookrightarrow D_{1}$, and therefore $TD_{1}|_{N}\cong TN\oplus \nu_{N}^{D_{1}}$, which implies $TN\leq TD_{1}|_{N}$.
+    
+    %$TD_{1}=TW_{1}\oplus D_{1}$, we get that $TD_{1}|_{N}\cong TW_{1}|_{N}\oplus D_{1}|_{N}\cong TN\oplus \nu_{N}^{W}\oplus D_{1}|_{N}$ 
+\end{enumerate}
+Then, we get that $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$. With this isomorphism, we construct $$W:=(D_{1}\oplus \mathbb{R})_{\nu_{1}}\#_{\nu_{2}} (D_{2}\oplus \mathbb{R}),$$ the joint of the vector bundles (manifolds) $D_{1}\oplus \mathbb{R}$ and $D_{2}\oplus \mathbb{R}$ along the submanifold $N$ across the normal bundles $\nu_{1}\oplus \mathbb{R}$ and $\nu_{2}\oplus \mathbb{R}$, where
+\begin{align*}
+\partial W &= [D_{1}|_{\partial W_{1}}\cup D_{2}|_{\partial W_{2}}]\oplus \mathbb{R} \setminus [j_{1}\circ i_{1}(N)\times \{1\}]
+\end{align*}
+This is made by cutting the identified copies of $N$, $(j_{1}\circ i_{1}(N))\times \{1\}$ and $(j_{2}\circ i_{2}(N))\times \{-1\}$, where $j_{k}$ is the zero section of the vector bundle $\nu_{k}$, and where this identification is obtained by the map $(j_{2}\circ i_{2})\circ id\times (-1\cdot -)\circ (j_{1}\circ i_{1})^{-1}$, making the following diagram commutative in $W$, for any $r\in \mathbb{R}\setminus \{1\}$:  
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJEX3sxfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwyLCJOIl0sWzIsMCwiRF97Mn1cXG9wbHVzIFxcbWF0aGJie1J9Il0sWzAsMSwiXFxudV97MX1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzIsMSwiXFxudV97Mn1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzEsMywiKGpfezF9XFxjaXJjIGlfezF9KVxcdGltZXNcXHtyXFx9Il0sWzEsNCwiKGpfezJ9XFxjaXJjIGlfezJ9KVxcdGltZXNcXHstclxcfSIsMl0sWzMsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNCwyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDQsImlkX3tOfVxcdGltZXMgKC0xXFxjZG90KC0pKSJdXQ==
+\[\begin{tikzcd}
+	{D_{1}\oplus \mathbb{R}} && {D_{2}\oplus \mathbb{R}} \\
+	{\nu_{1}\times \mathbb{R}} && {\nu_{2}\times \mathbb{R}} \\
+	& N
+	\arrow[hook, from=2-1, to=1-1]
+	\arrow["{id_{N}\times (-1\cdot(-))}", from=2-1, to=2-3]
+	\arrow[hook, from=2-3, to=1-3]
+	\arrow["{(j_{1}\circ i_{1})\times\{r\}}", from=3-2, to=2-1]
+	\arrow["{(j_{2}\circ i_{2})\times\{-r\}}"', from=3-2, to=2-3]
+\end{tikzcd}\]
+
+\noindent Getting $(j_{1}\times \{0\})\circ i_{1} = (j_{2}\times \{0\})\circ i_{2}$ as maps form $N$ to $W$, as the following diagram shows,
+
+% https://q.uiver.app/#q=WzAsNixbMSwyLCJOIl0sWzAsMSwiV197MX0iXSxbMiwxLCJXX3syfSJdLFsxLDAsIlciXSxbMCwyLCJNIl0sWzIsMiwiUCJdLFsxLDMsImpfezF9Il0sWzIsMywial97Mn0iLDJdLFswLDEsImlfezF9IiwyXSxbMCwyLCJpX3syfSJdLFs0LDEsImlfe019Il0sWzUsMiwiaV97UH0iLDJdLFszLDAsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	& W \\
+	{W_{1}} && {W_{2}} \\
+	M & N & P
+	\arrow["{\pi_{W}}", dashed, from=1-2, to=3-2]
+	\arrow["{j_{1}\times \{0\}}", from=2-1, to=1-2]
+	\arrow["{j_{2}\times \{0\}}"', from=2-3, to=1-2]
+	\arrow["{i_{M}}", from=3-1, to=2-1]
+	\arrow["{i_{1}}"', from=3-2, to=2-1]
+	\arrow["{i_{2}}", from=3-2, to=2-3]
+	\arrow["{i_{P}}"', from=3-3, to=2-3]
+\end{tikzcd}\]
+Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is satisfied the necessary condition that $(j_{1}\circ i_{M})!(x_{M})=(j_{2}\circ i_{P})!(x_{P})$, by functoriality of pushforward. We define $\pi_{W}:W\to N$ by $\pi_{W}(d\oplus r)= \pi_{W_{1}}(\rho_{1}(d))$ if $d\in D_{1}$, and $\pi_{W}(d\oplus r)= \pi_{W_{2}}(\rho_{2}(d))$ if $d\in D_{2}$, as in the following diagram:
+% https://q.uiver.app/#q=WzAsOSxbMCwxLCJXX3sxfSJdLFswLDIsIk0iXSxbMSwyLCJOIl0sWzIsMiwiUCJdLFsyLDEsIldfezJ9Il0sWzEsMCwiRF97MX1cXG9wbHVzIFxcbWF0aGJie1J9IFxcIyBEX3syfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwzLCJYIl0sWzAsMCwiRF97MX0iXSxbMiwwLCJEX3syfSJdLFswLDUsImpfezF9IiwyXSxbNCw1LCJqX3syfSJdLFsxLDAsImlfe019Il0sWzIsMCwiaV97MX0iLDFdLFsyLDQsImlfezJ9IiwxXSxbMyw0LCJpX3tQfSIsMl0sWzEsNiwiXFxwaV97TX0iLDJdLFswLDYsIlxccGlfe1dfezF9fSIsMV0sWzQsNiwiXFxwaV97V197Mn19IiwxXSxbMyw2LCJcXHBpX3tQfSJdLFs1LDYsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzgsNCwiXFxyaG9fezJ9Il0sWzcsMCwiXFxyaG9fezF9IiwyXV0=
+\[\begin{tikzcd}
+	{D_{1}} & {D_{1}\oplus \mathbb{R} \# D_{2}\oplus \mathbb{R}} & {D_{2}} \\
+	{W_{1}} && {W_{2}} \\
+	M & N & P \\
+	& X
+	\arrow["{\rho_{1}}"', from=1-1, to=2-1]
+	\arrow["{\pi_{W}}", dotted, from=1-2, to=4-2]
+	\arrow["{\rho_{2}}", from=1-3, to=2-3]
+	\arrow["{j_{1}}"', from=2-1, to=1-2]
+	\arrow["{\pi_{W_{1}}}"{description}, from=2-1, to=4-2]
+	\arrow["{j_{2}}", from=2-3, to=1-2]
+	\arrow["{\pi_{W_{2}}}"{description}, from=2-3, to=4-2]
+	\arrow["{i_{M}}", from=3-1, to=2-1]
+	\arrow["{\pi_{M}}"', from=3-1, to=4-2]
+	\arrow["{i_{1}}"{description}, from=3-2, to=2-1]
+	\arrow["{i_{2}}"{description}, from=3-2, to=2-3]
+	\arrow["{i_{P}}"', from=3-3, to=2-3]
+	\arrow["{\pi_{P}}", from=3-3, to=4-2]
+\end{tikzcd}\]
+
+
+\noindent Let us see that $\pi_{W}$ is well defined, because 
+\begin{align*}
+    \pi_{W}((j_{1}\circ i_{1}(n))\oplus r)&= \pi_{W_{1}}(\rho_{1}((j_{1}\circ i_{1}(n))\oplus r))\\
+    &= \pi_{W_{1}}(i_{1}(n))\\
+    &=\pi_{N}(n)
+\end{align*}
+and $\pi_{W}((j_{2}\circ i_{2}(n))\oplus -r)=\pi_{N}(n)$ too. Now, we must to verify that $\pi_{M}=\pi_{W} \circ j_{1}\circ i_{M}$: since $\pi_{M}= \pi_{W_{1}}\circ i_{M}$, we get
+\begin{align*}
+    (\pi_{W} \circ j_{1}\circ i_{M})(m)&=\pi_{W}(j_{1}(i_{M}(m))\oplus 0)\\
+    &=\pi_{W_{1}}(\rho_{1}(j_{1}(i_{M}(m))))\\
+    &=\pi_{W_{1}}((i_{M}(m)))\\
+    &=\pi_{M}(m);
+\end{align*}
+In a similar way we prove $\pi_{P}=\pi_{W} \circ j_{2}\circ i_{P}$. Then, we have proved that the cycles $(M,\partial M, \pi_{M},x_{M})$ and $(P,\partial P, \pi_{P},x_{P})$ are related by the cycle $(W,\partial W,\pi_{W}, (j_{1}\circ i_{M})!(x_{M}))$, obtaining the transitivity of the desired equivalence pushforward relation.
+\end{enumerate}
+\end{proof}
+
+
+\begin{remark}\label{relation 1}
+    If there is a proper smooth, $\Gamma$-equivariant, $\mathscr{H}_{\Gamma}$-orientation preserving map $f:(M, \partial M)\to (N,\partial N)$ such that $\pi_{N}\circ f=\pi_{M}$ and $f!(x_{M})=x_{N}$, then 
+    $$[M,\partial M,\pi_{M},x_{M}]=[N,\partial N,\pi_{N},x_{N}],$$ i.e.,$$[M,\partial M,\pi_{N}\circ f,x_{M}]=[N,\partial N,\pi_{N},f!(x_{M})].$$
+    
+\noindent The relation is obtained by the following commutative diagram
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzEsMiwiWCJdLFsyLDEsIk4iXSxbMSwwLCJOIl0sWzAsMywiZiJdLFswLDEsIlxccGlfe019IiwyXSxbMiwxLCJcXHBpX3tOfSJdLFsyLDMsIklkIiwyXSxbMywxLCJcXHBpX3tOfSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	& N \\
+	M && N \\
+	& X
+	\arrow["{\pi_{N}}"{description}, dashed, from=1-2, to=3-2]
+	\arrow["f", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["Id"', from=2-3, to=1-2]
+	\arrow["{\pi_{N}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+
+\end{remark}
+
+\begin{defn}
+For an $\mathscr{H}_{\Gamma}$-oriented manifold $M$ with $\mathscr{H}_{\Gamma}$-orientation $\tau\in \mathscr{H}^{dim(M)}_{\Gamma}(TM)$, we define $-M$ as the same manifold $M$ but with the $\mathscr{H}_{\Gamma}$-orientation $-\tau\in\mathscr{H}^{dim(M)}_{\Gamma}(TM)$.
+\end{defn}
+
+
+\begin{remark}\label{group structure}
+    Note that $(\mathscr{H}_{*}^{pf}(X,A;\Gamma), +)$ is actually a group: \begin{enumerate}
+        \item Well defined: If we have 
+        \begin{align*}
+           [M_{1}, \partial M_{1}, \pi_{M_{1}}, x_{M_{1}}]&= [M_{2}, \partial M_{2}, \pi_{M_{2}}, x_{M_{2}}]\\ [N_{1}, \partial N_{1}, \pi_{N_{1}}, x_{N_{1}}]&= [N_{2}, \partial N_{2}, \pi_{N_{2}}, x_{N_{2}}],
+        \end{align*}
+       where the cycles are related by the maps $f_{i}:M_{i}\to W_{M}$ and $g_{i}:N_{i}\to W_{N}$ for $i=1,2$, such that $f_{1}!(x_{M_{1}})=f_{2}!(x_{M_{2}})$ and $g_{1}!(x_{N_{1}})=g_{2}!(x_{N_{2}})$. With this information, we construct the diagram
+       % https://q.uiver.app/#q=WzAsNCxbMSwwLCJXX3tNfVxcYW1hbGcgV197Tn0iXSxbMCwxLCJNX3sxfVxcYW1hbGcgTl97MX0iXSxbMiwxLCJNX3syfVxcYW1hbGcgTl97Mn0iXSxbMSwyLCJYIl0sWzEsMywiXFxwaV97TV97MX19XFxhbWFsZyBcXHBpX3tOX3sxfX0iLDJdLFsyLDMsIlxccGlfe01fezJ9fVxcYW1hbGcgXFxwaV97Tl97Mn19Il0sWzEsMCwiZl97MX1cXGFtYWxnIGdfezF9Il0sWzIsMCwiZl97Mn1cXGFtYWxnIGdfezJ9IiwyXSxbMCwzLCJcXHBpX3tXX3tNfX1cXGFtYWxnIFxccGlfe1dfe059fSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	& {W_{M}\amalg W_{N}} \\
+	{M_{1}\amalg N_{1}} && {M_{2}\amalg N_{2}} \\
+	& X
+	\arrow["{\pi_{W_{M}}\amalg \pi_{W_{N}}}"{description}, dashed, from=1-2, to=3-2]
+	\arrow["{f_{1}\amalg g_{1}}", from=2-1, to=1-2]
+	\arrow["{\pi_{M_{1}}\amalg \pi_{N_{1}}}"', from=2-1, to=3-2]
+	\arrow["{f_{2}\amalg g_{2}}"', from=2-3, to=1-2]
+	\arrow["{\pi_{M_{2}}\amalg \pi_{N_{2}}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+In the cohomological elements we have that \textcolor{red}{como sabemos que el pushforward en una suma directa opera asi como en la primera igualdad?}
+\begin{align*}
+    (f_{1}\amalg g_{1})!(x_{M_{1}}\oplus x_{N_{1}})&=f_{1}!(x_{M_{1}})\oplus g_{1}!(x_{N_{1}})\\&= f_{2}!(x_{M_{2}})\oplus g_{2}!(x_{N_{2}})\\ &= (f_{2}\amalg g_{2})!(x_{M_{2}}\oplus x_{N_{2}}),
+\end{align*}
+and with this the group operation is well defined.
+        \item Neutral element: We have that $[M, \partial M, \pi_{M}, 0]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$ is the zero element, because for $[N, \partial N, \pi_{N}, x_{N}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$, we have that $$[N, \partial N, \pi_{N}, x_{N}]=[N\amalg M, \partial N\amalg \partial M, \pi_{N}\amalg \pi_{M}, x_{N}\oplus 0],$$ by the diagram 
+        % https://q.uiver.app/#q=WzAsNCxbMCwxLCJOIl0sWzEsMiwiWCJdLFsxLDAsIk5cXGFtYWxnIE0iXSxbMiwxLCJOXFxhbWFsZyBNIl0sWzAsMiwiaV97MX0iXSxbMCwxLCJcXHBpX3tOfSIsMl0sWzMsMSwiXFxwaV97Tn1cXGFtYWxnIFxccGlfe019Il0sWzMsMiwiSWQiLDJdLFsyLDEsIlxccGlfe059XFxhbWFsZyBcXHBpX3tNfSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	& {N\amalg M} \\
+	N && {N\amalg M} \\
+	& X
+	\arrow["{\pi_{N}\amalg \pi_{M}}"{description}, dashed, from=1-2, to=3-2]
+	\arrow["{i_{1}}", from=2-1, to=1-2]
+	\arrow["{\pi_{N}}"', from=2-1, to=3-2]
+	\arrow["Id"', from=2-3, to=1-2]
+	\arrow["{\pi_{N}\amalg \pi_{M}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+where $i_{1}!(x_{N})=x_{N}\oplus 0$.
+        \item Inverse element: For a cycle $[M, \partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$ the inverse element is $[-M, -\partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$, because their sum is equal to $$[M\amalg -M, \partial M \amalg -\partial M, \pi_{M}\amalg \pi_{-M}, x_{M}\oplus x_{M}].$$
+        The $\mathscr{H}_{\Gamma}^{*}$-orientation of $M$ provides us an $\mathscr{H}_{\Gamma}^{*}$-orientation of the tangent bundle $\rho:TM\to M$, which means that the zero section $s:M\to TM$ satisfy that $s!=-\otimes \tau$, where the class $ \tau\in \mathscr{H}_{\Gamma}^{m}(TM)$ is such that the map $-\otimes \tau:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+m}(TM)$ is an isomorphism. For $-M$, the zero section $s^{-}:-M\to T(-M)$ is the same $s$ as a map, but we choose the opposite class satisfying that $$s^{-}!=-\otimes (-\tau):\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+m}(TM).$$
+        Then, $s!(x_{M})=x_{M}\otimes \tau= -(x_{M}\otimes -\tau)=-s^{-}!(x_{M})$. With this, we define the map $s\amalg s^{-}:M\amalg -M \to TM$, where 
+        $$(s\amalg s^{-})!:\mathscr{H}_{\Gamma}^{*}(M\amalg -M)\cong\mathscr{H}_{\Gamma}^{*}(M)\oplus \mathscr{H}_{\Gamma}^{*}(-M) \to \mathscr{H}_{\Gamma}^{*+m}(TM)$$
+satisfy that $(s\amalg s^{-})!(x_{M}\oplus x_{M})=0\in \mathscr{H}_{\Gamma}^{*}(TM)$. Using the Remark \ref{relation 1} on the equality $\pi_{M}\amalg \pi_{-M}=\pi_{M}\circ \rho\circ (s\amalg s^{-})$, we compute the cycle
+        \begin{align*}
+         0&= [TM,\partial TM, \pi_{M}\circ \rho, (s\amalg s^{-})!(x_{M}\oplus x_{M})]\\
+         &= [M\amalg -M,\partial M\amalg -M, \pi_{M}\circ \rho \circ s\amalg s^{-},x_{M}\oplus x_{M}]\\
+         &= [M\amalg -M,\partial M\amalg -M, \pi_{M}\amalg \pi_{-M},x_{M}\oplus x_{M}].
+        \end{align*}
+    \end{enumerate}
+\end{remark}
+
+
+
+\begin{remark}
+    If $[M,\partial M, \pi_{M},x], [M,\partial M, \pi_{M},y]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, with $x,y\in \mathscr{H}_{\Gamma}^{*+dim(M)}(M)$ then 
+    \begin{align*}
+        [M,\partial M, \pi_{M},x] + [M,\partial M, \pi_{M},y] = [M,\partial M, \pi_{M},x + y],
+    \end{align*}
+    where $x+y\in \mathscr{H}_{\Gamma}^{*+dim(M)}(M)$.
+\end{remark}
+\begin{proof}
+  We have to proof the following relation:
+  \begin{align*}
+      [M\amalg M,\partial M\amalg \partial M, \pi_{M}\amalg \pi_{M},x \oplus y]= [M,\partial M, \pi_{M},x + y]
+  \end{align*}
+  where $x\oplus y \in \mathscr{H}^{*+dim(M)}(M\amalg M)\cong\mathscr{H}^{*+dim(M)}(M)\oplus \mathscr{H}^{*+dim(M)}(M)$. Similarly as in Remark \ref{group structure}, we consider $s\amalg s:M\amalg M \to TM$ in order to obtain 
+  \begin{align*}
+      (s\amalg s)!(x\oplus y) &= (s\amalg s)!(x\oplus 0)+(s\amalg s)!(0\oplus y)=s!(x)+s!(y)\\&=x\otimes \tau + y\otimes \tau=(x+y)\otimes \tau = s!(x+y),
+  \end{align*}
+  and with this, in cycles we get that
+  \begin{align*}
+      [M\amalg M,\partial M\amalg \partial M, \pi_{M}\amalg \pi_{M},x \oplus y]&=[M\amalg M,\partial M\amalg M, \pi_{M}\circ \rho \circ (s\amalg s),x\oplus y]\\&=[TM,\partial TM,\pi_{M}\circ \rho, (s\amalg s)!(x\oplus y) ]\\&=[TM,\partial TM,\pi_{M}\circ \rho, s!(x+y) ]
+      \\&=[M,\partial M,\pi_{M}\circ \rho\circ s, x+y]
+      \\&=[M,\partial M,\pi_{M}, x+y],
+  \end{align*}
+  as we desired, where the second and fourth equalities are given by Remark \ref{relation 1} applied to $s\amalg s$ and $s$ respectively.
+\end{proof}
+
+
+
+\begin{comment}
+    
+\begin{prop}
+    The groups of Definition \ref{pushforward 1} and Definition \ref{pushforward 2} computed on a pair $(X,A)$ are isomorphic. 
+\end{prop}
+
+\begin{proof}
+    Idea: 
+    \begin{itemize}
+        \item if $(M,\partial M, \pi, x) \sim (N,\partial N, \pi', x')$, then we get that both cycles are $\sim_{2}$-related too, considering $(W,\partial W)=(N,\partial N)$, and by the $\sim$ relation, there exist $f:(M,\partial M)\to (N,\partial N)$, obtaining $f_{M}=f$ and $f_{N}=id_{N}$, and with these maps, we get that $(M,\partial M, \pi, x) \sim_{2} (N,\partial N, \pi', x')$.
+        \item if $(M,\partial M, \pi, x) \sim_{2} (N,\partial N, \pi', x')$, then we have maps $f_{M}:M\to W$ and $f_{N}:N\to W$ such that $f_{M}(x)=f_{N}(x')$.
+        \begin{enumerate}
+            \item {\bf Strategy 1} Seek an embeding $N\subseteq W$, and construct $f:M\to N$ using $Im(f_{M})\cap \nu$, where $\nu$ is the tubular neighborhood of $N$ in $W$.
+            \item {\bf Strategy 2} Find a map $g:W\to M\sqcup N$ using the coproduct property, and compose with some proyection to define $f:M\to N$. 
+         \end{enumerate}
+    \end{itemize}
+\end{proof}
+\end{comment}
+
+\begin{defn}
+For a map $g:(X,A)\to (Y,B)$, define $\mathscr{H}^{pf}_{*}(g):=g_{*}$ by 
+    \begin{align*}
+        g_{*}:\mathscr{H}_{*}^{pf}(X,A;\Gamma)\to \mathscr{H}_{*}^{pf}(Y,B;\Gamma):[M,\partial M,\pi,x]\mapsto [M,\partial M,g\circ \pi,x].
+    \end{align*}
+\end{defn}
+
+\begin{prop}
+    The pushforward homology is functorial.
+\end{prop}
+
+\begin{proof}
+    
+    We have that $(h\circ g)_{*}=h_{*}\circ g_{*}$ and it is well defined because, if $[M,\partial M, \pi, x]=[N,\partial N, \pi', x']\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, i.e., there exist a cycle $[W,\partial W, \widehat{\pi},\widehat{x}]$ over $(X,A)$ and maps $f:(M,\partial M)\to (W,\partial W)$ and $f':(N,\partial N)\to (W,\partial W)$ such that 
+    \begin{align*}
+        \pi&=\widehat{\pi}\circ f\\
+        \pi'&=\widehat{\pi}\circ f'\\
+        f!(x)&=\widehat{x}=f'!(x'),
+    \end{align*}
+    then composing with $g$ we get
+    \begin{align*}
+        g\circ\pi&=(g\circ\widehat{\pi})\circ f\\
+        g\circ\pi'&=(g\circ\widehat{\pi})\circ f'\\
+        f!(x)&=\widehat{x}=f'!(x'),
+    \end{align*}
+    and we get that $[M,\partial M, g\circ\pi, x]=[N,\partial N, g\circ\pi', x']\in \mathscr{H}_{*}^{pf}(Y,B;\Gamma)$, where $g\circ \pi$ and $g\circ \pi'$ are proper $\Gamma$-equivariant maps of pairs too by composition, showing that $g_{*}$ is well defined.
+    
+\end{proof}
+
+
+Now, we want to prove that the groups $\mathscr{H}^{pf}_{*}$ define a $\Gamma$-equivariant homology theory over the cocompact proper $\Gamma$-CW pairs, showing each of the axioms that it has to satisfy (cf. Definition \ref{homologia}). This is the main objective of the thesis, and in this work we will spend the rest of the chapter.  
+
+\begin{remark}
+When we have an homotopy between $CW$-spaces maps $X\to Y$, this is regularly identified by a map $[0,1]\times X\to Y$ (cf. \cite{GP10}, p.33), but when we deal with homotopies between smooth manifolds $M\to N$, we identify this homotopy with a smooth map $\mathbb{R}\times M\to N$, in order to avoid problems with the boundary and corners.
+\end{remark}
+
+
+
+\begin{prop}
+    The pushforward homology satisfies $\Gamma$-homotopy invariance, i.e., if $g_{0}, g_{1}:(X,A)\to (Y,B)$ are proper $\Gamma$-homotopic maps of cocompact proper $\Gamma$-CW pairs, then for all $n\in \mathbb{Z}$, the induced maps are equal 
+    \begin{align*}
+        g_{0*}=g_{1*}: \mathscr{H}_{n}^{pf}(X,A;\Gamma)\to \mathscr{H}_{n}^{pf}(Y,B;\Gamma)
+    \end{align*}
+\end{prop}
+
+\begin{proof}
+    Given a proper $\Gamma$-homotopy $H:\mathbb{R}\times (X,A)\to (Y,B)$ between $g_{0}$ and $g_{1}$, we have to show that $g_{0*}=g_{1*}$, i.e., for a cycle $[M,\partial M,\pi,x]\in \mathscr{H}^{pf}_{n}(X,A;\Gamma)$ we need that 
+    \begin{align*}
+        [M,\partial M, g_{0}\circ\pi, x]=[M,\partial M, g_{1}\circ\pi, x]\in \mathscr{H}^{pf}_{n}(Y,B;\Gamma).
+    \end{align*}
+    To prove this, consider the tuple $(\mathbb{R}\times M,\mathbb{R}\times \partial M,\widehat{\pi},x)$ and maps $f_{0},f_{1}:M\to \mathbb{R}\times M$, where  $$\widehat{\pi}=H\circ (id_{\mathbb{R}}\times \pi):(\mathbb{R}\times M,\mathbb{R}\times \partial M)\to (Y,B)$$ and $f_{i}(m)=(i,m)$ for $i=0,1$ and all $m\in M$.
+% https://q.uiver.app/#q=WzAsNSxbMiwwLCJJXFx0aW1lcyBNIl0sWzIsMiwiSVxcdGltZXMgKFgsQSkiXSxbMiw0LCIoWSwgQikiXSxbNCwyLCIoTSxcXHBhcnRpYWwgTSkiXSxbMCwyLCIoTSxcXHBhcnRpYWwgTSkiXSxbNCwwLCJpX3swfSJdLFszLDAsImlfezF9IiwyXSxbNCwyLCJnX3swfVxcY2lyYyBcXHBpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJnX3sxfVxcY2lyYyBcXHBpIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XSxbMSwyLCJIIl0sWzAsMSwiSWRfe0l9XFx0aW1lcyBcXHBpIl1d
+\begin{center}
+\begin{tikzcd}
+	&& {(\mathbb{R}\times M, \mathbb{R}\times \partial M)} \\
+	\\
+	{(M,\partial M)} && {\mathbb{R}\times (X,A)} && {(M,\partial M)} \\
+	\\
+	&& {(Y, B)}
+	\arrow["{Id_{\mathbb{R}}\times \pi}", from=1-3, to=3-3]
+	\arrow["{f_{0}}", from=3-1, to=1-3]
+	\arrow["{g_{0}\circ \pi}"', hook, from=3-1, to=5-3]
+	\arrow["H", from=3-3, to=5-3]
+	\arrow["{f_{1}}"', from=3-5, to=1-3]
+	\arrow["{g_{1}\circ \pi}", hook', from=3-5, to=5-3]
+\end{tikzcd}
+\end{center}
+In this case, we get that $\widehat{\pi}\circ f_{i}=g_{i}\circ \pi$ for $i=0,1$, and for the cohomology element $x\in \mathscr{H}_{\Gamma}^{n+dim(M)}(M)$, we get that  $f_{0}!(x)=f_{1}!(x)$ in $\mathscr{H}_{\Gamma}^{n+dim(M)+1}(\mathbb{R}\times M)$, because the pushforward structure is $\Gamma$-homotopy invariant and $f_{0}$ and $f_{1}$ are related by the $\Gamma$-homotopy $Id_{\mathbb{R}\times M}$.    
+\end{proof}
+
+In order to prove the long exact sequence condition, previously we discuss the following remark.
+
+
+
+\begin{remark}\label{relation 1 conv}
+If we have that $[M,\partial M, \pi_{M},x_{M}]=[N,\partial N, \pi_{N},x_{N}]$ by the cycle $[W,\partial W, \pi_{W}, x_{W}]$, then by the Remark \ref{relation 1}, $[M,\partial M, \pi_{M},x_{M}]=[W,\partial W, \pi_{W}, x_{W}]$ in $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$, with the map $f:M\to W$ satisfying that $\pi_{W}\circ f=\pi_{M}$ and $f!(x_{M})=x_{W}$.
+\end{remark}
+
+
+
+\begin{prop}
+    The pushforward homology satisfies the long exact sequence axiom.
+\end{prop}
+\begin{proof}
+    For the sequence of cocompact proper $\Gamma$-CW pairs 
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCIoQSxcXGVtcHR5KSJdLFsxLDAsIihYLFxcZW1wdHkpIl0sWzIsMCwiKFgsQSkiXSxbMSwyLCJpIl0sWzAsMSwiaiJdXQ==
+\[\begin{tikzcd}
+	{(A,\emptyset)} & {(X,\emptyset)} & {(X,A)}
+	\arrow["j", from=1-1, to=1-2]
+	\arrow["i", from=1-2, to=1-3]
+\end{tikzcd}\]
+We have to prove that the sequence 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7SH1ee3BmfV97Kn0oQSxcXGVtcHR5O1xcR2FtbWEpIl0sWzEsMCwiXFxtYXRoc2Nye0h9XntwZn1feyp9KFgsXFxlbXB0eTtcXEdhbW1hKSJdLFsyLDAsIlxcbWF0aHNjcntIfV57cGZ9X3sqfShYLEE7XFxHYW1tYSkiXSxbMywwLCJcXG1hdGhzY3J7SH1ee3BmfV97Ki0xfShBLFxcZW1wdHk7XFxHYW1tYSkiXSxbMSwyLCJpX3sqfSJdLFswLDEsImpfeyp9Il0sWzIsMywiXFxwYXJ0aWFsIl1d
+\[\begin{tikzcd}
+	{\mathscr{H}^{pf}_{*}(A,\emptyset;\Gamma)} & {\mathscr{H}^{pf}_{*}(X,\emptyset;\Gamma)} & {\mathscr{H}^{pf}_{*}(X,A;\Gamma)} & {\mathscr{H}^{pf}_{*-1}(A,\emptyset;\Gamma)}
+	\arrow["{j_{*}}", from=1-1, to=1-2]
+	\arrow["{i_{*}}", from=1-2, to=1-3]
+	\arrow["\partial", from=1-3, to=1-4]
+\end{tikzcd}\]
+is an exact sequence,  were the maps are defined as
+\begin{itemize}
+    \item $j_{*}([M,\emptyset,\pi_{M},x_{M}])= [M,\emptyset,j\circ \pi_{M},x_{M}]$.
+    \item $i_{*}([M,\emptyset,\pi_{M},x_{M}])=[M,\emptyset,\pi_{M},x_{M}]$.
+    \item $\partial([M,\partial M,\pi_{M},x_{M}])=[\partial M,\emptyset,\pi_{M}|_{\partial M}, r_{\partial}(x_{M})]$, where $r_{\partial}=i_{\partial M}^{*}$ with $i_{\partial M}:\partial M\hookrightarrow M$ the canonical inclusion. This map is well defined, because if $[M,\partial M,\pi_{M}, x_{M}]=[N,\partial N,\pi_{N}, x_{N}]\in\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ by the cycle $(W,\partial W, \pi_{W},x_{W})$ where $f!(x_{M})=x_{W}=g!(x_{N})$. From the restriction diagram,
+    % https://q.uiver.app/#q=WzAsNixbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIlxccGFydGlhbCBXIl0sWzIsMSwiXFxwYXJ0aWFsIE4iXSxbMCwwLCJNIl0sWzEsMCwiVyJdLFsyLDAsIk4iXSxbMyw0LCJmIl0sWzAsMywiaV97XFxwYXJ0aWFsIE19Il0sWzEsNCwiaV97XFxwYXJ0aWFsIFd9IiwyXSxbMiw1LCJpX3tcXHBhcnRpYWwgTn0iLDJdLFs1LDQsImciLDJdLFsyLDEsImd8X3tcXHBhcnRpYWwgTn0iXSxbMCwxLCJmfF97XFxwYXJ0aWFsIE19IiwyXV0=
+\[\begin{tikzcd}
+	M & W & N \\
+	{\partial M} & {\partial W} & {\partial N}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["g"', from=1-3, to=1-2]
+	\arrow["{i_{\partial M}}", from=2-1, to=1-1]
+	\arrow["{f|_{\partial M}}"', from=2-1, to=2-2]
+	\arrow["{i_{\partial W}}"', from=2-2, to=1-2]
+	\arrow["{i_{\partial N}}"', from=2-3, to=1-3]
+	\arrow["{g|_{\partial N}}", from=2-3, to=2-2]
+\end{tikzcd}\]
+we get the commutative diagram (\textcolor{red}{falta el porqué este diagrama es conmutativo. La idea es justificar que para los productos fibrados se va a tener. nos basamos dn la idea no equivariante del profesor Mark Grant \url{https://mathoverflow.net/questions/386052/commutativity-of-restriction-and-gysin-morphisms-in-a-cartesian-square}, y utilizamos el iso de Thom de Luck (el profe me envio el articulo).}).
+% https://q.uiver.app/#q=WzAsNixbMCwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgTSkiXSxbMSwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgVykiXSxbMiwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgTikiXSxbMCwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShNKSJdLFsxLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFcpIl0sWzIsMCwiXFxtYXRoc2Nye0h9X3tcXEdhbW1hfV57Kn0oTikiXSxbMyw0LCJmISJdLFszLDAsImlfe1xccGFydGlhbCBNfV57Kn0iLDJdLFs0LDEsImlfe1xccGFydGlhbCBXfV57Kn0iXSxbNSwyLCJpX3tcXHBhcnRpYWwgTn1eeyp9Il0sWzUsNCwiZyEiLDJdLFsyLDEsImd8X3tcXHBhcnRpYWwgTn0hIl0sWzAsMSwiZnxfe1xccGFydGlhbCBNfSEiLDJdXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}_{\Gamma}^{*}(M)} & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(N)} \\
+	{\mathscr{H}_{\Gamma}^{*}(\partial M)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*}(\partial N)}
+	\arrow["{f!}", from=1-1, to=1-2]
+	\arrow["{i_{\partial M}^{*}}"', from=1-1, to=2-1]
+	\arrow["{i_{\partial W}^{*}}", from=1-2, to=2-2]
+	\arrow["{g!}"', from=1-3, to=1-2]
+	\arrow["{i_{\partial N}^{*}}", from=1-3, to=2-3]
+	\arrow["{f|_{\partial M}!}"', from=2-1, to=2-2]
+	\arrow["{g|_{\partial N}!}", from=2-3, to=2-2]
+\end{tikzcd}\]
+
+Then, we get that $[\partial M, \emptyset, \pi_{M}|_{\partial M},r_{\partial}(x_{M})]=[\partial N, \emptyset, \pi_{N}|_{\partial N},r_{\partial}(x_{N})]$ in $\mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$, by the cycle $(\partial W,\emptyset, \pi_{W}|_{\partial W}, i^{*}_{\partial W}(x_{W}))$,
+\begin{align*}
+    f|_{\partial M}!(i_{\partial M}^{*}(x_{M}))&=i_{\partial W}^{*}(f!(x_{M}))\\
+    &=i_{\partial W}^{*}(g!(x_{N}))\\
+    &=g|_{\partial N}!(i_{\partial N}^{*}(x_{N})).
+\end{align*}
+\end{itemize}
+
+{\bf Exactness in ${\mathscr{H}^{pf}_{*}(X,\emptyset;\Gamma)}$}: 
+
+\begin{itemize}
+    \item $Ker(i_{*})\subseteq Im(j_{*})$: Let $[M,\emptyset, \pi_{M}, x_{M}]\in Ker(i_{*})$, i.e., it has a related cycle $[N,\partial N, \pi_{N}, 0]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$ by a $\Gamma$-proper manifold pair $(W,\partial W)$, with diagram 
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzEsMCwiVyJdLFsyLDEsIk4iXSxbMSwyLCJYIl0sWzAsMSwiZl97TX0iXSxbMiwxLCJmX3tOfSIsMl0sWzAsMywiXFxwaV97TX0iLDJdLFsyLDMsIlxccGlfe059Il0sWzEsMywiXFxwaV97V30iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}
+	& W \\
+	M && N \\
+	& X
+	\arrow["{\pi_{W}}"{description}, dashed, from=1-2, to=3-2]
+	\arrow["{f_{M}}", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["{f_{N}}"', from=2-3, to=1-2]
+	\arrow["{\pi_{N}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+such that $f_{M}!(x_{M})=f_{N}!(0)=0\in \mathscr{H}^{\textcolor{red}{*}}_{\Gamma}(W)$. Since $f_{M}:(M,\emptyset) \to (W,\partial W)$ can be factorized by
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJNIl0sWzEsMCwiV157MH0iXSxbMiwwLCJXIl0sWzAsMSwiZl97TX1eezB9Il0sWzEsMiwiaV97V157MH19Il1d
+\[\begin{tikzcd}
+	M & {W^{0}} & W
+	\arrow["{f_{M}^{0}}", from=1-1, to=1-2]
+	\arrow["{i_{W^{0}}}", from=1-2, to=1-3]
+\end{tikzcd}\]
+and with this, $f^{0}_{M}!(x_{M})\in Ker(i_{W^{0}}!)$, by functoriality of the pushforward. Considering the long exact sequence in the cohomology theory for the pair $(W,\partial W)$, we get
+% https://q.uiver.app/#q=WzAsMyxbMiwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFsxLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFdeezB9KSJdLFswLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyotMX0oXFxwYXJ0aWFsIFcpIl0sWzEsMCwiaV97V157MH19ISJdLFsyLDEsIlxccGFydGlhbCJdXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}_{\Gamma}^{*-1}(\partial W)} & {\mathscr{H}_{\Gamma}^{*}(W^{0})} & {\mathscr{H}_{\Gamma}^{*}(W)}
+	\arrow["\partial", from=1-1, to=1-2]
+	\arrow["{i_{W^{0}}!}", from=1-2, to=1-3]
+\end{tikzcd}\]
+By exactness, we have that there exist $y\in \mathscr{H}_{\Gamma}^{*-1}(\partial W)$ such that $\partial(y)=f_{M}!(x_{M})$. Consider the inclusion through a collar $l:\partial W \to W^{0}$, and therefore by the definition of pushforward structure, $l!:\mathscr{H}_{\Gamma}^{*-1}(\partial W) \to \mathscr{H}_{\Gamma}^{*}(\partial W^{0})$ is identified with the cohomological map $\partial$. With this, we claim that $j_{*}([\partial W, \emptyset,\pi_{W}|_{\partial W}, y])=[M,\emptyset , \pi_{M}, x_{M}]$:
+\begin{align*}
+    j_{*}([\partial W, \emptyset,\pi_{W}|_{\partial W}, y])&=[\partial W, \emptyset,j\circ \pi_{W}|_{\partial W}, y]\\&=[\partial W, \emptyset,\pi_{W}\circ l, y]\\
+    &=[W^{0}, \emptyset,\pi_{W}|_{W^{0}}, l!(y)]\\
+    &=[W^{0}, \emptyset,\pi_{W}|_{W^{0}}, \partial(y)]\\
+    &=[W^{0}, \emptyset,\pi_{W}|_{W^{0}}, f^{0}_{M}!(x_{M})]\\
+    &=[M, \emptyset,\pi_{W}\circ f_{M},x_{M}]\\
+    &=[M, \emptyset,\pi_{M},x_{M}],
+\end{align*}
+where: the first one is the definition of $j_{*}$; second is by the fact that $j\circ \pi_{W}|_{\partial W}$ is homotopic to $\pi_{W}\circ l$ by the the homotopy between $i_{\partial W}:\partial W\to W$ and $l:\partial W\to W^{0}\subset W$; third one is by Remark \ref{relation 1} aplied to the map $l:W^{0}\hookrightarrow W$; fourth is by $l!=\partial$; fifth is $\partial(y)=f_{M}!(x_{M})$; sixth is Remark \ref{relation 1} applied to $f^{0}_{M}$ and the fact that $\pi_{W}|_{W^{0}}\circ f^{0}_{M}=\pi_{W}\circ f_{M}$; and the last one is $\pi_{M}=\pi_{W}\circ f_{M}$.
+
+    \item $Ker(i_{*})\supseteq Im(j_{*})$: We have to show that for a cycle $[M,\emptyset, \pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$, we have that $i_{*}(j_{*}([M,\emptyset, \pi_{M},x_{M}]))=0$. We have that
+    $$i_{*}(j_{*}([M,\emptyset, \pi_{M},x_{M}]))=[M,\emptyset, j\circ \pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma).$$
+    We have that this cycle is related with the zero cycle $[M\times[0,1), \partial (M\times[0,1)),\pi_{M}\circ \pi_{1},0]$ by the commutative diagram
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzEsMiwiWCJdLFsyLDEsIk1cXHRpbWVzIFswLDEpIl0sWzEsMCwiTVxcdGltZXNbMCwxKSJdLFswLDMsIklkXFx0aW1lcyAwIl0sWzIsMywiSWQiLDJdLFswLDEsIlxccGlfe019IiwyXSxbMiwxLCJcXHBpX3tNfVxcY2lyYyBcXHBpX3sxfSJdLFszLDEsIlxccGlfe019XFxjaXJjIFxccGlfezF9IiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	& {M\times[0,1)} \\
+	M && {M\times [0,1)} \\
+	& X
+	\arrow["{\pi_{M}\circ \pi_{1}}"{description}, dashed, from=1-2, to=3-2]
+	\arrow["{Id_{M}\times 0}", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["Id_{M\times[0,1)}"', from=2-3, to=1-2]
+	\arrow["{\pi_{M}\circ \pi_{1}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+Where we have that $(Id_{M}\times 0)!(x_{M})=0= Id_{M\times [0,1)}!(0)$ because by Remark \ref{cohomology conditions}, we get $\mathscr{H}_{*}^{\Gamma}(M\times [0,1))=0$ \textcolor{red}{falta justificarlo bien}.
+\end{itemize}
+
+{\bf Exactness in ${\mathscr{H}^{pf}_{*}(X,A;\Gamma)}$}: 
+
+\begin{itemize}
+    \item $Ker(\partial)\supseteq Im(i_{*}):$ For $[M,\emptyset,\pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(X,\emptyset;\Gamma)$, we have that $$\partial(i_{*}([M,\emptyset,\pi_{M},x_{M}]))=\partial([M,\emptyset,\pi_{M},x_{M}])=[\emptyset,\partial \emptyset, \pi_{M}|_{\emptyset},r_{\partial}(x_{M})]=0$$
+    \item $Ker(\partial)\subseteq Im(i_{*})$: Let $[M,\partial M,\pi_{M},x_{M}]\in Ker(\partial)\subseteq \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, i.e., that $[\partial M , \emptyset, \pi_{M}|_{\partial M}, r_{\partial}(x_{M})]=0\in \mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$. Then, $[\partial M , \emptyset, \pi_{M}|_{\partial M}, r_{\partial}(x_{M})]=[N,\emptyset, \pi_{N},0]$ by the commutative diagram
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHBhcnRpYWwgTSJdLFsyLDEsIk4iXSxbMSwwLCJXIl0sWzEsMiwiQSJdLFswLDMsIlxccGlfe019fF97XFxwYXJ0aWFsIE19IiwyXSxbMSwzLCJcXHBpX3tOfSJdLFswLDIsImYiXSxbMSwyLCJnIiwyXSxbMiwzLCJcXHBpX3tXfSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	& W \\
+	{\partial M} && N \\
+	& A
+	\arrow["{\pi_{W}}"{description}, dashed, from=1-2, to=3-2]
+	\arrow["f", from=2-1, to=1-2]
+	\arrow["{\pi_{M}|_{\partial M}}"', from=2-1, to=3-2]
+	\arrow["g"', from=2-3, to=1-2]
+	\arrow["{\pi_{N}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+such that $f!(r_{\partial}(x_{M}))=0=g!(0)$ and $W$ a manifold without boundary.
+
+Since $f:\partial M\to W$ is a proper smooth $\Gamma$-map, we get by Theorem \ref{Emerson-Mayer} that there exist a $\Gamma$-equivariant embedding $\eta_{f}:V\to a_{W}^{*}E_{W}$, where $V$ and $a_{W}^{*}E$ are $\Gamma$-vector bundles over $\partial M$ and $W$ respectively, satisfying the commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIk4iXSxbMCwwLCJWIl0sWzEsMCwiRSJdLFszLDEsIlxccmhvX3tFfSJdLFswLDIsIlxceGlfe1Z9Il0sWzAsMSwiZiIsMl0sWzIsMywiXFxldGFfe2Z9Il1d
+\[\begin{tikzcd}
+	V & a_{W}^{*}E_{W} \\
+	{\partial M} & W
+	\arrow["{\eta_{f}}", from=1-1, to=1-2]
+	\arrow["{\rho_{a_{E}^{*}E_{W}}}", from=1-2, to=2-2]
+	\arrow["{\xi_{V}}", from=2-1, to=1-1]
+	\arrow["f"', from=2-1, to=2-2]
+\end{tikzcd}\]
+Then, we get that $0=f!(r_{\partial}(x_{M}))= \rho_{E}!\circ \eta_{f}!\circ \xi_{V}!(r_{\partial}(x_{M}))$, and since $\rho_{E_{W}}!$ its an isomorphism (by Definition \ref{pushforward definition}), $\eta_{f}!\circ \xi_{V}!(r_{\partial}(x_{M}))=0$. 
+
+We have that
+% https://q.uiver.app/#q=WzAsNixbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIlciXSxbMCwwLCJWIl0sWzEsMCwiRT1hX3tXfV57Kn1FX3tXfSJdLFsyLDEsIlxcdW5kZXJsaW5le0V9XFxHYW1tYSJdLFsyLDAsIkVfe1d9Il0sWzMsMSwiXFxyaG9fe0V9Il0sWzAsMiwiXFx4aV97Vn0iXSxbMCwxLCJmIiwyXSxbMiwzLCJcXGV0YV97Zn0iXSxbMSw0LCJhX3tXfSJdLFs1LDRdXQ==
+\[\begin{tikzcd}
+	V & {a_{W}^{*}E_{W}} & {E_{W}} \\
+	{\partial M} & W & {\underline{E}\Gamma}
+	\arrow["{\eta_{f}}", from=1-1, to=1-2]
+	\arrow["{\rho_{E}}", from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow["{\xi_{V}}", from=2-1, to=1-1]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["{a_{W}}", from=2-2, to=2-3]
+\end{tikzcd}\]
+
+
+
+where $V$ is the normal bundle of the embedding $g:\partial M\to a_{W}^{*}E_{W}$ giving by Theorem \ref{Emerson-Mayer}. Applying Lemma \ref{integral lemma} $i_{\partial M}$ and the bundle $V\to \partial M$, we get thet there exist $\Gamma$-vector bundles $C$ and $F$ over $\partial M$ and $M$, respectively, such that there is an isomorphism  $\psi:{i_{\partial M}^{*}F\cong V\oplus C}$ making the following diagram commutative
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIlxcdW5kZXJsaW5le0V9XFxHYW1tYSJdLFswLDAsImFfe1xccGFydGlhbCBNfV57Kn1cXGNvbmcgVlxcb3BsdXMgQyJdLFsxLDAsIkYiXSxbMCwxLCJhX3tcXHBhcnRpYWwgTX0iXSxbMiwwXSxbMywxXSxbMiwzXV0=
+\[\begin{tikzcd}
+	{i_{\partial M}^{*}F\cong V\oplus C} & F \\
+	{\partial M} & {M}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{i_{\partial M}}", from=2-1, to=2-2]
+\end{tikzcd}\]
+
+
+Consider the following embeddings and normal bundles:
+% https://q.uiver.app/#q=WzAsNyxbMCwyXSxbMSwxLCJGfF97XFxwYXJ0aWFsIE19Il0sWzQsMSwiViJdLFs1LDEsImFfe1d9XnsqfUVfe1d9Il0sWzQsMCwiXFxudV97XFxldGFfe2Z9fVxcY29uZyBWXFx0aW1lcyAwIl0sWzIsMSwiQ1xcY29uZyAwXFxvcGx1cyBDIl0sWzIsMCwiXFxudV97aV97Q319XFxjb25nIFYiXSxbMiwzLCJcXGV0YV97Zn0iXSxbNCwyXSxbNSwxLCJpX3tDfSIsMl0sWzYsNV1d
+\[\begin{tikzcd}
+	&& {\nu_{i_{C}}} && {\nu_{\eta_{f}}} \\
+	& {F|_{\partial M}} & {C\cong 0\oplus C} && V & {a_{W}^{*}E_{W}}
+	{}
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-5, to=2-5]
+	\arrow["{i_{C}}"', from=2-3, to=2-2]
+	\arrow["{\eta_{f}}", from=2-5, to=2-6]
+\end{tikzcd}\]
+We claim that in this situation, both normal bundles $\nu_{i_{C}}$ and $\nu_{\eta_{f}}$ are isomorphic to $V$:
+\begin{enumerate}
+\item $\nu_{i_{C}}\cong V$: This is by the fact that $F|_{\partial M}\cong V\oplus C$. Therefore $$T(F|_{\partial M})|_{C}\cong T(V\oplus C)|_{0\oplus C}\cong V\oplus (C \oplus T(0\oplus C))\cong V\oplus TC$$ and with this $\nu_{i_{C}}=V$, where second and third isomorphisms are by Remark \ref{Tangente de un fibrado vector} applied to $V\oplus C$ and $C$, respectively.
+\item $\nu_{\eta_{f}}\cong V$: Since the embedding $\eta_{f}$ is by Theorem \ref{Emerson-Mayer} an open embedding, then $V$ is a submanifold of the same dimension of $a_{W}^{*}E_{W}$, therefore $Ta_{W}^{*}E_{W}|_{V}=TV$, and with that, $\nu_{f}$ is the trivial bundle $V\times \{0\}$.
+\end{enumerate}
+Therefore, there exists an isomorphism $\phi:\nu_{i_{C}}\to \nu_{\eta_{f}}$, and with this, we define the space (that is an smooth manifold by Example \ref{Deformation to the normal cone example}):
+\begin{align*}
+T&=DNC(F,C)|_{(-1,0]}\bigcup_{\phi}DNF(a_{W}^{*}E_{W},V)|_{[0,1]}\\
+&=F\times (-1,0)\sqcup V\times \{0\}\bigcup_{\phi} V\times \{0\} \sqcup a_{W}^{*}E_{W}\times (0,1], 
+\end{align*} 
+where we get $\partial T=a_{W}^{*}E_{W}\times\{1 \}\cong a_{W}^{*}E_{W}$. Following the next diagram we define $\pi_{T}:T\to X$ as
+
+\begin{align*}
+    \pi_{T}((x,t))   = \left\{
+	       \begin{array}{ll}
+	       \pi_{W}\circ\rho_{a_{W}^{*}E_{W}}(x)& \mathrm{if\ } t\geq 0,\\
+		   \pi_{M}\circ \rho_{F}(x)&  \mathrm{if\ } t\leq 0.\\
+	       \end{array}
+	     \right.
+    \end{align*}
+% https://q.uiver.app/#q=WzAsMTIsWzQsMiwiVyJdLFs0LDEsImFfe1d9XnsqfUVfe1d9Il0sWzMsMSwiViJdLFszLDAsIlZcXGNvbmcgXFxudV97XFxldGFfe2Z9fSJdLFswLDIsIk0iXSxbMCwxLCJGIl0sWzIsMiwiXFxwYXJ0aWFsIE0iXSxbMSwxLCJWXFxvcGx1cyBDIl0sWzIsMSwiQyJdLFsyLDAsIlxcbnVfe2lfe0N9fVxcY29uZyBWIl0sWzIsMywiWCJdLFsxLDAsIlZcXG9wbHVzIDAiXSxbMSwwLCJcXHJob197YV97V31eeyp9RV97V319Il0sWzIsMSwiXFxldGFfe2Z9IiwyXSxbMywyLCJcXHJob197XFxudV97XFxldGFfe2Z9fX09SWRfe1Z9Il0sWzUsNCwiXFxyaG9fe0Z9IiwyXSxbNiw0LCJpX3tcXHBhcnRpYWwgTX0iXSxbNyw2LCJcXHJob197Vlxcb3BsdXMgQ30iLDJdLFs3LDUsImlfe0Z8X3tcXHBhcnRpYWwgTX19XFxjaXJjIFxccHNpIl0sWzgsNywiaV97Q30iLDJdLFs4LDYsIlxccmhvX3tDfSIsMl0sWzksOCwiXFxyaG9fe1xcbnVfe2lfe0N9fX0iLDJdLFs5LDMsIlxccGhpIl0sWzgsMiwiXFxwaGlcXGNpcmMgXFx4aV97XFxudV97aV97Q319fSJdLFswLDEwLCJcXHBpX3tXfSJdLFs0LDEwLCJcXHBpX3tNfSIsMl0sWzYsMTAsIlxccGFydGlhbCBNIiwyXSxbMiw2LCJcXHJob197Vn0iXSxbNiwwLCJmIl0sWzExLDcsImlfe1Z9XntWXFxvcGx1cyBDfSJdLFs5LDExLCJJZFxcdGltZXMgMCIsMl0sWzExLDUsImlfe0Z8X3tcXHBhcnRpYWwgTX19XFxjaXJjIFxccHNpXFxjaXJjIGlfe1Z9XntWXFxvcGx1cyBDfSIsMl1d
+\[\begin{tikzcd}
+	& {V\oplus 0} & {\nu_{i_{C}}\cong \textcolor{red}{\rho_{C}^{*}}V} & {V\cong \nu_{\eta_{f}}} \\
+	F & {V\oplus C} & C & V & {a_{W}^{*}E_{W}} \\
+	M && {\partial M} && W \\
+	&& X
+	\arrow["{i_{F|_{\partial M}}\circ \psi\circ i_{V}^{V\oplus C}}"', from=1-2, to=2-1]
+	\arrow["{i_{V}^{V\oplus C}}", from=1-2, to=2-2]
+	\arrow["{Id\times 0}"', from=1-3, to=1-2]
+	\arrow["\phi", from=1-3, to=1-4]
+	\arrow["{\rho_{\nu_{i_{C}}}}"', from=1-3, to=2-3]
+	\arrow["{\rho_{\nu_{\eta_{f}}}=Id_{V}}", from=1-4, to=2-4]
+	\arrow["{\rho_{F}}"', from=2-1, to=3-1]
+	\arrow["{i_{F|_{\partial M}}\circ \psi}", from=2-2, to=2-1]
+	\arrow["{\rho_{V\oplus C}}"', from=2-2, to=3-3]
+	\arrow["{i_{C}}"', from=2-3, to=2-2]
+	\arrow["{\phi\circ \xi_{\nu_{i_{C}}}}", from=2-3, to=2-4]
+	\arrow["{\rho_{C}}"', from=2-3, to=3-3]
+	\arrow["{\eta_{f}}"', from=2-4, to=2-5]
+	\arrow["{\rho_{V}}", from=2-4, to=3-3]
+	\arrow["{\rho_{a_{W}^{*}E_{W}}}", from=2-5, to=3-5]
+	\arrow["{\pi_{M}}"', from=3-1, to=4-3]
+	\arrow["{i_{\partial M}}", from=3-3, to=3-1]
+	\arrow["f", from=3-3, to=3-5]
+	\arrow["{\partial M}"', from=3-3, to=4-3]
+	\arrow["{\pi_{W}}", from=3-5, to=4-3]
+\end{tikzcd}\]
+
+$\pi_{T}$ is well defined: if $x\in V$ in the first component of $T$, with $\rho_{V}(x)=m\in \partial M $, where $x\sim \phi(x)$. Then, we have to prove that  
+\begin{align*}
+    \pi_{M}(\rho_{F}(i_{F|_{\partial M}}(\psi(x,0))))=\pi_{W}(\rho_{a_{W}^{*}E_{W}}(\eta_{f}(\phi(x)))).
+\end{align*}
+In the left hand we have:
+\begin{align*}
+\pi_{M}(\rho_{F}(i_{F|_{\partial M}}(\psi(x,0))))&= \pi_{M}(i_{\partial M}(\rho_{V}(x)))= \pi_{M}(m)
+\end{align*}
+
+and, in the right side:
+\begin{align*}
+\pi_{W}(\rho_{a_{W}^{*}E_{W}}(\eta_{f}(\phi(x))))&=\pi_{W}(f(\rho_{V}(\phi(x))))\\
+&=\pi_{W}(f(\rho_{V}(x)))\\
+&=\pi_{W}(f(m))\\
+&=\pi_{M}(m),
+\end{align*}
+where we have that 
+\begin{itemize}
+\item first equality is by Theorem \ref{Emerson-Mayer},  $\rho_{a_{W}^{*}E_{W}}\circ \eta_{f}=f\circ \rho_{V}$.
+\item second equality is by the fact that $\phi:V\to V$ is a vector bundle map, we have that $\rho_{V}\circ \phi(x)=\rho_{V}(x)=m$.
+\item \textcolor{red}{Pregunta I} la anterior pregunta podria resolverse si $\phi\circ\xi_{\nu_{i_{C}}}\circ \rho_{\nu_{i_{C}}}=Id_{V}\circ \phi$. Let $v\in V$ such that $\rho_{\nu_{i_{C}}}(v)= c_{v}\in C$. 
+\item \textcolor{red}{Pregunta II} Debemos demostrar que $\rho_{V}\circ \phi\circ\xi_{\nu_{i_{C}}}=\rho_{C}$.
+\item \textcolor{red}{Pregunta III} $\rho_{C}\circ\rho_{\nu_{i_{C}}}=\rho_{V}$.
+\item Third equality is by $\rho_{V}(x)=m$.
+\item The last equality is by the fact that $\pi_{W}\circ f=\pi_{M}$.
+\end{itemize}
+Denoting $\iota:=i_{F}\circ \xi_{F}:M\to T$ the embedding of $M$ in the first factor of $T$ and identifying $\partial T= a_{W}^{*}E_{W}\times\{1\}\cong a_{W}^{*}E_{W}$, we get that $\iota\circ i_{\partial M}$ is homotopic to $i_{\partial T}\circ \eta_{f}\circ \xi_{V}$, obtaining the up to homotopy commutative diagram 
+
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzEsMSwiXFxwYXJ0aWFsIE0iXSxbMCwwLCJUIl0sWzEsMCwiXFxwYXJ0aWFsIFQiXSxbMCwyLCJcXGlvdGEiXSxbMSwwLCJpX3tcXHBhcnRpYWwgTX0iXSxbMSwzLCJkZmdkIiwyXSxbMywyLCJpX3tcXHBhcnRpYWwgVH0iLDJdXQ==
+\[\begin{tikzcd}
+	T & {\partial T} \\
+	M & {\partial M}
+	\arrow["{i_{\partial T}}"', from=1-2, to=1-1]
+	\arrow["\iota", from=2-1, to=1-1]
+	\arrow["\eta_{f}\circ\xi_{V}"', from=2-2, to=1-2]
+	\arrow["{i_{\partial M}}", from=2-2, to=2-1]
+\end{tikzcd}\]
+
+
+
+
+Then we get the following commutative diagram \textcolor{red}{nuevamente usa comentario de las restricciones}.
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShUKSJdLFsxLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBUKSJdLFsxLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBNKSJdLFswLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KE0pIl0sWzAsMSwicl97XFxwYXJ0aWFsfSJdLFszLDAsIlxcaW90YSEiXSxbMiwxLCIoXFxldGFfe2Z9XFxjaXJjIFxceGlfe1Z9KSEiLDJdLFszLDIsInJfe1xccGFydGlhbH0iLDJdXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}_{\Gamma}^{*}(T)} & {\mathscr{H}_{\Gamma}^{*}(\partial T)} \\
+	{\mathscr{H}_{\Gamma}^{*}(M)} & {\mathscr{H}_{\Gamma}^{*}(\partial M)}
+	\arrow["{r_{\partial}}", from=1-1, to=1-2]
+	\arrow["{\iota!}", from=2-1, to=1-1]
+	\arrow["{r_{\partial}}"', from=2-1, to=2-2]
+	\arrow["{\eta_{f}\circ\xi_{V}!}"', from=2-2, to=1-2]
+\end{tikzcd}\]
+Then we have that $r_{\partial}(\iota!(x_{M}))=(\eta_{f}\circ\xi_{V})!(r_{\partial}(x_{M}))=0$, where the last equality was obtained previously. Since $\iota!(x_{M})\in Ker(r_{\partial})$, by the long exact sequence in cohomology for the pair $(T,\partial T)$, there exist $y\in \mathscr{H}_{\Gamma}^{*}(T^{0})$ such that $i_{T^{0}}!(y)=\iota!(x_{M})$, where $i_{T^{0}}:T^{0}\hookrightarrow T$. Then
+\begin{align*}
+i_{*}([T^{0},\emptyset, \pi_{T}|_{T^{0}},y])&= [T^{0},\emptyset, \pi_{T}|_{T^{0}},y]\\&= [T^{0},\emptyset, \pi_{T}\circ i_{T^{0}},y]\\&= [T,\partial T, \pi_{T}, i_{T^{0}}!(y)]\\&=[T,\partial T, \pi_{T},\iota!(x_{M})]\\&=[M,\partial M, \pi_{T}\circ \iota,x_{M}]\\&=[M,\partial M, \pi_{M},x_{M}]    
+\end{align*}
+where: first equality is definition of $i_{*}$; second is a direct composition; third is By Remark \ref{relation 1} on $i_{W^{0}}$; fourth is the obtained pushforward equality; fifth is by Remark \ref{relation 1} on $\iota$; and sixth is the equality $\pi_{M}=\pi_{T}\circ \iota$.
+
+
+
+
+
+\end{itemize}
+
+{\bf Exactness in ${\mathscr{H}^{pf}_{*}(A,\emptyset;\Gamma)}$}: 
+
+\begin{itemize}
+    \item $Ker(j_{*-1})\supseteq Im(\partial)$: for $[M,\partial M, \pi_{M}, x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, we note that $j_{*-1}(\partial([M,\partial M, \pi_{M},x_{M}]))=[\partial M,\emptyset,j\circ(\pi_{M}|_{\partial M}), r_{\partial}(x_{M})]\in \mathscr{H}_{*}^{pf}(X,\emptyset;\Gamma)$ is the zero class, because by the cohomology long exact sequence
+    % https://q.uiver.app/#q=WzAsNCxbMiwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgTSkiXSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShNKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KE1eezB9KSJdLFswLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KE1eezB9KSJdLFsxLDAsImlfe1xccGFydGlhbCBNfV57Kn0iXSxbMCwyLCJsIT1cXHBhcnRpYWwiXSxbMywxLCJpXnswKn09al57Kn0iXV0=
+\[\begin{tikzcd}
+	{\mathscr{H}_{\Gamma}^{*}(M^{0})} & {\mathscr{H}_{\Gamma}^{*}(M)} & {\mathscr{H}_{\Gamma}^{*}(\partial M)} & {\mathscr{H}_{\Gamma}^{*}(M^{0})}
+	\arrow["{i^{0}!=j_{M}^{*}}", from=1-1, to=1-2]
+	\arrow["{i_{\partial M}^{*}}", from=1-2, to=1-3]
+	\arrow["{l!=\partial}", from=1-3, to=1-4]
+\end{tikzcd}\]
+    we have that $l!(r_{\partial}(x_{M}))=0$, then  
+    \begin{align*}
+        [\partial M,\emptyset,j\circ(\pi_{M}|_{\partial M)}, r_{\partial}(x_{M})]&=[\partial M,\emptyset,j\circ \pi_{M}\circ l, r_{\partial}(x_{M})]\\&=[M^{0},\emptyset,j\circ\pi_{M}, l!(r_{\partial}(x_{M}))]\\
+        &=[M^{0},\emptyset,j\circ\pi_{M}, 0]=0,
+    \end{align*}
+    where the first equation is by the homotopy given along the collar and the second is Remark \ref{relation 1} on $l:\partial M\to M^{0}$.
+    
+     \item $Ker(j_{*-1})\subseteq Im(\partial)$: If $[M,\emptyset, \pi_{M}, x_{M}]\in ker(j_{*})\subseteq \mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$, then $j_{*}([M,\emptyset, \pi_{M},x_{M}])=[M,\emptyset, j\circ\pi_{M},x_{M}]=0$, i.e., by Remark \ref{relation 1 conv} there exist a description of the null element $[W,\emptyset,\pi_{W}, 0_{W}]\in\mathscr{H}_{*}^{pf}(X,\emptyset;\Gamma)$ with a map $f:M\to W$ such that $\pi_{N}\circ f=\pi_{M}$ and $f!(x_{M})=0_{W}$.
+
+     Applying the Theorem \ref{Emerson-Mayer} and denoting $V=\nu_{M}^{E}$, we get 
+     % https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzEsMSwiVyJdLFsxLDAsIkUiXSxbMCwwLCJWIl0sWzAsMSwiZiJdLFsyLDFdLFszLDBdLFszLDIsIlxcZXRhX3tmfSJdXQ==
+\[\begin{tikzcd}
+	V & E \\
+	M & W
+	\arrow["{\eta_{f}}", from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["f", from=2-1, to=2-2]
+\end{tikzcd}\]
+Since $f=\rho_{E}\circ \eta_{f}\circ \xi_{V}$, we have that $\eta_{f}!(\xi_{V}!(x_{M}))=\xi_{E}!(f!(x_{M}))=0_{E}$. Consider
+\begin{align*}
+    T:&= DNC(E,M)|_{[0,1)}=V\times \{0\}\sqcup E\times(0,1)
+\end{align*}
+where $\partial T = V\times \{0\}$. Using the map $l:\partial T\to T^{0}$ homotopic to the tubular neighborhood embedding, since $l$ factors through $\eta_{f}$ up to homotopy, we have that $l!(\xi_{V}!(x_{M}))=0_{T^{0}}$.
+
+
+Consider the cohomology long exact sequence of the pair $(T,\partial T)$, 
+% https://q.uiver.app/#q=WzAsNCxbMiwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgTSkiXSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShNKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KE1eezB9KSJdLFswLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KE1eezB9KSJdLFsxLDAsImlfe1xccGFydGlhbCBNfV57Kn0iXSxbMCwyLCJsIT1cXHBhcnRpYWwiXSxbMywxLCJpXnswKn09al57Kn0iXV0=
+\[\begin{tikzcd}
+	{\mathscr{H}_{\Gamma}^{*}(T^{0})} & {\mathscr{H}_{\Gamma}^{*}(T)} & {\mathscr{H}_{\Gamma}^{*}(\partial T)} & {\mathscr{H}_{\Gamma}^{*+1}(T^{0})}
+	\arrow["{i_{T^{0}}!=j_{T}^{*}}", from=1-1, to=1-2]
+	\arrow["{r_{\partial}=i_{\partial T}^{*}}", from=1-2, to=1-3]
+	\arrow["{l!=\partial}", from=1-3, to=1-4]
+\end{tikzcd}\]
+ and since $\mathscr{H}_{\Gamma}^{*}(\partial T)\cong \mathscr{H}_{\Gamma}^{*}(M)$ by the Thom isomorphism given by the zero section $\xi_{V}:M\to V$ in the pushforward structure (see Definition \ref{pushforward definition}), we get that there exists $y\in \mathscr{H}_{\Gamma}^{*}(T)$ such that $r_{\partial}(y)=\xi_{V}!(x_{M})$. With this we get as we need that $\partial([T,\partial T,\pi_{T}, y])=[M,\emptyset,\pi_{M},x_{M}]$, where we define $\pi_{T}:T\to X$ by
+ \begin{align*}
+    \pi_{T}((x,t))   = 
+	       \begin{array}{ll}
+	       \pi_{W}\circ\rho_{E}(x)& \mathrm{if\ } t\not=0\\
+		   \pi_{M}\circ\rho_{V}(x)& \mathrm{if\ } t=0.
+	       \end{array}
+    \end{align*}
+  
+%quit� el corchete grande porque no compilaba    
+
+We show this recalling that $\pi_{T}|_{\partial T}=\pi_{M}\circ \rho_{V}$, and with this 
+\begin{align*}
+\partial([T,\partial T,\pi_{T}, y])&=[\partial T, \emptyset ,\pi_{\partial T}, r_{\partial}(y)]\\
+&=[V, \emptyset ,\pi_{M}\circ \rho_{V}, \xi_{V}!(x_{M})]\\
+&=[M, \emptyset ,\pi_{M}\circ \rho_{V}\circ \xi_{V}, x_{M}]\\
+&=[M, \emptyset ,\pi_{M}, x_{M}],
+\end{align*}
+where the first equality is by definition of $\partial$; second equality is by $\partial T\cong V$, definition of $\pi_{\partial T}=\pi_{T}|_{\partial T}$ and $r_{\partial}(y)=\xi_{V}!(x_{M})$; third equation is by Remark \ref{Equivalence relation 1} applied to $\xi_{V}$; and last equation is by $\xi_{V}$ is a section of $\rho_{V}:V\to M$.
+\end{itemize}
+
+\end{proof}
+\begin{prop}
+    The pushforward homology satisfy the excision property. i.e., for a map $\phi:(X,A)\to (Y,B)$ such that $Y\cong X\cup_{A}B$, we get that $\mathscr{H}^{pf}_{*}(X,A)\cong \mathscr{H}^{pf}_{*}(X\cup_{A}B, B)$. 
+\end{prop}
+
+
+\begin{proof}
+We propose that $\phi_{*}$ is an isomorphism. As a starting point consider the case that $\phi:X\to Y$ is an inclusion. In this case the inverse for the map  
+% https://q.uiver.app/#q=WzAsMixbMSwwLCJbTSxcXHBhcnRpYWwgTSxcXHBoaVxcY2lyY1xccGlfe019LHhfe019XVxcaW4gXFxtYXRoc2Nye0h9XntwZn1feyp9KFksQikiXSxbMCwwLCJbTSxcXHBhcnRpYWwgTSxcXHBpX3tNfSx4X3tNfV1cXGluXFxtYXRoc2Nye0h9XntwZn1feyp9KFgsQSkiXSxbMSwwLCJcXHBoaV97Kn0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
+\[\begin{tikzcd}
+	{[M,\partial M,\pi_{M},x_{M}]\in\mathscr{H}^{pf}_{*}(X,A)} & {[M,\partial M,\phi\circ\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(Y,B)}
+	\arrow["{\phi_{*}}", maps to, from=1-1, to=1-2]
+\end{tikzcd}\]
+can be described as follows: for $[M,\partial M,\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(Y,B)$, consider $U\subseteq Y$ an open set such that there exist a strongly deformation retract $r:U\to X$ (cf. \cite{LO01}, pg. 587); with this, consider the open submanifold $M_{U}=\pi_{M}^{-1}(U)$ of $M$, and then using the inclusion $i_{M_{U}}:M_{U}\to M$ define $h:\mathscr{H}^{pf}_{*}(Y,B)\to \mathscr{H}^{pf}_{*}(X,A)$ by
+\begin{align*}
+    h([M,\partial M,\pi_{M},x_{M}])=[M_{U},\partial M_{U},r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}].
+\end{align*}
+We claim that $\phi^{-1}_{*}=h$.
+\begin{itemize}
+    \item $h\circ \phi_{*}=Id_{\mathscr{H}^{pf}_{*}(X,A;\Gamma)}$: 
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCJNIl0sWzAsMSwiWCJdLFsxLDIsIlkiXSxbMSwxLCJVIl0sWzEsMCwiTV97WH09KFxccGhpXFxjaXJjIFxccGlfe019KV57LTF9KFUpIl0sWzIsMSwiWCJdLFswLDEsIlxccGlfe019Il0sWzEsMiwiXFxwaGkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDMsImlfe1h9IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJpX3tVfSJdLFs0LDMsIlxccGlfe019fF97TV97WH19Il0sWzQsMCwiaV97TV97WH19IiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XSxbMyw1LCJyIl1d
+\[\begin{tikzcd}
+	M & {M_{U}=(\phi\circ \pi_{M})^{-1}(U)} \\
+	X & U & X \\
+	& Y
+	\arrow["{\pi_{M}}", from=1-1, to=2-1]
+	\arrow["{i_{M_{U}}}"', hook', from=1-2, to=1-1]
+	\arrow["{\pi_{M}|_{M_{U}}}", from=1-2, to=2-2]
+	\arrow["{i_{X}}", hook, from=2-1, to=2-2]
+	\arrow["\phi", hook, from=2-1, to=3-2]
+	\arrow["r", from=2-2, to=2-3]
+	\arrow["{i_{U}}", from=2-2, to=3-2]
+\end{tikzcd}\]
+    \begin{align*}
+        h\circ \phi_{*}([M,\partial M,\pi_{M},x_{M}])&=h([M,\partial M,\phi\circ\pi_{M},x_{M}])\\
+        &=[M_{U},\partial M_{U},r\circ \phi\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}(x_{M})]\\
+        &=[M_{U},\partial M_{U},r\circ \phi\circ\pi_{M}\circ i_{M_{U}},i_{M_{U}}^{*}(x_{M})]\\
+        &=[M,\partial M,r\circ \phi\circ\pi_{M},i_{M_{U}}!(i_{M_{U}}^{*}(x_{M}))]\\
+        &=[M,\partial M,\pi_{M},i_{M_{U}}!(i_{M_{U}}^{*}(x_{M}))],
+    \end{align*}
+    where the first and second equalities are by definition of $\phi_{*}$ and $h$ respectively; the third equality is the definition of restriction; fourth is by Remark \ref{relation 1} over $i_{M_{X}}$; fifth is by... 
+    
+    \item $\phi_{*}\circ h=Id_{\mathscr{H}^{pf}_{*}(Y,B;\Gamma)}$:
+
+% https://q.uiver.app/#q=WzAsNSxbMCwxLCJNX3tYfSJdLFsxLDEsIlUiXSxbMSwwLCJZIl0sWzAsMCwiTSJdLFsyLDEsIlgiXSxbMCwxLCJcXHBpX3tNfXxfe01fe1h9fSIsMl0sWzEsMiwiaV97VX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFszLDIsIlxccGlfe019IiwyXSxbMCwzLCJpX3tNX3tYfX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFsxLDQsInIiLDJdLFs0LDIsIlxccGhpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XV0=
+\[\begin{tikzcd}
+	M & Y \\
+	{M_{X}} & U & X
+	\arrow["{\pi_{M}}"', from=1-1, to=1-2]
+	\arrow["{i_{M_{U}}}", hook', from=2-1, to=1-1]
+	\arrow["{\pi_{M}|_{M_{X}}}"', from=2-1, to=2-2]
+	\arrow["{i_{U}}", hook', from=2-2, to=1-2]
+	\arrow["r"', from=2-2, to=2-3]
+	\arrow["\phi"', hook', from=2-3, to=1-2]
+\end{tikzcd}\]
+    
+    \begin{align*}
+         \phi_{*}\circ h([M,\partial M,\pi_{M},x_{M}])&= \phi_{*}([M_{U},\partial M_{U},r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}])\\
+         &=[M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}]
+        .
+    \end{align*}
+    Consider $\widetilde{W}=M\times(0,1]\cup M_{X}\times \{0\}$, and with this, define
+    \begin{align*}
+        W=\widetilde{W}\cup_{\partial M\times(0,1]\cup \partial M_{U}\times \{0\}}\widetilde{W},
+    \end{align*}    
+    and $\pi_{E}:W\to Y$ in the natural way based on $\pi_{M}$. Denote $\lambda: W\hookrightarrow (M\times [0,1])\cup_{\partial M \times [0,1]}(M\times [0,1])$ the inclusion map, and the maps
+    \begin{align*}
+        i_{0}:-M_{U}\to W^{0}, \ \ \ \ \ i_{1}:M\to W^{0}
+    \end{align*}
+    denoting the inclusions given by a collar.
+    
+    $W$ is a proper $\mathscr{H}_{\Gamma}$-oriented manifold with boundary, where $$-M_{U}\times \{0\}\bigcup M\times \{1\} \subseteq \partial W,$$
+    i.e., there exists an embedding $i!=(i_{0}+i_{1})!:\mathscr{H}^{*}(M_{U})\oplus \mathscr{H}^{*}(M)\to \mathscr{H}^{*+1}(W^{0})$. 
+    Consider the long exact sequence of the pair $(W,\partial W)$,
+    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFsyLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxjZG90cyJdLFs0LDAsIlxcY2RvdHMiXSxbMSwyLCJpISJdLFswLDEsInJfe1xccGFydGlhbH0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDRdLFszLDBdXQ==
+\[\begin{tikzcd}
+	\cdots & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*+1}(W^{0})} & \cdots
+	\arrow[from=1-1, to=1-2]
+	\arrow["{r_{\partial}}", hook, from=1-2, to=1-3]
+	\arrow["{i!}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+    We want to see that $i!(x_{M}-i^{*}_{M_{U}}(x_{M}))=0$, which is equivalent to the fact $x_{M}-i^{*}_{M_{U}}(x_{M})\in Im(r_{\partial})$. To construct a desired cycle, consider the cohomology element obtained gluining two copies of $x_{M}$ along $\partial M\times [0,1]$
+    \begin{align*}
+       \hat{x}:=\biggl( x_{M}\bigcup_{\partial M \times [0,1]} x_{M}\biggr) \in \mathscr{H}_{\Gamma}^{*}\biggr( M\times [0,1])\bigcup_{\partial M\times [0,1]}(M\times [0,1])\biggl)
+    \end{align*}
+    With this, we get that $r_{\partial}(\lambda^{*}(\hat{x}))=x_{M}-i_{M_{U}}^{*}(x_{M})$. It implies $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$, and with this,
+    \begin{align*}
+        [M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}]&=[M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}\circ i_{M_{U}},i_{M_{U}}^{*}x_{M}]\\
+        &=[M,\partial M,\pi_{W^{0}}\circ i_{0},i_{M_{U}}^{*}x_{M}]\\
+        &=[W^{0},\emptyset,\pi_{W^{0}}, i_{0}!(i_{M_{U}}^{*}x_{M})]\\
+        &=[W^{0},\emptyset,\pi_{W^{0}}, i_{1}!(x_{M})]\\
+        &=[M,\partial M,\pi_{W^{0}} \circ i_{1},(x_{M})]\\
+        &=[M,\partial M,\pi_{M},x_{M}]\\
+    \end{align*}
+    
+\end{itemize}
+\end{proof}
+
+
+\begin{comment}
+\begin{proof}
+    Consider the following diagram
+    % https://q.uiver.app/#q=WzAsOSxbMiwxLCJOIl0sWzEsMSwiVyJdLFswLDEsIloiXSxbMCwwLCJFIl0sWzMsMSwiXFx0aWxkZXtXfSJdLFs0LDEsIloiXSxbNCwwLCJFIl0sWzEsMCwiYV97V31eeyp9RSJdLFszLDAsImFfe1xcdGlsZGV7V319XnsqfUUiXSxbMywyXSxbMSwyLCJhX3tXfSIsMl0sWzAsMSwiXFxpb3RhX3tOfV57V30iLDJdLFswLDQsIlxcaW90YV97Tn1ee1xcdGlsZGV7V319Il0sWzQsNSwiYV97XFx0aWxkZXtXfX0iXSxbNiw1XSxbMSw3LCJcXHhpX3tXfSIsMl0sWzQsOCwiXFx4aV97XFx0aWxkZXtXfX0iLDJdXQ==
+\[\begin{tikzcd}
+	E & {a_{W}^{*}E} && {a_{\tilde{W}}^{*}E} & E \\
+	Z & W & N & {\tilde{W}} & Z
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-5, to=2-5]
+	\arrow["{\xi_{W}}"', from=2-2, to=1-2]
+	\arrow["{a_{W}}"', from=2-2, to=2-1]
+	\arrow["{\iota_{N}^{W}}"', from=2-3, to=2-2]
+	\arrow["{\iota_{N}^{\tilde{W}}}", from=2-3, to=2-4]
+	\arrow["{\xi_{\tilde{W}}}"', from=2-4, to=1-4]
+	\arrow["{a_{\tilde{W}}}", from=2-4, to=2-5]
+\end{tikzcd}\]
+where $\iota_{N}^{W}$ and $\iota_{N}^{\tilde{W}}$ are the given $\Gamma$-embeddings; $a_{W}$ and $a_{\tilde{W}}$ are $\Gamma$-maps, the unique up to $\Gamma$-homotopy, to the proper actions classifier space $Z$; $E$ is a $\Gamma$-vector bundle with fiber $F$, such that $W$ and $\tilde{W}$ are $\Gamma$-proper spaces embedded in $E$; $\xi_{W}$ and $\xi_{\tilde{W}}$ are the zero sections of the fiber bundles $a_{W}^{*}E$ and $a_{\tilde{W}}^{*}E$ over $W$ and $\tilde{W}$ respectively. Now, consider the $\Gamma$-maps $g_{W}:N\to W\times a_{\tilde{W}}^{*}E$ and $g_{\tilde{W}}:N\to \tilde{W}\times a_{W}^{*}E$ given by $g_{W}=\iota_{N}^{W}\times (\xi_{\tilde{W}}\circ \iota_{N}^{\tilde{W}})$ and $g_{\tilde{W}}=\iota_{N}^{\tilde{W}}\times (\xi_{W}\circ \iota_{N}^{W})$. With this we get
+\begin{enumerate}
+    \item $g_{W}$ and $g_{\tilde{W}}$ are $\Gamma$-embeddings.
+    \item $\nu_{g_{W}}\cong \nu_{g_{\tilde{W}}}$, because
+    \begin{align*}
+        \nu_{g_{W}}&\cong \nu_{\iota_{N}^{W}}\oplus \nu_{\xi_{\tilde{W}}\circ \iota_{N}^{\tilde{W}}}\\
+        &\cong\nu_{\iota_{N}^{W}}\oplus \nu_{\xi_{\tilde{W}}}|_{N}\oplus \nu_{\iota_{N}^{\tilde{W}}}\\
+        &\cong\nu_{\iota_{N}^{W}}\oplus TF|_{N}\oplus \nu_{\iota_{N}^{\tilde{W}}}
+    \end{align*}
+    In the same way we get that $\nu_{g_{\tilde{W}}} \cong  \nu_{\iota_{N}^{\tilde{W}}}\oplus TF|_{N}\oplus \nu_{\iota_{N}^{W}} $.
+    \item \textcolor{red}{idea 2:} intentar cazar esto usando Emerson Meyer (pues es este teorema quien nos dá la posterior compatibilidad en cohomología). Esto buscando un fibrado vectorial $K$ tal que $a_{W}^{*}K=W\times a_{\tilde{W}}^{*}E$ \textcolor{red}{No tiene mucho sentido por la operación empleada}.
+    \item \textcolor{red}{idea 1:} Mostrar que corriendo emerson meyer sobre 
+\end{enumerate}
+
+
+
+
+
+
+
+\end{proof}
+
+\end{comment}
+\begin{comment}
+    
+\begin{proof}
+    
+    Let the cycles $(M,\partial M, \pi_{M}, x_{M}), (N,\partial N, \pi_{N}, x_{N})$ and $(P,\partial P, \pi_{P}, x_{P})$ in $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ related as in \ref{Equivalence relation 1} such as the diagram 
+    
+    % https://q.uiver.app/#q=WzAsNixbMCwxLCJNIl0sWzEsMSwiTiJdLFsyLDEsIlAiXSxbMSwyLCJYIl0sWzAsMCwiVyJdLFsyLDAsIlxcdGlsZGV7V30iXSxbMCw0LCJmX3tNfSJdLFsxLDQsImZfe059IiwyXSxbMSw1LCJcXHRpbGRle2Z9X3tOfSJdLFsyLDUsIlxcdGlsZGV7Zn1fe1B9IiwyXSxbMCwzLCJcXHBpX3tNfSIsMl0sWzEsMywiXFxwaV97Tn0iLDJdLFsyLDMsIlxccGlfe1B9Il1d
+\[\begin{tikzcd}
+	W && {\tilde{W}} \\
+	M & N & P \\
+	& X
+	\arrow["{f_{M}}", from=2-1, to=1-1]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["{f_{N}}"', from=2-2, to=1-1]
+	\arrow["{\tilde{f}_{N}}", from=2-2, to=1-3]
+	\arrow["{\pi_{N}}"', from=2-2, to=3-2]
+	\arrow["{\tilde{f}_{P}}"', from=2-3, to=1-3]
+	\arrow["{\pi_{P}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+    \noindent where by the Lemma \ref{EM-Embedding}, we can consider that $f_{N}$ and $\tilde{f}_{N}$ are embeddings. For the spaces $W$ and  $\tilde{W}$ there exists an space $T$ with maps $g_{W}:W\to T$ and $g_{\tilde{W}}:\tilde{W}\to T$ being embeddings. Then, by Theorem \ref{Emerson-Mayer} we get that for the equivariant map $g_{W}\circ f_{N}:N\to T$ there exists the map $\eta_{g_{W}\circ f_{N}}$ such that the diagram 
+
+    % https://q.uiver.app/#q=WzAsNixbMSwxLCJUIl0sWzAsMSwiWiJdLFsyLDEsIk4iXSxbMCwwLCJFIl0sWzEsMCwiYV97VH1eeyp9RSJdLFsyLDAsIlxcbnUiXSxbMCwxLCJhX3tUfSJdLFszLDFdLFs0LDAsIlxccmhvX3thX3tUfV57Kn1FfSIsMl0sWzIsMCwiZ197V31cXGNpcmMgZl97Tn0iXSxbNSwyLCJcXHJob197XFxudX0iXSxbNSw0LCJcXGV0YV97Z197V31cXGNpcmMgZl97Tn19IiwyXV0=
+\[\begin{tikzcd}
+	E & {a_{T}^{*}E} & \nu \\
+	Z & T & N
+	\arrow[from=1-1, to=2-1]
+	\arrow["{\rho_{a_{T}^{*}E}}"', from=1-2, to=2-2]
+	\arrow["{\eta_{g_{W}\circ f_{N}}}"', from=1-3, to=1-2]
+	\arrow["{\rho_{\nu}}", from=1-3, to=2-3]
+	\arrow["{a_{T}}", from=2-2, to=2-1]
+	\arrow["{g_{W}\circ f_{N}}", from=2-3, to=2-2]
+\end{tikzcd}\]
+
+\noindent where $\nu$ is the normal bundle of the embedding $(g_{W}\circ f_{N})\times g_{E}$, satisfying $g_{W}\circ f_{N}=\rho_{a_{T}^{*}E}\circ \eta_{g_{W}\circ f_{N}} \circ \xi_{\nu}$. In the same way, for the map $g_{\tilde{W}}\circ \tilde{f}_{N}$, there exists the embedding $\eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}:\tilde{\nu}\to a^{*}_{T}E$ satisfying the commutative diagram:
+
+% https://q.uiver.app/#q=WzAsNixbMSwxLCJUIl0sWzIsMSwiWiJdLFswLDEsIk4iXSxbMiwwLCJFIl0sWzEsMCwiYV97VH1eeyp9RSJdLFswLDAsIlxcdGlsZGV7XFxudX0iXSxbMCwxLCJhX3tUfSIsMl0sWzMsMV0sWzQsMCwiXFxyaG9fe2Ffe1R9XnsqfUV9Il0sWzIsMCwiZ197XFx0aWxkZXtXfX1cXGNpcmMgXFx0aWxkZXtmfV97Tn0iLDJdLFs1LDIsIlxccmhvX3tcXHRpbGRle1xcbnV9fSIsMl0sWzUsNCwiXFxldGFfe2dfe1d9XFxjaXJjIGZfe059fSJdXQ==
+\[\begin{tikzcd}
+	{\tilde{\nu}} & {a_{T}^{*}E} & E \\
+	N & T & Z
+	\arrow["{\eta_{g_{W}\circ f_{N}}}", from=1-1, to=1-2]
+	\arrow["{\rho_{\tilde{\nu}}}"', from=1-1, to=2-1]
+	\arrow["{\rho_{a_{T}^{*}E}}", from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow["{g_{\tilde{W}}\circ \tilde{f}_{N}}"', from=2-1, to=2-2]
+	\arrow["{a_{T}}"', from=2-2, to=2-3]
+\end{tikzcd}\]
+
+\noindent We claim that $\nu\cong \tilde{\nu}$ \textcolor{red}{We have problems here.}
+
+\begin{align*}
+    \nu:=\nu_{N}^{a_{T}^{*}E}&\cong a_{N}^{*}E\oplus \nu_{N}^{T}\\
+    &\cong a_{N}^{*}E\oplus \nu_{N}^{W}\oplus T\tilde{W}|_{N}\\
+    &\cong a_{N}^{*}E\oplus \nu_{N}^{W}\oplus \nu_{N}^{\tilde{W}}\oplus TN
+\end{align*}
+
+\noindent Now, considering the following diagram
+
+
+% https://q.uiver.app/#q=WzAsOCxbMCwzLCJNIl0sWzAsMiwiVCJdLFsxLDMsIk4iXSxbMSwyLCJcXG51XFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAtMSkoTikiXSxbMSwxLCJhX3tUfV57Kn1FXFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAtMSkoTikiXSxbMSwwLCJBIl0sWzIsMSwiYV97VH1eeyp9RVxcb3BsdXMgXFxtYXRoYmJ7Un1cXHNldG1pbnVzIChcXHhpX3thX3tUfV57Kn1FfVxcb3BsdXMgMSkoTikiXSxbMiwyLCJcXG51XFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAxKShOKSJdLFsyLDMsIlxceGlfe1xcbnV9XFxvcGx1cyAwIl0sWzAsMSwiZ197V31cXGNpcmMgZl97Tn0iXSxbMyw0LCJcXGV0YV97Z197V31cXGNpcmMgZl97Tn19IiwyXSxbMSw0LCJcXHhpX3thX3tUfV57Kn1FfVxcb3BsdXMgMCIsMCx7ImxhYmVsX3Bvc2l0aW9uIjoyMH1dLFs0LDUsImlfezF9Il0sWzIsNywiXFx4aV97XFxudX1cXG9wbHVzIDAiLDIseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNyw2LCJcXGV0YV97Z197XFx0aWxkZXtXfX1cXGNpcmMgXFx0aWxkZXtmfV97Tn19IiwyXSxbNiw1LCJpX3syfSIsMl1d
+\[\begin{tikzcd}
+	& A \\
+	& {a_{T}^{*}E\oplus \mathbb{R}\setminus (\xi_{a_{T}^{*}E}\oplus -1)(N)} & {a_{T}^{*}E\oplus \mathbb{R}\setminus (\xi_{a_{T}^{*}E}\oplus 1)(N)} \\
+	T & {\nu\oplus \mathbb{R}\setminus (\xi_{a_{T}^{*}E}\oplus -1)(N)} & {\nu\oplus \mathbb{R}\setminus (\xi_{a_{T}^{*}E}\oplus 1)(N)} \\
+	M & N
+	\arrow["{i_{1}}", from=2-2, to=1-2]
+	\arrow["{i_{2}}"', from=2-3, to=1-2]
+	\arrow["{\xi_{a_{T}^{*}E}\oplus 0}"{pos=0.2}, from=3-1, to=2-2]
+	\arrow["{\eta_{g_{W}\circ f_{N}}}"', from=3-2, to=2-2]
+	\arrow["{\eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}}"', from=3-3, to=2-3]
+	\arrow["{g_{W}\circ f_{M}}", from=4-1, to=3-1]
+	\arrow["{\xi_{\nu}\oplus 0}", from=4-2, to=3-2]
+	\arrow["{\xi_{\nu}\oplus 0}"'{pos=0.6}, from=4-2, to=3-3]
+\end{tikzcd}\]
+    \noindent we claim 
+    \begin{enumerate}
+        \item $i_{1}\circ \eta_{g_{W}\circ f_{N}}\circ \xi_{\nu}\oplus 0 = i_{2}\circ \eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}\circ \xi_{\nu}\oplus 0$.
+        \item $(\xi_{a_{T}^{*}E}\oplus 0 \circ g_{W}\circ f_{M})!(x_{M})=(\eta_{g_{W}\circ f_{N}}\circ \xi_{\nu}\oplus 0)!(x_{N})$
+    \end{enumerate}
+\end{proof}
+\end{comment}
+\begin{comment}
+    
+\begin{lemma}\label{accion tietze}
+    If $W$ is a $\Gamma$-proper space and $\iota: W\to \mathbb{R}^{w}$ is an embedding, then we can endow $\mathbb{R}^{w}$ with a $\Gamma$-proper space structure, making $\iota$ a $\Gamma$-equivariant map .
+\end{lemma}
+
+\begin{proof}
+    %We define the $\Gamma$-action on $\mathbb{R}^{w}$ as: for $y\in \mathbb{R}^{w}$ we have that $\gamma\cdot y := \iota(\gamma \cdot x)$ for $y=\iota(x)$ for some $x\in W$; $\gamma\cdot y = y$ for $y\in \mathbb{R}^{w}\setminus \iota(W)$.   
+    \textcolor{red}{Idea}
+    \begin{enumerate}
+        \item Consider the $\Gamma$-action on $\iota(W)\subseteq \mathbb{R}^{w}$: for $y\in \mathbb{R}^{w}$ we have that $\gamma\cdot y := \iota(\gamma \cdot x)$ for $y=\iota(x)$ for some $x\in W$
+        \item Extend the $\Gamma$-action on $\iota(W)$ to $\overline{\iota(W)}$ by continuity.
+        \item Use the Tietze theorem to extend the action map $\iota(W)\times \Gamma \to \mathbb{R}^{w}$, to all the normal spaces $\mathbb{R}^{w}\times \Gamma \to \mathbb{R}^{w}$ (\textcolor{red}{¿sigue siendo acción en el complemento de la variedad?}).
+    \end{enumerate}
+\end{proof}
+
+
+\begin{proof}
+    
+    Let the cycles $(M,\partial M, \pi_{M}, x_{M}), (N,\partial N, \pi_{N}, x_{N})$ and $(P,\partial P, \pi_{P}, x_{P})$ in $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ related as in \ref{Equivalence relation 1} such as the diagram 
+    
+    % https://q.uiver.app/#q=WzAsNixbMCwxLCJNIl0sWzEsMSwiTiJdLFsyLDEsIlAiXSxbMSwyLCJYIl0sWzAsMCwiVyJdLFsyLDAsIlxcdGlsZGV7V30iXSxbMCw0LCJmX3tNfSJdLFsxLDQsImZfe059IiwyXSxbMSw1LCJcXHRpbGRle2Z9X3tOfSJdLFsyLDUsIlxcdGlsZGV7Zn1fe1B9IiwyXSxbMCwzLCJcXHBpX3tNfSIsMl0sWzEsMywiXFxwaV97Tn0iLDJdLFsyLDMsIlxccGlfe1B9Il1d
+\[\begin{tikzcd}
+	W && {\tilde{W}} \\
+	M & N & P \\
+	& X
+	\arrow["{f_{M}}", from=2-1, to=1-1]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["{f_{N}}"', from=2-2, to=1-1]
+	\arrow["{\tilde{f}_{N}}", from=2-2, to=1-3]
+	\arrow["{\pi_{N}}"', from=2-2, to=3-2]
+	\arrow["{\tilde{f}_{P}}"', from=2-3, to=1-3]
+	\arrow["{\pi_{P}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+    \noindent where by the Lemma \ref{EM-Embedding}, we can consider that $f_{N}$ and $\tilde{f}_{N}$ are embeddings. For the spaces $W$ and  $\tilde{W}$ there exists euclidean spaces with embbeddings $\iota_{W}:W\hookrightarrow \mathbb{R}^{w}$ and $\iota_{\tilde{W}}:\tilde{W}\hookrightarrow \mathbb{R}^{\tilde{w}}$. Then, by Theorem \ref{Emerson-Mayer} we get that for the equivariant map $g_{W}\circ f_{N}:N\to \mathbb{R}^{w+\tilde{w}}$ (by Lemma \ref{accion tietze}) there exists the map $\eta_{g_{W}\circ f_{N}}$ such that the diagram 
+
+    % https://q.uiver.app/#q=WzAsNixbMSwxLCJUIl0sWzAsMSwiWiJdLFsyLDEsIk4iXSxbMCwwLCJFIl0sWzEsMCwiYV97VH1eeyp9RSJdLFsyLDAsIlxcbnUiXSxbMCwxLCJhX3tUfSJdLFszLDFdLFs0LDAsIlxccmhvX3thX3tUfV57Kn1FfSIsMl0sWzIsMCwiZ197V31cXGNpcmMgZl97Tn0iXSxbNSwyLCJcXHJob197XFxudX0iXSxbNSw0LCJcXGV0YV97Z197V31cXGNpcmMgZl97Tn19IiwyXV0=
+\[\begin{tikzcd}
+	E & {a_{\mathbb{R}^{w+\tilde{w}}}^{*}E} & \nu \\
+	Z & \mathbb{R}^{w+\tilde{w}} & N
+	\arrow[from=1-1, to=2-1]
+	\arrow["{\rho_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}}"', from=1-2, to=2-2]
+	\arrow["{\eta_{g_{W}\circ f_{N}}}"', from=1-3, to=1-2]
+	\arrow["{\rho_{\nu}}", from=1-3, to=2-3]
+	\arrow["{a_{\mathbb{R}^{w+\tilde{w}}}}", from=2-2, to=2-1]
+	\arrow["{g_{W}\circ f_{N}}", from=2-3, to=2-2]
+\end{tikzcd}\]
+
+\noindent where, $g_{W}:W\hookrightarrow\mathbb{R}^{w+\tilde{w}}\cong \mathbb{R}^{w}\times\mathbb{R}^{\tilde{w}}$ is the composition of $\iota_{W}$ with the euclidean inclusion in the first factor, and
+$\nu$ is the normal bundle of the embedding $(g_{W}\circ f_{N})\times g_{E}$, satisfying $g_{W}\circ f_{N}=\rho_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\circ \eta_{g_{W}\circ f_{N}} \circ \xi_{\nu}$. In the same way, for the map $g_{\tilde{W}}\circ \tilde{f}_{N}$, there exists the embedding $\eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}:\tilde{\nu}\to a^{*}_{\mathbb{R}^{w+\tilde{w}}}E$ satisfying the commutative diagram:
+
+% https://q.uiver.app/#q=WzAsNixbMSwxLCJUIl0sWzIsMSwiWiJdLFswLDEsIk4iXSxbMiwwLCJFIl0sWzEsMCwiYV97VH1eeyp9RSJdLFswLDAsIlxcdGlsZGV7XFxudX0iXSxbMCwxLCJhX3tUfSIsMl0sWzMsMV0sWzQsMCwiXFxyaG9fe2Ffe1R9XnsqfUV9Il0sWzIsMCwiZ197XFx0aWxkZXtXfX1cXGNpcmMgXFx0aWxkZXtmfV97Tn0iLDJdLFs1LDIsIlxccmhvX3tcXHRpbGRle1xcbnV9fSIsMl0sWzUsNCwiXFxldGFfe2dfe1d9XFxjaXJjIGZfe059fSJdXQ==
+\[\begin{tikzcd}
+	{\tilde{\nu}} & {a_{\mathbb{R}^{w+\tilde{w}}}^{*}E} & E \\
+	N & \mathbb{R}^{w+\tilde{w}} & Z
+	\arrow["{\eta_{g_{W}\circ f_{N}}}", from=1-1, to=1-2]
+	\arrow["{\rho_{\tilde{\nu}}}"', from=1-1, to=2-1]
+	\arrow["{\rho_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}}", from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow["{g_{\tilde{W}}\circ \tilde{f}_{N}}"', from=2-1, to=2-2]
+	\arrow["{a_{\mathbb{R}^{w+\tilde{w}}}}"', from=2-2, to=2-3]
+\end{tikzcd}\]
+
+\noindent We claim that $\nu\cong \tilde{\nu}$:
+
+\begin{align*}
+    \nu:=\nu_{N}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}&\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus \nu_{N}^{\mathbb{R}^{w+\tilde{w}}}\\
+    &\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus \nu_{N}^{\mathbb{R}^{w}}\oplus T\mathbb{R}^{\tilde{w}}\\
+    &\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus \nu_{N}^{\mathbb{R}^{w}}\oplus \nu_{N}^{\tilde{W}}\oplus TN\\
+    &\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus (\nu_{N}^{W}\oplus \nu_{W}^{\mathbb{R}^{w}}|_{N})\oplus \nu_{N}^{\tilde{W}}\oplus TN
+\end{align*}
+where the first step is by the chain $N\subseteq \mathbb{R}^{w+\tilde{w}}\subseteq a_{\mathbb{R}^{w+\tilde{w}}}^{*}E$; second step is given by the fact that the embedding of $N$ in $\mathbb{R}^{w+\tilde{w}}$ along the map $g_{W}\circ f_{N}$ occurs only in the first $w$-components; third step is by the classical direct sum decomposition of a tangent bundle of an embedded submanifold; and the last step is the normal factorization given by the chain $N\subseteq W\subseteq \mathbb{R}^{w}$. In the same way we obtain that 
+
+\begin{align*}
+    \tilde{\nu}\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus (\nu_{N}^{W}\oplus \nu_{W}^{\mathbb{R}^{w}}|_{N})\oplus \nu_{N}^{\tilde{W}}\oplus TN,
+\end{align*}
+
+\vspace{0.3cm}
+
+\noindent then $\nu\cong \tilde{\nu}$. Now, considering the following diagram
+
+
+% https://q.uiver.app/#q=WzAsOCxbMCwzLCJNIl0sWzAsMiwiVCJdLFsxLDMsIk4iXSxbMSwyLCJcXG51XFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAtMSkoTikiXSxbMSwxLCJhX3tUfV57Kn1FXFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAtMSkoTikiXSxbMSwwLCJBIl0sWzIsMSwiYV97VH1eeyp9RVxcb3BsdXMgXFxtYXRoYmJ7Un1cXHNldG1pbnVzIChcXHhpX3thX3tUfV57Kn1FfVxcb3BsdXMgMSkoTikiXSxbMiwyLCJcXG51XFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAxKShOKSJdLFsyLDMsIlxceGlfe1xcbnV9XFxvcGx1cyAwIl0sWzAsMSwiZ197V31cXGNpcmMgZl97Tn0iXSxbMyw0LCJcXGV0YV97Z197V31cXGNpcmMgZl97Tn19IiwyXSxbMSw0LCJcXHhpX3thX3tUfV57Kn1FfVxcb3BsdXMgMCIsMCx7ImxhYmVsX3Bvc2l0aW9uIjoyMH1dLFs0LDUsImlfezF9Il0sWzIsNywiXFx4aV97XFxudX1cXG9wbHVzIDAiLDIseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNyw2LCJcXGV0YV97Z197XFx0aWxkZXtXfX1cXGNpcmMgXFx0aWxkZXtmfV97Tn19IiwyXSxbNiw1LCJpX3syfSIsMl1d
+\[\begin{tikzcd}
+	& A \\
+	& {a_{\mathbb{R}^{w+\tilde{w}}}^{*}E\oplus \mathbb{R}\setminus (\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus -1)(N)} & {a_{\mathbb{R}^{w+\tilde{w}}}^{*}E\oplus \mathbb{R}\setminus (\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus 1)(N)} \\
+	\mathbb{R}^{w+\tilde{w}} & {\nu\oplus \mathbb{R}\setminus (\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus -1)(N)} & {\nu\oplus \mathbb{R}\setminus (\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus 1)(N)} \\
+	M & N
+	\arrow["{i_{1}}", from=2-2, to=1-2]
+	\arrow["{i_{2}}"', from=2-3, to=1-2]
+	\arrow["{\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus 0}"{pos=0.2}, from=3-1, to=2-2]
+	\arrow["{\eta_{g_{W}\circ f_{N}}}"', from=3-2, to=2-2]
+	\arrow["{\eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}}"', from=3-3, to=2-3]
+	\arrow["{g_{W}\circ f_{M}}", from=4-1, to=3-1]
+	\arrow["{\xi_{\nu}\oplus 0}", from=4-2, to=3-2]
+	\arrow["{\xi_{\nu}\oplus 0}"'{pos=0.6}, from=4-2, to=3-3]
+\end{tikzcd}\]
+    \noindent we claim 
+    \begin{enumerate}
+        \item $i_{1}\circ \eta_{g_{W}\circ f_{N}}\circ \xi_{\nu}\oplus 0 = i_{2}\circ \eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}\circ \xi_{\nu}\oplus 0$.
+        \item $(\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus 0 \circ g_{W}\circ f_{M})!(x_{M})=(\eta_{g_{W}\circ f_{N}}\circ \xi_{\nu}\oplus 0)!(x_{N})$
+    \end{enumerate}
+\end{proof}
+
+\begin{proof}
+    
+\end{proof}
+
+
+\end{comment}
+
+
+\section{Applications}
+
+
+\subsection{Equivariant $K$-Homology}
+
+\begin{defn}[\cite{BHS07}, p. 12]
+ A complex spinor bundle for $V$, where $V\to M$ being an euclidean vector bundle over $M$ of rank $p$, is a $p$-multigraded Dirac bundle $S_{V}$ which is locally isomorphic to the trivial bundle with fiber the complex Clifford algebra $\mathbb{C}_{p}$, where:
+ \begin{enumerate}
+     \item A $p$-multigraded Dirac bundle structure on $V$ {\rm (see \cite{BHS07}, p. 6)} is a smooth $\mathbb{Z}_{2}$-graded, Hermitian vector bundle $S$ over $M$ together with the following data:
+     \begin{enumerate}
+         \item An $\mathbb{R}$-linear morphism of vector bundles $V\to End(S)$ which associates to each vector $v\in V_{x}$ a skew-adjoint, odd-graded endomorphism $u\mapsto v\cdot u:=v(u)$ of $S_{x}$, in such a way that
+         \begin{align*}
+             v\cdot v\cdot u = -||v||^{2}u.
+         \end{align*}
+         \item A family of skew-adjoint, odd-graded endomorphism $\varepsilon_{1},...,\varepsilon_{p}$ of $S$ such that 
+         \begin{align*}
+             \varepsilon_{j}=-\varepsilon_{j}^{*}, \ \ \ \varepsilon_{j}^{2}=-1, \ \ \ \varepsilon_{i}\varepsilon_{j}+\varepsilon_{j}\varepsilon_{i}=0 (i\not= j),
+         \end{align*}
+         and such that each $\varepsilon_{j}$ commutes with each operator $u\mapsto v\cdot u$.
+     \end{enumerate}
+ \end{enumerate}
+ If $M$ is a smooth manifold (possibly with boundary) then by a spin$^{c}$ structure on $M$ we mean a pair consisting of a Riemannian metric on $M$ and a complex spinor bundle $S_{M}$ for $TM$. Then for each $x\in M$, there exist an open $x\in U_{x}\subseteq M$ with the following diagram
+ % https://q.uiver.app/#q=WzAsNixbMiwxLCJNIl0sWzIsMCwiVE0iXSxbMywwLCJFbmQoU197TX0pIl0sWzEsMCwiU197TX0iXSxbMCwwLCJTX3tNfXxfe1Vfe3h9fVxcY29uZyBVX3t4fVxcdGltZXMgXFxtYXRoYmJ7Q31fe3B9Il0sWzAsMSwiVV97eH0iXSxbMSwwXSxbMSwyXSxbMywwXSxbMiwwXSxbNCw1XSxbNSwwLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
+\[\begin{tikzcd}
+	{S_{M}|_{U_{x}}\cong U_{x}\times \mathbb{C}_{p}} & {S_{M}} & TM & {End(S_{M})} \\
+	{U_{x}} && M
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-4, to=2-3]
+	\arrow[hook, from=2-1, to=2-3]
+\end{tikzcd}\]
+
+\begin{center}
+    
+\end{center}
+ A $\Gamma$-spin$^{c}$ manifold is a manifold with a spin$^{c}$-structure given in terms of a complex spinor bundle $S_{M}$ for $TM$ with a $\Gamma$-action listed to and compatible with all the structure.\textcolor{red}{ Ser más específico}
+ 
+ %A spin$^{c}$ structure is given in terms of a complex spinor bundle for $TM$ with a $\Gamma$-action listed to and compatible with all the structure.
+\end{defn}
+
+\begin{defn}[\cite{BOSW10}, p. 5]
+    The equivariant $K$-homology respect to a discrete group $\Gamma$\footnote{This is defined in general for a compact Lie group $G$, see \cite{BOSW10}.} of a $\Gamma$-CW pair $(X,Y)$, denoted $K^{\Gamma, geom}_{*}(X,Y)$ is the set of isomorphism classes of {\bf cycles} identified by a equivalence {\bf relation} $\sim$, those defined as follows:
+    \begin{enumerate}
+        \item A {\bf cycle} is a triple $(M,E,f)$, where
+        \begin{itemize}
+            \item $M$ is a compact smooth $\Gamma$-spin$^{c}$ manifold.
+            \item $E$ is a $\Gamma$-equivariant Hermitian vector bundle on $M$.
+            \item $f:M\to X$ is a continuous $\Gamma$-equivariant map such that $f(\partial M)\subset Y$.
+        \end{itemize}
+        \item An isomorphism between two cycles $(M,E,f)$ and $(M',E',f')$ is a smooth $\Gamma$-map $\phi:M\to M'$ such that 
+        \begin{enumerate}
+            \item push or pull back spin$^{c}$ structure.
+            \item $\phi^{*}(E')=E$.
+            \item $f=f'\circ \phi$.
+        \end{enumerate}
+        \item The equivalence {\bf relation} generated by the following conditions:
+        \begin{itemize}
+            \item $(M,E,f)\sqcup (M,E',f)\sim (M,E\oplus E',f)$.
+            % https://q.uiver.app/#q=WzAsNSxbMiwxLCJYIl0sWzEsMSwiTSJdLFswLDAsIkUiXSxbMiwwLCJFJyJdLFsxLDAsIkVcXG9wbHVzIEUnIl0sWzEsMCwiZiJdLFs0LDFdLFszLDFdLFsyLDFdLFsyLDQsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsNCwiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XV0=
+\[\begin{tikzcd}
+	E & {E\oplus E'} & {E'} \\
+	& M & X
+	\arrow[hook, from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[hook', from=1-3, to=1-2]
+	\arrow[from=1-3, to=2-2]
+	\arrow["f", from=2-2, to=2-3]
+\end{tikzcd}\]
+            \item $(M,E,f)\sim (M',E',f')$ if there is a bordism between $(M,E,f)$ and $-(M',E',f')$\footnote{By $-(M',E',f')$ we mean the $K$-cycle $(-M',E',f')$ where $-M'$ is the manifold $M'$ equipped with the opposite spin$^{c}$ structure of $M'$.}, where a bordism beetwen $K$-cycles over $(X,Y)$, identified as $M_{+}=g^{-1}[1,\infty)$ and $M_{+}=g^{-1}(-\infty,-1]$, is the following bunch of data:
+            \begin{itemize}
+                \item A smooth, compact $\Gamma$-manifold $L$, equipped with a $\Gamma$-spin$^{c}$-structure.
+                \item A smooth, Hermitian $\Gamma$-vector bundle $F$ over $L$.
+                \item A continuous $\Gamma$-map $\Phi:L\to X$.
+                \item A smooth $\Gamma$-invariant map $g:\partial L\to \mathbb{R}$ for which $\pm 1$ are regular values, and for wich $\Phi[g^{-1}[-1,1]]\subseteq Y$.
+  % https://q.uiver.app/#q=WzAsNyxbMSwxLCJMIl0sWzIsMSwiWCJdLFsxLDAsIkYiXSxbMCwxLCJcXHBhcnRpYWwgTCJdLFswLDAsIlxcbWF0aGJie1J9Il0sWzAsMiwiZl57LTF9KFstMSwxXSkiXSxbMiwyLCJZIl0sWzAsMSwiXFxQaGkiXSxbMiwwXSxbMywwLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDQsImYiXSxbNSwzLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs1LDAsImkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs2LDEsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzUsNiwiXFxQaGlcXGNpcmMgaSIsMl1d
+\[\begin{tikzcd}
+	{\mathbb{R}} & F \\
+	{\partial L} & L & X \\
+	{g^{-1}([-1,1])} && Y
+	\arrow[from=1-2, to=2-2]
+	\arrow["g", from=2-1, to=1-1]
+	\arrow[hook, from=2-1, to=2-2]
+	\arrow["\Phi", from=2-2, to=2-3]
+	\arrow[hook, from=3-1, to=2-1]
+	\arrow["i", hook, from=3-1, to=2-2]
+	\arrow["{\Phi\circ i}"', from=3-1, to=3-3]
+	\arrow[hook, from=3-3, to=2-3]
+\end{tikzcd}\]
+
+
+then we mean that between $(M,E,f)$ and $-(M',E',f')$ there exist a bordism such that $g^{-1}(\{1\})=M$, $g^{-1}(\{-1\})=-M'$, $i^{*}F\cong E\sqcup E'\to g^{-1}(\{-1,1\})=M\sqcup (-M')$ \textcolor{red}{Revisar}
+            \end{itemize}
+            \item $(M,E,f) \sim (Z,F\otimes \pi^{*}E,f\circ \pi)$, as in the following diagram 
+
+            % https://q.uiver.app/#q=WzAsNSxbMiwxLCJYIl0sWzEsMSwiTSJdLFswLDEsIloiXSxbMSwwLCJFIl0sWzAsMCwiRlxcb3RpbWVzIFxccGleeyp9RSJdLFsxLDAsImYiXSxbMiwxLCJcXHBpIl0sWzMsMV0sWzQsMl1d
+\begin{center}
+            
+\begin{tikzcd}
+	{F\otimes \pi^{*}E} & E \\
+	Z & M & X
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\pi", from=2-1, to=2-2]
+	\arrow["f", from=2-2, to=2-3]
+\end{tikzcd}
+    
+\end{center}
+            
+            
+            
+            being the later the modification of a $\Gamma$-spin$^{c}$ bundle $W\to M$, where:
+            \begin{enumerate}
+                \item $Z$ is the unit sphere bundle of the bundle $\pi:Z\subset 1\oplus W\to M$.
+                % https://q.uiver.app/#q=WzAsMyxbMSwxLCJNIl0sWzEsMCwiMVxcb3BsdXMgVyJdLFswLDAsIloiXSxbMSwwXSxbMiwxLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDAsIlxccGkiLDJdXQ==
+                \begin{center}
+                   
+\begin{tikzcd}
+	Z & {1\oplus W} \\
+	& M
+	\arrow[hook, from=1-1, to=1-2]
+	\arrow["\pi"', from=1-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+\end{tikzcd}
+
+                \end{center}
+                
+                \item $F$ is obtained as $\pi^{*}S_{W,+}^{*}$ over the northern hemisphere\footnote{The notion of Hemisphere has sense identifying $Z$ as the pairs $(t,w)\in 1\oplus W$ where $t\in [-1,1]$ and $t^{2}+|w|^{2}=1$, and the hemispheres are defined by the sign of $t$.} $D^{+}$ of $Z$ and $\pi^{*}S_{W,+}^{*}$ over the southern hemisphere $D^{-}$ of $Z$ by gluing along the intersection, the unit sphere bundle of $W$, using Clifford multiplication with the respective vector of $W$.
+
+\begin{center}
+    % https://q.uiver.app/#q=WzAsNyxbMCwxLCJEXntcXHBtfSJdLFswLDAsIlxccGleeyp9U197VyxcXHBtfV57Kn0iXSxbMSwxLCJNIl0sWzEsMCwiU197VyxcXHBtfV57Kn0iXSxbMiwwLCJcXFJpZ2h0YXJyb3ciXSxbMywwLCJGXFxjb25nIFxccGleeyp9U197VywrfV57Kn1cXHNxY3VwX3t0PTB9XFxwaV57Kn1TX3tXLC19XnsqfSJdLFszLDEsIlogXFxjb25nIEReeyt9XFxzcWN1cF97dD0wfUReey19Il0sWzEsMF0sWzAsMiwiXFxwaSIsMl0sWzMsMl0sWzUsNl1d
+\begin{tikzcd}
+	{\pi^{*}S_{W,\pm}^{*}} & {S_{W,\pm}^{*}} & \Rightarrow & {F\cong \pi^{*}S_{W,+}^{*}\sqcup_{t=0}\pi^{*}S_{W,-}^{*}} \\
+	{D^{\pm}} & M && {Z \cong D^{+}\sqcup_{t=0}D^{-}}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-4, to=2-4]
+	\arrow["\pi"', from=2-1, to=2-2]
+\end{tikzcd}
+\end{center}
+                
+            \end{enumerate}
+        \end{itemize}
+    \end{enumerate}
+\end{defn}
+
+\subsection{Periodic Cyclic Homology}
+
+
+\section{Assembly map}
+
+In \cite{CWW23} there exist a way to relate cycles using a well defined group in the case of the pair $(\{*\},\{*\})$ (wich is not a $\Gamma$ proper pair).
+
+
+
+
+
+\newpage
+\bibliography{bibliografia}
+\bibliographystyle{alpha}
+
+
+\end{document}
