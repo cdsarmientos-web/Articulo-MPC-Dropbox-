@@ -54,41 +54,23 @@ we list, for a continuous map between topologial spaces $f:X\to Y$, some equival
 \end{enumerate}
 \end{comment}
 
-First, we introduce some facts about actions on topological spaces.
 
-\begin{enumerate}
-    \item Let $G$ acts on $X$, being $q:X\to X/G$ its quotient map, $p:X\to Y$ be a surjective continuous map such that $p(x)=p(x')$ if and only if $q(x)=q(x')$. If $p$ is open then $p$ induce an homeomorphism $h:X/G\to Y$ between the topological spaces $X/G$ and $Y$, where $h(q(x))=p(x)$ for all $x\in X$.
-    \item Let $G$ acts on $X$, being $q:X\to X/G$ its quotient map, $p:X\to Y$ be a surjective continuous map such that $p(x)=p(x')$ if and only if $q(x)=q(x')$. If there exists a compact subset $K$ of $X$ that intersects every orbit for the action of $G$ on $X$, then $p$ induce an homeomorphism $h:X/G\to Y$ between the topological spaces $X/G$ and $Y$, where $h(q(x))=p(x)$ for all $x\in X$.
-\end{enumerate}
+\textcolor{red}{Cita de lo que es un $\Gamma$-CW complex}
 
+\begin{defn}
+A $\Gamma$-CW complex is proper  when...
+\end{defn}
 
 
 \begin{defn}
     A group is said to acts freely ans properly discontinuously on $X$ if each element for all $g\not = e$ hold that given any $x\in X$ there exists an open set $U$ in $X$ such that $x\in U$ and $(gU)\cap U=\emptyset$ .
 \end{defn}
 
-Now some examples:
-\begin{enumerate}
-    \item $\mathbb{Z}_{2}$ acts freely and properly discontinuously on $S^{n}$ by the antipodal action. In this case $\mathbb{R}P^{n}$ is identified with $S^{n}/\mathbb{Z}_{2}$, and with the quotient topology of $q:S^{n}\to S^{n}/\mathbb{Z}_{2}$.
-\end{enumerate}
 
-\begin{defn}{(\rm \cite{RP61})}\label{proper action} The action $\rho: G\times X\to X:(g,x)\mapsto g\cdot x$ is called proper ($X$ being locally compact and Hausdorff) if some of the following equivalent condition hold
-    \begin{enumerate}
-        \item The map $G\times X\to X\times X:(g,x)\mapsto (g\cdot x,x)$ is a proper\footnote{A continuous map $f:X\to Y$ is called {\bf proper} if for every compact $K\subseteq Y$, we have that $f^{-1}(K)$ is a compact of $X$. In \cite{EM10} its adding the condition that $f$ must be closed. \textcolor{red}{Al igual que con la noción de quasi-compacto, se incluye esto por la posibilidad de trabajar sobre espacios no Hausdorff (Creo)}} continuous function.
-        \item  Every point $x\in X$ has a neighborhood $U_{x}$ such that every point $y\in U_{x}$ has a neighborhood $V_{y}$ such that $(U_{x}|V_{y}):=\{g\in G|gU_{x}\cap V_{y}\not=\emptyset\}$ has compact closure.
-        \item For every compact subspace $K\subseteq X$, the subset $(K|K):=\{g\in G|gK\cap K\not=\emptyset\}\subseteq G$ is compact.
-        \item (\cite{BCH94}, p. 6) If for every $p\in X$ there exists a triple ($U, H,\rho$) such that 
-        \begin{enumerate}
-            \item $U$ is an open neighborhood of $p$ in $X$, with $gu\in U$ for all $(g,u)\in G\times U$,
-            \item $H$ is a compact subgroup of $G$,
-            \item  $\rho:U\to G/H$ is a $G$-map from $U$ to the homogeneous space $G/H$.
-        \end{enumerate}
-    \end{enumerate}
-\end{defn}
 
 \begin{remark}
   The equivalence between conditions 1. and 2. in Definition \ref{proper action} is obtained in Theorem 21 in \cite{Die87}.
-\end{remark}
+\end{remark} \textcolor{red}{Revisar si se hace para grupos cualesquera}
 
 
 \begin{defn} The following are definitions of a model of a classifying space for proper actions of a group:
@@ -101,37 +83,6 @@ Now some examples:
 \end{defn}
 
 
-\begin{prop}(\cite{BCH94}, p. 7) A proper $G$-space $Y$ is universal if and only if the following both axioms hold:
-\begin{enumerate}
-    \item If $H$ is any compact subgroup of $G$, then there exist $p\in Y$ such that $H\subseteq G_{p}$.
-    \item Considering $Y\times Y$ with the $G$-action, $g(y,y')=(gy,gy')$, then the oriyections $\rho_{0},\rho_{1}:Y\times Y\to Y$ are $G$-homotopic.
-\end{enumerate}
-\end{prop}
-
-\begin{exam}(\cite{BCH94}, p. 7)
-    If $\Gamma$ is a discrete group , then there is a model of $\underline{E}\Gamma$ defined by
-    \begin{align*}
-        X_{\Gamma}=\{f:\Gamma \to [0,1]: f \text{ has finite support and} \sum_{\gamma\in \Gamma } f(\gamma)=1\},
-    \end{align*}
-    with the $\Gamma$-action by translation and topology heredited by the metric
-    \begin{align*}
-        d(f_{1},f_{2})=\sup_{\gamma\in \Gamma} |f_{1}(\gamma)-f_{2}(\gamma)|.
-    \end{align*}
-\end{exam}
-
-\noindent For instance, if we consider $(\mathbb{Z}_{2},+)$, we get 
-\begin{align*}
-    X_{\mathbb{Z}_{2}}:=\{f:\mathbb{Z}_{2}\to [0,1]|f(0)+f(1)=1\},
-\end{align*}
-where the metric is
- \begin{align*}
-        d(f_{1},f_{2})&=\sup_{\gamma\in \mathbb{Z}_{2}} |f_{1}(\gamma)-f_{2}(\gamma)|\\
-        &= \sup \{|f_{1}(0)-f_{2}(0)|, |f_{1}(1)-f_{2}(1)|\}\\
-        &= \sup \{|f_{1}(0)-f_{2}(0)|, |1-f_{1}(0)-1+f_{2}(0)|\}\\
-        &= \sup \{|f_{1}(0)-f_{2}(0)|, |f_{2}(0)-f_{1}(0)|\}\\
-        &=|f_{1}(0)-f_{2}(0)|.
-    \end{align*}
-With this, we claim that $X_{\mathbb{Z}_{2}}\cong [0,1]$.
 
 
 \begin{defn}
@@ -166,7 +117,7 @@ We list two relevant observations about equivariant proper spaces.
 
 \subsubsection{Groupoids}
 
-In this section we discuss about groupoid and groupoid actions where our main reference will be \cite{EM10}. A {\bf groupoid} is a small category such that any arrow is an isomorphism. In this way a groupoid $\mathcal{G}$ is compossed by a class of objects $Z$ and a class of morphisms denoted $\mathcal{G}$ too. 
+In this section we discuss about groupoids and groupoid actions where our main reference will be \cite{EM10}. A {\bf groupoid} is a small category such that any arrow is an isomorphism. In this way a groupoid $\mathcal{G}$ is compossed by a class of objects $Z$ and a class of morphisms denoted $\mathcal{G}$ too. 
 Now we present some spaces with groupoid actions.
 \begin{defn}
     Let $\mathcal{G}$ be a topological groupoid\footnote{A topological groupoid is a groupoid $\mathcal{G}$ such that $Z$ and $\mathcal{G}$ are Hausdorff and the structure maps source and target $s,t:\mathcal{G}\to Z$ are continuous and open (see \cite{FSW20}, p. 2).}.
@@ -177,13 +128,7 @@ Now we present some spaces with groupoid actions.
         \end{align*}
         which determines the {\bf action}, and holds associativity and unitality conditions.
         
-        \item A topological groupoid is called a (numerable) {\bf proper groupoid} (see \cite{EM10}, p. 6) if there is a family of compactly supported probability measures\footnote{A compactly supported probability measure on a space $X$ is a positive, unital, linear functional on $C(X,\mathbb{C})$ that factors through $C(K,\mathbb{C})$ for any compact $K\subseteq X$.} $(\mu^{z})_{z\in Z}$ on the fibres $\mathcal{G}^{z}=t^{-1}(z)$ of the target map $t:\mathcal{G}\to Z$ with the following properties 
-\begin{enumerate}
-    \item $(\mu^{z})_{z\in Z}$ is $\mathcal{G}$-invariant, i.e., $g_{*}(\mu^{s(g)})=\mu^{t(g)}$ for all $g\in \mathcal{G}$,
-    \item the map $t:supp\ \mu \to Z$ is proper, where $supp\ \mu\subseteq$ is the closure of $\bigcup_{z\in Z} supp\ \mu^{z}\subseteq \bigcup_{z\in Z}\mathcal{G}^{z}\subseteq \mathcal{G}$,
-    \item $(\mu^{z})_{z\in Z}$ depends continuously on $z$ in the sense that for each $f\in C(\mathcal{G})$, the function $z\mapsto \int_{\mathcal{G}^{z}}f(g)d\mu^{z}(g)$ on $Z$ is continuous.
-\end{enumerate}
-
+        \item \textcolor{red}{Definir grupoide propio teneindo en cuenta $\Gamma \ltimes X$}
     \end{itemize}
 \end{defn}
 
@@ -203,28 +148,13 @@ For a group $\Gamma$, consider the groupoid $\mathcal{G}:=\Gamma^{*}$, where $\m
 \begin{defn}
     A $\mathcal{G}$-space $X$ is called {\bf proper} if the transformation groupoid $\mathcal{G}\ltimes X$ is a proper groupoid.
 \end{defn}
-In groupoid case, there still a relation between the definition of proper $\mathcal{G}$-space and the fact that the action map be a proper map, as follows:.
-% https://q.uiver.app/#q=WzAsMixbMSwwLCJcXHRleHR7VGhlIGFjdGlvbiBtYXAgfSBcXFxcIFxcbWF0aGNhbHtHfV97c31cXHRpbWVzX3tcXHJob30gWFxcdG8gWFxcdGltZXMgWFxcXFwgKGcseClcXG1hcHN0byAoZ3gseClcXFxcIFxcdGV4dHtpcyBhIHByb3BlciBtYXB9Il0sWzAsMCwiWCBcXHRleHR7aXMgYSBwcm9wZXJseX1cXFxcIFxcdGV4dHtudW1lcmFibGUgfSBcXG1hdGhjYWx7R31cXHRleHR7LXNwYWNlfSAiXSxbMCwxLCIyIiwwLHsib2Zmc2V0IjotNSwibGV2ZWwiOjJ9XSxbMSwwLCIxIiwwLHsib2Zmc2V0IjotNSwibGV2ZWwiOjJ9XV0=
-\[\begin{tikzcd}
-	\begin{array}{c} X \text{is a properly}\\ \text{numerable } \mathcal{G}\text{-space}  \end{array} & \begin{array}{c} \text{The action map } \\ \mathcal{G}_{s}\times_{\rho} X\to X\times X\\ (g,x)\mapsto (gx,x)\\ \text{is a proper map} \end{array}
-	\arrow["1", shift left=5, Rightarrow, from=1-1, to=1-2]
-	\arrow["2", shift left=5, Rightarrow, from=1-2, to=1-1]
-\end{tikzcd}\]
-
-\noindent where, the implication 1. is allways true (see \cite{EM10}, p. 6, Theorem 2.13), but for the converse 2 (see \cite{EM10}, p. 7, Theorem 2.16) we need that 
-\begin{itemize}
-    \item $\mathcal{G}$ be a locally compact groupoid with a Haar System.
-    \item $X$ be a locally compact space.
-    \item $\mathcal{G}\backslash X$ be a paracompact space.
-\end{itemize}
 
 \begin{defn}{\cite{EM10}, p. 9}
-    A properly numerable $\mathcal{G}$-space $E\mathcal{G}$ is {\bf universal} if and only if, any properly numerable $\mathcal{G}$-space $X$ admits a $\mathcal{G}$-map $X\to E\mathcal{G}$ and if there are two $\mathcal{G}$-maps $f,g:X\to E\mathcal{G}$, then $f$ and $g$ are $\mathcal{G}$-equivariantly homotopic. 
+    A properly numerable \textcolor{red}{ver como podemos quitar la palabra numerable} $\mathcal{G}$-space $E\mathcal{G}$ is {\bf universal} if and only if, any properly numerable $\mathcal{G}$-space $X$ admits a $\mathcal{G}$-map $X\to E\mathcal{G}$ and if there are two $\mathcal{G}$-maps $f,g:X\to E\mathcal{G}$, then $f$ and $g$ are $\mathcal{G}$-equivariantly homotopic. 
 \end{defn}
 
 With this notion of universal space we have that:
 \begin{enumerate}
-    \item $\mathcal{G}$ is properly numerable if and only if $E\mathcal{G}=Z$
     \item If $\mathcal{G}$ is a locally compact groupoid, then there exist a construction of $E\mathcal{G}$.
 \end{enumerate}
 
@@ -247,7 +177,8 @@ Conversely,   if $X$ is a $(\Gamma^{*}\ltimes X)$-space we define
 &=\{(\gamma,x)\in \Gamma\times X: \gamma\cdot x= x \}=\Gamma_{x}
 \end{align*}  
   
-  \item We say that a $\Gamma$-space $X$ is proper if the transformation groupoid $\Gamma^{*}\ltimes X$ is a proper groupoid. When $\Gamma$ is a discrete group, \textcolor{red}{coincide con la definicion de $\Gamma$ espacio propio (espacio con accion propia)}.  
+  \item We say that a $\Gamma$-space $X$ is proper if the transformation groupoid $\Gamma^{*}\ltimes X$ is a proper groupoid. When $\Gamma$ is a discrete group, \textcolor{red}{Parece definicion hay que demostrarlo}.
+  \item $\underline{E}\Gamma(\Gamma \ltimes \underline{E}\Gamma)\cong_{h}\underline{E}\Gamma$ as $\Gamma\ltimes \underline{E}\Gamma$.  
 \end{enumerate}
  
 \end{remark}
@@ -311,28 +242,11 @@ where this implies that $\rho$ is a $(\Gamma^{*}\ltimes X)$-equivariant map by
     \item A $\mathcal{G}$-vector bundle $V$ on $X$ is {\bf full} if for every $x\in X$, the fibre $V_{x}$ contains all irreducible representations of the stabilizer $\mathcal{G}_{x}^{x}$.
 \end{itemize}
 
-\begin{remark}
-    If there is a full $\mathcal{G}$-vector bundle over $X$, then $X$ has enough $\mathcal{G}$-vector bundles: Suppose that $V\to X$ is a full $\mathcal{G}$-vector bundle over $X$. We have that $X$ has enough $\mathcal{G}$-vector bundles on $X$ because for a finite dimensional representation $\pi_{x}$ of $\mathcal{G}_{x}^{x}$, we can decompose $\pi_{x}=\alpha_{1}\rho_{1}+\cdots+\alpha_{k}\rho_{k}$ into irreducible representations $\rho$'s. Then, by the fullness of $V\to X$, these representations are summands of $V_{x}$ as $\mathcal{G}_{x}^{x}$-representation, i.e., $V_{x}=(\rho_{1}+\cdots +\rho_{k})+s$. Therefore considering $\beta = max\{\alpha_{i}\}$, we have that $\beta V_{x}=\pi_{x}+s'$. This imply that, $\bigoplus^{\beta}V\to X$ is a $\mathcal{G}$-vector bundle which contains $\pi_{x}$ for each $x\in X$.    
-\end{remark}
 
-
-\begin{remark}[\cite{EM10}, p.10]
-    If $\mathcal{G}$ is a compact group, any $\mathcal{G}$-space has enough $\mathcal{G}$-vector bundles by the trivial $\mathcal{G}$-vector bundles:  Consider a $\mathcal{G}$-space $X$ and a representation $\pi_{x}:\mathcal{G}_{x}^{x}\to GL(V')$ for a finite dimensional space $V'$, we have that there exist a representation\footnote{This representation exist by applying Theorem 3.1 of \cite{Pal61} the compactness of the closed $\mathcal{G}_{x}^{x}$ in the compact $\mathcal{G}$.} $\rho:\mathcal{G}\to GL(V)$, such that the double restriction $(\rho|_{\mathcal{G}_{x}^{x}})|_{V'}$ coincides with $\pi_{x}$. Considering the trivial vector bundle, we get the desired vector bundle:
-    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJYIl0sWzEsMSwiWlxcY29uZ1xce3hcXH0iXSxbMSwwLCJcXHt4XFx9XFx0aW1lcyBWIl0sWzAsMCwiWFxcdGltZXNfe1p9ViJdLFswLDEsImEiLDJdLFsyLDFdLFszLDBdXQ==
-    \begin{center}
-    \begin{tikzcd}
-	{X\times_{Z}V} & {\{x\}\times V} \\
-	X & {Z\cong\{x\}}
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-2, to=2-2]
-	\arrow["a"', from=2-1, to=2-2]
-\end{tikzcd}    
-    \end{center}
-
-\end{remark}
+\end{defn}
 
     
-\end{defn}
+
 
 
 
@@ -392,25 +306,13 @@ Note that the choice of $E$ is independent of the space $Y$.
 
 Now, we present an argument that let us to use the theory of Emmerson - Meyer, mainly Theorem \ref{Emerson-Mayer} in the principal objects of our problem of interest. First we present an important result of Luck.
 
-\begin{thm}(\cite{LO01}, p. 595)\label{suficientes}
-Assume that $\Gamma$ is a discrete group, and let $X$ be any finite dimensional proper $\Gamma$-CW-complex whose isotropy subgroups have bounded order. Then there is a $\Gamma$-vector bundle $E\to X$ such that for each $x\in X$, the fiber $E|_{x}$ is a multiple of the regular representation of $G_{x}$.
-\end{thm}
 
-\begin{remark}
 
-\noindent Then, we conclude that if $\Gamma$ is a discrete group and $X$ is a finite dimensional cocompact proper $\Gamma$-CW complex, $X$ has enough $\mathcal{G}$-vector bundles, where $\mathcal{G}=\Gamma^{*}\ltimes X$:
-\begin{itemize}
-    \item Since $X$ is a proper cocompact $\Gamma$-CW complex it has finite isotropy groups and by the compactness of $\Gamma\setminus X$, it has finite $CW$-cells, and then the isotropy groups has bounded order.   
-	\item  By Theorem \ref{suficientes}, there is a $\Gamma$-vector bundle $E\to X$ such that for each $x\in X$, the fiber $E|_{x}$ is a multiple of the regular representation of $G_{x}$. Then by the Remark \ref{representaciones}, it contains all the irreducible representations (as summands) of the stabilizers $\Gamma_{x}$.
-	\item By Remark \ref{remark grupo 1} and Remark \ref{remark grupo 2}, there is a $\mathcal{G}$-vector bundle $E\to X$ such that for each $x\in X$ it contains (as summands) all the irreducible representations of the stabilizers $\mathcal{G}_{x}$.
-\end{itemize}
-
-\end{remark}
+\textcolor{red}{reparafrasearlo con grupoide $\Gamma\ltimes \underline{E}\gamma$}
 
 \begin{thm}[\cite{EM10}, p. 18]\label{Emerson-Mayer} Let $\mathcal{G}$ be a proper groupoid, let $X$ and $Y$ be smooth $\mathcal{G}$-manifolds, and let $f:X\to Y$ be a smooth $\mathcal{G}$-equivariant map. Suppose that
 \begin{itemize}
     \item $Z$ has enough $\mathcal{G}$-vector bundles and $\mathcal{G}\backslash X$ is compact.
-    \item $Z$ has a full $\mathcal{G}$-vector bundle and $\mathcal{G}\backslash X$ has finite covering dimension.
 \end{itemize}
     Then, there are
     \begin{itemize}
@@ -439,23 +341,22 @@ Assume that $\Gamma$ is a discrete group, and let $X$ be any finite dimensional 
 
 \subsection{Connected sum generalization}
 
-In \cite{Kos92}, p. 99, we found a generalization of connected sum of manifolds called the {\it joining manifolds along submanifolds} (also called the {\it pasting}) which is as follows: Consider 
+In \cite{Kos92}, p. 99, we found a generalization of connected sum of manifolds called the {\it joining manifolds along submanifolds with boundary} \textcolor{red}{Tenemo que buscar una mejor referencia para la suma conexa con frontera} (also called the {\it pasting}) which is as follows: Consider 
 \begin{enumerate}
     \item $M_{1}$ and $M_{2}$ are two $(n+k)$-dimensional smooth manifolds, 
     \item $E\to N$ being a $k$-dimensional Riemannian vector bundle over the $n$-dimensional closed compact submanifold $N$,
-    \item define $\alpha_{E}:E\setminus \xi_{E}(N)\to E\setminus \xi_{E}(N)$ by  $\alpha_{E}(v)=\alpha(v)\cdot \frac{v}{||v||}$, where $\alpha:(0,\infty)\to (0,\infty)$ an orientation reversing diffeomorphism, 
-    \item If $h_{i}:E\to int(M_{i})\subseteq M_{i}$ are embeddings into the interior of $M_{i}$ respectively.
+    \item define $\alpha_{E}:E\setminus \xi_{E}(N)\to E\setminus \xi_{E}(N)$ by  $\alpha_{E}(||v||)=\alpha(v)\cdot \frac{v}{||v||}$, where $\alpha:(0,\infty)\to (0,\infty)$ an orientation reversing diffeomorphism, 
+    \item $h_{i}:E\to int(M_{i})\subseteq M_{i}$ are embeddings into the interior of $M_{i}$ respectively \textcolor{red}{frase incompatible con la idea de que sea incluida la frontera}.
 \end{enumerate}
 With these, we define $M(h_{1},h_{2})$ the join manifold along $N$ as $M_{1}\cup M_{2}/\sim$, where for $v\in h_{1}(E\setminus \xi_{E}(N))$ we consider the identification $v\sim h_{2}\circ \alpha_{E}\circ h_{1}^{-1}(v)$.
 \begin{remark}[\cite{Kos92}, p. 100]
     \begin{enumerate}
-        \item $M(h_{1},h_{2})$ is a smooth manifold.
-        \item If $N=S^{n}\subset S^{n+m}$, then the join of $M$ and $S^{n+m}$ along $S^{n}$ (when $S\cong S^{n}$ in $M$ has a trivial normal bundle) is called the surgery or a spherical modification on the sphere $S$.
+        \item $M(h_{1},h_{2})$ is a smooth manifold with boundary\textcolor{red}{Necesitamos una referencia apropiada}.
     \end{enumerate}
 \end{remark}
 
 \begin{remark}\label{Tangente de un fibrado vector}
-    If $\rho:E\to W$ is a vector bundle, then $TE\cong TW\oplus E$: we have the exact sequence $0\to \rho^{*}E\to TE \to \rho^{*}TW \to 0$ (see \cite{SP99}, p. 103), then the restricted exact sequence $0\to \rho^{*}E|_{W}\to TE|_{W} \to \rho^{*}TW|_{W} \to 0$, where $W\subseteq E$ by the zero section $s$, is identified with $0\to E\to TE|_{W}\to TW\to 0$, by the fact that $\rho^{*}E|_{W}\cong E$ and $(\rho^{*}TW)|_{W}\cong TW$. We have that this sequence split, because the map $d\rho:TE|_{W}\to TW$ has right inverse by $\rho \circ s = id_{W}$. 
+    Recall that if $\rho:E\to W$ is a $\Gamma$-vector bundle, then $TE\cong TW\oplus E$: we have the exact sequence $0\to \rho^{*}E\to TE \to \rho^{*}TW \to 0$ (see \cite{SP99}, p. 103), then the restricted exact sequence $0\to \rho^{*}E|_{W}\to TE|_{W} \to \rho^{*}TW|_{W} \to 0$, where $W\subseteq E$ by the zero section $s$, is identified with $0\to E\to TE|_{W}\to TW\to 0$, by the fact that $\rho^{*}E|_{W}\cong E$ and $(\rho^{*}TW)|_{W}\cong TW$. We have that this sequence split, because the map $d\rho:TE|_{W}\to TW$ has right inverse by $\rho \circ s = id_{W}$. 
 \end{remark}
 
 \subsection{Deformation to the normal cone}
@@ -475,7 +376,7 @@ as set and with smooth structure given by the diffeomorphism (onto its image) $\
 
 
 \begin{exam}\label{Deformation to the normal cone example}
-    Consider a smooth map $f:\partial M \to W$ for $M$ and $W$ manifolds with boundary. By Theorem \ref{Emerson-Mayer}, we have the commutative diagram
+    Consider a $\Gamma$-equivariant smooth map $f:\partial M \to W$ for $M$ and $W$ $\Gamma$-manifolds with boundary. By Theorem \ref{Emerson-Mayer}, we have the commutative diagram
     % https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIlciXSxbMSwwLCJFIl0sWzAsMCwiViJdLFswLDMsIlxceGlfe1xccGFydGlhbCBNfSJdLFsyLDEsIlxccmhvX3tFfSJdLFswLDEsImYiLDJdLFszLDIsIlxcZXRhX3tmfSJdLFswLDIsIlxcdGlsZGV7Z30iLDFdXQ==
 \[\begin{tikzcd}
 	V & E \\
@@ -487,12 +388,12 @@ as set and with smooth structure given by the diffeomorphism (onto its image) $\
 	\arrow["f"', from=2-1, to=2-2]
 \end{tikzcd}\]
 
-\noindent where $\eta_{f}$ is an embedding. Then in this case
+\noindent where $\eta_{f}$ is a $\Gamma$-embedding. Then in this case
 \begin{align*}
     DNC(E,\partial M)|_{[0,1]}=(E\times (0,1])\sqcup (\nu_{\partial M}^{E}\times \{0\})=(E\times (0,1])\sqcup (V\times \{0\}),
 \end{align*}
 where 
-$\partial(DNC(E,\partial M)|_{[0,1]})= (V\times \{0\})\cup (E\times \{1\})\cup (E|_{\partial W}\times (0,1))$.
+$\partial(DNC(E,\partial M)|_{[0,1]})= (V\times \{0\})\cup (E\times \{1\})\cup (E|_{\partial W}\times (0,1))$ \textcolor{red}{Podemos ponerlo un poco mas general}.
 
 \end{exam}
 
@@ -500,7 +401,7 @@ $\partial(DNC(E,\partial M)|_{[0,1]})= (V\times \{0\})\cup (E\times \{1\})\cup (
 \section{Pushforward homology}
 
 \begin{defn}\label{homologia}
-A \textit{$\Gamma$-homology theory} $\mathscr{H}_*^\Gamma$ with values in $R$-modules is a collection of covariant functors $\mathscr{H}_n^\Gamma$ from the category of $\Gamma$-CW cocompact pairs to the category of $R$-modules, indexed by $n\in \mathbb{Z}$, together with natural transformations called the boundary maps $$\partial_n^\Gamma:\mathscr{H}_n^\Gamma(X,A)\rightarrow\mathscr{H}_{n-1}^\Gamma(A)$$
+A \textcolor{red}{Referencia de Luck} \textit{$\Gamma$-homology theory} $\mathscr{H}_*^\Gamma$ with values in $R$-modules is a collection of covariant functors $\mathscr{H}_n^\Gamma$ from the category of $\Gamma$-proper CW cocompact pairs to the category of $R$-modules, indexed by $n\in \mathbb{Z}$, together with natural transformations called the boundary maps $$\partial_n^\Gamma:\mathscr{H}_n^\Gamma(X,A)\rightarrow\mathscr{H}_{n-1}^\Gamma(A)$$
   for $n\in\mathbb{Z}$ (where $\mathscr{H}_{*}^{\Gamma}(A):=\mathscr{H}_{*}^{\Gamma}(A,\emptyset)$), such that the following axioms are satisfied:
     \begin{enumerate}
     \item \textbf{$\Gamma$-homotopy invariance.}\\    
@@ -583,8 +484,10 @@ for all $i,j\in\mathbb{Z}$, which are compatible with the boundary maps.
     \begin{align*}
         -\otimes \tau:\mathscr{H}_{\Gamma}^{*}(Y)\to \mathscr{H}_{\Gamma}^{*+d}(f^{*}E).
     \end{align*}
-    We say that a smooth manifold with boundary $M$ is a $\mathscr{H}_{\Gamma}$-orientable if $TM$ is $\mathscr{H}_{\Gamma}$-orientable. When is chosen a fixed $\mathscr{H}_{\Gamma}$-orientation for a real $\Gamma$-vector bundle (or particularly for a manifold), we say that it is a $\mathscr{H}_{\Gamma}$-oriented bundle (or manifold).
+    We say that a smooth manifold with boundary $M$ is a $\mathscr{H}_{\Gamma}$-orientable if $TM$ is $\mathscr{H}_{\Gamma}$-orientable. When is chosen a fixed $\mathscr{H}_{\Gamma}$-orientation for a real $\Gamma$-vector bundle (or particularly for a manifold), we say that it is a $\mathscr{H}_{\Gamma}$-oriented bundle (or manifold) \textcolor{red}{Como arregla Luck la orientacion para pareja. Definir cohmologia de fibrado}.
 \end{defn}
+
+\textcolor{red}{Decir que usamos teoria de cohomologia de soporte compacto. Ojala incluir cita para indicar que significa esto}
 
 \begin{remark}
     Note that in conditions of Definition \ref{thom}, if we run the multiplicative structure in order to get the map by multiplication of $\tau$, we need that 
@@ -632,6 +535,8 @@ We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, 
     \cdots\to\mathscr{H}_{\Gamma}^{*-1}(\partial N)\xrightarrow{l_!}\mathscr{H}_{\Gamma}^*(N^0)\xrightarrow{i^0_!}\mathscr{H}_{\Gamma}^*(N)\to\cdots
     \end{align*}
     Here we are using the identification $\mathscr{H}_{\Gamma}^*(N^0)\cong\mathscr{H}_\Gamma^*(N,\partial N)$. Then, we mean that for the long exact sequence for the maps $i:\partial N \to N$ and $j:N\to (N,\partial N)$, we get that $l!=\partial^{*}$ and $i^{0}!=j^{*}$.
+    \item $f$ restriccion \textcolor{red}{Redactar}
+        \item $(f\sqcup g)!=f!\oplus g!$ \textcolor{red}{Redactar}
     \end{enumerate}
 \end{defn}
 
@@ -659,7 +564,7 @@ We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, 
 \begin{defn}\label{pushforward 2}
     Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a cocompact proper $\Gamma$-CW pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
 \begin{enumerate}
-    \item $(M,\partial M)$ is a $\Gamma$-proper manifold with boundary (non necessarily cocompact) with a $\mathscr{H}_{\Gamma}$-orientation.
+    \item $(M,\partial M)$ is a $\Gamma$-proper manifold with boundary cocompact with a $\mathscr{H}_{\Gamma}$-orientation.
     \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map of pairs.
     \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. 
     \item The equivalence relation
@@ -1303,25 +1208,10 @@ satisfy that $(s\amalg s^{-})!(x_{M}\oplus x_{M})=0\in \mathscr{H}_{\Gamma}^{*}(
 \end{proof}
 
 
+\begin{remark}
+Thom: if $\rho_{E}:E\to E$ is a $\Gamma$-vector bundle, then $(M,\partial M,\pi_{M},x_{M})\sim (S(E),S(E)|_{\partial M}, \pi_{M}\circ\rho_{S(E)})$\textcolor{red}{Redactar y demostrar mejor}.
+\end{remark}
 
-\begin{comment}
-    
-\begin{prop}
-    The groups of Definition \ref{pushforward 1} and Definition \ref{pushforward 2} computed on a pair $(X,A)$ are isomorphic. 
-\end{prop}
-
-\begin{proof}
-    Idea: 
-    \begin{itemize}
-        \item if $(M,\partial M, \pi, x) \sim (N,\partial N, \pi', x')$, then we get that both cycles are $\sim_{2}$-related too, considering $(W,\partial W)=(N,\partial N)$, and by the $\sim$ relation, there exist $f:(M,\partial M)\to (N,\partial N)$, obtaining $f_{M}=f$ and $f_{N}=id_{N}$, and with these maps, we get that $(M,\partial M, \pi, x) \sim_{2} (N,\partial N, \pi', x')$.
-        \item if $(M,\partial M, \pi, x) \sim_{2} (N,\partial N, \pi', x')$, then we have maps $f_{M}:M\to W$ and $f_{N}:N\to W$ such that $f_{M}(x)=f_{N}(x')$.
-        \begin{enumerate}
-            \item {\bf Strategy 1} Seek an embeding $N\subseteq W$, and construct $f:M\to N$ using $Im(f_{M})\cap \nu$, where $\nu$ is the tubular neighborhood of $N$ in $W$.
-            \item {\bf Strategy 2} Find a map $g:W\to M\sqcup N$ using the coproduct property, and compose with some proyection to define $f:M\to N$. 
-         \end{enumerate}
-    \end{itemize}
-\end{proof}
-\end{comment}
 
 \begin{defn}
 For a map $g:(X,A)\to (Y,B)$, define $\mathscr{H}^{pf}_{*}(g):=g_{*}$ by 
