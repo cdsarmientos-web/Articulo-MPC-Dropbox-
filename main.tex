@@ -424,7 +424,7 @@ A  \textit{$\Gamma$-homology theory} $\mathscr{H}_*^\Gamma$ with values in $R$-m
     $$\bigoplus_{i\in I}j_{i}^{*}:\bigoplus_{i\in I}\mathscr{H}^{n}_{\Gamma}(X_i)\rightarrow\mathscr{H}^{n}_{\Gamma}(\coprod_{i\in I}X_i)$$
     is a group isomorphism.
     \end{enumerate}
-  \end{defn}  
+\end{defn}  
 
 \begin{defn}[\cite{Luck05}]
   A \textit{$\Gamma$-cohomology theory} $\mathscr{H}_{\Gamma}^{*}$ with values in $R$-modules is a collection of covariant
@@ -691,6 +691,41 @@ where, $\phi_{M}=\xi_{E^{W}}\circ f_{M}$, $\phi_{N}=\eta_{f_{N}}\circ \xi_{V}$ a
 \end{itemize}
 
 \end{proof}
+
+\begin{lemma}\label{lema normales isomorfos}
+For any $\Gamma$-proper embeddings $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$, there exist $\Gamma$-vector bundles $D_{1}\to W_{1}$ and $D_{2}\to W_{2}$ such that $$\nu_{\xi_{D_{1}}\circ i_{1}}\cong \nu_{\xi_{D_{2}}\circ i_{2}}.$$
+\end{lemma}
+\begin{proof}
+Consider the tangent vector bundles $TW_{k}\to W_{k}$ for $k=1,2 $ and the unique up to equivariant homotopy maps $a_{1}:W_{1}\to Z$, and $a_{2}:W_{2}\to Z$, by the universal property of $Z=\underline{E}\Gamma$. By the Lemma \ref{integral lemma}, we get that $a^{*}_{1}E_{1}\cong TW_{1}\oplus C_{1}$ and $a^{*}_{2}E_{2}\cong TW_{2}\oplus C_{2}$, for $\Gamma$-vector bundles $E_{1},E_{2}\to Z$, $C_{1}\to W_{1}$ and $C_{2}\to W_{2}$, as shows the following diagram:
+    % https://q.uiver.app/#q=WzAsOSxbMiwxLCJOIl0sWzMsMSwiV197Mn0iXSxbNCwxLCJaIl0sWzEsMSwiV197MX0iXSxbMCwxLCJaIl0sWzAsMCwiRV97MX0iXSxbNCwwLCJFX3syfSJdLFsxLDAsImFfezF9XnsqfUVfezF9XFxjb25nIFRXX3sxfVxcb3BsdXMgQ197MX0iXSxbMywwLCJhX3syfV57Kn1FX3syfVxcY29uZyBUV197Mn1cXG9wbHVzIENfezJ9Il0sWzUsNF0sWzMsNCwiYV97MX0iXSxbMCwzLCJpX3sxfSJdLFswLDEsImlfezJ9IiwyXSxbMSwyLCJhX3syfSIsMl0sWzYsMl0sWzcsM10sWzgsMV1d
+\[\begin{tikzcd}
+	{E_{1}} & {a_{1}^{*}E_{1}\cong TW_{1}\oplus C_{1}} && {a_{2}^{*}E_{2}\cong TW_{2}\oplus C_{2}} & {E_{2}} \\
+	Z & {W_{1}} & N & {W_{2}} & Z
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=1-5, to=2-5]
+	\arrow["{a_{1}}", from=2-2, to=2-1]
+	\arrow["{i_{1}}", from=2-3, to=2-2]
+	\arrow["{i_{2}}"', from=2-3, to=2-4]
+	\arrow["{a_{2}}"', from=2-4, to=2-5]
+\end{tikzcd}\]
+If we consider the $\Gamma$-vector bundles $D_{1}:=a_{1}^{*}E_{2}\oplus C_{1}$ and $D_{2}:=a_{2}^{*}E_{1}\oplus C_{2}$ over $W_{1}$ and $W_{2}$, respectively. With this in mind, denoting $E:=E_{1}\oplus E_{2}$, we note that:
+\begin{enumerate}
+    \item $TD_{1}|_{N}\cong TD_{2}|_{N}$: by one hand we have $TD_{1}\cong TW_{1}\oplus D_{1}$ by Remark \ref{Tangente de un fibrado vector}, and by the other hand \begin{align*}
+        (a_{1}\circ i_{1})^{*}E&=i_{1}^{*}(a_{1}^{*}E_{1}\oplus a_{1}^{*}E_{2})\\
+        &=i_{1}^{*}(TW_{1}\oplus C_{1} \oplus a_{1}^{*}E_{2})\\
+        &\cong i_{1}^{*}(TW_{1}\oplus D_{1})\\
+        &\cong TW_{1}|_{N}\oplus D_{1}|_{N}.
+    \end{align*}
+    Therefore, $TD_{1}|_{N}\cong  (a_{1}\circ i_{1})^{*}E$, and analogously, $TD_{2}|_{N}\cong(a_{2}\circ i_{2})^{*}E$. By the universal property of $Z$, we get that the maps $a_{1}\circ i_{1}, a_{2}\circ i_{2}:N\to Z$ are $\Gamma$-homotopical, then $TD_{1}|_{N}\cong TD_{2}|_{N}$.
+    \item $TN\leq TD_{i}|_{N}$: Since $D_{1}$ is a vector bundle over $W_{1}$, using the composition of its zero section and the map $i_{1}$, we find that there is an embedding $N\hookrightarrow D_{1}$, and therefore $TD_{1}|_{N}\cong TN\oplus \nu_{N}^{D_{1}}$, which implies $TN\leq TD_{1}|_{N}$.
+    
+    %$TD_{1}=TW_{1}\oplus D_{1}$, we get that $TD_{1}|_{N}\cong TW_{1}|_{N}\oplus D_{1}|_{N}\cong TN\oplus \nu_{N}^{W}\oplus D_{1}|_{N}$ 
+\end{enumerate}
+Then, we get that $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$.
+\end{proof}
+
 
 
 \begin{prop}\label{Equivalence relation 1}
@@ -1015,41 +1050,8 @@ To prove that $(\iota_{W}\circ \tau_{W})!(x_{M})=(\iota_{\tilde{W}}\circ \tau_{\
 
 
 
-\item Transitivity:
-    Consider the following $\Gamma$-maps:
-    \begin{enumerate}
-        \item The embeddings $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$.%Son morfismos de pares porque así los da la relación de equivalencia. 
-        \item The unique up to equivariant homotopy maps $a_{1}:W_{1}\to Z$, and $a_{2}:W_{2}\to Z$, by the universal property of $Z=\underline{E}\Gamma$.
-        \item The tangent vector bundles $TW_{1}\to W_{1}$ and $TW_{2}\to W_{2}$. 
-    \end{enumerate}
-    By the Lemma \ref{integral lemma}, we get that $a^{*}_{1}E_{1}\cong TW_{1}\oplus C_{1}$ and $a^{*}_{2}E_{2}\cong TW_{2}\oplus C_{2}$, for $\Gamma$-vector bundles $E_{1},E_{2}\to Z$, $C_{1}\to W_{1}$ and $C_{2}\to W_{2}$, as shows the following diagram:
-    % https://q.uiver.app/#q=WzAsOSxbMiwxLCJOIl0sWzMsMSwiV197Mn0iXSxbNCwxLCJaIl0sWzEsMSwiV197MX0iXSxbMCwxLCJaIl0sWzAsMCwiRV97MX0iXSxbNCwwLCJFX3syfSJdLFsxLDAsImFfezF9XnsqfUVfezF9XFxjb25nIFRXX3sxfVxcb3BsdXMgQ197MX0iXSxbMywwLCJhX3syfV57Kn1FX3syfVxcY29uZyBUV197Mn1cXG9wbHVzIENfezJ9Il0sWzUsNF0sWzMsNCwiYV97MX0iXSxbMCwzLCJpX3sxfSJdLFswLDEsImlfezJ9IiwyXSxbMSwyLCJhX3syfSIsMl0sWzYsMl0sWzcsM10sWzgsMV1d
-\[\begin{tikzcd}
-	{E_{1}} & {a_{1}^{*}E_{1}\cong TW_{1}\oplus C_{1}} && {a_{2}^{*}E_{2}\cong TW_{2}\oplus C_{2}} & {E_{2}} \\
-	Z & {W_{1}} & N & {W_{2}} & Z
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-2, to=2-2]
-	\arrow[from=1-4, to=2-4]
-	\arrow[from=1-5, to=2-5]
-	\arrow["{a_{1}}", from=2-2, to=2-1]
-	\arrow["{i_{1}}", from=2-3, to=2-2]
-	\arrow["{i_{2}}"', from=2-3, to=2-4]
-	\arrow["{a_{2}}"', from=2-4, to=2-5]
-\end{tikzcd}\]
-If we consider the $\Gamma$-vector bundles $D_{1}:=a_{1}^{*}E_{2}\oplus C_{1}$ and $D_{2}:=a_{2}^{*}E_{1}\oplus C_{2}$ over $W_{1}$ and $W_{2}$, respectively. With this in mind, denoting $E:=E_{1}\oplus E_{2}$, we note that:
-\begin{enumerate}
-    \item $TD_{1}|_{N}\cong TD_{2}|_{N}$: by one hand we have $TD_{1}\cong TW_{1}\oplus D_{1}$ by Remark \ref{Tangente de un fibrado vector}, and by the other hand \begin{align*}
-        (a_{1}\circ i_{1})^{*}E&=i_{1}^{*}(a_{1}^{*}E_{1}\oplus a_{1}^{*}E_{2})\\
-        &=i_{1}^{*}(TW_{1}\oplus C_{1} \oplus a_{1}^{*}E_{2})\\
-        &\cong i_{1}^{*}(TW_{1}\oplus D_{1})\\
-        &\cong TW_{1}|_{N}\oplus D_{1}|_{N}.
-    \end{align*}
-    Therefore, $TD_{1}|_{N}\cong  (a_{1}\circ i_{1})^{*}E$, and analogously, $TD_{2}|_{N}\cong(a_{2}\circ i_{2})^{*}E$. By the universal property of $Z$, we get that the maps $a_{1}\circ i_{1}, a_{2}\circ i_{2}:N\to Z$ are $\Gamma$-homotopical, then $TD_{1}|_{N}\cong TD_{2}|_{N}$.
-    \item $TN\leq TD_{i}|_{N}$: Since $D_{1}$ is a vector bundle over $W_{1}$, using the composition of its zero section and the map $i_{1}$, we find that there is an embedding $N\hookrightarrow D_{1}$, and therefore $TD_{1}|_{N}\cong TN\oplus \nu_{N}^{D_{1}}$, which implies $TN\leq TD_{1}|_{N}$.
-    
-    %$TD_{1}=TW_{1}\oplus D_{1}$, we get that $TD_{1}|_{N}\cong TW_{1}|_{N}\oplus D_{1}|_{N}\cong TN\oplus \nu_{N}^{W}\oplus D_{1}|_{N}$ 
-\end{enumerate}
-Then, we get that $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$. With this isomorphism, we construct $$W:=(D_{1}\oplus \mathbb{R})_{\nu_{1}}\#_{\nu_{2}} (D_{2}\oplus \mathbb{R}),$$ the joint of the vector bundles (manifolds) $D_{1}\oplus \mathbb{R}$ and $D_{2}\oplus \mathbb{R}$ along the submanifold $N$ across the normal bundles $\nu_{1}\oplus \mathbb{R}$ and $\nu_{2}\oplus \mathbb{R}$, where
+\item Transitivity: 
+    Consider the relations $(M,\partial M, \pi_{M}, x_{M})\sim (N,\partial N, \pi_{N}, x_{N})$ given by the maps $i_{M}:M\to W_{1}$ and $i_{1}:N\to W_{1}$; and $(N,\partial N, \pi_{N}, x_{N})\sim (P,\partial P, \pi_{P}, x_{P})$. By Lemma \ref{EM-Embedding} we consider the maps $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$ being $\Gamma$-embeddings. By Lemma \ref{lema normales isomorfos}, there exist $\Gamma$-vector bundles $D_{k}\to W_{k}$ for $k=1,2$, such that  $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$. With this isomorphism, we construct the manifold $$W:=(D_{1}\oplus \mathbb{R})_{\nu_{1}}\#_{\nu_{2}} (D_{2}\oplus \mathbb{R}),$$ the joint of the vector bundles (manifolds) $D_{1}\oplus \mathbb{R}$ and $D_{2}\oplus \mathbb{R}$ along the submanifold $N$ across the normal bundles $\nu_{1}\oplus \mathbb{R}$ and $\nu_{2}\oplus \mathbb{R}$, where
 \begin{align*}
 \partial W &= [D_{1}|_{\partial W_{1}}\cup D_{2}|_{\partial W_{2}}]\oplus \mathbb{R} \setminus [j_{1}\circ i_{1}(N)\times \{1\}]
 \end{align*}
@@ -1224,7 +1226,7 @@ satisfy that $(s\amalg s^{-})!(x_{M}\oplus x_{M})=0\in \mathscr{H}_{\Gamma}^{*}(
 
 
 \begin{remark}
-Thom: if $\rho_{E}:E\to E$ is a $\Gamma$-vector bundle, then $(M,\partial M,\pi_{M},x_{M})\sim (S(E),S(E)|_{\partial M}, \pi_{M}\circ\rho_{S(E)})$\textcolor{red}{Redactar y demostrar mejor}.
+Thom: if $\rho_{E}:E\to M$ is a $\Gamma$-vector bundle, then $(M,\partial M,\pi_{M},x_{M})\sim (S(E),S(E)|_{\partial M}, \pi_{M}\circ\rho_{S(E)})$\textcolor{red}{Redactar y demostrar mejor}.
 \end{remark}
 
 
