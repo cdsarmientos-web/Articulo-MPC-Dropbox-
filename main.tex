@@ -400,8 +400,8 @@ $\partial(DNC(E,\partial M)|_{[0,1]})= (V\times \{0\})\cup (E\times \{1\})\cup (
 
 \section{Pushforward homology}
 
-\begin{defn}\label{homologia}
-A \textcolor{red}{Referencia de Luck} \textit{$\Gamma$-homology theory} $\mathscr{H}_*^\Gamma$ with values in $R$-modules is a collection of covariant functors $\mathscr{H}_n^\Gamma$ from the category of $\Gamma$-proper CW cocompact pairs to the category of $R$-modules, indexed by $n\in \mathbb{Z}$, together with natural transformations called the boundary maps $$\partial_n^\Gamma:\mathscr{H}_n^\Gamma(X,A)\rightarrow\mathscr{H}_{n-1}^\Gamma(A)$$
+\begin{defn}[\cite{Luc02}]\label{homologia}
+A  \textit{$\Gamma$-homology theory} $\mathscr{H}_*^\Gamma$ with values in $R$-modules is a collection of covariant functors $\mathscr{H}_n^\Gamma$ from the category of $\Gamma$-proper CW cocompact pairs to the category of $R$-modules, indexed by $n\in \mathbb{Z}$, together with natural transformations called the boundary maps $$\partial_n^\Gamma:\mathscr{H}_n^\Gamma(X,A)\rightarrow\mathscr{H}_{n-1}^\Gamma(A)$$
   for $n\in\mathbb{Z}$ (where $\mathscr{H}_{*}^{\Gamma}(A):=\mathscr{H}_{*}^{\Gamma}(A,\emptyset)$), such that the following axioms are satisfied:
     \begin{enumerate}
     \item \textbf{$\Gamma$-homotopy invariance.}\\    
@@ -535,8 +535,23 @@ We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, 
     \cdots\to\mathscr{H}_{\Gamma}^{*-1}(\partial N)\xrightarrow{l_!}\mathscr{H}_{\Gamma}^*(N^0)\xrightarrow{i^0_!}\mathscr{H}_{\Gamma}^*(N)\to\cdots
     \end{align*}
     Here we are using the identification $\mathscr{H}_{\Gamma}^*(N^0)\cong\mathscr{H}_\Gamma^*(N,\partial N)$. Then, we mean that for the long exact sequence for the maps $i:\partial N \to N$ and $j:N\to (N,\partial N)$, we get that $l!=\partial^{*}$ and $i^{0}!=j^{*}$.
-    \item $f$ restriccion \textcolor{red}{Redactar}
-        \item $(f\sqcup g)!=f!\oplus g!$ \textcolor{red}{Redactar}
+    \item For any $f:(M,\partial M)\to (N,\partial N)$, we had that for the commutative diagram 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiTiJdLFswLDEsIlxccGFydGlhbCBNIl0sWzEsMSwiXFxwYXJ0aWFsIE4iXSxbMiwzLCJmfF97XFxwYXJ0aWFsIE19IiwyXSxbMiwwLCJpX3tcXHBhcnRpYWwgTX0iXSxbMywxLCJpX3tcXHBhcnRpYWwgTn0iLDJdLFswLDEsImYiXV0=
+\[\begin{tikzcd}
+	M & N \\
+	{\partial M} & {\partial N}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["{i_{\partial M}}", from=2-1, to=1-1]
+	\arrow["{f|_{\partial M}}"', from=2-1, to=2-2]
+	\arrow["{i_{\partial N}}"', from=2-2, to=1-2]
+\end{tikzcd}\]
+it is satisfied that $i_{\partial N}^{*}\circ f!=(f|_{\partial M})!\circ i_{\partial M}^{*}$.
+        \item If $f:M_{1}\to N_{1}$ and $g:M_{2}\to N_{2}$, then for the map
+\begin{align*}
+(f\sqcup g):M_{1}\sqcup M_{2}\to N_{1}\sqcup N_{2},
+\end{align*}        
+we have that
+          $$(f\sqcup g)!=f!\oplus g!:\mathscr{H}^{*}_{\Gamma}(M_{1})\oplus \mathscr{H}^{*}_{\Gamma}(M_{2}) \to \mathscr{H}^{*}_{\Gamma}(N_{1})\oplus \mathscr{H}^{*}_{\Gamma}(N_{2})$$
     \end{enumerate}
 \end{defn}
 
@@ -1149,7 +1164,7 @@ For an $\mathscr{H}_{\Gamma}$-oriented manifold $M$ with $\mathscr{H}_{\Gamma}$-
 	\arrow["{f_{2}\amalg g_{2}}"', from=2-3, to=1-2]
 	\arrow["{\pi_{M_{2}}\amalg \pi_{N_{2}}}", from=2-3, to=3-2]
 \end{tikzcd}\]
-In the cohomological elements we have that \textcolor{red}{como sabemos que el pushforward en una suma directa opera asi como en la primera igualdad?}
+By Definition \ref{pushforward 2}, in the cohomological elements we have that 
 \begin{align*}
     (f_{1}\amalg g_{1})!(x_{M_{1}}\oplus x_{N_{1}})&=f_{1}!(x_{M_{1}})\oplus g_{1}!(x_{N_{1}})\\&= f_{2}!(x_{M_{2}})\oplus g_{2}!(x_{N_{2}})\\ &= (f_{2}\amalg g_{2})!(x_{M_{2}}\oplus x_{N_{2}}),
 \end{align*}
@@ -1329,7 +1344,7 @@ is an exact sequence,  were the maps are defined as
 	\arrow["{i_{\partial N}}"', from=2-3, to=1-3]
 	\arrow["{g|_{\partial N}}", from=2-3, to=2-2]
 \end{tikzcd}\]
-we get the commutative diagram (\textcolor{red}{falta el porqué este diagrama es conmutativo. La idea es justificar que para los productos fibrados se va a tener. nos basamos dn la idea no equivariante del profesor Mark Grant \url{https://mathoverflow.net/questions/386052/commutativity-of-restriction-and-gysin-morphisms-in-a-cartesian-square}, y utilizamos el iso de Thom de Luck (el profe me envio el articulo).}).
+by Definition \ref{pushforward 2}, we get the commutative diagram
 % https://q.uiver.app/#q=WzAsNixbMCwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgTSkiXSxbMSwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgVykiXSxbMiwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgTikiXSxbMCwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShNKSJdLFsxLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFcpIl0sWzIsMCwiXFxtYXRoc2Nye0h9X3tcXEdhbW1hfV57Kn0oTikiXSxbMyw0LCJmISJdLFszLDAsImlfe1xccGFydGlhbCBNfV57Kn0iLDJdLFs0LDEsImlfe1xccGFydGlhbCBXfV57Kn0iXSxbNSwyLCJpX3tcXHBhcnRpYWwgTn1eeyp9Il0sWzUsNCwiZyEiLDJdLFsyLDEsImd8X3tcXHBhcnRpYWwgTn0hIl0sWzAsMSwiZnxfe1xccGFydGlhbCBNfSEiLDJdXQ==
 \[\begin{tikzcd}
 	{\mathscr{H}_{\Gamma}^{*}(M)} & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(N)} \\
@@ -1465,6 +1480,84 @@ where $V$ is the normal bundle of the embedding $g:\partial M\to a_{W}^{*}E_{W}$
 \end{tikzcd}\]
 
 
+
+$----------------------------------$
+
+Consider the following embeddings and normal bundles
+% https://q.uiver.app/#q=WzAsNyxbMCwxLCJGfF97XFxwYXJ0aWFsIE19Il0sWzMsMSwiViJdLFs0LDEsImFfe1d9XnsqfUVfe1d9Il0sWzMsMCwiXFxyaG9fe0N9XnsqfVYiXSxbMSwxLCJDXFxjb25nIDBcXG9wbHVzIEMiXSxbMSwwLCJcXG51X3tpX3tDfX0iXSxbMiwyLCJcXHBhcnRpYWwgTSJdLFsxLDIsIlxcZXRhX3tmfSJdLFszLDFdLFs0LDAsImlfe0N9IiwyXSxbNSw0XSxbNCw2LCJcXHJob197Q30iLDJdLFsxLDYsIlxccmhvX3tWfSJdXQ==
+\[\begin{tikzcd}
+	& {\nu_{i_{C}}\cong \rho_{C}^{*}V} && {\rho_{V}^{*}C} \\
+	{F|_{\partial M}} & {C\cong 0\oplus C} && V & {a_{W}^{*}E_{W}} \\
+	&& {\partial M}
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-4, to=2-4]
+	\arrow["{i_{C}}"', from=2-2, to=2-1]
+	\arrow["{\rho_{C}}"', from=2-2, to=3-3]
+	\arrow["{\eta_{f}}", from=2-4, to=2-5]
+	\arrow["{\rho_{V}}", from=2-4, to=3-3]
+\end{tikzcd}\]
+Esto pensandolo en como lo hemos tratado. Ahora, si pensamos en $DNC(a_{W}^{*}E_{W},C)$ debemos preguntarnos primero, como $C$ puede embeberse en $a_{W}^{*}E_{W}$, lueo de hacer eso, la idea es darnos cuenta que el normal de ese embebimiento es precisamente $\rho_{V}^{*}C$.
+
+% https://q.uiver.app/#q=WzAsMTEsWzEsMSwiRnxfe1xccGFydGlhbCBNfSJdLFszLDEsIlYiXSxbNCwxLCJhX3tXfV57Kn1FX3tXfSJdLFszLDAsIlxccmhvX3tWfV57Kn1DIl0sWzIsMSwiQyJdLFsyLDAsIlxcbnVfe2lfe0N9fVxcY29uZyBcXHJob197Q31eeyp9ViJdLFswLDEsIkYiXSxbMiwyLCJcXHBhcnRpYWwgTSJdLFswLDIsIk0iXSxbNCwyLCJXIl0sWzIsMywiWCJdLFsxLDIsIlxcZXRhX3tmfSJdLFszLDEsIlxccmhvX3tcXHJob197Vn1eeyp9Q30iLDJdLFs0LDAsImlfe0N9IiwyXSxbNSw0LCJcXHJob197XFxyaG9fe0N9XnsqfVZ9Il0sWzMsMl0sWzQsNywiXFxyaG9fe0N9IiwyXSxbMCw2LCJpX3tGfF97XFxwYXJ0aWFsIE19fSJdLFs1LDZdLFsyLDksIlxccmhvX3thX3tXfV57Kn1FX3tXfX0iXSxbNiw4LCJcXHJob197Rn0iLDJdLFs3LDgsImlfe1xccGFydGlhbCBNfSJdLFsxLDcsIlxccmhvX3tWfSIsMl0sWzcsOSwiZiJdLFs1LDMsImgiXSxbOCwxMCwiXFxwaV97TX0iLDJdLFs3LDEwLCJcXHBpX3tcXHBhcnRpYWwgTX0iXSxbOSwxMCwiXFxwaV97V30iXSxbMCw3LCJcXHJob197Rn0iLDJdXQ==
+\[\begin{tikzcd}
+	&& {\nu_{i_{C}}\cong \rho_{C}^{*}V} & {\rho_{V}^{*}C} \\
+	F & {F|_{\partial M}} & C & V & {a_{W}^{*}E_{W}} \\
+	M && {\partial M} && W \\
+	&& X
+	\arrow["h", from=1-3, to=1-4]
+	\arrow[from=1-3, to=2-1]
+	\arrow["{\rho_{\rho_{C}^{*}V}}", from=1-3, to=2-3]
+	\arrow["{\rho_{\rho_{V}^{*}C}}"', from=1-4, to=2-4]
+	\arrow[from=1-4, to=2-5]
+	\arrow["{\rho_{F}}"', from=2-1, to=3-1]
+	\arrow["{i_{F|_{\partial M}}}", from=2-2, to=2-1]
+	\arrow["{\rho_{F}}"', from=2-2, to=3-3]
+	\arrow["{i_{C}}"', from=2-3, to=2-2]
+	\arrow["{\rho_{C}}"', from=2-3, to=3-3]
+	\arrow["{\eta_{f}}", from=2-4, to=2-5]
+	\arrow["{\rho_{V}}"', from=2-4, to=3-3]
+	\arrow["{\rho_{a_{W}^{*}E_{W}}}", from=2-5, to=3-5]
+	\arrow["{\pi_{M}}"', from=3-1, to=4-3]
+	\arrow["{i_{\partial M}}", from=3-3, to=3-1]
+	\arrow["f", from=3-3, to=3-5]
+	\arrow["{\pi_{\partial M}}", from=3-3, to=4-3]
+	\arrow["{\pi_{W}}", from=3-5, to=4-3]
+\end{tikzcd}\]
+
+La afirmacion es ahora que sobre el mapa $f\circ \rho_{C}:C\to W$, se corre EM y entonces $\nu_{\eta_{f\circ \rho_{C}}}=\rho_{C}^{*}V$. Si eso es asi, podriamos construir $T$ de forma bonita. Definiendo $\alpha=\xi_{\rho_{a_{W}^{*}E_{W}}}\circ f\circ \rho_{C}$, obtenemos
+% https://q.uiver.app/#q=WzAsMTIsWzIsMiwiViJdLFszLDEsImFfe1d9XnsqfUVfe1d9Il0sWzIsMCwiXFxudV97XFxhbHBoYX1cXGNvbmdcXHJob197Q31eeyp9ViJdLFsxLDEsIkMiXSxbMSwwLCJcXG51X3tpX3tDfX1cXGNvbmcgXFxyaG9fe0N9XnsqfVYiXSxbMCwxLCJGIl0sWzEsMywiXFxwYXJ0aWFsIE0iXSxbMCwzLCJNIl0sWzMsMywiVyJdLFsxLDQsIlgiXSxbMiw0LCJYIl0sWzIsMSwiQyJdLFswLDEsIlxcZXRhX3tmfSJdLFs0LDMsIlxccmhvX3tcXHJob197Q31eeyp9Vn0iXSxbMyw2LCJcXHJob197Q30iLDJdLFs0LDVdLFsxLDgsIlxccmhvX3thX3tXfV57Kn1FX3tXfX0iXSxbNSw3LCJcXHJob197Rn0iLDJdLFs2LDcsImlfe1xccGFydGlhbCBNfSJdLFs0LDIsImgiXSxbNyw5LCJcXHBpX3tNfSIsMl0sWzYsOSwiXFxwaV97XFxwYXJ0aWFsIE19Il0sWzIsMSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMyw1LCJpX3tDfSIsMl0sWzgsMTAsIlxccGlfe1d9Il0sWzAsNiwiXFxyaG9fe1Z9Il0sWzYsOCwiZiIsMl0sWzExLDYsIlxccmhvX3tDfSIsMl0sWzExLDEsIlxcYWxwaGEiXSxbOSwxMCwiSWRfe1h9IiwyXSxbMiwxMSwiXFxyaG9fe1xccmhvX3tWfV57Kn1DfSIsMl1d
+\[\begin{tikzcd}
+	& {\nu_{i_{C}}\cong \rho_{C}^{*}V} & {\nu_{\alpha}\cong\rho_{C}^{*}V} \\
+	F & C & C & {a_{W}^{*}E_{W}} \\
+	&& V \\
+	M & {\partial M} && W \\
+	& X & X
+	\arrow["h", from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-1]
+	\arrow["{\rho_{\rho_{C}^{*}V}}", from=1-2, to=2-2]
+	\arrow["{\rho_{\nu_{\alpha}}}"', from=1-3, to=2-3]
+	\arrow[hook, from=1-3, to=2-4]
+	\arrow["{\rho_{F}}"', from=2-1, to=4-1]
+	\arrow["{i_{C}}"', from=2-2, to=2-1]
+	\arrow["{\rho_{C}}"', from=2-2, to=4-2]
+	\arrow["\alpha", from=2-3, to=2-4]
+	\arrow["{\rho_{C}}"', from=2-3, to=4-2]
+	\arrow["{\rho_{a_{W}^{*}E_{W}}}", from=2-4, to=4-4]
+	\arrow["{\eta_{f}}", from=3-3, to=2-4]
+	\arrow["{\rho_{V}}", from=3-3, to=4-2]
+	\arrow["{\pi_{M}}"', from=4-1, to=5-2]
+	\arrow["{i_{\partial M}}", from=4-2, to=4-1]
+	\arrow["f"', from=4-2, to=4-4]
+	\arrow["{\pi_{\partial M}}", from=4-2, to=5-2]
+	\arrow["{\pi_{W}}", from=4-4, to=5-3]
+	\arrow["{Id_{X}}"', from=5-2, to=5-3]
+\end{tikzcd}\]
+
+$------------------------------------$
+
+
+
+
 Consider the following embeddings and normal bundles:
 % https://q.uiver.app/#q=WzAsNyxbMCwyXSxbMSwxLCJGfF97XFxwYXJ0aWFsIE19Il0sWzQsMSwiViJdLFs1LDEsImFfe1d9XnsqfUVfe1d9Il0sWzQsMCwiXFxudV97XFxldGFfe2Z9fVxcY29uZyBWXFx0aW1lcyAwIl0sWzIsMSwiQ1xcY29uZyAwXFxvcGx1cyBDIl0sWzIsMCwiXFxudV97aV97Q319XFxjb25nIFYiXSxbMiwzLCJcXGV0YV97Zn0iXSxbNCwyXSxbNSwxLCJpX3tDfSIsMl0sWzYsNV1d
 \[\begin{tikzcd}
@@ -1565,7 +1658,7 @@ Denoting $\iota:=i_{F}\circ \xi_{F}:M\to T$ the embedding of $M$ in the first fa
 
 
 
-Then we get the following commutative diagram \textcolor{red}{nuevamente usa comentario de las restricciones}.
+Then we get the following commutative diagram by Definition \ref{pushforward 2}
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShUKSJdLFsxLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBUKSJdLFsxLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBNKSJdLFswLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KE0pIl0sWzAsMSwicl97XFxwYXJ0aWFsfSJdLFszLDAsIlxcaW90YSEiXSxbMiwxLCIoXFxldGFfe2Z9XFxjaXJjIFxceGlfe1Z9KSEiLDJdLFszLDIsInJfe1xccGFydGlhbH0iLDJdXQ==
 \[\begin{tikzcd}
 	{\mathscr{H}_{\Gamma}^{*}(T)} & {\mathscr{H}_{\Gamma}^{*}(\partial T)} \\
@@ -1580,8 +1673,6 @@ Then we have that $r_{\partial}(\iota!(x_{M}))=(\eta_{f}\circ\xi_{V})!(r_{\parti
 i_{*}([T^{0},\emptyset, \pi_{T}|_{T^{0}},y])&= [T^{0},\emptyset, \pi_{T}|_{T^{0}},y]\\&= [T^{0},\emptyset, \pi_{T}\circ i_{T^{0}},y]\\&= [T,\partial T, \pi_{T}, i_{T^{0}}!(y)]\\&=[T,\partial T, \pi_{T},\iota!(x_{M})]\\&=[M,\partial M, \pi_{T}\circ \iota,x_{M}]\\&=[M,\partial M, \pi_{M},x_{M}]    
 \end{align*}
 where: first equality is definition of $i_{*}$; second is a direct composition; third is By Remark \ref{relation 1} on $i_{W^{0}}$; fourth is the obtained pushforward equality; fifth is by Remark \ref{relation 1} on $\iota$; and sixth is the equality $\pi_{M}=\pi_{T}\circ \iota$.
-
-
 
 
 
