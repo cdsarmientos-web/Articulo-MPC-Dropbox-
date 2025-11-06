@@ -1441,240 +1441,29 @@ Where we have that $(Id_{M}\times 0)!(x_{M})=0= Id_{M\times [0,1)}!(0)$ because 
 	\arrow["g"', from=2-3, to=1-2]
 	\arrow["{\pi_{N}}", from=2-3, to=3-2]
 \end{tikzcd}\]
-such that $f!(r_{\partial}(x_{M}))=0=g!(0)$ and $W$ a manifold without boundary.
-
-Since $f:\partial M\to W$ is a proper smooth $\Gamma$-map, we get by Theorem \ref{Emerson-Mayer} that there exist a $\Gamma$-equivariant embedding $\eta_{f}:V\to a_{W}^{*}E_{W}$, where $V$ and $a_{W}^{*}E$ are $\Gamma$-vector bundles over $\partial M$ and $W$ respectively, satisfying the commutative diagram
-% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIk4iXSxbMCwwLCJWIl0sWzEsMCwiRSJdLFszLDEsIlxccmhvX3tFfSJdLFswLDIsIlxceGlfe1Z9Il0sWzAsMSwiZiIsMl0sWzIsMywiXFxldGFfe2Z9Il1d
-\[\begin{tikzcd}
-	V & a_{W}^{*}E_{W} \\
-	{\partial M} & W
-	\arrow["{\eta_{f}}", from=1-1, to=1-2]
-	\arrow["{\rho_{a_{E}^{*}E_{W}}}", from=1-2, to=2-2]
-	\arrow["{\xi_{V}}", from=2-1, to=1-1]
-	\arrow["f"', from=2-1, to=2-2]
-\end{tikzcd}\]
-Then, we get that $0=f!(r_{\partial}(x_{M}))= \rho_{E}!\circ \eta_{f}!\circ \xi_{V}!(r_{\partial}(x_{M}))$, and since $\rho_{E_{W}}!$ its an isomorphism (by Definition \ref{pushforward definition}), $\eta_{f}!\circ \xi_{V}!(r_{\partial}(x_{M}))=0$. 
-
-We have that
-% https://q.uiver.app/#q=WzAsNixbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIlciXSxbMCwwLCJWIl0sWzEsMCwiRT1hX3tXfV57Kn1FX3tXfSJdLFsyLDEsIlxcdW5kZXJsaW5le0V9XFxHYW1tYSJdLFsyLDAsIkVfe1d9Il0sWzMsMSwiXFxyaG9fe0V9Il0sWzAsMiwiXFx4aV97Vn0iXSxbMCwxLCJmIiwyXSxbMiwzLCJcXGV0YV97Zn0iXSxbMSw0LCJhX3tXfSJdLFs1LDRdXQ==
-\[\begin{tikzcd}
-	V & {a_{W}^{*}E_{W}} & {E_{W}} \\
-	{\partial M} & W & {\underline{E}\Gamma}
-	\arrow["{\eta_{f}}", from=1-1, to=1-2]
-	\arrow["{\rho_{E}}", from=1-2, to=2-2]
-	\arrow[from=1-3, to=2-3]
-	\arrow["{\xi_{V}}", from=2-1, to=1-1]
-	\arrow["f"', from=2-1, to=2-2]
-	\arrow["{a_{W}}", from=2-2, to=2-3]
-\end{tikzcd}\]
-
-
-
-where $V$ is the normal bundle of the embedding $g:\partial M\to a_{W}^{*}E_{W}$ giving by Theorem \ref{Emerson-Mayer}. Applying Lemma \ref{integral lemma} $i_{\partial M}$ and the bundle $V\to \partial M$, we get thet there exist $\Gamma$-vector bundles $C$ and $F$ over $\partial M$ and $M$, respectively, such that there is an isomorphism  $\psi:{i_{\partial M}^{*}F\cong V\oplus C}$ making the following diagram commutative
-% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHBhcnRpYWwgTSJdLFsxLDEsIlxcdW5kZXJsaW5le0V9XFxHYW1tYSJdLFswLDAsImFfe1xccGFydGlhbCBNfV57Kn1cXGNvbmcgVlxcb3BsdXMgQyJdLFsxLDAsIkYiXSxbMCwxLCJhX3tcXHBhcnRpYWwgTX0iXSxbMiwwXSxbMywxXSxbMiwzXV0=
-\[\begin{tikzcd}
-	{i_{\partial M}^{*}F\cong V\oplus C} & F \\
-	{\partial M} & {M}
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-2, to=2-2]
-	\arrow["{i_{\partial M}}", from=2-1, to=2-2]
-\end{tikzcd}\]
-
-
-
-$----------------------------------$
-
-Consider the following embeddings and normal bundles
-% https://q.uiver.app/#q=WzAsNyxbMCwxLCJGfF97XFxwYXJ0aWFsIE19Il0sWzMsMSwiViJdLFs0LDEsImFfe1d9XnsqfUVfe1d9Il0sWzMsMCwiXFxyaG9fe0N9XnsqfVYiXSxbMSwxLCJDXFxjb25nIDBcXG9wbHVzIEMiXSxbMSwwLCJcXG51X3tpX3tDfX0iXSxbMiwyLCJcXHBhcnRpYWwgTSJdLFsxLDIsIlxcZXRhX3tmfSJdLFszLDFdLFs0LDAsImlfe0N9IiwyXSxbNSw0XSxbNCw2LCJcXHJob197Q30iLDJdLFsxLDYsIlxccmhvX3tWfSJdXQ==
-\[\begin{tikzcd}
-	& {\nu_{i_{C}}\cong \rho_{C}^{*}V} && {\rho_{V}^{*}C} \\
-	{F|_{\partial M}} & {C\cong 0\oplus C} && V & {a_{W}^{*}E_{W}} \\
-	&& {\partial M}
-	\arrow[from=1-2, to=2-2]
-	\arrow[from=1-4, to=2-4]
-	\arrow["{i_{C}}"', from=2-2, to=2-1]
-	\arrow["{\rho_{C}}"', from=2-2, to=3-3]
-	\arrow["{\eta_{f}}", from=2-4, to=2-5]
-	\arrow["{\rho_{V}}", from=2-4, to=3-3]
-\end{tikzcd}\]
-Esto pensandolo en como lo hemos tratado. Ahora, si pensamos en $DNC(a_{W}^{*}E_{W},C)$ debemos preguntarnos primero, como $C$ puede embeberse en $a_{W}^{*}E_{W}$, lueo de hacer eso, la idea es darnos cuenta que el normal de ese embebimiento es precisamente $\rho_{V}^{*}C$.
-
-% https://q.uiver.app/#q=WzAsMTEsWzEsMSwiRnxfe1xccGFydGlhbCBNfSJdLFszLDEsIlYiXSxbNCwxLCJhX3tXfV57Kn1FX3tXfSJdLFszLDAsIlxccmhvX3tWfV57Kn1DIl0sWzIsMSwiQyJdLFsyLDAsIlxcbnVfe2lfe0N9fVxcY29uZyBcXHJob197Q31eeyp9ViJdLFswLDEsIkYiXSxbMiwyLCJcXHBhcnRpYWwgTSJdLFswLDIsIk0iXSxbNCwyLCJXIl0sWzIsMywiWCJdLFsxLDIsIlxcZXRhX3tmfSJdLFszLDEsIlxccmhvX3tcXHJob197Vn1eeyp9Q30iLDJdLFs0LDAsImlfe0N9IiwyXSxbNSw0LCJcXHJob197XFxyaG9fe0N9XnsqfVZ9Il0sWzMsMl0sWzQsNywiXFxyaG9fe0N9IiwyXSxbMCw2LCJpX3tGfF97XFxwYXJ0aWFsIE19fSJdLFs1LDZdLFsyLDksIlxccmhvX3thX3tXfV57Kn1FX3tXfX0iXSxbNiw4LCJcXHJob197Rn0iLDJdLFs3LDgsImlfe1xccGFydGlhbCBNfSJdLFsxLDcsIlxccmhvX3tWfSIsMl0sWzcsOSwiZiJdLFs1LDMsImgiXSxbOCwxMCwiXFxwaV97TX0iLDJdLFs3LDEwLCJcXHBpX3tcXHBhcnRpYWwgTX0iXSxbOSwxMCwiXFxwaV97V30iXSxbMCw3LCJcXHJob197Rn0iLDJdXQ==
-\[\begin{tikzcd}
-	&& {\nu_{i_{C}}\cong \rho_{C}^{*}V} & {\rho_{V}^{*}C} \\
-	F & {F|_{\partial M}} & C & V & {a_{W}^{*}E_{W}} \\
-	M && {\partial M} && W \\
-	&& X
-	\arrow["h", from=1-3, to=1-4]
-	\arrow[from=1-3, to=2-1]
-	\arrow["{\rho_{\rho_{C}^{*}V}}", from=1-3, to=2-3]
-	\arrow["{\rho_{\rho_{V}^{*}C}}"', from=1-4, to=2-4]
-	\arrow[from=1-4, to=2-5]
-	\arrow["{\rho_{F}}"', from=2-1, to=3-1]
-	\arrow["{i_{F|_{\partial M}}}", from=2-2, to=2-1]
-	\arrow["{\rho_{F}}"', from=2-2, to=3-3]
-	\arrow["{i_{C}}"', from=2-3, to=2-2]
-	\arrow["{\rho_{C}}"', from=2-3, to=3-3]
-	\arrow["{\eta_{f}}", from=2-4, to=2-5]
-	\arrow["{\rho_{V}}"', from=2-4, to=3-3]
-	\arrow["{\rho_{a_{W}^{*}E_{W}}}", from=2-5, to=3-5]
-	\arrow["{\pi_{M}}"', from=3-1, to=4-3]
-	\arrow["{i_{\partial M}}", from=3-3, to=3-1]
-	\arrow["f", from=3-3, to=3-5]
-	\arrow["{\pi_{\partial M}}", from=3-3, to=4-3]
-	\arrow["{\pi_{W}}", from=3-5, to=4-3]
-\end{tikzcd}\]
-
-La afirmacion es ahora que sobre el mapa $f\circ \rho_{C}:C\to W$, se corre EM y entonces $\nu_{\eta_{f\circ \rho_{C}}}=\rho_{C}^{*}V$. Si eso es asi, podriamos construir $T$ de forma bonita. Definiendo $\alpha=\xi_{\rho_{a_{W}^{*}E_{W}}}\circ f\circ \rho_{C}$, obtenemos
-% https://q.uiver.app/#q=WzAsMTIsWzIsMiwiViJdLFszLDEsImFfe1d9XnsqfUVfe1d9Il0sWzIsMCwiXFxudV97XFxhbHBoYX1cXGNvbmdcXHJob197Q31eeyp9ViJdLFsxLDEsIkMiXSxbMSwwLCJcXG51X3tpX3tDfX1cXGNvbmcgXFxyaG9fe0N9XnsqfVYiXSxbMCwxLCJGIl0sWzEsMywiXFxwYXJ0aWFsIE0iXSxbMCwzLCJNIl0sWzMsMywiVyJdLFsxLDQsIlgiXSxbMiw0LCJYIl0sWzIsMSwiQyJdLFswLDEsIlxcZXRhX3tmfSJdLFs0LDMsIlxccmhvX3tcXHJob197Q31eeyp9Vn0iXSxbMyw2LCJcXHJob197Q30iLDJdLFs0LDVdLFsxLDgsIlxccmhvX3thX3tXfV57Kn1FX3tXfX0iXSxbNSw3LCJcXHJob197Rn0iLDJdLFs2LDcsImlfe1xccGFydGlhbCBNfSJdLFs0LDIsImgiXSxbNyw5LCJcXHBpX3tNfSIsMl0sWzYsOSwiXFxwaV97XFxwYXJ0aWFsIE19Il0sWzIsMSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMyw1LCJpX3tDfSIsMl0sWzgsMTAsIlxccGlfe1d9Il0sWzAsNiwiXFxyaG9fe1Z9Il0sWzYsOCwiZiIsMl0sWzExLDYsIlxccmhvX3tDfSIsMl0sWzExLDEsIlxcYWxwaGEiXSxbOSwxMCwiSWRfe1h9IiwyXSxbMiwxMSwiXFxyaG9fe1xccmhvX3tWfV57Kn1DfSIsMl1d
-\[\begin{tikzcd}
-	& {\nu_{i_{C}}\cong \rho_{C}^{*}V} & {\nu_{\alpha}\cong\rho_{C}^{*}V} \\
-	F & C & C & {a_{W}^{*}E_{W}} \\
-	&& V \\
-	M & {\partial M} && W \\
-	& X & X
-	\arrow["h", from=1-2, to=1-3]
-	\arrow[from=1-2, to=2-1]
-	\arrow["{\rho_{\rho_{C}^{*}V}}", from=1-2, to=2-2]
-	\arrow["{\rho_{\nu_{\alpha}}}"', from=1-3, to=2-3]
-	\arrow[hook, from=1-3, to=2-4]
-	\arrow["{\rho_{F}}"', from=2-1, to=4-1]
-	\arrow["{i_{C}}"', from=2-2, to=2-1]
-	\arrow["{\rho_{C}}"', from=2-2, to=4-2]
-	\arrow["\alpha", from=2-3, to=2-4]
-	\arrow["{\rho_{C}}"', from=2-3, to=4-2]
-	\arrow["{\rho_{a_{W}^{*}E_{W}}}", from=2-4, to=4-4]
-	\arrow["{\eta_{f}}", from=3-3, to=2-4]
-	\arrow["{\rho_{V}}", from=3-3, to=4-2]
-	\arrow["{\pi_{M}}"', from=4-1, to=5-2]
-	\arrow["{i_{\partial M}}", from=4-2, to=4-1]
-	\arrow["f"', from=4-2, to=4-4]
-	\arrow["{\pi_{\partial M}}", from=4-2, to=5-2]
-	\arrow["{\pi_{W}}", from=4-4, to=5-3]
-	\arrow["{Id_{X}}"', from=5-2, to=5-3]
-\end{tikzcd}\]
-
-$------------------------------------$
-
-
-
-
-Consider the following embeddings and normal bundles:
-% https://q.uiver.app/#q=WzAsNyxbMCwyXSxbMSwxLCJGfF97XFxwYXJ0aWFsIE19Il0sWzQsMSwiViJdLFs1LDEsImFfe1d9XnsqfUVfe1d9Il0sWzQsMCwiXFxudV97XFxldGFfe2Z9fVxcY29uZyBWXFx0aW1lcyAwIl0sWzIsMSwiQ1xcY29uZyAwXFxvcGx1cyBDIl0sWzIsMCwiXFxudV97aV97Q319XFxjb25nIFYiXSxbMiwzLCJcXGV0YV97Zn0iXSxbNCwyXSxbNSwxLCJpX3tDfSIsMl0sWzYsNV1d
-\[\begin{tikzcd}
-	&& {\nu_{i_{C}}} && {\nu_{\eta_{f}}} \\
-	& {F|_{\partial M}} & {C\cong 0\oplus C} && V & {a_{W}^{*}E_{W}}
-	{}
-	\arrow[from=1-3, to=2-3]
-	\arrow[from=1-5, to=2-5]
-	\arrow["{i_{C}}"', from=2-3, to=2-2]
-	\arrow["{\eta_{f}}", from=2-5, to=2-6]
-\end{tikzcd}\]
-We claim that in this situation, both normal bundles $\nu_{i_{C}}$ and $\nu_{\eta_{f}}$ are isomorphic to $V$:
+such that $f!(r_{\partial}(x_{M}))=0=g!(0)$ and $W$ a manifold without boundary. By Lemma \ref{EM-Embedding}, we can consider $f$ a $\Gamma$-embedding, and then applying Lemma \ref{lema normales isomorfos} to $i_{M^{0}}\circ l:\partial M \to M$ and $f:\partial M \to W$, there exist $\Gamma$-vector bundles $\rho_{D_{M}}:D_{M}\to M$ and $\rho_{D_{W}}:D_{W}\to W$ such that $\nu_{M}:=\nu_{\xi_{D_{M}}\circ i_{M^{0}}\circ l}\cong \nu_{\xi_{D_{W}}\circ f}=:\nu_{W}$. Then, we define 
+\begin{align*}
+T:=D_{M} {\#}_{\nu_{M},\nu_{W}}D_{W}
+\end{align*}
+We claim that
 \begin{enumerate}
-\item $\nu_{i_{C}}\cong V$: This is by the fact that $F|_{\partial M}\cong V\oplus C$. Therefore $$T(F|_{\partial M})|_{C}\cong T(V\oplus C)|_{0\oplus C}\cong V\oplus (C \oplus T(0\oplus C))\cong V\oplus TC$$ and with this $\nu_{i_{C}}=V$, where second and third isomorphisms are by Remark \ref{Tangente de un fibrado vector} applied to $V\oplus C$ and $C$, respectively.
-\item $\nu_{\eta_{f}}\cong V$: Since the embedding $\eta_{f}$ is by Theorem \ref{Emerson-Mayer} an open embedding, then $V$ is a submanifold of the same dimension of $a_{W}^{*}E_{W}$, therefore $Ta_{W}^{*}E_{W}|_{V}=TV$, and with that, $\nu_{f}$ is the trivial bundle $V\times \{0\}$.
+\item $\partial T$ is the identification of $\partial (D_{M})\cong D_{M}|_{\partial M}$
+
+\item  $\xi_{D_{M}}\circ i_{M^{0}}\circ l:\partial M \to D_{M}$ and $\xi_{D_{W}}\circ f:\partial M \to D_{W}$ are $\Gamma$-homotopic in $T$.
+\item $\pi_{T}:T\to X$ is defined by $\pi_{T}(a)=\pi_{M}\circ\rho_{D_{M}}$ if $a\in D_{M}$, or $\pi_{T}(a)=\pi_{W}\circ\rho_{D_{W}}$.
 \end{enumerate}
-Therefore, there exists an isomorphism $\phi:\nu_{i_{C}}\to \nu_{\eta_{f}}$, and with this, we define the space (that is an smooth manifold by Example \ref{Deformation to the normal cone example}):
-\begin{align*}
-T&=DNC(F,C)|_{(-1,0]}\bigcup_{\phi}DNF(a_{W}^{*}E_{W},V)|_{[0,1]}\\
-&=F\times (-1,0)\sqcup V\times \{0\}\bigcup_{\phi} V\times \{0\} \sqcup a_{W}^{*}E_{W}\times (0,1], 
-\end{align*} 
-where we get $\partial T=a_{W}^{*}E_{W}\times\{1 \}\cong a_{W}^{*}E_{W}$. Following the next diagram we define $\pi_{T}:T\to X$ as
 
-\begin{align*}
-    \pi_{T}((x,t))   = \left\{
-	       \begin{array}{ll}
-	       \pi_{W}\circ\rho_{a_{W}^{*}E_{W}}(x)& \mathrm{if\ } t\geq 0,\\
-		   \pi_{M}\circ \rho_{F}(x)&  \mathrm{if\ } t\leq 0.\\
-	       \end{array}
-	     \right.
-    \end{align*}
-% https://q.uiver.app/#q=WzAsMTIsWzQsMiwiVyJdLFs0LDEsImFfe1d9XnsqfUVfe1d9Il0sWzMsMSwiViJdLFszLDAsIlZcXGNvbmcgXFxudV97XFxldGFfe2Z9fSJdLFswLDIsIk0iXSxbMCwxLCJGIl0sWzIsMiwiXFxwYXJ0aWFsIE0iXSxbMSwxLCJWXFxvcGx1cyBDIl0sWzIsMSwiQyJdLFsyLDAsIlxcbnVfe2lfe0N9fVxcY29uZyBWIl0sWzIsMywiWCJdLFsxLDAsIlZcXG9wbHVzIDAiXSxbMSwwLCJcXHJob197YV97V31eeyp9RV97V319Il0sWzIsMSwiXFxldGFfe2Z9IiwyXSxbMywyLCJcXHJob197XFxudV97XFxldGFfe2Z9fX09SWRfe1Z9Il0sWzUsNCwiXFxyaG9fe0Z9IiwyXSxbNiw0LCJpX3tcXHBhcnRpYWwgTX0iXSxbNyw2LCJcXHJob197Vlxcb3BsdXMgQ30iLDJdLFs3LDUsImlfe0Z8X3tcXHBhcnRpYWwgTX19XFxjaXJjIFxccHNpIl0sWzgsNywiaV97Q30iLDJdLFs4LDYsIlxccmhvX3tDfSIsMl0sWzksOCwiXFxyaG9fe1xcbnVfe2lfe0N9fX0iLDJdLFs5LDMsIlxccGhpIl0sWzgsMiwiXFxwaGlcXGNpcmMgXFx4aV97XFxudV97aV97Q319fSJdLFswLDEwLCJcXHBpX3tXfSJdLFs0LDEwLCJcXHBpX3tNfSIsMl0sWzYsMTAsIlxccGFydGlhbCBNIiwyXSxbMiw2LCJcXHJob197Vn0iXSxbNiwwLCJmIl0sWzExLDcsImlfe1Z9XntWXFxvcGx1cyBDfSJdLFs5LDExLCJJZFxcdGltZXMgMCIsMl0sWzExLDUsImlfe0Z8X3tcXHBhcnRpYWwgTX19XFxjaXJjIFxccHNpXFxjaXJjIGlfe1Z9XntWXFxvcGx1cyBDfSIsMl1d
-\[\begin{tikzcd}
-	& {V\oplus 0} & {\nu_{i_{C}}\cong \textcolor{red}{\rho_{C}^{*}}V} & {V\cong \nu_{\eta_{f}}} \\
-	F & {V\oplus C} & C & V & {a_{W}^{*}E_{W}} \\
-	M && {\partial M} && W \\
-	&& X
-	\arrow["{i_{F|_{\partial M}}\circ \psi\circ i_{V}^{V\oplus C}}"', from=1-2, to=2-1]
-	\arrow["{i_{V}^{V\oplus C}}", from=1-2, to=2-2]
-	\arrow["{Id\times 0}"', from=1-3, to=1-2]
-	\arrow["\phi", from=1-3, to=1-4]
-	\arrow["{\rho_{\nu_{i_{C}}}}"', from=1-3, to=2-3]
-	\arrow["{\rho_{\nu_{\eta_{f}}}=Id_{V}}", from=1-4, to=2-4]
-	\arrow["{\rho_{F}}"', from=2-1, to=3-1]
-	\arrow["{i_{F|_{\partial M}}\circ \psi}", from=2-2, to=2-1]
-	\arrow["{\rho_{V\oplus C}}"', from=2-2, to=3-3]
-	\arrow["{i_{C}}"', from=2-3, to=2-2]
-	\arrow["{\phi\circ \xi_{\nu_{i_{C}}}}", from=2-3, to=2-4]
-	\arrow["{\rho_{C}}"', from=2-3, to=3-3]
-	\arrow["{\eta_{f}}"', from=2-4, to=2-5]
-	\arrow["{\rho_{V}}", from=2-4, to=3-3]
-	\arrow["{\rho_{a_{W}^{*}E_{W}}}", from=2-5, to=3-5]
-	\arrow["{\pi_{M}}"', from=3-1, to=4-3]
-	\arrow["{i_{\partial M}}", from=3-3, to=3-1]
-	\arrow["f", from=3-3, to=3-5]
-	\arrow["{\partial M}"', from=3-3, to=4-3]
-	\arrow["{\pi_{W}}", from=3-5, to=4-3]
-\end{tikzcd}\]
-
-$\pi_{T}$ is well defined: if $x\in V$ in the first component of $T$, with $\rho_{V}(x)=m\in \partial M $, where $x\sim \phi(x)$. Then, we have to prove that  
-\begin{align*}
-    \pi_{M}(\rho_{F}(i_{F|_{\partial M}}(\psi(x,0))))=\pi_{W}(\rho_{a_{W}^{*}E_{W}}(\eta_{f}(\phi(x)))).
-\end{align*}
-In the left hand we have:
-\begin{align*}
-\pi_{M}(\rho_{F}(i_{F|_{\partial M}}(\psi(x,0))))&= \pi_{M}(i_{\partial M}(\rho_{V}(x)))= \pi_{M}(m)
-\end{align*}
-
-and, in the right side:
-\begin{align*}
-\pi_{W}(\rho_{a_{W}^{*}E_{W}}(\eta_{f}(\phi(x))))&=\pi_{W}(f(\rho_{V}(\phi(x))))\\
-&=\pi_{W}(f(\rho_{V}(x)))\\
-&=\pi_{W}(f(m))\\
-&=\pi_{M}(m),
-\end{align*}
-where we have that 
-\begin{itemize}
-\item first equality is by Theorem \ref{Emerson-Mayer},  $\rho_{a_{W}^{*}E_{W}}\circ \eta_{f}=f\circ \rho_{V}$.
-\item second equality is by the fact that $\phi:V\to V$ is a vector bundle map, we have that $\rho_{V}\circ \phi(x)=\rho_{V}(x)=m$.
-\item \textcolor{red}{Pregunta I} la anterior pregunta podria resolverse si $\phi\circ\xi_{\nu_{i_{C}}}\circ \rho_{\nu_{i_{C}}}=Id_{V}\circ \phi$. Let $v\in V$ such that $\rho_{\nu_{i_{C}}}(v)= c_{v}\in C$. 
-\item \textcolor{red}{Pregunta II} Debemos demostrar que $\rho_{V}\circ \phi\circ\xi_{\nu_{i_{C}}}=\rho_{C}$.
-\item \textcolor{red}{Pregunta III} $\rho_{C}\circ\rho_{\nu_{i_{C}}}=\rho_{V}$.
-\item Third equality is by $\rho_{V}(x)=m$.
-\item The last equality is by the fact that $\pi_{W}\circ f=\pi_{M}$.
-\end{itemize}
-Denoting $\iota:=i_{F}\circ \xi_{F}:M\to T$ the embedding of $M$ in the first factor of $T$ and identifying $\partial T= a_{W}^{*}E_{W}\times\{1\}\cong a_{W}^{*}E_{W}$, we get that $\iota\circ i_{\partial M}$ is homotopic to $i_{\partial T}\circ \eta_{f}\circ \xi_{V}$, obtaining the up to homotopy commutative diagram 
-
-% https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzEsMSwiXFxwYXJ0aWFsIE0iXSxbMCwwLCJUIl0sWzEsMCwiXFxwYXJ0aWFsIFQiXSxbMCwyLCJcXGlvdGEiXSxbMSwwLCJpX3tcXHBhcnRpYWwgTX0iXSxbMSwzLCJkZmdkIiwyXSxbMywyLCJpX3tcXHBhcnRpYWwgVH0iLDJdXQ==
-\[\begin{tikzcd}
-	T & {\partial T} \\
-	M & {\partial M}
-	\arrow["{i_{\partial T}}"', from=1-2, to=1-1]
-	\arrow["\iota", from=2-1, to=1-1]
-	\arrow["\eta_{f}\circ\xi_{V}"', from=2-2, to=1-2]
-	\arrow["{i_{\partial M}}", from=2-2, to=2-1]
-\end{tikzcd}\]
-
-
-
-
-Then we get the following commutative diagram by Definition \ref{pushforward 2}
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShUKSJdLFsxLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBUKSJdLFsxLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBNKSJdLFswLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KE0pIl0sWzAsMSwicl97XFxwYXJ0aWFsfSJdLFszLDAsIlxcaW90YSEiXSxbMiwxLCIoXFxldGFfe2Z9XFxjaXJjIFxceGlfe1Z9KSEiLDJdLFszLDIsInJfe1xccGFydGlhbH0iLDJdXQ==
-\[\begin{tikzcd}
-	{\mathscr{H}_{\Gamma}^{*}(T)} & {\mathscr{H}_{\Gamma}^{*}(\partial T)} \\
-	{\mathscr{H}_{\Gamma}^{*}(M)} & {\mathscr{H}_{\Gamma}^{*}(\partial M)}
-	\arrow["{r_{\partial}}", from=1-1, to=1-2]
-	\arrow["{\iota!}", from=2-1, to=1-1]
-	\arrow["{r_{\partial}}"', from=2-1, to=2-2]
-	\arrow["{\eta_{f}\circ\xi_{V}!}"', from=2-2, to=1-2]
-\end{tikzcd}\]
-Then we have that $r_{\partial}(\iota!(x_{M}))=(\eta_{f}\circ\xi_{V})!(r_{\partial}(x_{M}))=0$, where the last equality was obtained previously. Since $\iota!(x_{M})\in Ker(r_{\partial})$, by the long exact sequence in cohomology for the pair $(T,\partial T)$, there exist $y\in \mathscr{H}_{\Gamma}^{*}(T^{0})$ such that $i_{T^{0}}!(y)=\iota!(x_{M})$, where $i_{T^{0}}:T^{0}\hookrightarrow T$. Then
+With this, defining $\iota:M\to T$ as the natural embedding, we get that $\iota\circ i_{\partial M} \cong_{h} i_{D_{W}}\circ \xi_{D_{W}}\circ f$, therefore by Definition \ref{pushforward 2} 
+$$ i_{\partial T}^{*}\circ \iota!(x_{M}) = (\xi_{D_{W}}\circ f)!\circ i_{\partial M}^{*}(x_{M})=0$$ 
+Since $\iota!(x_{M})\in Ker(r_{\partial})$, by the long exact sequence in cohomology for the pair $(T,\partial T)$, there exist $y\in \mathscr{H}_{\Gamma}^{*}(T^{0})$ such that $i_{T^{0}}!(y)=\iota!(x_{M})$, where $i_{T^{0}}:T^{0}\hookrightarrow T$. Then
 \begin{align*}
 i_{*}([T^{0},\emptyset, \pi_{T}|_{T^{0}},y])&= [T^{0},\emptyset, \pi_{T}|_{T^{0}},y]\\&= [T^{0},\emptyset, \pi_{T}\circ i_{T^{0}},y]\\&= [T,\partial T, \pi_{T}, i_{T^{0}}!(y)]\\&=[T,\partial T, \pi_{T},\iota!(x_{M})]\\&=[M,\partial M, \pi_{T}\circ \iota,x_{M}]\\&=[M,\partial M, \pi_{M},x_{M}]    
 \end{align*}
-where: first equality is definition of $i_{*}$; second is a direct composition; third is By Remark \ref{relation 1} on $i_{W^{0}}$; fourth is the obtained pushforward equality; fifth is by Remark \ref{relation 1} on $\iota$; and sixth is the equality $\pi_{M}=\pi_{T}\circ \iota$.
+where: first equality is definition of $i_{*}$; second is a direct composition; third is By Remark \ref{relation 1} on $i_{T^{0}}$; fourth is the obtained pushforward equality; fifth is by Remark \ref{relation 1} on $\iota$; and sixth is the equality $\pi_{M}=\pi_{T}\circ \iota$.
+
+
+
+
 
 
 
