@@ -63,7 +63,7 @@ A $\Gamma$-CW complex is proper  when...
 
 
 \begin{defn}
-    A group is said to acts freely ans properly discontinuously on $X$ if each element for all $g\not = e$ hold that given any $x\in X$ there exists an open set $U$ in $X$ such that $x\in U$ and $(gU)\cap U=\emptyset$ .
+    A group is said to acts freely ans properly discontinuously on $X$ if each element for all $g\not = e$ hold that given any $x\in X$ there exists an open set $U$ in $X$ such that $x\in U$ and $(gU)\cap U=\emptyset$.
 \end{defn}
 
 
@@ -727,6 +727,45 @@ Then, we get that $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D
 \end{proof}
 
 
+\begin{remark}\label{Espacio joint}
+For maps $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$ being $\Gamma$-embeddings, by Lemma \ref{lema normales isomorfos}, there exist $\Gamma$-vector bundles $D_{k}\to W_{k}$ for $k=1,2$, such that  $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$. With this isomorphism $\phi:\nu_{1}\to \nu_{2}$, we construct the manifold 
+\begin{align*}
+    W:=(D_{1}\oplus \mathbb{R})_{\nu_{1}}\#_{\nu_{2}} (D_{2}\oplus\mathbb{R}),
+\end{align*} 
+the joint of the vector bundles (manifolds) $D_{1}\oplus \mathbb{R}$ and $D_{2}\oplus \mathbb{R}$ along the submanifold $N$ across the normal bundles $\nu_{1}\oplus \mathbb{R}$ and $\nu_{2}\oplus \mathbb{R}$, where
+\begin{align*}
+\partial W &= [D_{1}|_{\partial W_{1}}\cup D_{2}|_{\partial W_{2}}]\oplus \mathbb{R} \setminus [\xi_{\nu_{1}}\circ i_{1}(N)\times \{1\}],
+\end{align*}
+where $\xi_{\nu_{k}}$ is the zero section of the vector bundle $\nu_{k}$. This is made by cutting the identified copies of $N$, $(\xi_{\nu_{1}}\circ i_{1}(N))\times \{1\}$ and $(\xi_{\nu_{2}}\circ i_{2}(N))\times \{1\}$, where this identification is obtained by the map $(\xi_{\nu_{2}}\times\{1\}\circ i_{2})\circ (\phi\times \{1\})\circ (\xi_{\nu_{1}}\times\{1\}\circ i_{1})^{-1}$, making the following diagram commutative in $W$, for any $r\in \mathbb{R}\setminus \{1\}$:  
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJEX3sxfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwyLCJOIl0sWzIsMCwiRF97Mn1cXG9wbHVzIFxcbWF0aGJie1J9Il0sWzAsMSwiXFxudV97MX1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzIsMSwiXFxudV97Mn1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzEsMywiKGpfezF9XFxjaXJjIGlfezF9KVxcdGltZXNcXHtyXFx9Il0sWzEsNCwiKGpfezJ9XFxjaXJjIGlfezJ9KVxcdGltZXNcXHstclxcfSIsMl0sWzMsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNCwyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDQsImlkX3tOfVxcdGltZXMgKC0xXFxjZG90KC0pKSJdXQ==
+\[\begin{tikzcd}
+	{D_{1}\oplus \mathbb{R}} && {D_{2}\oplus \mathbb{R}} \\
+	{\nu_{1}\times \mathbb{R}} && {\nu_{2}\times \mathbb{R}} \\
+	& N
+	\arrow[hook, from=2-1, to=1-1]
+	\arrow["{\phi\times Id_{\mathbb{R}}}", from=2-1, to=2-3]
+	\arrow[hook, from=2-3, to=1-3]
+	\arrow["{(\xi_{\nu_{1}}\times\{r\})\circ i_{1}}", from=3-2, to=2-1]
+	\arrow["{(\xi_{\nu_{2}}\times\{r\})\circ i_{2}}"', from=3-2, to=2-3]
+\end{tikzcd}\]
+
+\noindent Getting $(\xi_{\nu_{1}}\times \{0\})\circ i_{1} = (\xi_{\nu_{2}}\times \{0\})\circ i_{2}$ as maps from $N$ to $W$, as the following diagram shows,
+
+% https://q.uiver.app/#q=WzAsNixbMSwyLCJOIl0sWzAsMSwiV197MX0iXSxbMiwxLCJXX3syfSJdLFsxLDAsIlciXSxbMCwyLCJNIl0sWzIsMiwiUCJdLFsxLDMsImpfezF9Il0sWzIsMywial97Mn0iLDJdLFswLDEsImlfezF9IiwyXSxbMCwyLCJpX3syfSJdLFs0LDEsImlfe019Il0sWzUsMiwiaV97UH0iLDJdLFszLDAsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	& W \\
+	{W_{1}} && {W_{2}} \\
+	M & N & P
+	\arrow["{\pi_{W}}", dashed, from=1-2, to=3-2]
+	\arrow["{\xi_{\nu_{1}}\times \{0\}}", from=2-1, to=1-2]
+	\arrow["{\xi_{\nu_{2}}\times \{0\}}"', from=2-3, to=1-2]
+	\arrow["{i_{M}}", from=3-1, to=2-1]
+	\arrow["{i_{1}}"', from=3-2, to=2-1]
+	\arrow["{i_{2}}", from=3-2, to=2-3]
+	\arrow["{i_{P}}"', from=3-3, to=2-3]
+\end{tikzcd}\]
+\end{remark}
+
 
 \begin{prop}\label{Equivalence relation 1}
     The relation in Definition \ref{pushforward 2} is an equivalence relation. 
@@ -745,7 +784,7 @@ Then, we get that $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D
 	\arrow["Id"', from=2-3, to=1-2]
 	\arrow["\pi", from=2-3, to=3-2]
 \end{tikzcd}\]
-        \item Symmetry: Since the conditions for the relation $\sim_{2}$ have no laterally, it is a symmetric relation.
+        \item Symmetry: Since the conditions for the relation $\sim$ have no laterally, it is a symmetric relation.
 
         \begin{comment}
             
@@ -1051,24 +1090,7 @@ To prove that $(\iota_{W}\circ \tau_{W})!(x_{M})=(\iota_{\tilde{W}}\circ \tau_{\
 
 
 \item Transitivity: 
-    Consider the relations $(M,\partial M, \pi_{M}, x_{M})\sim (N,\partial N, \pi_{N}, x_{N})$ given by the maps $i_{M}:M\to W_{1}$ and $i_{1}:N\to W_{1}$; and $(N,\partial N, \pi_{N}, x_{N})\sim (P,\partial P, \pi_{P}, x_{P})$. By Lemma \ref{EM-Embedding} we consider the maps $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$ being $\Gamma$-embeddings. By Lemma \ref{lema normales isomorfos}, there exist $\Gamma$-vector bundles $D_{k}\to W_{k}$ for $k=1,2$, such that  $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$. With this isomorphism, we construct the manifold $$W:=(D_{1}\oplus \mathbb{R})_{\nu_{1}}\#_{\nu_{2}} (D_{2}\oplus \mathbb{R}),$$ the joint of the vector bundles (manifolds) $D_{1}\oplus \mathbb{R}$ and $D_{2}\oplus \mathbb{R}$ along the submanifold $N$ across the normal bundles $\nu_{1}\oplus \mathbb{R}$ and $\nu_{2}\oplus \mathbb{R}$, where
-\begin{align*}
-\partial W &= [D_{1}|_{\partial W_{1}}\cup D_{2}|_{\partial W_{2}}]\oplus \mathbb{R} \setminus [j_{1}\circ i_{1}(N)\times \{1\}]
-\end{align*}
-This is made by cutting the identified copies of $N$, $(j_{1}\circ i_{1}(N))\times \{1\}$ and $(j_{2}\circ i_{2}(N))\times \{-1\}$, where $j_{k}$ is the zero section of the vector bundle $\nu_{k}$, and where this identification is obtained by the map $(j_{2}\circ i_{2})\circ id\times (-1\cdot -)\circ (j_{1}\circ i_{1})^{-1}$, making the following diagram commutative in $W$, for any $r\in \mathbb{R}\setminus \{1\}$:  
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCJEX3sxfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwyLCJOIl0sWzIsMCwiRF97Mn1cXG9wbHVzIFxcbWF0aGJie1J9Il0sWzAsMSwiXFxudV97MX1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzIsMSwiXFxudV97Mn1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzEsMywiKGpfezF9XFxjaXJjIGlfezF9KVxcdGltZXNcXHtyXFx9Il0sWzEsNCwiKGpfezJ9XFxjaXJjIGlfezJ9KVxcdGltZXNcXHstclxcfSIsMl0sWzMsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNCwyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDQsImlkX3tOfVxcdGltZXMgKC0xXFxjZG90KC0pKSJdXQ==
-\[\begin{tikzcd}
-	{D_{1}\oplus \mathbb{R}} && {D_{2}\oplus \mathbb{R}} \\
-	{\nu_{1}\times \mathbb{R}} && {\nu_{2}\times \mathbb{R}} \\
-	& N
-	\arrow[hook, from=2-1, to=1-1]
-	\arrow["{id_{N}\times (-1\cdot(-))}", from=2-1, to=2-3]
-	\arrow[hook, from=2-3, to=1-3]
-	\arrow["{(j_{1}\circ i_{1})\times\{r\}}", from=3-2, to=2-1]
-	\arrow["{(j_{2}\circ i_{2})\times\{-r\}}"', from=3-2, to=2-3]
-\end{tikzcd}\]
-
-\noindent Getting $(j_{1}\times \{0\})\circ i_{1} = (j_{2}\times \{0\})\circ i_{2}$ as maps form $N$ to $W$, as the following diagram shows,
+    Consider the relations $(M,\partial M, \pi_{M}, x_{M})\sim (N,\partial N, \pi_{N}, x_{N})$ given by the maps $i_{M}:M\to W_{1}$ and $i_{1}:N\to W_{1}$; and $(N,\partial N, \pi_{N}, x_{N})\sim (P,\partial P, \pi_{P}, x_{P})$ given by $i_{P}:P\to W_{2}$ and $i_{2}:N\to W_{2}$. Consider the space $W$ defined in Remark \ref{Espacio joint} for the maps $i_{k}:N\to W_{1}$, getting the following diagram,
 
 % https://q.uiver.app/#q=WzAsNixbMSwyLCJOIl0sWzAsMSwiV197MX0iXSxbMiwxLCJXX3syfSJdLFsxLDAsIlciXSxbMCwyLCJNIl0sWzIsMiwiUCJdLFsxLDMsImpfezF9Il0sWzIsMywial97Mn0iLDJdLFswLDEsImlfezF9IiwyXSxbMCwyLCJpX3syfSJdLFs0LDEsImlfe019Il0sWzUsMiwiaV97UH0iLDJdLFszLDAsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
 \[\begin{tikzcd}
@@ -1076,14 +1098,14 @@ This is made by cutting the identified copies of $N$, $(j_{1}\circ i_{1}(N))\tim
 	{W_{1}} && {W_{2}} \\
 	M & N & P
 	\arrow["{\pi_{W}}", dashed, from=1-2, to=3-2]
-	\arrow["{j_{1}\times \{0\}}", from=2-1, to=1-2]
-	\arrow["{j_{2}\times \{0\}}"', from=2-3, to=1-2]
+	\arrow["{\xi_{\nu_{1}}\times \{0\}}", from=2-1, to=1-2]
+	\arrow["{\xi_{\nu_{2}}\times \{0\}}"', from=2-3, to=1-2]
 	\arrow["{i_{M}}", from=3-1, to=2-1]
 	\arrow["{i_{1}}"', from=3-2, to=2-1]
 	\arrow["{i_{2}}", from=3-2, to=2-3]
 	\arrow["{i_{P}}"', from=3-3, to=2-3]
 \end{tikzcd}\]
-Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is satisfied the necessary condition that $(j_{1}\circ i_{M})!(x_{M})=(j_{2}\circ i_{P})!(x_{P})$, by functoriality of pushforward. We define $\pi_{W}:W\to N$ by $\pi_{W}(d\oplus r)= \pi_{W_{1}}(\rho_{1}(d))$ if $d\in D_{1}$, and $\pi_{W}(d\oplus r)= \pi_{W_{2}}(\rho_{2}(d))$ if $d\in D_{2}$, as in the following diagram:
+Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is satisfied the necessary condition that $(\xi_{\nu_{1}}\circ i_{M})!(x_{M})=(\xi_{\nu_{2}}\circ i_{P})!(x_{P})$, by functoriality of pushforward. We define $\pi_{W}:W\to N$ by $\pi_{W}(d\oplus r)= \pi_{W_{1}}(\rho_{1}(d))$ if $d\in D_{1}$, and $\pi_{W}(d\oplus r)= \pi_{W_{2}}(\rho_{2}(d))$ if $d\in D_{2}$, as in the following diagram:
 % https://q.uiver.app/#q=WzAsOSxbMCwxLCJXX3sxfSJdLFswLDIsIk0iXSxbMSwyLCJOIl0sWzIsMiwiUCJdLFsyLDEsIldfezJ9Il0sWzEsMCwiRF97MX1cXG9wbHVzIFxcbWF0aGJie1J9IFxcIyBEX3syfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwzLCJYIl0sWzAsMCwiRF97MX0iXSxbMiwwLCJEX3syfSJdLFswLDUsImpfezF9IiwyXSxbNCw1LCJqX3syfSJdLFsxLDAsImlfe019Il0sWzIsMCwiaV97MX0iLDFdLFsyLDQsImlfezJ9IiwxXSxbMyw0LCJpX3tQfSIsMl0sWzEsNiwiXFxwaV97TX0iLDJdLFswLDYsIlxccGlfe1dfezF9fSIsMV0sWzQsNiwiXFxwaV97V197Mn19IiwxXSxbMyw2LCJcXHBpX3tQfSJdLFs1LDYsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzgsNCwiXFxyaG9fezJ9Il0sWzcsMCwiXFxyaG9fezF9IiwyXV0=
 \[\begin{tikzcd}
 	{D_{1}} & {D_{1}\oplus \mathbb{R} \# D_{2}\oplus \mathbb{R}} & {D_{2}} \\
@@ -1093,9 +1115,9 @@ Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is sat
 	\arrow["{\rho_{1}}"', from=1-1, to=2-1]
 	\arrow["{\pi_{W}}", dotted, from=1-2, to=4-2]
 	\arrow["{\rho_{2}}", from=1-3, to=2-3]
-	\arrow["{j_{1}}"', from=2-1, to=1-2]
+	\arrow["{\xi_{\nu_{1}}}"', from=2-1, to=1-2]
 	\arrow["{\pi_{W_{1}}}"{description}, from=2-1, to=4-2]
-	\arrow["{j_{2}}", from=2-3, to=1-2]
+	\arrow["{\xi_{\nu_{2}}}", from=2-3, to=1-2]
 	\arrow["{\pi_{W_{2}}}"{description}, from=2-3, to=4-2]
 	\arrow["{i_{M}}", from=3-1, to=2-1]
 	\arrow["{\pi_{M}}"', from=3-1, to=4-2]
@@ -1108,18 +1130,18 @@ Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is sat
 
 \noindent Let us see that $\pi_{W}$ is well defined, because 
 \begin{align*}
-    \pi_{W}((j_{1}\circ i_{1}(n))\oplus r)&= \pi_{W_{1}}(\rho_{1}((j_{1}\circ i_{1}(n))\oplus r))\\
+    \pi_{W}((\xi_{\nu_{1}}\circ i_{1}(n))\oplus r)&= \pi_{W_{1}}(\rho_{1}((\xi_{\nu_{1}}\circ i_{1}(n))\oplus r))\\
     &= \pi_{W_{1}}(i_{1}(n))\\
     &=\pi_{N}(n)
 \end{align*}
-and $\pi_{W}((j_{2}\circ i_{2}(n))\oplus -r)=\pi_{N}(n)$ too. Now, we must to verify that $\pi_{M}=\pi_{W} \circ j_{1}\circ i_{M}$: since $\pi_{M}= \pi_{W_{1}}\circ i_{M}$, we get
+and $\pi_{W}((\xi_{\nu_{2}}\circ i_{2}(n))\oplus -r)=\pi_{N}(n)$ too. Now, we must to verify that $\pi_{M}=\pi_{W} \circ \xi_{\nu_{1}}\circ i_{M}$: since $\pi_{M}= \pi_{W_{1}}\circ i_{M}$, we get
 \begin{align*}
-    (\pi_{W} \circ j_{1}\circ i_{M})(m)&=\pi_{W}(j_{1}(i_{M}(m))\oplus 0)\\
-    &=\pi_{W_{1}}(\rho_{1}(j_{1}(i_{M}(m))))\\
+    (\pi_{W} \circ \xi_{\nu_{1}}\circ i_{M})(m)&=\pi_{W}(\xi_{\nu_{1}}(i_{M}(m))\oplus 0)\\
+    &=\pi_{W_{1}}(\rho_{1}(\xi_{\nu_{1}}(i_{M}(m))))\\
     &=\pi_{W_{1}}((i_{M}(m)))\\
     &=\pi_{M}(m);
 \end{align*}
-In a similar way we prove $\pi_{P}=\pi_{W} \circ j_{2}\circ i_{P}$. Then, we have proved that the cycles $(M,\partial M, \pi_{M},x_{M})$ and $(P,\partial P, \pi_{P},x_{P})$ are related by the cycle $(W,\partial W,\pi_{W}, (j_{1}\circ i_{M})!(x_{M}))$, obtaining the transitivity of the desired equivalence pushforward relation.
+In a similar way we prove $\pi_{P}=\pi_{W} \circ \xi_{\nu_{2}}\circ i_{P}$. Then, we have proved that the cycles $(M,\partial M, \pi_{M},x_{M})$ and $(P,\partial P, \pi_{P},x_{P})$ are related by the cycle $(W,\partial W,\pi_{W}, (\xi_{\nu_{1}}\circ i_{M})!(x_{M}))$, obtaining the transitivity of the desired equivalence pushforward relation.
 \end{enumerate}
 \end{proof}
 
@@ -1428,33 +1450,42 @@ Where we have that $(Id_{M}\times 0)!(x_{M})=0= Id_{M\times [0,1)}!(0)$ because 
 {\bf Exactness in ${\mathscr{H}^{pf}_{*}(X,A;\Gamma)}$}: 
 
 \begin{itemize}
-    \item $Ker(\partial)\supseteq Im(i_{*}):$ For $[M,\emptyset,\pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(X,\emptyset;\Gamma)$, we have that $$\partial(i_{*}([M,\emptyset,\pi_{M},x_{M}]))=\partial([M,\emptyset,\pi_{M},x_{M}])=[\emptyset,\partial \emptyset, \pi_{M}|_{\emptyset},r_{\partial}(x_{M})]=0$$
-    \item $Ker(\partial)\subseteq Im(i_{*})$: Let $[M,\partial M,\pi_{M},x_{M}]\in Ker(\partial)\subseteq \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, i.e., that $[\partial M , \emptyset, \pi_{M}|_{\partial M}, r_{\partial}(x_{M})]=0\in \mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$. Then, $[\partial M , \emptyset, \pi_{M}|_{\partial M}, r_{\partial}(x_{M})]=[N,\emptyset, \pi_{N},0]$ by the commutative diagram
-    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHBhcnRpYWwgTSJdLFsyLDEsIk4iXSxbMSwwLCJXIl0sWzEsMiwiQSJdLFswLDMsIlxccGlfe019fF97XFxwYXJ0aWFsIE19IiwyXSxbMSwzLCJcXHBpX3tOfSJdLFswLDIsImYiXSxbMSwyLCJnIiwyXSxbMiwzLCJcXHBpX3tXfSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+    \item $Ker(\partial)\supseteq Im(i_{*}):$ For $[M,\emptyset,\pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(X,\emptyset;\Gamma)$, we have that $$\partial(i_{*}([M,\emptyset,\pi_{M},x_{M}]))=\partial([M,\emptyset,\pi_{M},x_{M}])=[\emptyset,\partial \emptyset, \pi_{M}|_{\emptyset},r_{\partial}(x_{M})]=0.$$
+    
+    \item $Ker(\partial)\subseteq Im(i_{*})$: Let $[M,\partial M,\pi_{M},x_{M}]\in Ker(\partial)\subseteq \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, i.e., that $[\partial M , \emptyset, \pi_{M}|_{\partial M}, r_{\partial}(x_{M})]=0\in \mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$. Then, $[\partial M , \emptyset, \pi_{M}|_{\partial M}, r_{\partial}(x_{M})]=[N,\emptyset, \pi_{N},0]$ by the existence of a commutative diagram
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHBhcnRpYWwgTSJdLFsyLDAsIlciXSxbMSwxLCJBIl0sWzAsMiwiXFxwaV97TX18X3tcXHBhcnRpYWwgTX0iLDJdLFswLDEsImYiXSxbMSwyLCJcXHBpX3tXfSJdXQ==
 \[\begin{tikzcd}
-	& W \\
-	{\partial M} && N \\
+	{\partial M} && W \\
 	& A
-	\arrow["{\pi_{W}}"{description}, dashed, from=1-2, to=3-2]
-	\arrow["f", from=2-1, to=1-2]
-	\arrow["{\pi_{M}|_{\partial M}}"', from=2-1, to=3-2]
-	\arrow["g"', from=2-3, to=1-2]
-	\arrow["{\pi_{N}}", from=2-3, to=3-2]
+	\arrow["f", from=1-1, to=1-3]
+	\arrow["{\pi_{M}|_{\partial M}}"', from=1-1, to=2-2]
+	\arrow["{\pi_{W}}", from=1-3, to=2-2]
 \end{tikzcd}\]
-such that $f!(r_{\partial}(x_{M}))=0=g!(0)$ and $W$ a manifold without boundary. By Lemma \ref{EM-Embedding}, we can consider $f$ a $\Gamma$-embedding, and then applying Lemma \ref{lema normales isomorfos} to $i_{M^{0}}\circ l:\partial M \to M$ and $f:\partial M \to W$, there exist $\Gamma$-vector bundles $\rho_{D_{M}}:D_{M}\to M$ and $\rho_{D_{W}}:D_{W}\to W$ such that $\nu_{M}:=\nu_{\xi_{D_{M}}\circ i_{M^{0}}\circ l}\cong \nu_{\xi_{D_{W}}\circ f}=:\nu_{W}$. Then, we define 
+such that $f!(r_{\partial}(x_{M}))=0$ and $W$ a manifold without boundary. By Lemma \ref{EM-Embedding}, we can consider $f$ a $\Gamma$-embedding, and then applying Lemma \ref{lema normales isomorfos} to $i_{M^{0}}\circ l:\partial M \to M$ and $f:\partial M \to W$, to get that there exist $\Gamma$-vector bundles $\rho_{D_{M}}:D_{M}\to M$ and $\rho_{D_{W}}:D_{W}\to W$ such that $\nu_{M}:=\nu_{\xi_{D_{M}}\circ i_{M^{0}}\circ l}\cong \nu_{\xi_{D_{W}}\circ f}=:\nu_{W}$, and Remark \ref{Espacio joint} in order to define 
 \begin{align*}
-T:=D_{M} {\#}_{\nu_{M},\nu_{W}}D_{W}
-\end{align*}
+    T:=(D_{M}\oplus \mathbb{R})_{\nu_{M}\oplus \mathbb{R}}\#_{\nu_{W}\oplus \mathbb{R}} (D_{W}\oplus\mathbb{R}),
+\end{align*} 
 We claim that
 \begin{enumerate}
 \item $\partial T$ is the identification of $\partial (D_{M})\cong D_{M}|_{\partial M}$
 
-\item  $\xi_{D_{M}}\circ i_{M^{0}}\circ l:\partial M \to D_{M}$ and $\xi_{D_{W}}\circ f:\partial M \to D_{W}$ are $\Gamma$-homotopic in $T$.
-\item $\pi_{T}:T\to X$ is defined by $\pi_{T}(a)=\pi_{M}\circ\rho_{D_{M}}$ if $a\in D_{M}$, or $\pi_{T}(a)=\pi_{W}\circ\rho_{D_{W}}$.
+\item  $\xi_{D_{M}\oplus \mathbb{R}}\circ i_{M^{0}}\circ l:\partial M \to D_{M}$ and $\xi_{D_{W}\oplus \mathbb{R}}\circ f:\partial M \to D_{W}$ are $\Gamma$-homotopic.
+\item $\pi_{T}:T\to X$ is defined by $\pi_{T}(a)=\pi_{M}\circ\rho_{D_{M}\oplus \mathbb{R}}$ if $a\in D_{M}$, or $\pi_{T}(a)=\pi_{W}\circ\rho_{D_{W}\oplus \mathbb{R}}$.
 \end{enumerate}
 
-With this, defining $\iota:M\to T$ as the natural embedding, we get that $\iota\circ i_{\partial M} \cong_{h} i_{D_{W}}\circ \xi_{D_{W}}\circ f$, therefore by Definition \ref{pushforward 2} 
-$$ i_{\partial T}^{*}\circ \iota!(x_{M}) = (\xi_{D_{W}}\circ f)!\circ i_{\partial M}^{*}(x_{M})=0$$ 
+With this, defining $\iota:M\to T$ as the natural embedding $i_{D_{M}\times\{0\}}\circ \xi_{D_{M}\oplus \mathbb{R}}$, we get that $\iota\circ i_{\partial M} = i_{D_{W}\times\{0\}}\circ \xi_{D_{W}\oplus \mathbb{R}}\circ f$, where identifying $i_{\partial T}=i_{D_{W}\times\{0\}}$, we get the commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHBhcnRpYWwgTSJdLFsyLDAsIk0iXSxbMiwxLCJUIl0sWzAsMSwiXFxwYXJ0aWFsIFRcXGNvbmcgRF97TX18X3tcXHBhcnRpYWwgTX0iXSxbMCwxLCJpX3tcXHBhcnRpYWwgTX0iXSxbMSwyLCJcXGlvdGEiXSxbMCwzLCJcXHhpX3tEX3tXfVxcb3BsdXMgXFxtYXRoYmJ7Un19XFxjaXJjIGYiLDJdLFszLDIsImlfe1xccGFydGlhbCBUfSIsMl1d
+\[\begin{tikzcd}
+	{\partial M} && M \\
+	{\partial T} && T
+	\arrow["{i_{\partial M}}", from=1-1, to=1-3]
+	\arrow["{\xi_{D_{W}\oplus \mathbb{R}}\circ f}"', from=1-1, to=2-1]
+	\arrow["\iota", from=1-3, to=2-3]
+	\arrow["{i_{\partial T}}"', from=2-1, to=2-3]
+\end{tikzcd}\]
+
+therefore by Definition \ref{pushforward 2} 
+$$ i_{\partial T}^{*}\circ \iota!(x_{M}) = (\xi_{D_{W}\oplus \mathbb{R}}\circ f)!\circ i_{\partial M}^{*}(x_{M})=0$$ 
 Since $\iota!(x_{M})\in Ker(r_{\partial})$, by the long exact sequence in cohomology for the pair $(T,\partial T)$, there exist $y\in \mathscr{H}_{\Gamma}^{*}(T^{0})$ such that $i_{T^{0}}!(y)=\iota!(x_{M})$, where $i_{T^{0}}:T^{0}\hookrightarrow T$. Then
 \begin{align*}
 i_{*}([T^{0},\emptyset, \pi_{T}|_{T^{0}},y])&= [T^{0},\emptyset, \pi_{T}|_{T^{0}},y]\\&= [T^{0},\emptyset, \pi_{T}\circ i_{T^{0}},y]\\&= [T,\partial T, \pi_{T}, i_{T^{0}}!(y)]\\&=[T,\partial T, \pi_{T},\iota!(x_{M})]\\&=[M,\partial M, \pi_{T}\circ \iota,x_{M}]\\&=[M,\partial M, \pi_{M},x_{M}]    
