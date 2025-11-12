@@ -1598,16 +1598,17 @@ We claim that $\phi^{-1}_{*}=h$.
 	\arrow["\phi", hook, from=2-1, to=3-2]
 	\arrow["r", from=2-2, to=2-3]
 	\arrow["{i_{U}}", from=2-2, to=3-2]
-\end{tikzcd}\]
-    \begin{align*}
+\end{tikzcd}\]    
+    
+    Since $X\subseteq U$, we get that $(\phi\circ \pi_{M})^{-1}(U)\supseteq \pi_{M}^{-1}(X) = M$, therefore $M_{U}=M$, and $i_{M_{U}}=id_{M}$, then
+ \begin{align*}
         h\circ \phi_{*}([M,\partial M,\pi_{M},x_{M}])&=h([M,\partial M,\phi\circ\pi_{M},x_{M}])\\
         &=[M_{U},\partial M_{U},r\circ \phi\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}(x_{M})]\\
-        &=[M_{U},\partial M_{U},r\circ \phi\circ\pi_{M}\circ i_{M_{U}},i_{M_{U}}^{*}(x_{M})]\\
-        &=[M,\partial M,r\circ \phi\circ\pi_{M},i_{M_{U}}!(i_{M_{U}}^{*}(x_{M}))]\\
-        &=[M,\partial M,\pi_{M},i_{M_{U}}!(i_{M_{U}}^{*}(x_{M}))],
+        &=[M,\partial M,r\circ \phi\circ\pi_{M},x_{M}]\\
+        &=[M,\partial M,\pi_{M},x_{M}],
     \end{align*}
-    where the first and second equalities are by definition of $\phi_{*}$ and $h$ respectively; the third equality is the definition of restriction; fourth is by Remark \ref{relation 1} over $i_{M_{X}}$; fifth is by... 
-    
+where first and second equations are by definitions of $\phi_{*}$ and $h$, respectively; third equation is by $i_{M_{U}}=Id_{M}$ and $Id_{M}^{*}=Id_{\mathscr{H}^{*}_{\Gamma}(M)}$; and fourth is by the fact that $r\circ \phi=r|_{X}\cong_{h} Id_{X}$.
+       
     \item $\phi_{*}\circ h=Id_{\mathscr{H}^{pf}_{*}(Y,B;\Gamma)}$:
 
 % https://q.uiver.app/#q=WzAsNSxbMCwxLCJNX3tYfSJdLFsxLDEsIlUiXSxbMSwwLCJZIl0sWzAsMCwiTSJdLFsyLDEsIlgiXSxbMCwxLCJcXHBpX3tNfXxfe01fe1h9fSIsMl0sWzEsMiwiaV97VX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFszLDIsIlxccGlfe019IiwyXSxbMCwzLCJpX3tNX3tYfX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFsxLDQsInIiLDJdLFs0LDIsIlxccGhpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XV0=
