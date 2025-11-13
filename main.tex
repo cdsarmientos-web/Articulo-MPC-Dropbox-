@@ -764,6 +764,12 @@ where $\xi_{\nu_{k}}$ is the zero section of the vector bundle $\nu_{k}$. This i
 	\arrow["{i_{2}}", from=3-2, to=2-3]
 	\arrow["{i_{P}}"', from=3-3, to=2-3]
 \end{tikzcd}\]
+We claim that \textcolor{red}{Pendiente}
+\begin{itemize}
+\item $W$ is a smooth manifold (oriented too).
+\item $W$ is a $\Gamma$-proper map.
+\item $W$ is a $\mathscr{H}_{\Gamma}^{*}$-oriented map.
+\end{itemize}
 \end{remark}
 
 
@@ -1090,7 +1096,7 @@ To prove that $(\iota_{W}\circ \tau_{W})!(x_{M})=(\iota_{\tilde{W}}\circ \tau_{\
 
 
 \item Transitivity: 
-    Consider the relations $(M,\partial M, \pi_{M}, x_{M})\sim (N,\partial N, \pi_{N}, x_{N})$ given by the maps $i_{M}:M\to W_{1}$ and $i_{1}:N\to W_{1}$; and $(N,\partial N, \pi_{N}, x_{N})\sim (P,\partial P, \pi_{P}, x_{P})$ given by $i_{P}:P\to W_{2}$ and $i_{2}:N\to W_{2}$. Consider the space $W$ defined in Remark \ref{Espacio joint} for the maps $i_{k}:N\to W_{1}$, getting the following diagram,
+    Consider the relations $(M,\partial M, \pi_{M}, x_{M})\sim (N,\partial N, \pi_{N}, x_{N})$ given by the maps $i_{M}:M\to W_{1}$ and $i_{1}:N\to W_{1}$; and $(N,\partial N, \pi_{N}, x_{N})\sim (P,\partial P, \pi_{P}, x_{P})$ given by $i_{P}:P\to W_{2}$ and $i_{2}:N\to W_{2}$. Consider the space $W$ defined in Remark \ref{Espacio joint} for the maps $i_{k}:N\to W_{k}$, getting the following diagram,
 
 % https://q.uiver.app/#q=WzAsNixbMSwyLCJOIl0sWzAsMSwiV197MX0iXSxbMiwxLCJXX3syfSJdLFsxLDAsIlciXSxbMCwyLCJNIl0sWzIsMiwiUCJdLFsxLDMsImpfezF9Il0sWzIsMywial97Mn0iLDJdLFswLDEsImlfezF9IiwyXSxbMCwyLCJpX3syfSJdLFs0LDEsImlfe019Il0sWzUsMiwiaV97UH0iLDJdLFszLDAsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
 \[\begin{tikzcd}
@@ -1248,7 +1254,7 @@ satisfy that $(s\amalg s^{-})!(x_{M}\oplus x_{M})=0\in \mathscr{H}_{\Gamma}^{*}(
 
 
 \begin{remark}
-Thom: if $\rho_{E}:E\to M$ is a $\Gamma$-vector bundle, then $(M,\partial M,\pi_{M},x_{M})\sim (S(E),S(E)|_{\partial M}, \pi_{M}\circ\rho_{S(E)})$\textcolor{red}{Redactar y demostrar mejor}.
+Thom: if $\rho_{E}:E\to M$ is a $\Gamma$-vector bundle, then $(M,\partial M,\pi_{M},x_{M})\sim (S(E),S(E)|_{\partial M}, \pi_{M}\circ\rho_{S(E)})$\textcolor{red}{Redactar mejor y demostrar}.
 \end{remark}
 
 
@@ -1467,13 +1473,13 @@ such that $f!(r_{\partial}(x_{M}))=0$ and $W$ a manifold without boundary. By Le
 \end{align*} 
 We claim that
 \begin{enumerate}
-\item $\partial T$ is the identification of $\partial (D_{M})\cong D_{M}|_{\partial M}$
-
-\item  $\xi_{D_{M}\oplus \mathbb{R}}\circ i_{M^{0}}\circ l:\partial M \to D_{M}$ and $\xi_{D_{W}\oplus \mathbb{R}}\circ f:\partial M \to D_{W}$ are $\Gamma$-homotopic.
-\item $\pi_{T}:T\to X$ is defined by $\pi_{T}(a)=\pi_{M}\circ\rho_{D_{M}\oplus \mathbb{R}}$ if $a\in D_{M}$, or $\pi_{T}(a)=\pi_{W}\circ\rho_{D_{W}\oplus \mathbb{R}}$.
+\item $\partial T$ is the identification of $\partial (D_{M})\cong D_{M}|_{\partial M}$ \textcolor{red}{pendiente}
 \end{enumerate}
 
-With this, defining $\iota:M\to T$ as the natural embedding $i_{D_{M}\times\{0\}}\circ \xi_{D_{M}\oplus \mathbb{R}}$, we get that $\iota\circ i_{\partial M} = i_{D_{W}\times\{0\}}\circ \xi_{D_{W}\oplus \mathbb{R}}\circ f$, where identifying $i_{\partial T}=i_{D_{W}\times\{0\}}$, we get the commutative diagram
+We have $\xi_{D_{M}\oplus \mathbb{R}}\circ i_{M^{0}}\circ l:\partial M \to D_{M}$ and $\xi_{D_{W}\oplus \mathbb{R}}\circ f:\partial M \to D_{W}$ are equals in $T$, i.e., composing with $i_{D_{M}\oplus \mathbb{R}}$ and $i_{D_{W}\oplus \mathbb{R}}$ respectively by Remark \ref{Espacio joint}.
+
+
+With this, defining $\iota:M\to T$ as the natural embedding $i_{D_{M}\times\{0\}}\circ \xi_{D_{M}\oplus \mathbb{R}}$, and $\pi_{T}:T\to X$ is defined by $\pi_{T}(a)=\pi_{M}\circ\rho_{D_{M}\oplus \mathbb{R}}$ if $a\in D_{M}\oplus \mathbb{R}$, or $\pi_{T}(a)=\pi_{W}\circ\rho_{D_{W}\oplus \mathbb{R}}$ if $a\in D_{M}\oplus \mathbb{R}$, such as in Proposition \ref{Equivalence relation 1} obtaining in the same way that $\pi_{T}\circ \iota = \pi_{M}$. We get that $\iota\circ i_{\partial M} = i_{D_{W}\times\{0\}}\circ \xi_{D_{W}\oplus \mathbb{R}}\circ f$, where identifying $i_{\partial T}=i_{D_{W}\times\{0\}}$, obtaining the commutative diagram
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHBhcnRpYWwgTSJdLFsyLDAsIk0iXSxbMiwxLCJUIl0sWzAsMSwiXFxwYXJ0aWFsIFRcXGNvbmcgRF97TX18X3tcXHBhcnRpYWwgTX0iXSxbMCwxLCJpX3tcXHBhcnRpYWwgTX0iXSxbMSwyLCJcXGlvdGEiXSxbMCwzLCJcXHhpX3tEX3tXfVxcb3BsdXMgXFxtYXRoYmJ7Un19XFxjaXJjIGYiLDJdLFszLDIsImlfe1xccGFydGlhbCBUfSIsMl1d
 \[\begin{tikzcd}
 	{\partial M} && M \\
@@ -1614,10 +1620,10 @@ where first and second equations are by definitions of $\phi_{*}$ and $h$, respe
 % https://q.uiver.app/#q=WzAsNSxbMCwxLCJNX3tYfSJdLFsxLDEsIlUiXSxbMSwwLCJZIl0sWzAsMCwiTSJdLFsyLDEsIlgiXSxbMCwxLCJcXHBpX3tNfXxfe01fe1h9fSIsMl0sWzEsMiwiaV97VX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFszLDIsIlxccGlfe019IiwyXSxbMCwzLCJpX3tNX3tYfX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFsxLDQsInIiLDJdLFs0LDIsIlxccGhpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XV0=
 \[\begin{tikzcd}
 	M & Y \\
-	{M_{X}} & U & X
+	{M_{U}} & U & X
 	\arrow["{\pi_{M}}"', from=1-1, to=1-2]
 	\arrow["{i_{M_{U}}}", hook', from=2-1, to=1-1]
-	\arrow["{\pi_{M}|_{M_{X}}}"', from=2-1, to=2-2]
+	\arrow["{\pi_{M}|_{M_{U}}}"', from=2-1, to=2-2]
 	\arrow["{i_{U}}", hook', from=2-2, to=1-2]
 	\arrow["r"', from=2-2, to=2-3]
 	\arrow["\phi"', hook', from=2-3, to=1-2]
@@ -1628,15 +1634,15 @@ where first and second equations are by definitions of $\phi_{*}$ and $h$, respe
          &=[M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}]
         .
     \end{align*}
-    Consider $\widetilde{W}=M\times(0,1]\cup M_{X}\times \{0\}$, and with this, define
+    Consider $\widetilde{W}=M\times(0,1]\cup M_{U}\times \{0\}$, and with this, define
     \begin{align*}
-        W=\widetilde{W}\cup_{\partial M\times(0,1]\cup \partial M_{U}\times \{0\}}\widetilde{W},
+        W=\widetilde{W}\cup_{\partial M\times(0,1]\cup \partial M_{U}\times \{0\}}\widetilde{W}.
     \end{align*}    
-    and $\pi_{E}:W\to Y$ in the natural way based on $\pi_{M}$. Denote $\lambda: W\hookrightarrow (M\times [0,1])\cup_{\partial M \times [0,1]}(M\times [0,1])$ the inclusion map, and the maps
+    Denote by $\lambda: W\hookrightarrow (M\times [0,1])\cup_{\partial M \times [0,1]}(M\times [0,1])$ the inclusion map, and denote
     \begin{align*}
         i_{0}:-M_{U}\to W^{0}, \ \ \ \ \ i_{1}:M\to W^{0}
     \end{align*}
-    denoting the inclusions given by a collar.
+    the inclusions given by a collar.
     
     $W$ is a proper $\mathscr{H}_{\Gamma}$-oriented manifold with boundary, where $$-M_{U}\times \{0\}\bigcup M\times \{1\} \subseteq \partial W,$$
     i.e., there exists an embedding $i!=(i_{0}+i_{1})!:\mathscr{H}^{*}(M_{U})\oplus \mathscr{H}^{*}(M)\to \mathscr{H}^{*+1}(W^{0})$. 
@@ -1649,20 +1655,20 @@ where first and second equations are by definitions of $\phi_{*}$ and $h$, respe
 	\arrow["{i!}", from=1-3, to=1-4]
 	\arrow[from=1-4, to=1-5]
 \end{tikzcd}\]
-    We want to see that $i!(x_{M}-i^{*}_{M_{U}}(x_{M}))=0$, which is equivalent to the fact $x_{M}-i^{*}_{M_{U}}(x_{M})\in Im(r_{\partial})$. To construct a desired cycle, consider the cohomology element obtained gluining two copies of $x_{M}$ along $\partial M\times [0,1]$
+    We want to see that $i!(x_{M}-i^{*}_{M_{U}}(x_{M}))=0$, which is equivalent to the fact $x_{M}-i^{*}_{M_{U}}(x_{M})\in Im(r_{\partial})$. To construct a desired cycle, consider the cohomology element obtained by gluing two copies of $x_{M}$ along $\partial M\times [0,1]$
     \begin{align*}
-       \hat{x}:=\biggl( x_{M}\bigcup_{\partial M \times [0,1]} x_{M}\biggr) \in \mathscr{H}_{\Gamma}^{*}\biggr( M\times [0,1])\bigcup_{\partial M\times [0,1]}(M\times [0,1])\biggl)
+       \hat{x}:=\biggl( x_{M}\bigcup_{\partial M \times [0,1]} x_{M}\biggr) \in \mathscr{H}_{\Gamma}^{*}\biggr( M\times [0,1]\bigcup_{\partial M\times [0,1]}M\times [0,1]\biggl).
     \end{align*}
     With this, we get that $r_{\partial}(\lambda^{*}(\hat{x}))=x_{M}-i_{M_{U}}^{*}(x_{M})$. It implies $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$, and with this,
     \begin{align*}
         [M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}]&=[M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}\circ i_{M_{U}},i_{M_{U}}^{*}x_{M}]\\
-        &=[M,\partial M,\pi_{W^{0}}\circ i_{0},i_{M_{U}}^{*}x_{M}]\\
+        &=[M_{U},\partial M_{U},\pi_{W^{0}}\circ i_{0},i_{M_{U}}^{*}x_{M}]\\
         &=[W^{0},\emptyset,\pi_{W^{0}}, i_{0}!(i_{M_{U}}^{*}x_{M})]\\
         &=[W^{0},\emptyset,\pi_{W^{0}}, i_{1}!(x_{M})]\\
         &=[M,\partial M,\pi_{W^{0}} \circ i_{1},(x_{M})]\\
-        &=[M,\partial M,\pi_{M},x_{M}]\\
+        &=[M,\partial M,\pi_{M},x_{M}]
     \end{align*}
-    
+   where the first equality is by definition of restriction; second equality is given by the fact that $\phi\circ r\circ \pi_{M}\circ i_{M_{U}}$ is $\Gamma$-homotopic to $\pi_{W^{0}}\circ i_{0}$; third equality is by Remark \ref{relation 1} applied to $i_{0}:M_{U}\to W^{0}$; fourth equation is given by $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$; fifth equation is by Remark \ref{relation 1} applied to $i_{1}: M\to W^{0}$; and last equation is given by $\pi_{M}=\pi_{W}^{0}\circ i_{1}$.
 \end{itemize}
 \end{proof}
 
