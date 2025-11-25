@@ -308,7 +308,7 @@ Now, we present an argument that let us to use the theory of Emmerson - Meyer, m
 
 
 
-\textcolor{red}{reparafrasearlo con grupoide $\Gamma\ltimes \underline{E}\gamma$}
+\textcolor{red}{reparafrasearlo con grupoide $\Gamma\ltimes \underline{E}\Gamma$}
 
 \begin{thm}[\cite{EM10}, p. 18]\label{Emerson-Mayer} Let $\mathcal{G}$ be a proper groupoid, let $X$ and $Y$ be smooth $\mathcal{G}$-manifolds, and let $f:X\to Y$ be a smooth $\mathcal{G}$-equivariant map. Suppose that
 \begin{itemize}
@@ -341,19 +341,15 @@ Now, we present an argument that let us to use the theory of Emmerson - Meyer, m
 
 \subsection{Connected sum generalization}
 
-In \cite{Kos92}, p. 99, we found a generalization of connected sum of manifolds called the {\it joining manifolds along submanifolds with boundary} \textcolor{red}{Tenemo que buscar una mejor referencia para la suma conexa con frontera} (also called the {\it pasting}) which is as follows: Consider 
+In \cite{Kos92}, p. 99, we found a generalization of connected sum of manifolds called the {\it joining manifolds along submanifolds with boundary} (also called the {\it pasting}) which is as follows: Consider 
 \begin{enumerate}
     \item $M_{1}$ and $M_{2}$ are two $(n+k)$-dimensional smooth manifolds, 
     \item $E\to N$ being a $k$-dimensional Riemannian vector bundle over the $n$-dimensional closed compact submanifold $N$,
     \item define $\alpha_{E}:E\setminus \xi_{E}(N)\to E\setminus \xi_{E}(N)$ by  $\alpha_{E}(||v||)=\alpha(v)\cdot \frac{v}{||v||}$, where $\alpha:(0,\infty)\to (0,\infty)$ an orientation reversing diffeomorphism, 
-    \item $h_{i}:E\to int(M_{i})\subseteq M_{i}$ are embeddings into the interior of $M_{i}$ respectively \textcolor{red}{frase incompatible con la idea de que sea incluida la frontera}.
+    \item $h_{i}:E\to M_{i}$ are $\Gamma$-embeddings such that $h_{i}|_{\xi_{E}(N)}$ is a neat embedding where $h_{i}(E)$ are neat tubular neighborhoods of $h_{i}(\xi_{E}(N))$. 
 \end{enumerate}
-With these, we define $M(h_{1},h_{2})$ the join manifold along $N$ as $M_{1}\cup M_{2}/\sim$, where for $v\in h_{1}(E\setminus \xi_{E}(N))$ we consider the identification $v\sim h_{2}\circ \alpha_{E}\circ h_{1}^{-1}(v)$.
-\begin{remark}[\cite{Kos92}, p. 100]
-    \begin{enumerate}
-        \item $M(h_{1},h_{2})$ is a smooth manifold with boundary\textcolor{red}{Necesitamos una referencia apropiada}.
-    \end{enumerate}
-\end{remark}
+With these, we define $M(h_{1},h_{2})$ the join manifold along $N$ as $M_{1}\cup M_{2}/\sim$, where for $v\in h_{1}(E\setminus \xi_{E}(N))$ we consider the identification $v\sim h_{2}\circ \alpha_{E}\circ h_{1}^{-1}(v)$. We get that $M(h_{1},h_{2})$ is an oriented smooth manifold with boundary (see \cite{Kos92}, p. 100).
+
 
 \begin{remark}\label{Tangente de un fibrado vector}
     Recall that if $\rho:E\to W$ is a $\Gamma$-vector bundle, then $TE\cong TW\oplus E$: we have the exact sequence $0\to \rho^{*}E\to TE \to \rho^{*}TW \to 0$ (see \cite{SP99}, p. 103), then the restricted exact sequence $0\to \rho^{*}E|_{W}\to TE|_{W} \to \rho^{*}TW|_{W} \to 0$, where $W\subseteq E$ by the zero section $s$, is identified with $0\to E\to TE|_{W}\to TW\to 0$, by the fact that $\rho^{*}E|_{W}\cong E$ and $(\rho^{*}TW)|_{W}\cong TW$. We have that this sequence split, because the map $d\rho:TE|_{W}\to TW$ has right inverse by $\rho \circ s = id_{W}$. 
@@ -764,11 +760,11 @@ where $\xi_{\nu_{k}}$ is the zero section of the vector bundle $\nu_{k}$. This i
 	\arrow["{i_{2}}", from=3-2, to=2-3]
 	\arrow["{i_{P}}"', from=3-3, to=2-3]
 \end{tikzcd}\]
-We claim that \textcolor{red}{Pendiente}
+We claim that 
 \begin{itemize}
-\item $W$ is a smooth manifold (oriented too).
-\item $W$ is a $\Gamma$-proper map.
-\item $W$ is a $\mathscr{H}_{\Gamma}^{*}$-oriented map.
+\item $W$ is an oriented smooth manifold (see \cite{Kos92}, Chapter VI, Section 4).
+\item $W$ is a $\Gamma$-proper map. \textcolor{red}{Pendiente}
+\item $W$ is a $\mathscr{H}_{\Gamma}^{*}$-oriented map. \textcolor{red}{Pendiente}
 \end{itemize}
 \end{remark}
 
@@ -1450,7 +1446,20 @@ where: the first one is the definition of $j_{*}$; second is by the fact that $j
 	\arrow["Id_{M\times[0,1)}"', from=2-3, to=1-2]
 	\arrow["{\pi_{M}\circ \pi_{1}}", from=2-3, to=3-2]
 \end{tikzcd}\]
-Where we have that $(Id_{M}\times 0)!(x_{M})=0= Id_{M\times [0,1)}!(0)$ because by Remark \ref{cohomology conditions}, we get $\mathscr{H}_{*}^{\Gamma}(M\times [0,1))=0$ \textcolor{red}{falta justificarlo bien}.
+where we have that $(Id_{M}\times 0)!(x_{M})=0= Id_{M\times [0,1)}!(0)$ because $$\mathscr{H}^{*}_{\Gamma}(M\times [0,1)):=\mathscr{H}^{*}_{\Gamma}(M\times [0,1],M\times \{1\})=\{0\},$$ by the fact that $i_{M\times \{1\}}:M\times \{1\}\to M\times [0,1]$ is a $\Gamma$-homotopy equivalence, therefore in the long exact sequence $i_{M\times \{1\}}^{n}$ is an isomorphism for all $n\in \mathbb{N}$:
+% https://q.uiver.app/#q=WzAsNyxbMCwwLCJcXGNkb3RzIl0sWzEsMCwiXFxtYXRoc2Nye0h9XnsqLTF9X3tcXEdhbW1hfShNXFx0aW1lcyBbMCwxXSkiXSxbMiwwLCJcXG1hdGhzY3J7SH1eeyotMX1fe1xcR2FtbWF9KE1cXHRpbWVzIFxcezFcXH0pIl0sWzEsMSwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTVxcdGltZXMgWzAsMV0sTVxcdGltZXMgXFx7MVxcfSkiXSxbMCwyLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXFx0aW1lcyBbMCwxXSkiXSxbMSwyLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXFx0aW1lcyBcXHsxXFx9KSJdLFsyLDIsIlxcY2RvdHMiXSxbMSwyLCJpX3tNXFx0aW1lcyBcXHsxXFx9fV57Ki0xfSJdLFsyLDNdLFszLDRdLFswLDFdLFs0LDUsImlfe01cXHRpbWVzIFxcezFcXH19XnsqfSJdLFs1LDZdXQ==
+\[\begin{tikzcd}
+	\cdots & {\mathscr{H}^{*-1}_{\Gamma}(M\times [0,1])} & {\mathscr{H}^{*-1}_{\Gamma}(M\times \{1\})} \\
+	& {\mathscr{H}^{*}_{\Gamma}(M\times [0,1],M\times \{1\})} \\
+	{\mathscr{H}^{*}_{\Gamma}(M\times [0,1])} & {\mathscr{H}^{*}_{\Gamma}(M\times \{1\})} & \cdots
+	\arrow[from=1-1, to=1-2]
+	\arrow["{i_{M\times \{1\}}^{*-1}}", from=1-2, to=1-3]
+	\arrow[from=1-3, to=2-2]
+	\arrow[from=2-2, to=3-1]
+	\arrow["{i_{M\times \{1\}}^{*}}", from=3-1, to=3-2]
+	\arrow[from=3-2, to=3-3]
+\end{tikzcd}\]
+
 \end{itemize}
 
 {\bf Exactness in ${\mathscr{H}^{pf}_{*}(X,A;\Gamma)}$}: 
@@ -1579,7 +1588,7 @@ where the first equality is by definition of $\partial$; second equality is by $
 
 
 \begin{proof}
-We propose that $\phi_{*}$ is an isomorphism. As a starting point consider the case that $\phi:X\to Y$ is an inclusion. In this case the inverse for the map  
+First, suppose that $\phi$ is an equivariant cellular inclusion. We will show that $\phi_{*}$ is an isomorphism. As a starting point consider the case that $\phi:X\to Y$ is an inclusion. In this case the inverse for the map  
 % https://q.uiver.app/#q=WzAsMixbMSwwLCJbTSxcXHBhcnRpYWwgTSxcXHBoaVxcY2lyY1xccGlfe019LHhfe019XVxcaW4gXFxtYXRoc2Nye0h9XntwZn1feyp9KFksQikiXSxbMCwwLCJbTSxcXHBhcnRpYWwgTSxcXHBpX3tNfSx4X3tNfV1cXGluXFxtYXRoc2Nye0h9XntwZn1feyp9KFgsQSkiXSxbMSwwLCJcXHBoaV97Kn0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
 \[\begin{tikzcd}
 	{[M,\partial M,\pi_{M},x_{M}]\in\mathscr{H}^{pf}_{*}(X,A)} & {[M,\partial M,\phi\circ\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(Y,B)}
@@ -1613,7 +1622,7 @@ We claim that $\phi^{-1}_{*}=h$.
         &=[M,\partial M,r\circ \phi\circ\pi_{M},x_{M}]\\
         &=[M,\partial M,\pi_{M},x_{M}],
     \end{align*}
-where first and second equations are by definitions of $\phi_{*}$ and $h$, respectively; third equation is by $i_{M_{U}}=Id_{M}$ and $Id_{M}^{*}=Id_{\mathscr{H}^{*}_{\Gamma}(M)}$; and fourth is by the fact that $r\circ \phi=r|_{X}\cong_{h} Id_{X}$.
+where first and second equations are obtained by definitions of $\phi_{*}$ and $h$, respectively; third equation is by $i_{M_{U}}=Id_{M}$ and $Id_{M}^{*}=Id_{\mathscr{H}^{*}_{\Gamma}(M)}$; and fourth is get by the fact that $r\circ \phi=r|_{X}\cong_{h} Id_{X}$.
        
     \item $\phi_{*}\circ h=Id_{\mathscr{H}^{pf}_{*}(Y,B;\Gamma)}$:
 
@@ -1645,7 +1654,7 @@ where first and second equations are by definitions of $\phi_{*}$ and $h$, respe
     the inclusions given by a collar.
     
     $W$ is a proper $\mathscr{H}_{\Gamma}$-oriented manifold with boundary, where $$-M_{U}\times \{0\}\bigcup M\times \{1\} \subseteq \partial W,$$
-    i.e., there exists an embedding $i!=(i_{0}+i_{1})!:\mathscr{H}^{*}(M_{U})\oplus \mathscr{H}^{*}(M)\to \mathscr{H}^{*+1}(W^{0})$. 
+    i.e., there exists an embedding $i!=(i_{0}\sqcup i_{1})!:\mathscr{H}^{*}(M_{U})\oplus \mathscr{H}^{*}(M)\to \mathscr{H}^{*+1}(W^{0})$. 
     Consider the long exact sequence of the pair $(W,\partial W)$,
     % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFsyLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxjZG90cyJdLFs0LDAsIlxcY2RvdHMiXSxbMSwyLCJpISJdLFswLDEsInJfe1xccGFydGlhbH0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDRdLFszLDBdXQ==
 \[\begin{tikzcd}
@@ -1655,9 +1664,9 @@ where first and second equations are by definitions of $\phi_{*}$ and $h$, respe
 	\arrow["{i!}", from=1-3, to=1-4]
 	\arrow[from=1-4, to=1-5]
 \end{tikzcd}\]
-    We want to see that $i!(x_{M}-i^{*}_{M_{U}}(x_{M}))=0$, which is equivalent to the fact $x_{M}-i^{*}_{M_{U}}(x_{M})\in Im(r_{\partial})$. To construct a desired cycle, consider the cohomology element obtained by gluing two copies of $x_{M}$ along $\partial M\times [0,1]$
+    We want to see that $i!((x_{M},-i^{*}_{M_{U}}(x_{M})))=(i_{0}\sqcup i_{1})!(x_{M}-i_{M_{U}}^{*}(x_{M}))=0$, which is equivalent to the fact $x_{M}-i^{*}_{M_{U}}(x_{M})\in Im(r_{\partial})$. To construct a desired cycle, consider the cohomology element obtained by gluing\footnote{In this case $\hat{x}$ can be obtained in the Mayer-Vietoris cohomology sequence as the element in the cohomology of the double of $M$, denoted by $D(M)$, such that its image under the restriction map hold $r_{M\times [0,1]}(\hat{x})=(x_{M},x_{M})$.} two copies of $x_{M}$ along $\partial M\times[0,1]$
     \begin{align*}
-       \hat{x}:=\biggl( x_{M}\bigcup_{\partial M \times [0,1]} x_{M}\biggr) \in \mathscr{H}_{\Gamma}^{*}\biggr( M\times [0,1]\bigcup_{\partial M\times [0,1]}M\times [0,1]\biggl).
+       \hat{x}:=\biggl( x_{M}\bigcup_{\partial M \times [0,1]} x_{M}\biggr) \in \mathscr{H}_{\Gamma}^{*}\biggr( M\times [0,1]\bigcup_{\partial M\times [0,1]}M\times [0,1]\biggl)\cong \mathscr{H}_{\Gamma}^{*}(D(M)).
     \end{align*}
     With this, we get that $r_{\partial}(\lambda^{*}(\hat{x}))=x_{M}-i_{M_{U}}^{*}(x_{M})$. It implies $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$, and with this,
     \begin{align*}
@@ -1666,10 +1675,11 @@ where first and second equations are by definitions of $\phi_{*}$ and $h$, respe
         &=[W^{0},\emptyset,\pi_{W^{0}}, i_{0}!(i_{M_{U}}^{*}x_{M})]\\
         &=[W^{0},\emptyset,\pi_{W^{0}}, i_{1}!(x_{M})]\\
         &=[M,\partial M,\pi_{W^{0}} \circ i_{1},(x_{M})]\\
-        &=[M,\partial M,\pi_{M},x_{M}]
+        &=[M,\partial M,\pi_{M},x_{M}],
     \end{align*}
    where the first equality is by definition of restriction; second equality is given by the fact that $\phi\circ r\circ \pi_{M}\circ i_{M_{U}}$ is $\Gamma$-homotopic to $\pi_{W^{0}}\circ i_{0}$; third equality is by Remark \ref{relation 1} applied to $i_{0}:M_{U}\to W^{0}$; fourth equation is given by $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$; fifth equation is by Remark \ref{relation 1} applied to $i_{1}: M\to W^{0}$; and last equation is given by $\pi_{M}=\pi_{W}^{0}\circ i_{1}$.
 \end{itemize}
+For general $\phi:(X,A)\to (Y,B)$, we could change $(Y,B)$ by the mapping cylinder $(M_{\phi},M_{\phi|A})$ and use excision for inclusions (because there is an homotopy equivalence $\psi:(Y,B)\to (M_{\phi},M_{\phi|A})$ and therefore, its cohomology groups are isomorphic).
 \end{proof}
 
 
