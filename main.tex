@@ -483,6 +483,28 @@ for all $i,j\in\mathbb{Z}$, which are compatible with the boundary maps.
     We say that a smooth manifold with boundary $M$ is a $\mathscr{H}_{\Gamma}$-orientable if $TM$ is $\mathscr{H}_{\Gamma}$-orientable. When is chosen a fixed $\mathscr{H}_{\Gamma}$-orientation for a real $\Gamma$-vector bundle (or particularly for a manifold), we say that it is a $\mathscr{H}_{\Gamma}$-oriented bundle (or manifold) \textcolor{red}{Como arregla Luck la orientacion para pareja. Definir cohmologia de fibrado}.
 \end{defn}
 
+
+    
+\begin{defn}\label{orientacion compacta}\textcolor{blue}{Nueva definicion para lograr compacidad} For a $d$-dimensional real $\Gamma$-vector bundle  $E\to X$ over a proper $\Gamma$-space $X$, a $\mathscr{H}_{\Gamma}$-orientation for $E$ is a class \textcolor{blue}{$\tau\in \mathscr{H}_{\Gamma}^{d}(S(E\oplus \mathbb{R}))$} such that for each proper $\Gamma$-map $f:Y\to X$, 
+
+
+% https://q.uiver.app/#q=WzAsNSxbMCwxLCJZIl0sWzEsMSwiWCJdLFsxLDAsIlMoRVxcb3BsdXMgXFxtYXRoYmJ7Un0pIl0sWzIsMCwiRVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMCwwLCJmXnsqfVMoRVxcb3BsdXMgXFxtYXRoYmJ7Un0pIl0sWzAsMSwiZiJdLFsyLDFdLFsyLDMsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsMV0sWzQsMF1d
+\[\begin{tikzcd}
+	{f^{*}S(E\oplus \mathbb{R})} & {S(E\oplus \mathbb{R})} & {E\oplus \mathbb{R}} \\
+	Y & X
+	\arrow[from=1-1, to=2-1]
+	\arrow[hook, from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-2]
+	\arrow["f", from=2-1, to=2-2]
+\end{tikzcd}\]
+\noindent multiplication with $f^{*}\tau \in \mathscr{H}_{\Gamma}^{d}(f^{*}S(E\oplus \mathbb{R}))$ induces an isomorphism (refered as Thom-isomorphism)
+    \begin{align*}
+        -\otimes \tau:\mathscr{H}_{\Gamma}^{*}(Y)\to \mathscr{H}_{\Gamma}^{*+d}(f^{*}S(E\oplus \mathbb{R})).
+    \end{align*}
+    We say that a smooth manifold with boundary $M$ is a $\mathscr{H}_{\Gamma}$-orientable if $TM$ is $\mathscr{H}_{\Gamma}$-orientable. When is chosen a fixed $\mathscr{H}_{\Gamma}$-orientation for a real $\Gamma$-vector bundle (or particularly for a manifold), we say that it is a $\mathscr{H}_{\Gamma}$-oriented bundle (or manifold).
+    \end{defn}
+
 \textcolor{red}{Decir que usamos teoria de cohomologia de soporte compacto. Ojala incluir cita para indicar que significa esto}
 
 \begin{remark}
@@ -523,9 +545,9 @@ We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, 
         \item If $F:\mathbb{R}\times M\to N$ is a smooth $\Gamma$-equivariant orientation preserving map, then $F(0,-)!=F(1,-)!$.
         \item  If $E\to M$ is a smooth real $\mathscr{H}_{\Gamma}$-oriented $\Gamma$-vector bundle over a manifold with boundary $M$, then if $s:M\to E$ is the zero section, the pushforward map 
         \begin{align*}
-            s!:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+dim(E)-dim(M)}(E)
+            (s\oplus 1)!:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+dim(E)-dim(M)}(S(E\oplus\mathbb{R}))
         \end{align*}
-        is the Thom isomorphism described in Definition \ref{thom}.
+        is the Thom isomorphism described in Definition \ref{thom} \textcolor{blue}{Note que no cambiamos la dimension del codominio, pues dim(S(E+R))=dim(E)}.
         \item Let $N$ be a manifold with boundary and consider $N^{0}=N\setminus\partial N$. If $i^{0}:N^{0}\to N$ the inclusion, and if $U$ is an open collar around $\partial N$ in $N$ and let $l:\partial N\to U\to N^0$, the inclusion through the collar, then the pushforwards $i^0_!$ and $l_!$ corresponds to the maps appearing in the long exact sequence of the pair $(N,\partial N)$,
     \begin{align*} 
     \cdots\to\mathscr{H}_{\Gamma}^{*-1}(\partial N)\xrightarrow{l_!}\mathscr{H}_{\Gamma}^*(N^0)\xrightarrow{i^0_!}\mathscr{H}_{\Gamma}^*(N)\to\cdots
@@ -685,8 +707,23 @@ where, $\phi_{M}=\xi_{E^{W}}\circ f_{M}$, $\phi_{N}=\eta_{f_{N}}\circ \xi_{V}$ a
    \item We have that $\pi_{E^{W}}\circ \phi_{N}=\pi_{W}\circ (\rho_{E^{W}} \circ \eta_{f_{N}}\circ \xi_{V})=\pi_{W}\circ f_{N}=\pi_{N}$.
    
 \end{itemize}
-
 \end{proof}
+
+\begin{remark}\label{embedding to compact}
+Note that \textcolor{blue}{we can consider the embedding obtained in Lemma \ref{EM-Embedding} as an embedding $N\to W'$, with $W':=S(TE^{W}\oplus\mathbb{R})$ a compact manifold}, as the following commutative diagram induce
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJOIl0sWzEsMCwiRV57V30iXSxbMiwwLCJTKFRFXntXfVxcb3BsdXNcXG1hdGhiYntSfSkiXSxbMSwxLCJYIl0sWzAsMSwiXFxwaGlfe059Il0sWzEsMiwic1xcb3BsdXMxIl0sWzAsMywiXFxwaV97Tn0iLDJdLFsxLDMsIlxccGlfe0Vee1d9fSIsMl0sWzIsMywiXFxwaV97RV57V319XFxjaXJjXFxyaG9fe1RFXntXfX1cXGNpcmMgXFxwaV97MX0iXV0=
+\[\begin{tikzcd}
+	N & {E^{W}} & {W'} \\
+	& X
+	\arrow["{\phi_{N}}", from=1-1, to=1-2]
+	\arrow["{\pi_{N}}"', from=1-1, to=2-2]
+	\arrow["{s\oplus1}", from=1-2, to=1-3]
+	\arrow["{\pi_{E^{W}}}"', from=1-2, to=2-2]
+	\arrow["{\pi_{E^{W}}\circ\rho_{TE^{W}}\circ \pi_{1}}", from=1-3, to=2-2]
+\end{tikzcd}\]
+\noindent where $(s\oplus 1)\circ \phi_{N}$ is a composition of $\Gamma$-embeddings, and $$\rho_{TE^{W}}\circ \pi_{1}\circ(s\oplus 1)=id_{E^{W}}.$$ 
+\end{remark}
+
 
 \begin{lemma}\label{lema normales isomorfos}
 For any $\Gamma$-proper embeddings $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$, there exist $\Gamma$-vector bundles $D_{1}\to W_{1}$ and $D_{2}\to W_{2}$ such that $$\nu_{\xi_{D_{1}}\circ i_{1}}\cong \nu_{\xi_{D_{2}}\circ i_{2}}.$$
@@ -706,7 +743,7 @@ Consider the tangent vector bundles $TW_{k}\to W_{k}$ for $k=1,2 $ and the uniqu
 	\arrow["{i_{2}}"', from=2-3, to=2-4]
 	\arrow["{a_{2}}"', from=2-4, to=2-5]
 \end{tikzcd}\]
-If we consider the $\Gamma$-vector bundles $D_{1}:=a_{1}^{*}E_{2}\oplus C_{1}$ and $D_{2}:=a_{2}^{*}E_{1}\oplus C_{2}$ over $W_{1}$ and $W_{2}$, respectively. With this in mind, denoting $E:=E_{1}\oplus E_{2}$, we note that:
+\textcolor{blue}{(We have that $Z$ is the universal proper $\Gamma$-CW complex (c.f. \cite{MV03}, p. 6) and, by Remark \ref{embedding to compact} we can consider $W_{i}$ as a compact proper $\Gamma$-manifold, making possible the application of Lemma \ref{integral lemma})} If we consider the $\Gamma$-vector bundles $D_{1}:=a_{1}^{*}E_{2}\oplus C_{1}$ and $D_{2}:=a_{2}^{*}E_{1}\oplus C_{2}$ over $W_{1}$ and $W_{2}$, respectively. With this in mind, denoting $E:=E_{1}\oplus E_{2}$, we note that:
 \begin{enumerate}
     \item $TD_{1}|_{N}\cong TD_{2}|_{N}$: by one hand we have $TD_{1}\cong TW_{1}\oplus D_{1}$ by Remark \ref{Tangente de un fibrado vector}, and by the other hand \begin{align*}
         (a_{1}\circ i_{1})^{*}E&=i_{1}^{*}(a_{1}^{*}E_{1}\oplus a_{1}^{*}E_{2})\\
@@ -1208,7 +1245,7 @@ and with this the group operation is well defined.
 	\arrow["{\pi_{N}\amalg \pi_{M}}", from=2-3, to=3-2]
 \end{tikzcd}\]
 where $i_{1}!(x_{N})=x_{N}\oplus 0$.
-        \item Inverse element: For a cycle $[M, \partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$ the inverse element is $[-M, -\partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$, because their sum is equal to $$[M\amalg -M, \partial M \amalg -\partial M, \pi_{M}\amalg \pi_{-M}, x_{M}\oplus x_{M}].$$
+        \item Inverse element: \textcolor{blue}{Esta parte es suceptible al cambio de orientacion a compacta} For a cycle $[M, \partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$ the inverse element is $[-M, -\partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$, because their sum is equal to $$[M\amalg -M, \partial M \amalg -\partial M, \pi_{M}\amalg \pi_{-M}, x_{M}\oplus x_{M}].$$
         The $\mathscr{H}_{\Gamma}^{*}$-orientation of $M$ provides us an $\mathscr{H}_{\Gamma}^{*}$-orientation of the tangent bundle $\rho:TM\to M$, which means that the zero section $s:M\to TM$ satisfy that $s!=-\otimes \tau$, where the class $ \tau\in \mathscr{H}_{\Gamma}^{m}(TM)$ is such that the map $-\otimes \tau:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+m}(TM)$ is an isomorphism. For $-M$, the zero section $s^{-}:-M\to T(-M)$ is the same $s$ as a map, but we choose the opposite class satisfying that $$s^{-}!=-\otimes (-\tau):\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+m}(TM).$$
         Then, $s!(x_{M})=x_{M}\otimes \tau= -(x_{M}\otimes -\tau)=-s^{-}!(x_{M})$. With this, we define the map $s\amalg s^{-}:M\amalg -M \to TM$, where 
         $$(s\amalg s^{-})!:\mathscr{H}_{\Gamma}^{*}(M\amalg -M)\cong\mathscr{H}_{\Gamma}^{*}(M)\oplus \mathscr{H}_{\Gamma}^{*}(-M) \to \mathscr{H}_{\Gamma}^{*+m}(TM)$$
@@ -1224,7 +1261,7 @@ satisfy that $(s\amalg s^{-})!(x_{M}\oplus x_{M})=0\in \mathscr{H}_{\Gamma}^{*}(
 
 
 \begin{remark}
-    If $[M,\partial M, \pi_{M},x], [M,\partial M, \pi_{M},y]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, with $x,y\in \mathscr{H}_{\Gamma}^{*+dim(M)}(M)$ then 
+    \textcolor{blue}{Esta parte es suceptible al cambio de orientacion a compacta} If $[M,\partial M, \pi_{M},x], [M,\partial M, \pi_{M},y]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, with $x,y\in \mathscr{H}_{\Gamma}^{*+dim(M)}(M)$ then 
     \begin{align*}
         [M,\partial M, \pi_{M},x] + [M,\partial M, \pi_{M},y] = [M,\partial M, \pi_{M},x + y],
     \end{align*}
@@ -1588,7 +1625,7 @@ where the first equality is by definition of $\partial$; second equality is by $
 
 
 \begin{proof}
-First, suppose that $\phi:X\to Y$ is an equivariant cellular inclusion (see  \cite{Die87}, Theorem 2.1). We will show that $\phi_{*}$ is an isomorphism. In this case the inverse for the map  
+First, suppose that $\phi$ is an equivariant cellular inclusion. We will show that $\phi_{*}$ is an isomorphism. As a starting point consider the case that $\phi:X\to Y$ is an inclusion. In this case the inverse for the map  
 % https://q.uiver.app/#q=WzAsMixbMSwwLCJbTSxcXHBhcnRpYWwgTSxcXHBoaVxcY2lyY1xccGlfe019LHhfe019XVxcaW4gXFxtYXRoc2Nye0h9XntwZn1feyp9KFksQikiXSxbMCwwLCJbTSxcXHBhcnRpYWwgTSxcXHBpX3tNfSx4X3tNfV1cXGluXFxtYXRoc2Nye0h9XntwZn1feyp9KFgsQSkiXSxbMSwwLCJcXHBoaV97Kn0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
 \[\begin{tikzcd}
 	{[M,\partial M,\pi_{M},x_{M}]\in\mathscr{H}^{pf}_{*}(X,A)} & {[M,\partial M,\phi\circ\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(Y,B)}
