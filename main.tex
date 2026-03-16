@@ -1968,6 +1968,9 @@ where the first step is by the chain $N\subseteq \mathbb{R}^{w+\tilde{w}}\subset
 \section{Applications}
 
 \subsection{Review Baum-Douglas Homology}
+\subsubsection{Analytical $K$-holomogy}
+\textcolor{red}{Seccion 4....}
+
 \subsubsection{Spin$^{C}$-structures}
 The group ${\rm Spin}(n)$ is the double cover of ${\rm SO}(n)$, with projection $$\eta:{\rm Spin}(n)\cong \mathbb{Z}_{2}\times {\rm SO}(n) \to{\rm SO}(n).$$
 Denote $\epsilon \in {Ker}(\eta)\cong \mathbb{Z}_{2}$ the non trivial element and consider 
@@ -2048,11 +2051,61 @@ $K_{0}^{geo}(\{*\})=\mathbb{Z}$ and $K_{1}^{geo}(\{*\})=0$, by Bott periodicity.
 For a topological space $X$, in \cite{} it is defined an isomorphism $\mu:K^{g}(X)\to K^{a}(X)$ by $$\mu(M,E,\phi)=\phi_{*}(E\cap[D]),$$
 where:
 \begin{enumerate}
-\item $D$ is the elliptic pseudo differential operator ...(\textcolor{red}{Seccion 17})
-\item $[D]\in K^{a}(M)$ is the ... (\textcolor{red}{Seccion 5})
-\item The cap product is defined by ... (\textcolor{red}{Seccion 5}) 
+\item $D$ is the Dirac operator constructed in the following way: Denote the complexified cotangent bundle by $T^{*}= \mathbb{C}\otimes_{\mathbb{R}}TM^{*}$. Denote by $C^{\infty}(V)$ the vector space of all smooth sections of a smooth vector bundle $V\to M$. 
+Definition of the Dirac operator depends on the parity of $n=dim(M)$:
+\begin{itemize}
+\item If $n$ is even, considering $F_{\pm}\to M$ the two $\text{Spin}^{c}(n)$ smooth complex vector bundles given by the $\text{Spin}^{c}$ structure on $TM\to M$\textcolor{red}{Me encantaria poder explicar la manera en que la estructura spin aparece en las estructuras spinc. }, the Dirac operator $D:C^{\infty}(F_{+})\to C^{\infty}(F_{-})$ is defined as the composition $D:=\gamma_{*} \circ \nabla$, where 
+\begin{itemize}
+\item $\nabla:C^{\infty}(F_{+})\to C^{\infty}(T^{*}\otimes F_{+})$ is a connection\footnote{A $\mathbb{C}$-linear map such that $\nabla(f\cdot s)=df\otimes s+f\cdot \nabla(s)$ for $f\in C^{\infty}(M)$, $s\in C^{\infty}(F_{+})$, where $d:C^{\infty}(\wedge^{j}T^{*})\to (\wedge^{j+1}T^{*}),$ is the de Rham operator.} for $F_{+}\to M$.
+\item $\gamma:T^{*}\otimes F_{+}\to F_{-}$ is given by Clifford multiplication, getting $\gamma_{*}(s)=\gamma\circ s:M\to F_{-}$ for any $s\in C^{\infty}(T^{*}\otimes F_{+})$. 
+
+\end{itemize}
+ 
+\item If $n$ is odd, the $\text{Spin}^{c}$ structure on the tangent bundle of $M$ associates to the Spin representation of $\text{Spin}^{c}(n)$ a smoth complex vector bundle $F\to M$ and in the same fashion of even case, the Dirac operator is defined as the composition:
+\begin{align*}
+D=\gamma_{*}\circ \nabla:C^{\infty}(F)\to C^{\infty}(T^{*}\otimes F)\to C^{\infty}(F).
+\end{align*}
+\end{itemize}
+ 
+In both cases and for any $E\to M$ smooth vector bundle, choosing a connection for $F\otimes E\to M$, the operator $D\otimes I_{E}:C^{\infty}(\widetilde{F}\otimes E)\to C^{\infty}(\overline{F}\otimes E)$ is the composition 
+\begin{align*}
+D\otimes I_{E}=\gamma_{*}\circ \nabla:C^{\infty}(\widetilde{F}\otimes E)\to C^{\infty}(T^{*}\otimes\overline{F}\otimes E)\to C^{\infty}(\overline{F}\otimes E)
+\end{align*}
+where $\widetilde{F}=F_{+}$ and $\overline{F}=F_{-}$ in even case, and $\tilde{F}=\overline{F}=F$ in the odd case.
+
+\item Following Section 5 in \cite{BD82}, for a Dirac Operator\footnote{In \cite{BD82}, the formulation is in general for any elliptic pseudo differential operator.}  $[D]\in K^{a}(M)$ is determinded as
+\begin{align*}
+[D]:=(L^{2}(E_{0}),\psi_{0},L^{2}(E_{1}),\psi_{1},V ),
+\end{align*}
+where for $i=0,1:$
+
+\begin{itemize}
+\item For the vector bundles $E_{i}\to X$, then $L^{2}(E_{i})$ is the completion of $C^{\infty}(E_{i})$ respect to the inner product defined from a choosed measure $\mu$ on $M$, and Hermitian structures on $E_{i}$ as follows:
+\begin{align*}
+\langle u,v \rangle=\int_{M}\langle u(p),v(p)\rangle\ d\mu,\ \ \ \ \ \ u,v\in C^{\infty}(E_{i}).
+\end{align*}
+\item $V:L^{2}(E_{0})\to L^{2}(E_{1})$ is the partial isometry part in the polar decomposition of the closable operator $D:L^{2}(E_{0})\to L^{2}(E_{1})$ (\textcolor{red}{Buscar referencia para garantizar su existencia y unicidad}), being this a bounded operator.
+\item The maps $\psi_{i}$ are constructed in the following way
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDKFgpIl0sWzEsMCwiXFx0ZXh0e0x9KExeezJ9KEVfe2l9KSkiXSxbMCwxLCJmIl0sWzEsMSwiXFxwc2lfe2l9KGYpOkxeezJ9KEVfe2l9KVxcdG8gTF57Mn0oRV97aX0pOnVcXG1hcHN0byBbXFxwc2lfe2l9KGYpXSh1KSJdLFswLDEsIlxccHNpX3tpfSJdLFsyLDMsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
+\[\begin{tikzcd}
+	{C(X)} & {\text{L}(L^{2}(E_{i}))} \\
+	f & {\psi_{i}(f):L^{2}(E_{i})\to L^{2}(E_{i}):u\mapsto [\psi_{i}(f)](u)}
+	\arrow["{\psi_{i}}", from=1-1, to=1-2]
+	\arrow[maps to, from=2-1, to=2-2]
+\end{tikzcd}\]
+(\textcolor{red}{Seria chevere ver porque esta es cuadrado integrable}) such that for any $e\in E_{i}$, then
+\begin{align*}
+[\psi_{i}(f)](u):E_{i}\to E_{i}: e\mapsto ([\psi_{i}(f)](u))(e):=f(\rho_{E_{i}}(e))\cdot u(e) 
+\end{align*} 
+\end{itemize}
+
+\item The cap product is defined by ... (\textcolor{red}{Seccion 5, y los profes recomiendan leer el producto de kasparov}) 
 \item $\phi_{*}:K^{a}(M)\to K^{a}(X)$ is the induced map by $\phi:M\to X$.
 \end{enumerate}
+
+
+
+
 \subsection{Equivariant $K$-Homology}
 
 \begin{defn}[\cite{BHS07}, p. 12]
