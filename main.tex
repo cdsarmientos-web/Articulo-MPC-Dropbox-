@@ -1971,6 +1971,34 @@ where the first step is by the chain $N\subseteq \mathbb{R}^{w+\tilde{w}}\subset
 \subsubsection{Analytical $K$-holomogy}
 \textcolor{red}{Seccion 4....}
 
+\begin{defn}
+$K^{a}(X)$ is defined as the equivalence clases of 5-tuples $(\mathcal{H}_{0},\psi_{0},\mathcal{H}_{1},\psi_{1},T)$, under the relation $\sim$, and where
+\begin{itemize}
+\item $\mathcal{H}_{i}$ is a separable Hilbert space for $i=0,1$.
+\item $\psi_{i}:C(X)\to L(\mathcal{H}_{i})$ is a unital algebra $*-$homomorphism.
+\item $T:\mathcal{H}_{0}\to \mathcal{H}_{1}$ is a bounded Fredholm operator with $T\circ \psi_{0}(f) - \psi_{1}(f) \circ T$ being a compact operator for any $f\in C(X)$
+\end{itemize}
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhjYWx7SH1fezB9Il0sWzEsMCwiXFxtYXRoY2Fse0h9X3sxfSJdLFswLDEsIlxcbWF0aGNhbHtIfV97MH0iXSxbMSwxLCJcXG1hdGhjYWx7SH1fezF9Il0sWzAsMSwiVCJdLFsyLDAsIlxccHNpX3swfShmKSJdLFsxLDMsIlxccHNpX3sxfShmKSJdLFsyLDFdLFswLDNdXQ==
+\[\begin{tikzcd}
+	{\mathcal{H}_{0}} & {\mathcal{H}_{1}} \\
+	{\mathcal{H}_{0}} & {\mathcal{H}_{1}}
+	\arrow["T", from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-2]
+	\arrow["{\psi_{1}(f)}", from=1-2, to=2-2]
+	\arrow["{\psi_{0}(f)}", from=2-1, to=1-1]
+	\arrow[from=2-1, to=1-2]
+\end{tikzcd}\]
+The relation $\sim$ is generated such that
+\begin{itemize}
+\item Isomorphic 5-tuples are equivalent, where for a pair of cycles $(\mathcal{H}_{0},\psi_{0},\mathcal{H}_{1},\psi_{1},T)$ and $(\mathcal{H}'_{0},\psi'_{0},\mathcal{H}'_{1},\psi'_{1},T')$, an isomorphism is given by operators $U_{i};\mathcal{H}_{i}\to \mathcal'{H}_{i}$, for $i=0,1$ such that 
+\begin{itemize}
+\item $T'=U_{1}TU_{0}^{*}$.
+\item $\psi_{i}(f)=U_{i}\psi_{i}(f)U_{i}^{*}$.
+\end{itemize}
+\item Direct sum with a trivial object:
+\end{itemize}
+\end{defn}
+
 \subsubsection{Spin$^{C}$-structures}
 The group ${\rm Spin}(n)$ is the double cover of ${\rm SO}(n)$, with projection $$\eta:{\rm Spin}(n)\cong \mathbb{Z}_{2}\times {\rm SO}(n) \to{\rm SO}(n).$$
 Denote $\epsilon \in {Ker}(\eta)\cong \mathbb{Z}_{2}$ the non trivial element and consider 
