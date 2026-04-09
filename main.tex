@@ -427,7 +427,7 @@ A  \textit{$\Gamma$-homology theory} $\mathscr{H}_*^\Gamma$ with values in $R$-m
   functors $\mathscr{H}_{\Gamma}^{n}$
   from the category of $\Gamma$-pairs to the category of $R$-modules, indexed by
   $n\in \mathbb{Z}$, together with natural transformations called the boundary maps
-$$\delta^n_\Gamma:\mathscr{H}_{\Gamma}^{n}(X,A)\rightarrow\mathscr{H}^{n+1}_{\Gamma}(A)$$
+$$\delta^n_\Gamma:\mathscr{H}_{\Gamma}^{n}(A)\rightarrow\mathscr{H}^{n+1}_{\Gamma}(X,A)$$
   for $n\in\mathbb{Z}$, such that the following axioms are satisfied:
     \begin{enumerate}
     \item \textbf{$\Gamma$-homotopy invariance.}\\    
@@ -437,8 +437,8 @@ $$\delta^n_\Gamma:\mathscr{H}_{\Gamma}^{n}(X,A)\rightarrow\mathscr{H}^{n+1}_{\Ga
     are the same for all $n\in\mathbb{Z}$.
     \item \textbf{Long exact sequence of a pair.}\\
     Given a proper $\Gamma$-pair $(X,A)$, there is a long exact sequence
-    $$\ldots\xrightarrow{j^{n-1}}\mathscr{H}_{\Gamma}^{n-1}(X,A)\xrightarrow{\delta^{n-1}_{\Gamma}}\mathscr{H}_{\Gamma}^{n}(X)
-    \xrightarrow{i^{n}}\mathscr{H}_{\Gamma}^{n}(A)\xrightarrow{j^{n}}\mathscr{H}_{\Gamma}^{n}(X,A)\xrightarrow{\delta^{n}_{\Gamma}}\ldots,$$where $i:A\rightarrow X$ and $j:X\rightarrow(X,A)$ are the inclusions.  
+    $$\ldots\xrightarrow{\delta^{n-1}}\mathscr{H}_{\Gamma}^{n}(X,A)\xrightarrow{j^{n}}\mathscr{H}_{\Gamma}^{n}(X)
+    \xrightarrow{i^{n}}\mathscr{H}_{\Gamma}^{n}(A)\xrightarrow{\delta^{n}_{\Gamma}}\mathscr{H}_{\Gamma}^{n+1}(X,A)\xrightarrow{j^{n+1}}\ldots,$$where $i:A\rightarrow X$ and $j:X\rightarrow(X,A)$ are the inclusions.  
     \item \textbf{Excision.}
      
     Let $(X,A)$ be a $\Gamma$-CW cocompact properpair and let $f:A\rightarrow B$ be a cellular $\Gamma$-map of proper $\Gamma$-pairs. Equip $(X\cup_f B,B)$ with the induced structure of a 
@@ -548,11 +548,11 @@ We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, 
             (s\oplus 1)!:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+dim(E)-dim(M)}(S(E\oplus\mathbb{R}))
         \end{align*}
         is the Thom isomorphism described in Definition \ref{thom} \textcolor{blue}{Note que no cambiamos la dimension del codominio, pues dim(S(E+R))=dim(E)}.
-        \item Let $N$ be a manifold with boundary and consider $N^{0}=N\setminus\partial N$. If $i^{0}:N^{0}\to N$ the inclusion, and if $U$ is an open collar around $\partial N$ in $N$ and let $l:\partial N\to U\to N^0$, the inclusion through the collar, then the pushforwards $i^0_!$ and $l_!$ corresponds to the maps appearing in the long exact sequence of the pair $(N,\partial N)$,
+        \item Let $N$ be a manifold with boundary and consider $N^{0}=N\setminus\partial N$. If $i^{0}:N^{0}\to N$ the inclusion, and if $U$ is an open collar around $\partial N$ in $N$ and let $l:\partial N\to U\to N^0$, the inclusion through the collar, then the pushforwards $i^0!$ and $l!$ corresponds to the maps appearing in the long exact sequence of the pair $(N,\partial N)$,
     \begin{align*} 
-    \cdots\to\mathscr{H}_{\Gamma}^{*-1}(\partial N)\xrightarrow{l_!}\mathscr{H}_{\Gamma}^*(N^0)\xrightarrow{i^0_!}\mathscr{H}_{\Gamma}^*(N)\to\cdots
+    \cdots\to\mathscr{H}_{\Gamma}^{*-1}(\partial N)\xrightarrow{l!}\mathscr{H}_{\Gamma}^*(N^0)\xrightarrow{i^0!}\mathscr{H}_{\Gamma}^*(N)\to\cdots
     \end{align*}
-    Here we are using the identification $\mathscr{H}_{\Gamma}^*(N^0)\cong\mathscr{H}_\Gamma^*(N,\partial N)$. Then, we mean that for the long exact sequence for the maps $i:\partial N \to N$ and $j:N\to (N,\partial N)$, we get that $l!=\partial^{*}$ and $i^{0}!=j^{*}$.
+    Here we are using the identification $\mathscr{H}_{\Gamma}^*(N^0)\cong\mathscr{H}_\Gamma^*(N,\partial N)$. Then, we mean that for the long exact sequence for the maps $i:\partial N \to N$ and $j:N\to (N,\partial N)$, we get that $l!=\delta^{*-1}$ and $i^{0}!=j^{*}$.
     \item For any $f:(M,\partial M)\to (N,\partial N)$, we had that for the commutative diagram 
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiTiJdLFswLDEsIlxccGFydGlhbCBNIl0sWzEsMSwiXFxwYXJ0aWFsIE4iXSxbMiwzLCJmfF97XFxwYXJ0aWFsIE19IiwyXSxbMiwwLCJpX3tcXHBhcnRpYWwgTX0iXSxbMywxLCJpX3tcXHBhcnRpYWwgTn0iLDJdLFswLDEsImYiXV0=
 \[\begin{tikzcd}
@@ -1144,7 +1144,7 @@ To prove that $(\iota_{W}\circ \tau_{W})!(x_{M})=(\iota_{\tilde{W}}\circ \tau_{\
 	\arrow["{i_{2}}", from=3-2, to=2-3]
 	\arrow["{i_{P}}"', from=3-3, to=2-3]
 \end{tikzcd}\]
-Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is satisfied the necessary condition that $(\xi_{\nu_{1}}\circ i_{M})!(x_{M})=(\xi_{\nu_{2}}\circ i_{P})!(x_{P})$, by functoriality of pushforward. We define $\pi_{W}:W\to N$ by $\pi_{W}(d\oplus r)= \pi_{W_{1}}(\rho_{1}(d))$ if $d\in D_{1}$, and $\pi_{W}(d\oplus r)= \pi_{W_{2}}(\rho_{2}(d))$ if $d\in D_{2}$, as in the following diagram:
+Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is satisfied the necessary condition that $((\xi_{\nu_{1}}\times \{0\})\circ i_{M})!(x_{M})=((\xi_{\nu_{2}}\times \{0\})\circ i_{P})!(x_{P})$, by functoriality of pushforward. We define $\pi_{W}:W\to N$ by $\pi_{W}(d\oplus r)= \pi_{W_{1}}(\rho_{1}(d))$ if $d\in D_{1}$, and $\pi_{W}(d\oplus r)= \pi_{W_{2}}(\rho_{2}(d))$ if $d\in D_{2}$, as in the following diagram:
 % https://q.uiver.app/#q=WzAsOSxbMCwxLCJXX3sxfSJdLFswLDIsIk0iXSxbMSwyLCJOIl0sWzIsMiwiUCJdLFsyLDEsIldfezJ9Il0sWzEsMCwiRF97MX1cXG9wbHVzIFxcbWF0aGJie1J9IFxcIyBEX3syfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwzLCJYIl0sWzAsMCwiRF97MX0iXSxbMiwwLCJEX3syfSJdLFswLDUsImpfezF9IiwyXSxbNCw1LCJqX3syfSJdLFsxLDAsImlfe019Il0sWzIsMCwiaV97MX0iLDFdLFsyLDQsImlfezJ9IiwxXSxbMyw0LCJpX3tQfSIsMl0sWzEsNiwiXFxwaV97TX0iLDJdLFswLDYsIlxccGlfe1dfezF9fSIsMV0sWzQsNiwiXFxwaV97V197Mn19IiwxXSxbMyw2LCJcXHBpX3tQfSJdLFs1LDYsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzgsNCwiXFxyaG9fezJ9Il0sWzcsMCwiXFxyaG9fezF9IiwyXV0=
 \[\begin{tikzcd}
 	{D_{1}} & {D_{1}\oplus \mathbb{R} \# D_{2}\oplus \mathbb{R}} & {D_{2}} \\
@@ -1154,9 +1154,9 @@ Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is sat
 	\arrow["{\rho_{1}}"', from=1-1, to=2-1]
 	\arrow["{\pi_{W}}", dotted, from=1-2, to=4-2]
 	\arrow["{\rho_{2}}", from=1-3, to=2-3]
-	\arrow["{\xi_{\nu_{1}}}"', from=2-1, to=1-2]
+	\arrow["{\xi_{\nu_{1}}\times \{0\}}"', from=2-1, to=1-2]
 	\arrow["{\pi_{W_{1}}}"{description}, from=2-1, to=4-2]
-	\arrow["{\xi_{\nu_{2}}}", from=2-3, to=1-2]
+	\arrow["{\xi_{\nu_{2}}\times \{0\}}", from=2-3, to=1-2]
 	\arrow["{\pi_{W_{2}}}"{description}, from=2-3, to=4-2]
 	\arrow["{i_{M}}", from=3-1, to=2-1]
 	\arrow["{\pi_{M}}"', from=3-1, to=4-2]
