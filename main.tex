@@ -571,13 +571,12 @@ it is satisfied that $i_{\partial N}^{*}\circ f!=(f|_{\partial M})!\circ i_{\par
 we have that
           $$(f\sqcup g)!=f!\oplus g!:\mathscr{H}^{*}_{\Gamma}(M_{1})\oplus \mathscr{H}^{*}_{\Gamma}(M_{2}) \to \mathscr{H}^{*}_{\Gamma}(N_{1})\oplus \mathscr{H}^{*}_{\Gamma}(N_{2})$$
           \item If $f_i:M_i\to N$ and  $+$ denotes the operation in $\mathscr{H}^{*}(N)$, then for the map $f_1\cup f_2:M_1\sqcup M_2\to N$ defined such that $(f_1\cup f_2)\circ i_k=f_k$, then $(f_1\cup f_2)!=f_1!+f_2!$.
+          \item If $i_M:M\to M\sqcup N$ is the natural inclusion, then $$i_M!:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*}_{\Gamma}(M\sqcup N)\cong\mathscr{H}^{*}_{\Gamma}(M)\oplus\mathscr{H}^{*}_{\Gamma}(N):x\mapsto x\oplus 0.$$
+
     \end{enumerate}
 \end{defn}
 
 
-\begin{remark}
-If $i_M:M\to M\sqcup N$ is the natural inclusion, then $$i_M!:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*}_{\Gamma}(M\sqcup N)\cong\mathscr{H}^{*}_{\Gamma}(M)\oplus\mathscr{H}^{*}_{\Gamma}(N):x\mapsto x\oplus 0$$
-\end{remark}
 
 
 
@@ -606,9 +605,9 @@ If $i_M:M\to M\sqcup N$ is the natural inclusion, then $$i_M!:\mathscr{H}^{*}_{\
 \begin{defn}\label{pushforward 2}
     Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a cocompact proper $\Gamma$-CW pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
 \begin{enumerate}
-    \item $(M,\partial M)$ is a $\Gamma$-proper manifold with boundary cocompact with a $\mathscr{H}_{\Gamma}$-orientation.
-    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map of pairs.
-    \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. 
+    \item $(M,\partial M)$ is a $\Gamma$-proper manifold possibly with boundary with a $\mathscr{H}_{\Gamma}$-orientation.
+    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map such that $\pi_{M}(\partial M)\subseteq A$.
+    \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. If $(M,\partial M)$ is no a cocompact pair, then $(M,\partial M,\pi_{M},x_{M})$ is a cycle if and only if $x_{M}\in \mathscr{H}_{\Gamma}^{n}(\tilde{M},\partial \tilde{M})$, where $(\tilde{M},\partial \tilde{M})$ is a cocompact $\Gamma$-pair that contains $(M,\partial M)$ embedded.  
     \item Two cycles $(M,\partial M,\pi_M,x_M)$ and $(N,\partial N,\pi_N,x_N)$ are isomorphic cycles if there exist a diffeomorphism $\phi:M\to N$ such that $\pi_M=\pi_N\circ \phi$ and $\phi^{*}(x_{N})\cong x_{M}$.
     
     
@@ -616,7 +615,7 @@ If $i_M:M\to M\sqcup N$ is the natural inclusion, then $$i_M!:\mathscr{H}^{*}_{\
     \begin{align*}
         (M,\partial M, \pi_{M}, x_{M}) \sim (N,\partial N, \pi_{N}, x_{N}),
     \end{align*}
-    is given if there is a $k$-cycle $(W,\partial W, \pi_{W},x_{W})$ and proper smooth, $\Gamma$-equivariant, $\mathscr{H}_{\Gamma}$-orientation preserving maps $f_{M}:M\to W$ and $f_{N}:N\to W$ such that, $\pi_{M}=\pi_{W}\circ f_{M}$, $\pi_{N}=\pi_{W}\circ f_{N}$ and $f_{M}!(x_{M})=x_{W}=f_{N}!(x_{N})\in \mathscr{H}_{\Gamma}^{ }(W,\partial M)$, as shown in the following diagram
+    is given if there is a $k$-cycle $(W,\partial W, \pi_{W},x_{W})$ and proper smooth, $\Gamma$-equivariant, $\mathscr{H}_{\Gamma}$-orientation preserving maps $f_{M}:(M,\partial M)\to (W,\partial W)$ and $f_{N}:(N,\partial N)\to (W,\partial W)$ such that, $\pi_{M}=\pi_{W}\circ f_{M}$, $\pi_{N}=\pi_{W}\circ f_{N}$ and $f_{M}!(x_{M})=x_{W}=f_{N}!(x_{N})\in \mathscr{H}_{\Gamma}^{*}(W)$, as shown in the following diagram
 
     % https://q.uiver.app/#q=WzAsNCxbMCwxLCIoTSxcXHBhcnRpYWwgTSkiXSxbMSwyLCIoWCxBKSJdLFsyLDEsIihOLFxccGFydGlhbCBOKSJdLFsxLDAsIihXLFxccGFydGlhbCBXKSJdLFszLDEsIlxccGlfe1d9Il0sWzAsMywiZl97TX0iXSxbMiwzLCJmX3tOfSIsMl0sWzAsMSwiXFxwaV97TX0iLDJdLFsyLDEsIlxccGlfe059Il1d
     \begin{center}
@@ -1497,19 +1496,16 @@ where: the first one is the definition of $j_{*}$; second is by the fact that $j
 
     \item $Ker(i_{*})\supseteq Im(j_{*})$: We have to show that for a cycle $[M,\emptyset, \pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$, we have that $i_{*}(j_{*}([M,\emptyset, \pi_{M},x_{M}]))=0$. We have that
     $$i_{*}(j_{*}([M,\emptyset, \pi_{M},x_{M}]))=[M,\emptyset, j\circ \pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma).$$
-    We have that this cycle is related with the zero cycle $[M\times[0,1), \partial (M\times[0,1)),\pi_{M}\circ \pi_{1},0]$ by the commutative diagram
-    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzEsMiwiWCJdLFsyLDEsIk1cXHRpbWVzIFswLDEpIl0sWzEsMCwiTVxcdGltZXNbMCwxKSJdLFswLDMsIklkXFx0aW1lcyAwIl0sWzIsMywiSWQiLDJdLFswLDEsIlxccGlfe019IiwyXSxbMiwxLCJcXHBpX3tNfVxcY2lyYyBcXHBpX3sxfSJdLFszLDEsIlxccGlfe019XFxjaXJjIFxccGlfezF9IiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+    We have that this cycle is related with the zero cycle $$[M\times [0,1],M\times \{1\},\pi_{M}\circ \pi_{1},0]$$ by the commutative diagram
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCIoTSxcXGVtcHR5c2V0KSJdLFsxLDEsIihYLEEpIl0sWzIsMCwiKE1cXHRpbWVzIFswLDFdLE1cXHRpbWVzIFxcezFcXH0pIl0sWzAsMSwialxcY2lyY1xccGlfe019IiwyXSxbMiwxLCJqXFxjaXJjXFxwaV97TX1cXGNpcmMgXFxwaV97MX0iXSxbMCwyLCJJZFxcdGltZXMgMCJdXQ==
 \[\begin{tikzcd}
-	& {M\times[0,1)} \\
-	M && {M\times [0,1)} \\
-	& X
-	\arrow["{\pi_{M}\circ \pi_{1}}"{description}, dashed, from=1-2, to=3-2]
-	\arrow["{Id_{M}\times 0}", from=2-1, to=1-2]
-	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
-	\arrow["Id_{M\times[0,1)}"', from=2-3, to=1-2]
-	\arrow["{\pi_{M}\circ \pi_{1}}", from=2-3, to=3-2]
+	{(M,\emptyset)} && {(M\times [0,1],M\times \{1\})} \\
+	& {(X,A)}
+	\arrow["{Id\times 0}", from=1-1, to=1-3]
+	\arrow["{j\circ\pi_{M}}"', from=1-1, to=2-2]
+	\arrow["{j\circ\pi_{M}\circ \pi_{1}}", from=1-3, to=2-2]
 \end{tikzcd}\]
-where we have that $(Id_{M}\times 0)!(x_{M})=0= Id_{M\times [0,1)}!(0)$ because $$\mathscr{H}^{*}_{\Gamma}(M\times [0,1)):=\mathscr{H}^{*}_{\Gamma}(M\times [0,1],M\times \{1\})=\{0\},$$ by the fact that $i_{M\times \{1\}}:M\times \{1\}\to M\times [0,1]$ is a $\Gamma$-homotopy equivalence, therefore in the long exact sequence $i_{M\times \{1\}}^{n}$ is an isomorphism for all $n\in \mathbb{N}$:
+where we have that $(Id_{M}\times 0)!(x_{M})=0$ because $$\mathscr{H}^{*}_{\Gamma}(M\times [0,1],M\times \{1\})=\{0\},$$ by the fact that $i_{M\times \{1\}}:M\times \{1\}\to M\times [0,1]$ is a $\Gamma$-homotopy equivalence, therefore in the long exact sequence $i_{M\times \{1\}}^{n}$ is an isomorphism for all $n\in \mathbb{N}$:
 % https://q.uiver.app/#q=WzAsNyxbMCwwLCJcXGNkb3RzIl0sWzEsMCwiXFxtYXRoc2Nye0h9XnsqLTF9X3tcXEdhbW1hfShNXFx0aW1lcyBbMCwxXSkiXSxbMiwwLCJcXG1hdGhzY3J7SH1eeyotMX1fe1xcR2FtbWF9KE1cXHRpbWVzIFxcezFcXH0pIl0sWzEsMSwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTVxcdGltZXMgWzAsMV0sTVxcdGltZXMgXFx7MVxcfSkiXSxbMCwyLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXFx0aW1lcyBbMCwxXSkiXSxbMSwyLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXFx0aW1lcyBcXHsxXFx9KSJdLFsyLDIsIlxcY2RvdHMiXSxbMSwyLCJpX3tNXFx0aW1lcyBcXHsxXFx9fV57Ki0xfSJdLFsyLDNdLFszLDRdLFswLDFdLFs0LDUsImlfe01cXHRpbWVzIFxcezFcXH19XnsqfSJdLFs1LDZdXQ==
 \[\begin{tikzcd}
 	\cdots & {\mathscr{H}^{*-1}_{\Gamma}(M\times [0,1])} & {\mathscr{H}^{*-1}_{\Gamma}(M\times \{1\})} \\
@@ -1528,7 +1524,9 @@ where we have that $(Id_{M}\times 0)!(x_{M})=0= Id_{M\times [0,1)}!(0)$ because 
 {\bf Exactness in ${\mathscr{H}^{pf}_{*}(X,A;\Gamma)}$}: 
 
 \begin{itemize}
-    \item $Ker(\partial)\supseteq Im(i_{*}):$ For $[M,\emptyset,\pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(X,\emptyset;\Gamma)$, we have that $$\partial(i_{*}([M,\emptyset,\pi_{M},x_{M}]))=\partial([M,\emptyset,\pi_{M},x_{M}])=[\emptyset,\partial \emptyset, \pi_{M}|_{\emptyset},r_{\partial}(x_{M})]=0.$$
+    \item $Ker(\partial)\supseteq Im(i_{*}):$ For $[M,\emptyset,\pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(X,\emptyset;\Gamma)$, we have that $$\partial(i_{*}([M,\emptyset,\pi_{M},x_{M}]))=\partial([M,\emptyset,\pi_{M},x_{M}])=[\emptyset,\partial \emptyset, \pi_{M}|_{\emptyset},r_{\partial}(x_{M})]=0,$$
+    considering that $\mathscr{H}^{*}_{\Gamma}(\emptyset)=\{0\}.$
+    
     
     \item $Ker(\partial)\subseteq Im(i_{*})$: Let $[M,\partial M,\pi_{M},x_{M}]\in Ker(\partial)\subseteq \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, i.e., that $[\partial M , \emptyset, \pi_{M}|_{\partial M}, r_{\partial}(x_{M})]=0\in \mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$. Then, $[\partial M , \emptyset, \pi_{M}|_{\partial M}, r_{\partial}(x_{M})]=[W,\emptyset, \pi_{W},0]$ by the existence of a commutative diagram
     % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHBhcnRpYWwgTSJdLFsyLDAsIlciXSxbMSwxLCJBIl0sWzAsMiwiXFxwaV97TX18X3tcXHBhcnRpYWwgTX0iLDJdLFswLDEsImYiXSxbMSwyLCJcXHBpX3tXfSJdXQ==
@@ -1651,7 +1649,7 @@ where the first equality is by definition of $\partial$; second equality is by $
 
 
 \begin{proof}
-First, suppose that $\phi$ is an equivariant cellular inclusion. We will show that $\phi_{*}$ is an isomorphism. As a starting point consider the case that $\phi:X\to Y$ is an inclusion. In this case the inverse for the map  
+First, suppose that $\phi$ is an equivariant cellular inclusion. We will show that $\phi_{*}$ is an isomorphism. In this case the inverse for the map  
 % https://q.uiver.app/#q=WzAsMixbMSwwLCJbTSxcXHBhcnRpYWwgTSxcXHBoaVxcY2lyY1xccGlfe019LHhfe019XVxcaW4gXFxtYXRoc2Nye0h9XntwZn1feyp9KFksQikiXSxbMCwwLCJbTSxcXHBhcnRpYWwgTSxcXHBpX3tNfSx4X3tNfV1cXGluXFxtYXRoc2Nye0h9XntwZn1feyp9KFgsQSkiXSxbMSwwLCJcXHBoaV97Kn0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
 \[\begin{tikzcd}
 	{[M,\partial M,\pi_{M},x_{M}]\in\mathscr{H}^{pf}_{*}(X,A)} & {[M,\partial M,\phi\circ\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(Y,B)}
