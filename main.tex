@@ -662,6 +662,24 @@ we have that
 \end{comment}
 
 
+
+\begin{remark}
+If $[M,\partial M,\pi_{1},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ and $\pi_1$ is $\Gamma$-homotopic to a map $\pi_2:M\to X$. This is by the fact that there is a $\Gamma$-homotopy $F:M\times\mathbb{R}\to X$ such that $F(m,0)=\pi_1$ and $F(m,1)=\pi_2$ (with the triviql $\Gamma$-action on the second factor). Therefore we get the commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzIsMSwiTSJdLFsxLDAsIk1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzEsMiwiWCJdLFswLDMsIlxccGlfezF9IiwyXSxbMSwzLCJcXHBpX3syfSJdLFswLDIsIklkX01cXHRpbWVzIDAiXSxbMSwyLCJJZF9NXFx0aW1lcyAxIiwyXSxbMiwzLCJGIiwyXV0=
+\[\begin{tikzcd}
+	& {M\times \mathbb{R}} & \\
+	M && M \\
+	& X
+	\arrow["F"', from=1-2, to=3-2]
+	\arrow["{Id_M\times 0}", from=2-1, to=1-2]
+	\arrow["{\pi_{1}}"', from=2-1, to=3-2]
+	\arrow["{Id_M\times 1}"', from=2-3, to=1-2]
+	\arrow["{\pi_{2}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+Since $Id_{M\times \mathbb{R}}$ is an homotopy between $Id_{M}\times 0$ and $Id_M\times 1$, then by the pushforward structure $(Id_{M}\times 0)!(X_M)=(Id_M\times 1)!(X_M)$.
+\end{remark}
+
+
 \begin{lemma}\label{EM-Embedding}
     If $(M,\partial M, \pi_{M},x_{M})\sim (N,\partial N, \pi_{N},x_{N})$ by the maps $f_{M}:M\to W$ and $f_{N}:N\to W$, then we get that $(M,\partial M, \pi_{M},x_{M})\sim (N,\partial N, \pi_{N},x_{N})$ by maps $\phi_{M}:M\to E^{W}$ and $\phi_{N}:N\to E^{W}$ with $\phi_{N}$ being an embedding and $E^{W}\to W$ is a vector bundle. 
 \end{lemma}
