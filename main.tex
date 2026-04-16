@@ -603,11 +603,11 @@ we have that
 
 
 \begin{defn}\label{pushforward 2}
-    Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a cocompact proper $\Gamma$-CW pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
+    Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a proper $\Gamma$-CW pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
 \begin{enumerate}
     \item $(M,\partial M)$ is a $\Gamma$-proper manifold possibly with boundary with a $\mathscr{H}_{\Gamma}$-orientation.
     \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map such that $\pi_{M}(\partial M)\subseteq A$.
-    \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. If $(M,\partial M)$ is no a cocompact pair, then $(M,\partial M,\pi_{M},x_{M})$ is a cycle if and only if $x_{M}\in \mathscr{H}_{\Gamma}^{n}(\tilde{M},\partial \tilde{M})$, where $(\tilde{M},\partial \tilde{M})$ is a cocompact $\Gamma$-pair that contains $(M,\partial M)$ embedded.  
+    \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. If $(M,\partial M)$ is no a cocompact pair, then $(M,\partial M,\pi_{M},x_{M})$ is a cycle if and only if $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M):=\mathscr{H}_{\Gamma}^{n}(\tilde{M},\tilde{M}\setminus M)$, where $(\tilde{M},\partial \tilde{M})$ is a cocompact $\Gamma$-pair that contains $(M,\partial M)$ embedded.  
     \item Two cycles $(M,\partial M,\pi_M,x_M)$ and $(N,\partial N,\pi_N,x_N)$ are isomorphic cycles if there exist a diffeomorphism $\phi:M\to N$ such that $\pi_M=\pi_N\circ \phi$ and $\phi^{*}(x_{N})\cong x_{M}$.
     
     
@@ -1760,6 +1760,46 @@ where first and second equations are obtained by definitions of $\phi_{*}$ and $
 \end{itemize}
 For general $\phi:(X,A)\to (Y,B)$, we could change $(Y,B)$ by the mapping cylinder $(M_{\phi},M_{\phi|A})$ and use excision for inclusions (because there is an homotopy equivalence $\psi:(Y,B)\to (M_{\phi},M_{\phi|A})$ and therefore, its cohomology groups are isomorphic).
 \end{proof}
+
+
+
+
+
+\begin{prop}
+(\textcolor{red}{Opcion 2})    The pushforward homology satisfy the excision property, i.e., for a proper $\Gamma$-CW pair $(X,A)$, there exist an isomorphism $$\mathscr{H}^{pf}_{*}(X,A)\cong \mathscr{H}^{pf}_{*}(X\setminus A)$$ 
+\end{prop}
+\begin{proof}
+Consider the map 
+\begin{align*}
+h:\mathscr{H}^{pf}_{*}(X,A;\Gamma) \to \mathscr{H}^{pf}_{*}(X\setminus A,\emptyset;\Gamma)
+\end{align*}
+defined in the following way: for $[M,\partial M,\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$, consider an open set $U\subseteq X$ such that $\pi_{M}^{-1}(A)\subseteq \pi_{M}^{-1}(U)$, where $\pi_{M}^{-1}(U)$ is an open set in $M$. 
+There exist an open set $\tilde{U}\subseteq M$ such that there is a strong deformation retract $\alpha:\tilde{U}\times [0,1]\to \tilde{U}$ such that $\alpha_{0}=Id_{\tilde{U}}$, and $\alpha_{1}:\tilde{U}\to C \subseteq \tilde{U}$ such that $\alpha_1|_{C}=Id_{C}$. There exist a closed $C\subseteq M$ such that $\pi_M^{-1}(U)\subseteq C\subseteq \tilde{U}$. Therefore we have the succesive contenations
+$$\pi_M^{-1}(A)\subset \pi_M^{-1}(U)\subset C\subset \tilde{U}\subset M$$
+With this situation we get that
+\begin{enumerate}
+\item $x_M\in \mathscr{H}^{*}_{\Gamma}(M)$.
+\item $x_M|_{C}=(i_{C}^{M})^{*}(x_{M})\in \mathscr{H}^{*}_{\Gamma}(C)$, this by $i_{C}^{M}:C\to M$ is a proper map, because $C$ is closed in $M$.
+
+\item We want to say $(i_{C}^{M})^{*}(x_M)\cong (i_{\tilde{U}}^{M})^{*}(x_M)$ \textcolor{red}{Idea} If we consider $Im_t:=Im(\alpha_t)\subset \tilde{U}$ and consider the "homotopy"
+$$H_{t}:Im_t\to M:u\mapsto i_{\tilde{U}}^{M}(u),$$
+where we would get $H_0=i_{\tilde{U}}^{M}$ and $H_1=i_{C}^{M}$.
+\item $(i_{\tilde{U}}^{M})!(x_M|_{\tilde{U}})\in \mathscr{H}^{*}_{\Gamma}(M)$ is well defined by the fact that the push forward is covariant in open sets, therefore we get this element by the inclusion $i_{\tilde{U}}^{M}:\tilde{U}\to{M}$. \textcolor{red}{Aqui requerimos que podamos extender un elemento de cohomologia por cero}
+\item $(i_{C}^{M})^{*}(x_M-[(i_{\tilde{U}}^{M})!(x_M|_{\tilde{U}})])=0\in \mathscr{H}^{*}_{\Gamma}(C)$ this by $i_{C}^{M}:C\to M$ is a proper map, because $C$ is closed in $M$.
+\item In the long exact sequence of the pair $(M,C)$ we get that there exist $\tilde{x}_M\in \mathscr{H}^{*}_{\Gamma}(M,C)\cong \mathscr{H}^{*}_{\Gamma}(M\setminus C)$ such that $\delta(\tilde{x}_{M})=x_M-[(i_{\tilde{U}}^{M})!(x_M|_{\tilde{U}})]\in \mathscr{H}^{*}_{\Gamma}(C)$.
+\end{enumerate}
+Hence, we define
+$$h([M,\partial M,\pi_{M},x_{M}])=[M\setminus C,\emptyset,\pi_{M}|_{M\setminus C},\tilde{x}_{M}]\in \mathscr{H}^{pf}_{*}(X\setminus A,\emptyset;\Gamma)$$
+
+
+
+  
+\end{proof}
+
+
+
+
+
 
 
 \begin{comment}
