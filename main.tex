@@ -1781,17 +1781,80 @@ With this situation we get that
 \item $x_M\in \mathscr{H}^{*}_{\Gamma}(M)$.
 \item $x_M|_{C}=(i_{C}^{M})^{*}(x_{M})\in \mathscr{H}^{*}_{\Gamma}(C)$, this by $i_{C}^{M}:C\to M$ is a proper map, because $C$ is closed in $M$.
 
-\item We want to say $(i_{C}^{M})^{*}(x_M)\cong (i_{\tilde{U}}^{M})^{*}(x_M)$ \textcolor{red}{Idea} If we consider $Im_t:=Im(\alpha_t)\subset \tilde{U}$ and consider the "homotopy"
-$$H_{t}:Im_t\to M:u\mapsto i_{\tilde{U}}^{M}(u),$$
-where we would get $H_0=i_{\tilde{U}}^{M}$ and $H_1=i_{C}^{M}$.
-\item $(i_{\tilde{U}}^{M})!(x_M|_{\tilde{U}})\in \mathscr{H}^{*}_{\Gamma}(M)$ is well defined by the fact that the push forward is covariant in open sets, therefore we get this element by the inclusion $i_{\tilde{U}}^{M}:\tilde{U}\to{M}$. \textcolor{red}{Aqui requerimos que podamos extender un elemento de cohomologia por cero}
-\item $(i_{C}^{M})^{*}(x_M-[(i_{\tilde{U}}^{M})!(x_M|_{\tilde{U}})])=0\in \mathscr{H}^{*}_{\Gamma}(C)$ this by $i_{C}^{M}:C\to M$ is a proper map, because $C$ is closed in $M$.
-\item In the long exact sequence of the pair $(M,C)$ we get that there exist $\tilde{x}_M\in \mathscr{H}^{*}_{\Gamma}(M,C)\cong \mathscr{H}^{*}_{\Gamma}(M\setminus C)$ such that $\delta(\tilde{x}_{M})=x_M-[(i_{\tilde{U}}^{M})!(x_M|_{\tilde{U}})]\in \mathscr{H}^{*}_{\Gamma}(C)$.
+%\item We want to say $(i_{C}^{M})^{*}(x_M)\cong (i_{\tilde{U}}^{M})^{*}(x_M)$ \textcolor{red}{Idea} If we consider $Im_t:=Im(\alpha_t)\subset \tilde{U}$ and consider the "homotopy"
+%$$H_{t}:Im_t\to M:u\mapsto i_{\tilde{U}}^{M}(u),$$
+%where we would get $H_0=i_{\tilde{U}}^{M}$ and $H_1=i_{C}^{M}$.
+
+\item We construct an element $ext_{\tilde{U}}(x_M|_{C})\in \mathscr{H}^{*}_{\Gamma}(\tilde{U})$ by zero on the strip $\tilde{U}\setminus C$ (we dont say restriction because this is no a closed set) \textcolor{red}{como se hace esta extension, parece ser consecuencia de un buen manejo del retracto por deformacion}.
+
+
+\item $(i_{\tilde{U}}^{M})!(ext_{\tilde{U}}(x_M|_{C}))\in \mathscr{H}^{*}_{\Gamma}(M)$ is well defined by the fact that the push forward is covariant in open sets, therefore we get this element by the inclusion $i_{\tilde{U}}^{M}:\tilde{U}\to{M}$, in such a way that $$(i_{M\setminus \tilde{U}}^{M})^*((i_{\tilde{U}}^{M})!(ext_{\tilde{U}}(x_M|_{C})))=0\in \mathscr{H}^{*}_{\Gamma}(M)$$ \textcolor{red}{Hace parte de la naturaleza del pushforward}
+
+\item $(i_{C}^{M})^{*}(x_M-[(i_{\tilde{U}}^{M})!(ext_{\tilde{U}}(x_M|_{C}))])=0\in \mathscr{H}^{*}_{\Gamma}(C)$ this by $i_{C}^{M}:C\to M$ is a proper map, because $C$ is closed in $M$.
+\item In the long exact sequence of the pair $(M,C)$ we get that there exist $\tilde{x}_M\in \mathscr{H}^{*}_{\Gamma}(M,C)\cong \mathscr{H}^{*}_{\Gamma}(M\setminus C)$ such that $i_{M\setminus C}^{M}!(\tilde{x}_{M})=x_M-[(i_{\tilde{U}}^{M})!(x_M|_{\tilde{U}})]\in \mathscr{H}^{*}_{\Gamma}(C)$.
 \end{enumerate}
 Hence, we define
 $$h([M,\partial M,\pi_{M},x_{M}])=[M\setminus C,\emptyset,\pi_{M}|_{M\setminus C},\tilde{x}_{M}]\in \mathscr{H}^{pf}_{*}(X\setminus A,\emptyset;\Gamma)$$
 
+\begin{itemize}
+\item $h$ is well defined \textcolor{red}{Tenemos que levantar los retractos por deformacion a $M, N\ y\ W$}.
+\item Note that $\tilde{x}_M$ holds that $\tilde{x}_M|_{\partial M}=x_M|_{\partial M}$.  
+\item $h\circ \phi_{*}=Id_{\mathscr{H}^{pf}_{*}(X\setminus A,\emptyset;\Gamma)}$
+\item $\phi_{*}\circ h=Id_{\mathscr{H}^{pf}_{*}(X,A;\Gamma)}$:
 
+% https://q.uiver.app/#q=WzAsNSxbMCwxLCJNX3tYfSJdLFsxLDEsIlUiXSxbMSwwLCJZIl0sWzAsMCwiTSJdLFsyLDEsIlgiXSxbMCwxLCJcXHBpX3tNfXxfe01fe1h9fSIsMl0sWzEsMiwiaV97VX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFszLDIsIlxccGlfe019IiwyXSxbMCwzLCJpX3tNX3tYfX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFsxLDQsInIiLDJdLFs0LDIsIlxccGhpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XV0=
+\[\begin{tikzcd}
+	M & Y \\
+	{M_{U}} & U & X
+	\arrow["{\pi_{M}}"', from=1-1, to=1-2]
+	\arrow["{i_{M_{U}}}", hook', from=2-1, to=1-1]
+	\arrow["{\pi_{M}|_{M_{U}}}"', from=2-1, to=2-2]
+	\arrow["{i_{U}}", hook', from=2-2, to=1-2]
+	\arrow["r"', from=2-2, to=2-3]
+	\arrow["\phi"', hook', from=2-3, to=1-2]
+\end{tikzcd}\]
+    
+    \begin{align*}
+         \phi_{*}\circ h([M,\partial M,\pi_{M},x_{M}])&= \phi_{*}([M\setminus C,\emptyset,r\circ\pi_{M}|_{M\setminus C},\tilde{x}_{M}])\\
+         &=[M\setminus C,\emptyset,\phi\circ r\circ\pi_{M}|_{M\setminus C},\tilde{x}_{M}]
+        .
+    \end{align*}
+    Consider $\widetilde{W}=M\times(0,1]\cup M_{U}\times \{0\}$, and with this, define
+    \begin{align*}
+        W=\widetilde{W}\cup_{\partial M\times(0,1]\cup \partial M_{U}\times \{0\}}\widetilde{W}.
+    \end{align*}    
+    Denote by $\lambda: W\hookrightarrow (M\times [0,1])\cup_{\partial M \times [0,1]}(M\times [0,1])$ the inclusion map, and denote
+    \begin{align*}
+        i_{0}:-M_{U}\to W^{0}, \ \ \ \ \ i_{1}:M\to W^{0}
+    \end{align*}
+    the inclusions given by a collar.
+    
+    $W$ is a proper $\mathscr{H}_{\Gamma}$-oriented manifold with boundary, where $$-M_{U}\times \{0\}\bigcup M\times \{1\} \subseteq \partial W,$$
+    i.e., there exists an embedding $i!=(i_{0}\sqcup i_{1})!:\mathscr{H}^{*}(M_{U})\oplus \mathscr{H}^{*}(M)\to \mathscr{H}^{*+1}(W^{0})$. 
+    Consider the long exact sequence of the pair $(W,\partial W)$,
+    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFsyLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxjZG90cyJdLFs0LDAsIlxcY2RvdHMiXSxbMSwyLCJpISJdLFswLDEsInJfe1xccGFydGlhbH0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDRdLFszLDBdXQ==
+\[\begin{tikzcd}
+	\cdots & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*+1}(W^{0})} & \cdots
+	\arrow[from=1-1, to=1-2]
+	\arrow["{r_{\partial}}", hook, from=1-2, to=1-3]
+	\arrow["{i!}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+    We want to see that $i!((x_{M},-i^{*}_{M_{U}}(x_{M})))=(i_{0}\sqcup i_{1})!(x_{M}-i_{M_{U}}^{*}(x_{M}))=0$, which is equivalent to the fact $x_{M}-i^{*}_{M_{U}}(x_{M})\in Im(r_{\partial})$. To construct a desired cycle, consider the cohomology element obtained by gluing\footnote{In this case $\hat{x}$ can be obtained in the Mayer-Vietoris cohomology sequence as the element in the cohomology of the double of $M$, denoted by $D(M)$, such that its image under the restriction map hold $r_{M\times [0,1]}(\hat{x})=(x_{M},x_{M})$.} two copies of $x_{M}$ along $\partial M\times[0,1]$
+    \begin{align*}
+       \hat{x}:=\biggl( x_{M}\bigcup_{\partial M \times [0,1]} x_{M}\biggr) \in \mathscr{H}_{\Gamma}^{*}\biggr( M\times [0,1]\bigcup_{\partial M\times [0,1]}M\times [0,1]\biggl)\cong \mathscr{H}_{\Gamma}^{*}(D(M)).
+    \end{align*}
+    With this, we get that $r_{\partial}(\lambda^{*}(\hat{x}))=x_{M}-i_{M_{U}}^{*}(x_{M})$. It implies $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$, and with this,
+    \begin{align*}
+        [M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}]&=[M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}\circ i_{M_{U}},i_{M_{U}}^{*}x_{M}]\\
+        &=[M_{U},\partial M_{U},\pi_{W^{0}}\circ i_{0},i_{M_{U}}^{*}x_{M}]\\
+        &=[W^{0},\emptyset,\pi_{W^{0}}, i_{0}!(i_{M_{U}}^{*}x_{M})]\\
+        &=[W^{0},\emptyset,\pi_{W^{0}}, i_{1}!(x_{M})]\\
+        &=[M,\partial M,\pi_{W^{0}} \circ i_{1},(x_{M})]\\
+        &=[M,\partial M,\pi_{M},x_{M}],
+    \end{align*}
+   where the first equality is by definition of restriction; second equality is given by the fact that $\phi\circ r\circ \pi_{M}\circ i_{M_{U}}$ is $\Gamma$-homotopic to $\pi_{W^{0}}\circ i_{0}$; third equality is by Remark \ref{relation 1} applied to $i_{0}:M_{U}\to W^{0}$; fourth equation is given by $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$; fifth equation is by Remark \ref{relation 1} applied to $i_{1}: M\to W^{0}$; and last equation is given by $\pi_{M}=\pi_{W}^{0}\circ i_{1}$.
+\end{itemize}
 
   
 \end{proof}
