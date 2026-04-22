@@ -606,7 +606,7 @@ we have that
     Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a proper $\Gamma$-CW pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
 \begin{enumerate}
     \item $(M,\partial M)$ is a $\Gamma$-proper manifold possibly with boundary with a $\mathscr{H}_{\Gamma}$-orientation.
-    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map such that $\pi_{M}(\partial M)\subseteq A$.
+    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map such that $\pi_{M}(\partial M)\subseteq A$ and it can be factorized as composition $p\circ f$, where $p$ is a proper map.
     \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. If $(M,\partial M)$ is no a cocompact pair, then $(M,\partial M,\pi_{M},x_{M})$ is a cycle if and only if $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M):=\mathscr{H}_{\Gamma}^{n}(\tilde{M},\tilde{M}\setminus M)$, where $(\tilde{M},\partial \tilde{M})$ is a cocompact $\Gamma$-pair that contains $(M,\partial M)$ embedded.  
     \item Two cycles $(M,\partial M,\pi_M,x_M)$ and $(N,\partial N,\pi_N,x_N)$ are isomorphic cycles if there exist a diffeomorphism $\phi:M\to N$ such that $\pi_M=\pi_N\circ \phi$ and $\phi^{*}(x_{N})\cong x_{M}$.
     
@@ -664,7 +664,7 @@ we have that
 
 
 \begin{remark}
-If $[M,\partial M,\pi_{1},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ and $\pi_1$ is $\Gamma$-homotopic to a map $\pi_2:M\to X$. This is by the fact that there is a $\Gamma$-homotopy $F:M\times\mathbb{R}\to X$ such that $F(m,0)=\pi_1$ and $F(m,1)=\pi_2$ (with the triviql $\Gamma$-action on the second factor). Therefore we get the commutative diagram
+If $[M,\partial M,\pi_{1},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ and $\pi_1$ is $\Gamma$-homotopic to a map $\pi_2:M\to X$. This is by the fact that there is a $\Gamma$-homotopy $F:M\times\mathbb{R}\to X$ such that $F(m,0)=\pi_1$ and $F(m,1)=\pi_2$ (with the trivial $\Gamma$-action on the second factor). Therefore we get the commutative diagram
 % https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzIsMSwiTSJdLFsxLDAsIk1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzEsMiwiWCJdLFswLDMsIlxccGlfezF9IiwyXSxbMSwzLCJcXHBpX3syfSJdLFswLDIsIklkX01cXHRpbWVzIDAiXSxbMSwyLCJJZF9NXFx0aW1lcyAxIiwyXSxbMiwzLCJGIiwyXV0=
 \[\begin{tikzcd}
 	& {M\times \mathbb{R}} & \\
@@ -676,7 +676,28 @@ If $[M,\partial M,\pi_{1},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ and $\pi_1
 	\arrow["{Id_M\times 1}"', from=2-3, to=1-2]
 	\arrow["{\pi_{2}}", from=2-3, to=3-2]
 \end{tikzcd}\]
-Since $Id_{M\times \mathbb{R}}$ is an homotopy between $Id_{M}\times 0$ and $Id_M\times 1$, then by the pushforward structure $(Id_{M}\times 0)!(X_M)=(Id_M\times 1)!(X_M)$.
+Since $Id_{M\times \mathbb{R}}$ is an homotopy between $Id_{M}\times 0$ and $Id_M\times 1$, then by the pushforward structure $(Id_{M}\times 0)!(x_M)=(Id_M\times 1)!(x_M)$.
+\end{remark}
+
+\begin{remark}
+Consider for a cycle $[M,\partial M,\pi_M,x_M]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ there exist an homotopical equivalent pair $(X',A')$  by
+$$(X',A'):=(X\times \{1\}\cup A\times [0,1), A\times \{1\}),$$
+where $i_X: X\to X'$ is defined by $i_X=Id_X \times 1$, and where the equivalence is given in the following way: Since $\mathbb{R}$ is contractible, consider $s_t:\mathbb{R}\to \mathbb{R}$ for $t\in [0,1]$ being the homotopy between $\mathbb{R}$ and $\{1\}$, then 
+$$H((x,r),t)=(x,s_t(r))$$
+define a map $H:(X',A')\times \mathbb{R}\to (X',A')$ such that it is an homotopy between $(X,A)$ and $(X',A')$. Therefore, by the isomorphism
+$$i_*:\mathscr{H}_*^{pf}(X,A;\Gamma)\to \mathscr{H}_*^{pf}(X',A';\Gamma)$$
+we identify $[M,\partial M, \pi_M,x_M]$ with $[M,\partial M, i_X\circ \pi_M,x_M]$. Consider a map $\varphi:M\to [0,1]$ that separate $\varphi^{-1}(0)=\pi_M^{-1}(A)\supseteq\partial M$ and $\varphi^{-1}(1)=M\setminus int(\pi_M^{-1}(A))$\footnote{This exist because a smooth manifolds is a perfectly normal space, i.e., it is a normal space and every closed set is an intersection of countable open sets.}.  We define $\pi_M':M\to X'$ by $\pi_M(m)\times 1$, such that the following diagram commutes
+% https://q.uiver.app/#q=WzAsMyxbMSwxLCIoWFxcdGltZXMgXFx7MVxcfVxcY3VwIEFcXHRpbWVzIFswLDEpLCBBXFx0aW1lcyBcXHswXFx9KSJdLFswLDEsIihYLEEpPShYXFx0aW1lcyBcXHsxXFx9LEFcXHRpbWVzIFxcezFcXH0pIl0sWzAsMCwiTSJdLFsxLDAsImlfe1h9IiwyXSxbMiwxLCJcXHBpX3tNfSIsMl0sWzIsMCwiXFxwaV97TX0nIl1d
+\[\begin{tikzcd}
+	M & \\
+	{(X,A)=(X\times \{1\},A\times \{1\})} & {(X\times \{1\}\cup A\times [0,1), A\times \{0\})}
+	\arrow["{\pi_{M}}"', from=1-1, to=2-1]
+	\arrow["{\pi_{M}'}", from=1-1, to=2-2]
+	\arrow["{i_{X}}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+Therefore, considering the map
+$$H':M\times [0,1]\to (X',A'):(m,t)\mapsto (\pi_M(m),(1-t)\varphi(m)+t),$$ we get an homotopy between $H'(-,1)=\pi_M'$ and $H'(-,0):(M,\partial M)\to (X',A')$ which is a pair map, that is, $\pi_M(\partial M)\subseteq A'$ and $[\pi_M(\partial M)]^{c}\subseteq A'^{c}$.
+
 \end{remark}
 
 
@@ -2095,6 +2116,73 @@ where the first step is by the chain $N\subseteq \mathbb{R}^{w+\tilde{w}}\subset
 
 \end{comment}
 
+
+\begin{remark}
+Note that with this excision theorem we can consider the map $i_*$ with $i:X\setminus A\to X$, such that in the long exact sequence
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7SH1feyp9XntwZn0oWFxcc2V0bWludXMgQTsgXFxHYW1tYSkiXSxbMSwwLCJcXG1hdGhzY3J7SH1feyp9XntwZn0oWCxBOyBcXEdhbW1hKSJdLFswLDEsImlfKiJdXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}_{*}^{pf}(X\setminus A; \Gamma)} & {\mathscr{H}_{*}^{pf}(X,A; \Gamma),}
+	\arrow["{i_*}", from=1-1, to=1-2]
+\end{tikzcd}\]
+then, we cannot allow for a cycle $[M,\partial M,\pi_M,x_M]\in \mathscr{H}_{*}^{pf}(X,A; \Gamma)$,  that $[M\setminus \partial M,\emptyset,\pi_M,x_M]$ being a cycle over $(X\setminus A, \emptyset)$
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJYXFxzZXRtaW51cyBBIl0sWzEsMSwiWCJdLFsxLDAsIk0iXSxbMCwwLCJNXntcXGNpcmN9Il0sWzAsMSwiaSIsMl0sWzMsMiwiaV97TVxcc2V0bWludXMgXFxwYXJ0aWFsIE19Il0sWzMsMCwiXFxwaV9NfF97TV57XFxjaXJjfX0iLDJdLFsyLDEsIlxccGlfTSJdXQ==
+\[\begin{tikzcd}
+	{M^{\circ}} & M \\
+	{X\setminus A} & X
+	\arrow["{i_{M\setminus \partial M}}", from=1-1, to=1-2]
+	\arrow["{\pi_M|_{M^{\circ}}}"', from=1-1, to=2-1]
+	\arrow["{\pi_M}", from=1-2, to=2-2]
+	\arrow["i"', from=2-1, to=2-2]
+\end{tikzcd}\]
+this because $\pi_M|_{M\setminus \partial M}:M\setminus \partial M\to X\setminus A$ is no a proper map.
+\end{remark}
+
+\begin{lemma}
+If $y\in \mathscr{H}^{*}_{\Gamma}(M)$ such that for an open $\tilde{V}\subseteq M$,  and a closed $C\subseteq \tilde{U}$ we get that $y|_{\tilde{V}}:=ext_{C}^{\tilde{U}}(y|_C)=0\in \mathscr{H}^{*}(\tilde{U})$, then $[M,\partial M, \pi_M, y]=0\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$. \textcolor{red}{Posiblemente solo necesite que $y=i_{\tilde{U}}^{M}!(\tilde{y})$ tal que $\tilde{y}\in \mathscr{H}^{*}_{\Gamma}(\tilde{U})$. Por tanto,  con $\tilde{U}$ subconjunto abierto de $(M\setminus V)$.}
+\end{lemma}
+
+\begin{proof}
+Consider the space $W:=DNC(D(M),D(V))$, where $V=[\tilde{V}]$, the clases of $\tilde{V}$ in $D(M)$. We consider the cohomological exact sequence for the pair $(W,\partial W)$, where $\partial W = D(V)\times \{0\} \cup D(M)\times \{1\}$:
+
+% https://q.uiver.app/#q=WzAsNCxbMiwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgVykiXSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxtYXRoc2Nye0h9X3tcXEdhbW1hfV57Kn0oV157MH0pIl0sWzEsMCwiaV97XFxwYXJ0aWFsIE19XnsqfSJdLFswLDIsImwhPVxccGFydGlhbCJdLFszLDEsImleezAqfT1qXnsqfSJdXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}_{\Gamma}^{*}(W^{0})} & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*+1}(W^{0})}
+	\arrow["{i^{0*}=j^{*}}", from=1-1, to=1-2]
+	\arrow["{i_{\partial M}^{*}}", from=1-2, to=1-3]
+	\arrow["{l!=\partial}", from=1-3, to=1-4]
+\end{tikzcd}\]
+
+\noindent where $W^{0}=D(M)\times (0,1)$ and the Mayer-Vietoris of $W=(M\times (\epsilon,1])\cup (M\times [t,1])^{c}$ with $t<\epsilon$:
+
+% https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShXKSJdLFsyLDAsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KE1cXHRpbWVzIChcXGVwc2lsb24sMV0pXFxvcGx1cyBcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfSgoTVxcdGltZXMgW3QsMV0pXntjfSkiXSxbMywwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXFx0aW1lcyAoXFxlcHNpbG9uLHQpKSJdLFswLDAsIlxcY2RvdHMiXSxbNCwwLCJcXGNkb3RzIl0sWzAsMSwiKHJlc3RyaW5naXIpIl0sWzEsMiwiZGlmZXJlbmNpYSJdLFszLDBdLFsyLDRdXQ==
+\[\begin{tikzcd}
+	\cdots & {\mathscr{H}^{*}_{\Gamma}(W)} & {\mathscr{H}^{*}_{\Gamma}(M\times (\epsilon,1])\oplus \mathscr{H}^{*}_{\Gamma}((M\times [t,1])^{c})} & {\mathscr{H}^{*}_{\Gamma}(M\times (\epsilon,t))} & \cdots
+	\arrow[from=1-1, to=1-2]
+	\arrow["{(rest)}", from=1-2, to=1-3]
+	\arrow["dif", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+with $\mathscr{H}^{*}_{\Gamma}(M\times (\epsilon,1])\oplus \mathscr{H}^{*}_{\Gamma}((M\times [t,1])^{c})=0 \oplus 0 = 0$,therefore we get the isomorphism
+$$\mathscr{H}^{*}_{\Gamma}(M)\cong\mathscr{H}^{*+1}_{\Gamma}(W).$$
+With this observations we get that the cohomological long exact sequence turns to:
+
+% https://q.uiver.app/#q=WzAsOCxbMiwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgVykiXSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxtYXRoc2Nye0h9X3tcXEdhbW1hfV57Kn0oV157MH0pIl0sWzEsMSwiXFxtYXRoc2Nye0h9X3tcXEdhbW1hfV57Kn0oTSkiXSxbMCwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShEKE0pKSJdLFsyLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KEQoVikpXFxvcGx1cyBcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShEKE0pKSJdLFszLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oRChNKSkiXSxbMSwwLCJpX3tcXHBhcnRpYWwgTX1eeyp9Il0sWzAsMiwibCE9XFxwYXJ0aWFsIl0sWzMsMSwiaV57MH0hPWpeeyp9Il0sWzEsNF0sWzMsNV0sWzUsNF0sWzQsNl0sWzAsNl0sWzIsN10sWzYsN11d
+\[\begin{tikzcd}
+	{\mathscr{H}_{\Gamma}^{*}(W^{0})} & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*+1}(W^{0})} \\
+	{\mathscr{H}_{\Gamma}^{*}(D(M))} & {\mathscr{H}_{\Gamma}^{*}(M)} & {\mathscr{H}_{\Gamma}^{*}(D(V))\oplus \mathscr{H}_{\Gamma}^{*}(D(M))} & {\mathscr{H}_{\Gamma}^{*+1}(D(M))}
+	\arrow["{i^{0}!=j^{*}}", from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["{i_{\partial M}^{*}}", from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{l!=\partial}", from=1-3, to=1-4]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+\end{tikzcd}\]
+
+\end{proof}
 
 
 
