@@ -679,25 +679,28 @@ If $[M,\partial M,\pi_{1},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ and $\pi_1
 Since $Id_{M\times \mathbb{R}}$ is an homotopy between $Id_{M}\times 0$ and $Id_M\times 1$, then by the pushforward structure $(Id_{M}\times 0)!(x_M)=(Id_M\times 1)!(x_M)$.
 \end{remark}
 
-\begin{remark}
-Consider for a cycle $[M,\partial M,\pi_M,x_M]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ there exist an homotopical equivalent pair $(X',A')$  by
-$$(X',A'):=(X\times \{1\}\cup A\times [0,1), A\times \{1\}),$$
-where $i_X: X\to X'$ is defined by $i_X=Id_X \times 1$, and where the equivalence is given in the following way: Since $\mathbb{R}$ is contractible, consider $s_t:\mathbb{R}\to \mathbb{R}$ for $t\in [0,1]$ being the homotopy between $\mathbb{R}$ and $\{1\}$, then 
-$$H((x,r),t)=(x,s_t(r))$$
-define a map $H:(X',A')\times \mathbb{R}\to (X',A')$ such that it is an homotopy between $(X,A)$ and $(X',A')$. Therefore, by the isomorphism
+
+
+\begin{remark}\label{Empujando}
+Considering the following homotopically equivalent $\Gamma$-CW proper pairs: 
+\begin{enumerate}
+\item $(X,A)$.
+\item $(X',A'):=(X\times \{1\}\cup A\times [0,1), A\times [0,1])$.
+\item $(X'', A''):=(X\times \{1\}\cup A\times [0,1), A\times \{1\})$.
+\end{enumerate}
+Defining $i_X: X\to X'$ by $i_X=Id_X \times 1$, the isomorphism
 $$i_*:\mathscr{H}_*^{pf}(X,A;\Gamma)\to \mathscr{H}_*^{pf}(X',A';\Gamma)$$
-we identify $[M,\partial M, \pi_M,x_M]$ with $[M,\partial M, i_X\circ \pi_M,x_M]$. Consider a map $\varphi:M\to [0,1]$ that separate $\varphi^{-1}(0)=\pi_M^{-1}(A)\supseteq\partial M$ and $\varphi^{-1}(1)=M\setminus int(\pi_M^{-1}(A))$\footnote{This exist because a smooth manifolds is a perfectly normal space, i.e., it is a normal space and every closed set is an intersection of countable open sets.}.  We define $\pi_M':M\to X'$ by $\pi_M(m)\times 1$, such that the following diagram commutes
+maps a cycle $[M,\partial M, \pi_M,x_M]$ to $[M,\partial M, i_X\circ \pi_M,x_M]$. Now, consider a map $\varphi:M\to [0,1]$ that separate $\varphi^{-1}(0)=\pi_M^{-1}(A)\supseteq\partial M$ and $\varphi^{-1}(1)=M\setminus int(\pi_M^{-1}(A))$\footnote{This exist because a smooth manifolds is a perfectly normal space, i.e., it is a normal space and every closed set is an intersection of countable open sets.}.  We define $\pi_M':M\to X'$ by $\pi_M(m)\times 1$, such that the following diagram commutes
 % https://q.uiver.app/#q=WzAsMyxbMSwxLCIoWFxcdGltZXMgXFx7MVxcfVxcY3VwIEFcXHRpbWVzIFswLDEpLCBBXFx0aW1lcyBcXHswXFx9KSJdLFswLDEsIihYLEEpPShYXFx0aW1lcyBcXHsxXFx9LEFcXHRpbWVzIFxcezFcXH0pIl0sWzAsMCwiTSJdLFsxLDAsImlfe1h9IiwyXSxbMiwxLCJcXHBpX3tNfSIsMl0sWzIsMCwiXFxwaV97TX0nIl1d
 \[\begin{tikzcd}
 	M & \\
-	{(X,A)=(X\times \{1\},A\times \{1\})} & {(X\times \{1\}\cup A\times [0,1), A\times \{0\})}
+	{(X,A)=(X\times \{1\},A\times \{1\})} & {(X\times \{1\}\cup A\times [0,1), A\times [0,1])}
 	\arrow["{\pi_{M}}"', from=1-1, to=2-1]
 	\arrow["{\pi_{M}'}", from=1-1, to=2-2]
 	\arrow["{i_{X}}"', from=2-1, to=2-2]
 \end{tikzcd}\]
 Therefore, considering the map
-$$H':M\times [0,1]\to (X',A'):(m,t)\mapsto (\pi_M(m),(1-t)\varphi(m)+t),$$ we get an homotopy between $H'(-,1)=\pi_M'$ and $H'(-,0):(M,\partial M)\to (X',A')$ which is a pair map, that is, $\pi_M(\partial M)\subseteq A'$ and $[\pi_M(\partial M)]^{c}\subseteq A'^{c}$.
-
+$$H':M\times [0,1]\to (X',A'):(m,t)\mapsto (\pi_M(m),(1-t)\varphi(m)+t),$$ we get an homotopy between $\pi_M'':=H'(-,1)=\pi_M'$ and $H'(-,0):(M,\partial M)\to (X',A')$ which is a pair map, that is, $\pi_M(\partial M)\subseteq A'$ and $[\pi_M(\partial M)]^{c}\subseteq A'^{c}$, i.e., $[M,\partial M,\pi_M'',x_M]\in \mathscr{H}^{pf}_*(X'',A''.\Gamma)$ is a cycle such that $\pi_M''^{-1}(A'')\cap M^{0}=\emptyset$.
 \end{remark}
 
 
@@ -1682,440 +1685,12 @@ where the first equality is by definition of $\partial$; second equality is by $
 \end{itemize}
 
 \end{proof}
-\begin{prop}
-    The pushforward homology satisfy the excision property. i.e., for a map $\phi:(X,A)\to (Y,B)$ such that $Y\cong X\cup_{A}B$, we get that $\mathscr{H}^{pf}_{*}(X,A)\cong \mathscr{H}^{pf}_{*}(X\cup_{A}B, B)$. 
-\end{prop}
-
-
-\begin{proof}
-First, suppose that $\phi$ is an equivariant cellular inclusion. We will show that $\phi_{*}$ is an isomorphism. In this case the inverse for the map  
-% https://q.uiver.app/#q=WzAsMixbMSwwLCJbTSxcXHBhcnRpYWwgTSxcXHBoaVxcY2lyY1xccGlfe019LHhfe019XVxcaW4gXFxtYXRoc2Nye0h9XntwZn1feyp9KFksQikiXSxbMCwwLCJbTSxcXHBhcnRpYWwgTSxcXHBpX3tNfSx4X3tNfV1cXGluXFxtYXRoc2Nye0h9XntwZn1feyp9KFgsQSkiXSxbMSwwLCJcXHBoaV97Kn0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
-\[\begin{tikzcd}
-	{[M,\partial M,\pi_{M},x_{M}]\in\mathscr{H}^{pf}_{*}(X,A)} & {[M,\partial M,\phi\circ\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(Y,B)}
-	\arrow["{\phi_{*}}", maps to, from=1-1, to=1-2]
-\end{tikzcd}\]
-can be described as follows: for $[M,\partial M,\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(Y,B)$, consider $U\subseteq Y$ an open set such that there exist a strongly deformation retract $r:U\to X$ (cf. \cite{LO01}, pg. 587); with this, consider the open submanifold $M_{U}=\pi_{M}^{-1}(U)$ of $M$, and then using the inclusion $i_{M_{U}}:M_{U}\to M$ define $h:\mathscr{H}^{pf}_{*}(Y,B)\to \mathscr{H}^{pf}_{*}(X,A)$ by
-\begin{align*}
-    h([M,\partial M,\pi_{M},x_{M}])=[M_{U},\partial M_{U},r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}].
-\end{align*}
-We claim that $\phi^{-1}_{*}=h$.
-\begin{itemize}
-    \item $h\circ \phi_{*}=Id_{\mathscr{H}^{pf}_{*}(X,A;\Gamma)}$: 
-    % https://q.uiver.app/#q=WzAsNixbMCwwLCJNIl0sWzAsMSwiWCJdLFsxLDIsIlkiXSxbMSwxLCJVIl0sWzEsMCwiTV97WH09KFxccGhpXFxjaXJjIFxccGlfe019KV57LTF9KFUpIl0sWzIsMSwiWCJdLFswLDEsIlxccGlfe019Il0sWzEsMiwiXFxwaGkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDMsImlfe1h9IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJpX3tVfSJdLFs0LDMsIlxccGlfe019fF97TV97WH19Il0sWzQsMCwiaV97TV97WH19IiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XSxbMyw1LCJyIl1d
-\[\begin{tikzcd}
-	M & {M_{U}=(\phi\circ \pi_{M})^{-1}(U)} \\
-	X & U & X \\
-	& Y
-	\arrow["{\pi_{M}}", from=1-1, to=2-1]
-	\arrow["{i_{M_{U}}}"', hook', from=1-2, to=1-1]
-	\arrow["{\pi_{M}|_{M_{U}}}", from=1-2, to=2-2]
-	\arrow["{i_{X}}", hook, from=2-1, to=2-2]
-	\arrow["\phi", hook, from=2-1, to=3-2]
-	\arrow["r", from=2-2, to=2-3]
-	\arrow["{i_{U}}", from=2-2, to=3-2]
-\end{tikzcd}\]    
-    
-    Since $X\subseteq U$, we get that $(\phi\circ \pi_{M})^{-1}(U)\supseteq \pi_{M}^{-1}(X) = M$, therefore $M_{U}=M$, and $i_{M_{U}}=id_{M}$, then
- \begin{align*}
-        h\circ \phi_{*}([M,\partial M,\pi_{M},x_{M}])&=h([M,\partial M,\phi\circ\pi_{M},x_{M}])\\
-        &=[M_{U},\partial M_{U},r\circ \phi\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}(x_{M})]\\
-        &=[M,\partial M,r\circ \phi\circ\pi_{M},x_{M}]\\
-        &=[M,\partial M,\pi_{M},x_{M}],
-    \end{align*}
-where first and second equations are obtained by definitions of $\phi_{*}$ and $h$, respectively; third equation is by $i_{M_{U}}=Id_{M}$ and $Id_{M}^{*}=Id_{\mathscr{H}^{*}_{\Gamma}(M)}$; and fourth is get by the fact that $r\circ \phi=r|_{X}\cong_{h} Id_{X}$.
-       
-    \item $\phi_{*}\circ h=Id_{\mathscr{H}^{pf}_{*}(Y,B;\Gamma)}$:
-
-% https://q.uiver.app/#q=WzAsNSxbMCwxLCJNX3tYfSJdLFsxLDEsIlUiXSxbMSwwLCJZIl0sWzAsMCwiTSJdLFsyLDEsIlgiXSxbMCwxLCJcXHBpX3tNfXxfe01fe1h9fSIsMl0sWzEsMiwiaV97VX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFszLDIsIlxccGlfe019IiwyXSxbMCwzLCJpX3tNX3tYfX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFsxLDQsInIiLDJdLFs0LDIsIlxccGhpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XV0=
-\[\begin{tikzcd}
-	M & Y \\
-	{M_{U}} & U & X
-	\arrow["{\pi_{M}}"', from=1-1, to=1-2]
-	\arrow["{i_{M_{U}}}", hook', from=2-1, to=1-1]
-	\arrow["{\pi_{M}|_{M_{U}}}"', from=2-1, to=2-2]
-	\arrow["{i_{U}}", hook', from=2-2, to=1-2]
-	\arrow["r"', from=2-2, to=2-3]
-	\arrow["\phi"', hook', from=2-3, to=1-2]
-\end{tikzcd}\]
-    
-    \begin{align*}
-         \phi_{*}\circ h([M,\partial M,\pi_{M},x_{M}])&= \phi_{*}([M_{U},\partial M_{U},r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}])\\
-         &=[M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}]
-        .
-    \end{align*}
-    Consider $\widetilde{W}=M\times(0,1]\cup M_{U}\times \{0\}$, and with this, define
-    \begin{align*}
-        W=\widetilde{W}\cup_{\partial M\times(0,1]\cup \partial M_{U}\times \{0\}}\widetilde{W}.
-    \end{align*}    
-    Denote by $\lambda: W\hookrightarrow (M\times [0,1])\cup_{\partial M \times [0,1]}(M\times [0,1])$ the inclusion map, and denote
-    \begin{align*}
-        i_{0}:-M_{U}\to W^{0}, \ \ \ \ \ i_{1}:M\to W^{0}
-    \end{align*}
-    the inclusions given by a collar.
-    
-    $W$ is a proper $\mathscr{H}_{\Gamma}$-oriented manifold with boundary, where $$-M_{U}\times \{0\}\bigcup M\times \{1\} \subseteq \partial W,$$
-    i.e., there exists an embedding $i!=(i_{0}\sqcup i_{1})!:\mathscr{H}^{*}(M_{U})\oplus \mathscr{H}^{*}(M)\to \mathscr{H}^{*+1}(W^{0})$. 
-    Consider the long exact sequence of the pair $(W,\partial W)$,
-    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFsyLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxjZG90cyJdLFs0LDAsIlxcY2RvdHMiXSxbMSwyLCJpISJdLFswLDEsInJfe1xccGFydGlhbH0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDRdLFszLDBdXQ==
-\[\begin{tikzcd}
-	\cdots & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*+1}(W^{0})} & \cdots
-	\arrow[from=1-1, to=1-2]
-	\arrow["{r_{\partial}}", hook, from=1-2, to=1-3]
-	\arrow["{i!}", from=1-3, to=1-4]
-	\arrow[from=1-4, to=1-5]
-\end{tikzcd}\]
-    We want to see that $i!((x_{M},-i^{*}_{M_{U}}(x_{M})))=(i_{0}\sqcup i_{1})!(x_{M}-i_{M_{U}}^{*}(x_{M}))=0$, which is equivalent to the fact $x_{M}-i^{*}_{M_{U}}(x_{M})\in Im(r_{\partial})$. To construct a desired cycle, consider the cohomology element obtained by gluing\footnote{In this case $\hat{x}$ can be obtained in the Mayer-Vietoris cohomology sequence as the element in the cohomology of the double of $M$, denoted by $D(M)$, such that its image under the restriction map hold $r_{M\times [0,1]}(\hat{x})=(x_{M},x_{M})$.} two copies of $x_{M}$ along $\partial M\times[0,1]$
-    \begin{align*}
-       \hat{x}:=\biggl( x_{M}\bigcup_{\partial M \times [0,1]} x_{M}\biggr) \in \mathscr{H}_{\Gamma}^{*}\biggr( M\times [0,1]\bigcup_{\partial M\times [0,1]}M\times [0,1]\biggl)\cong \mathscr{H}_{\Gamma}^{*}(D(M)).
-    \end{align*}
-    With this, we get that $r_{\partial}(\lambda^{*}(\hat{x}))=x_{M}-i_{M_{U}}^{*}(x_{M})$. It implies $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$, and with this,
-    \begin{align*}
-        [M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}]&=[M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}\circ i_{M_{U}},i_{M_{U}}^{*}x_{M}]\\
-        &=[M_{U},\partial M_{U},\pi_{W^{0}}\circ i_{0},i_{M_{U}}^{*}x_{M}]\\
-        &=[W^{0},\emptyset,\pi_{W^{0}}, i_{0}!(i_{M_{U}}^{*}x_{M})]\\
-        &=[W^{0},\emptyset,\pi_{W^{0}}, i_{1}!(x_{M})]\\
-        &=[M,\partial M,\pi_{W^{0}} \circ i_{1},(x_{M})]\\
-        &=[M,\partial M,\pi_{M},x_{M}],
-    \end{align*}
-   where the first equality is by definition of restriction; second equality is given by the fact that $\phi\circ r\circ \pi_{M}\circ i_{M_{U}}$ is $\Gamma$-homotopic to $\pi_{W^{0}}\circ i_{0}$; third equality is by Remark \ref{relation 1} applied to $i_{0}:M_{U}\to W^{0}$; fourth equation is given by $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$; fifth equation is by Remark \ref{relation 1} applied to $i_{1}: M\to W^{0}$; and last equation is given by $\pi_{M}=\pi_{W}^{0}\circ i_{1}$.
-\end{itemize}
-For general $\phi:(X,A)\to (Y,B)$, we could change $(Y,B)$ by the mapping cylinder $(M_{\phi},M_{\phi|A})$ and use excision for inclusions (because there is an homotopy equivalence $\psi:(Y,B)\to (M_{\phi},M_{\phi|A})$ and therefore, its cohomology groups are isomorphic).
-\end{proof}
 
 
 
 
 
-\begin{prop}
-(\textcolor{red}{Opcion 2})    The pushforward homology satisfy the excision property, i.e., for a proper $\Gamma$-CW pair $(X,A)$, there exist an isomorphism $$\mathscr{H}^{pf}_{*}(X,A)\cong \mathscr{H}^{pf}_{*}(X\setminus A)$$ 
-\end{prop}
-\begin{proof}
-Consider the map 
-\begin{align*}
-h:\mathscr{H}^{pf}_{*}(X,A;\Gamma) \to \mathscr{H}^{pf}_{*}(X\setminus A,\emptyset;\Gamma)
-\end{align*}
-defined in the following way: for $[M,\partial M,\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$, consider an open set $U\subseteq X$ such that $\pi_{M}^{-1}(A)\subseteq \pi_{M}^{-1}(U)$, where $\pi_{M}^{-1}(U)$ is an open set in $M$. 
-There exist an open set $\tilde{U}\subseteq M$ such that there is a strong deformation retract $\alpha:\tilde{U}\times [0,1]\to \tilde{U}$ such that $\alpha_{0}=Id_{\tilde{U}}$, and $\alpha_{1}:\tilde{U}\to C \subseteq \tilde{U}$ such that $\alpha_1|_{C}=Id_{C}$. There exist a closed $C\subseteq M$ such that $\pi_M^{-1}(U)\subseteq C\subseteq \tilde{U}$. Therefore we have the succesive contenations
-$$\pi_M^{-1}(A)\subset \pi_M^{-1}(U)\subset C\subset \tilde{U}\subset M$$
-With this situation we get that
-\begin{enumerate}
-\item $x_M\in \mathscr{H}^{*}_{\Gamma}(M)$.
-\item $x_M|_{C}=(i_{C}^{M})^{*}(x_{M})\in \mathscr{H}^{*}_{\Gamma}(C)$, this by $i_{C}^{M}:C\to M$ is a proper map, because $C$ is closed in $M$.
-
-%\item We want to say $(i_{C}^{M})^{*}(x_M)\cong (i_{\tilde{U}}^{M})^{*}(x_M)$ \textcolor{red}{Idea} If we consider $Im_t:=Im(\alpha_t)\subset \tilde{U}$ and consider the "homotopy"
-%$$H_{t}:Im_t\to M:u\mapsto i_{\tilde{U}}^{M}(u),$$
-%where we would get $H_0=i_{\tilde{U}}^{M}$ and $H_1=i_{C}^{M}$.
-
-\item We construct an element $ext_{\tilde{U}}(x_M|_{C})\in \mathscr{H}^{*}_{\Gamma}(\tilde{U})$ by zero on the strip $\tilde{U}\setminus C$ (we dont say restriction because this is no a closed set) \textcolor{red}{como se hace esta extension, parece ser consecuencia de un buen manejo del retracto por deformacion}.
-
-
-\item $(i_{\tilde{U}}^{M})!(ext_{\tilde{U}}(x_M|_{C}))\in \mathscr{H}^{*}_{\Gamma}(M)$ is well defined by the fact that the push forward is covariant in open sets, therefore we get this element by the inclusion $i_{\tilde{U}}^{M}:\tilde{U}\to{M}$, in such a way that $$(i_{M\setminus \tilde{U}}^{M})^*((i_{\tilde{U}}^{M})!(ext_{\tilde{U}}(x_M|_{C})))=0\in \mathscr{H}^{*}_{\Gamma}(M)$$ \textcolor{red}{Hace parte de la naturaleza del pushforward}
-
-\item $(i_{C}^{M})^{*}(x_M-[(i_{\tilde{U}}^{M})!(ext_{\tilde{U}}(x_M|_{C}))])=0\in \mathscr{H}^{*}_{\Gamma}(C)$ this by $i_{C}^{M}:C\to M$ is a proper map, because $C$ is closed in $M$.
-\item In the long exact sequence of the pair $(M,C)$ we get that there exist $\tilde{x}_M\in \mathscr{H}^{*}_{\Gamma}(M,C)\cong \mathscr{H}^{*}_{\Gamma}(M\setminus C)$ such that $i_{M\setminus C}^{M}!(\tilde{x}_{M})=x_M-[(i_{\tilde{U}}^{M})!(x_M|_{\tilde{U}})]\in \mathscr{H}^{*}_{\Gamma}(C)$.
-\end{enumerate}
-Hence, we define
-$$h([M,\partial M,\pi_{M},x_{M}])=[M\setminus C,\emptyset,\pi_{M}|_{M\setminus C},\tilde{x}_{M}]\in \mathscr{H}^{pf}_{*}(X\setminus A,\emptyset;\Gamma)$$
-
-\begin{itemize}
-\item $h$ is well defined \textcolor{red}{Tenemos que levantar los retractos por deformacion a $M, N\ y\ W$}.
-\item Note that $\tilde{x}_M$ holds that $\tilde{x}_M|_{\partial M}=x_M|_{\partial M}$.  
-\item $h\circ \phi_{*}=Id_{\mathscr{H}^{pf}_{*}(X\setminus A,\emptyset;\Gamma)}$
-\item $\phi_{*}\circ h=Id_{\mathscr{H}^{pf}_{*}(X,A;\Gamma)}$:
-
-% https://q.uiver.app/#q=WzAsNSxbMCwxLCJNX3tYfSJdLFsxLDEsIlUiXSxbMSwwLCJZIl0sWzAsMCwiTSJdLFsyLDEsIlgiXSxbMCwxLCJcXHBpX3tNfXxfe01fe1h9fSIsMl0sWzEsMiwiaV97VX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFszLDIsIlxccGlfe019IiwyXSxbMCwzLCJpX3tNX3tYfX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFsxLDQsInIiLDJdLFs0LDIsIlxccGhpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XV0=
-\[\begin{tikzcd}
-	M & Y \\
-	{M_{U}} & U & X
-	\arrow["{\pi_{M}}"', from=1-1, to=1-2]
-	\arrow["{i_{M_{U}}}", hook', from=2-1, to=1-1]
-	\arrow["{\pi_{M}|_{M_{U}}}"', from=2-1, to=2-2]
-	\arrow["{i_{U}}", hook', from=2-2, to=1-2]
-	\arrow["r"', from=2-2, to=2-3]
-	\arrow["\phi"', hook', from=2-3, to=1-2]
-\end{tikzcd}\]
-    
-    \begin{align*}
-         \phi_{*}\circ h([M,\partial M,\pi_{M},x_{M}])&= \phi_{*}([M\setminus C,\emptyset,r\circ\pi_{M}|_{M\setminus C},\tilde{x}_{M}])\\
-         &=[M\setminus C,\emptyset,\phi\circ r\circ\pi_{M}|_{M\setminus C},\tilde{x}_{M}]
-        .
-    \end{align*}
-    Consider $\widetilde{W}=M\times(0,1]\cup M_{U}\times \{0\}$, and with this, define
-    \begin{align*}
-        W=\widetilde{W}\cup_{\partial M\times(0,1]\cup \partial M_{U}\times \{0\}}\widetilde{W}.
-    \end{align*}    
-    Denote by $\lambda: W\hookrightarrow (M\times [0,1])\cup_{\partial M \times [0,1]}(M\times [0,1])$ the inclusion map, and denote
-    \begin{align*}
-        i_{0}:-M_{U}\to W^{0}, \ \ \ \ \ i_{1}:M\to W^{0}
-    \end{align*}
-    the inclusions given by a collar.
-    
-    $W$ is a proper $\mathscr{H}_{\Gamma}$-oriented manifold with boundary, where $$-M_{U}\times \{0\}\bigcup M\times \{1\} \subseteq \partial W,$$
-    i.e., there exists an embedding $i!=(i_{0}\sqcup i_{1})!:\mathscr{H}^{*}(M_{U})\oplus \mathscr{H}^{*}(M)\to \mathscr{H}^{*+1}(W^{0})$. 
-    Consider the long exact sequence of the pair $(W,\partial W)$,
-    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFsyLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KFxccGFydGlhbCBXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxjZG90cyJdLFs0LDAsIlxcY2RvdHMiXSxbMSwyLCJpISJdLFswLDEsInJfe1xccGFydGlhbH0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDRdLFszLDBdXQ==
-\[\begin{tikzcd}
-	\cdots & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*+1}(W^{0})} & \cdots
-	\arrow[from=1-1, to=1-2]
-	\arrow["{r_{\partial}}", hook, from=1-2, to=1-3]
-	\arrow["{i!}", from=1-3, to=1-4]
-	\arrow[from=1-4, to=1-5]
-\end{tikzcd}\]
-    We want to see that $i!((x_{M},-i^{*}_{M_{U}}(x_{M})))=(i_{0}\sqcup i_{1})!(x_{M}-i_{M_{U}}^{*}(x_{M}))=0$, which is equivalent to the fact $x_{M}-i^{*}_{M_{U}}(x_{M})\in Im(r_{\partial})$. To construct a desired cycle, consider the cohomology element obtained by gluing\footnote{In this case $\hat{x}$ can be obtained in the Mayer-Vietoris cohomology sequence as the element in the cohomology of the double of $M$, denoted by $D(M)$, such that its image under the restriction map hold $r_{M\times [0,1]}(\hat{x})=(x_{M},x_{M})$.} two copies of $x_{M}$ along $\partial M\times[0,1]$
-    \begin{align*}
-       \hat{x}:=\biggl( x_{M}\bigcup_{\partial M \times [0,1]} x_{M}\biggr) \in \mathscr{H}_{\Gamma}^{*}\biggr( M\times [0,1]\bigcup_{\partial M\times [0,1]}M\times [0,1]\biggl)\cong \mathscr{H}_{\Gamma}^{*}(D(M)).
-    \end{align*}
-    With this, we get that $r_{\partial}(\lambda^{*}(\hat{x}))=x_{M}-i_{M_{U}}^{*}(x_{M})$. It implies $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$, and with this,
-    \begin{align*}
-        [M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}|_{M_{U}},i_{M_{U}}^{*}x_{M}]&=[M_{U},\partial M_{U},\phi\circ r\circ\pi_{M}\circ i_{M_{U}},i_{M_{U}}^{*}x_{M}]\\
-        &=[M_{U},\partial M_{U},\pi_{W^{0}}\circ i_{0},i_{M_{U}}^{*}x_{M}]\\
-        &=[W^{0},\emptyset,\pi_{W^{0}}, i_{0}!(i_{M_{U}}^{*}x_{M})]\\
-        &=[W^{0},\emptyset,\pi_{W^{0}}, i_{1}!(x_{M})]\\
-        &=[M,\partial M,\pi_{W^{0}} \circ i_{1},(x_{M})]\\
-        &=[M,\partial M,\pi_{M},x_{M}],
-    \end{align*}
-   where the first equality is by definition of restriction; second equality is given by the fact that $\phi\circ r\circ \pi_{M}\circ i_{M_{U}}$ is $\Gamma$-homotopic to $\pi_{W^{0}}\circ i_{0}$; third equality is by Remark \ref{relation 1} applied to $i_{0}:M_{U}\to W^{0}$; fourth equation is given by $(i_{1})!(x_{M})=(i_{0})!(i_{M_{U}}^{*}(x_{M}))$; fifth equation is by Remark \ref{relation 1} applied to $i_{1}: M\to W^{0}$; and last equation is given by $\pi_{M}=\pi_{W}^{0}\circ i_{1}$.
-\end{itemize}
-
-  
-\end{proof}
-
-
-
-
-
-
-
-\begin{comment}
-\begin{proof}
-    Consider the following diagram
-    % https://q.uiver.app/#q=WzAsOSxbMiwxLCJOIl0sWzEsMSwiVyJdLFswLDEsIloiXSxbMCwwLCJFIl0sWzMsMSwiXFx0aWxkZXtXfSJdLFs0LDEsIloiXSxbNCwwLCJFIl0sWzEsMCwiYV97V31eeyp9RSJdLFszLDAsImFfe1xcdGlsZGV7V319XnsqfUUiXSxbMywyXSxbMSwyLCJhX3tXfSIsMl0sWzAsMSwiXFxpb3RhX3tOfV57V30iLDJdLFswLDQsIlxcaW90YV97Tn1ee1xcdGlsZGV7V319Il0sWzQsNSwiYV97XFx0aWxkZXtXfX0iXSxbNiw1XSxbMSw3LCJcXHhpX3tXfSIsMl0sWzQsOCwiXFx4aV97XFx0aWxkZXtXfX0iLDJdXQ==
-\[\begin{tikzcd}
-	E & {a_{W}^{*}E} && {a_{\tilde{W}}^{*}E} & E \\
-	Z & W & N & {\tilde{W}} & Z
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-5, to=2-5]
-	\arrow["{\xi_{W}}"', from=2-2, to=1-2]
-	\arrow["{a_{W}}"', from=2-2, to=2-1]
-	\arrow["{\iota_{N}^{W}}"', from=2-3, to=2-2]
-	\arrow["{\iota_{N}^{\tilde{W}}}", from=2-3, to=2-4]
-	\arrow["{\xi_{\tilde{W}}}"', from=2-4, to=1-4]
-	\arrow["{a_{\tilde{W}}}", from=2-4, to=2-5]
-\end{tikzcd}\]
-where $\iota_{N}^{W}$ and $\iota_{N}^{\tilde{W}}$ are the given $\Gamma$-embeddings; $a_{W}$ and $a_{\tilde{W}}$ are $\Gamma$-maps, the unique up to $\Gamma$-homotopy, to the proper actions classifier space $Z$; $E$ is a $\Gamma$-vector bundle with fiber $F$, such that $W$ and $\tilde{W}$ are $\Gamma$-proper spaces embedded in $E$; $\xi_{W}$ and $\xi_{\tilde{W}}$ are the zero sections of the fiber bundles $a_{W}^{*}E$ and $a_{\tilde{W}}^{*}E$ over $W$ and $\tilde{W}$ respectively. Now, consider the $\Gamma$-maps $g_{W}:N\to W\times a_{\tilde{W}}^{*}E$ and $g_{\tilde{W}}:N\to \tilde{W}\times a_{W}^{*}E$ given by $g_{W}=\iota_{N}^{W}\times (\xi_{\tilde{W}}\circ \iota_{N}^{\tilde{W}})$ and $g_{\tilde{W}}=\iota_{N}^{\tilde{W}}\times (\xi_{W}\circ \iota_{N}^{W})$. With this we get
-\begin{enumerate}
-    \item $g_{W}$ and $g_{\tilde{W}}$ are $\Gamma$-embeddings.
-    \item $\nu_{g_{W}}\cong \nu_{g_{\tilde{W}}}$, because
-    \begin{align*}
-        \nu_{g_{W}}&\cong \nu_{\iota_{N}^{W}}\oplus \nu_{\xi_{\tilde{W}}\circ \iota_{N}^{\tilde{W}}}\\
-        &\cong\nu_{\iota_{N}^{W}}\oplus \nu_{\xi_{\tilde{W}}}|_{N}\oplus \nu_{\iota_{N}^{\tilde{W}}}\\
-        &\cong\nu_{\iota_{N}^{W}}\oplus TF|_{N}\oplus \nu_{\iota_{N}^{\tilde{W}}}
-    \end{align*}
-    In the same way we get that $\nu_{g_{\tilde{W}}} \cong  \nu_{\iota_{N}^{\tilde{W}}}\oplus TF|_{N}\oplus \nu_{\iota_{N}^{W}} $.
-    \item \textcolor{red}{idea 2:} intentar cazar esto usando Emerson Meyer (pues es este teorema quien nos dá la posterior compatibilidad en cohomología). Esto buscando un fibrado vectorial $K$ tal que $a_{W}^{*}K=W\times a_{\tilde{W}}^{*}E$ \textcolor{red}{No tiene mucho sentido por la operación empleada}.
-    \item \textcolor{red}{idea 1:} Mostrar que corriendo emerson meyer sobre 
-\end{enumerate}
-
-
-
-
-
-
-
-\end{proof}
-
-\end{comment}
-\begin{comment}
-    
-\begin{proof}
-    
-    Let the cycles $(M,\partial M, \pi_{M}, x_{M}), (N,\partial N, \pi_{N}, x_{N})$ and $(P,\partial P, \pi_{P}, x_{P})$ in $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ related as in \ref{Equivalence relation 1} such as the diagram 
-    
-    % https://q.uiver.app/#q=WzAsNixbMCwxLCJNIl0sWzEsMSwiTiJdLFsyLDEsIlAiXSxbMSwyLCJYIl0sWzAsMCwiVyJdLFsyLDAsIlxcdGlsZGV7V30iXSxbMCw0LCJmX3tNfSJdLFsxLDQsImZfe059IiwyXSxbMSw1LCJcXHRpbGRle2Z9X3tOfSJdLFsyLDUsIlxcdGlsZGV7Zn1fe1B9IiwyXSxbMCwzLCJcXHBpX3tNfSIsMl0sWzEsMywiXFxwaV97Tn0iLDJdLFsyLDMsIlxccGlfe1B9Il1d
-\[\begin{tikzcd}
-	W && {\tilde{W}} \\
-	M & N & P \\
-	& X
-	\arrow["{f_{M}}", from=2-1, to=1-1]
-	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
-	\arrow["{f_{N}}"', from=2-2, to=1-1]
-	\arrow["{\tilde{f}_{N}}", from=2-2, to=1-3]
-	\arrow["{\pi_{N}}"', from=2-2, to=3-2]
-	\arrow["{\tilde{f}_{P}}"', from=2-3, to=1-3]
-	\arrow["{\pi_{P}}", from=2-3, to=3-2]
-\end{tikzcd}\]
-    \noindent where by the Lemma \ref{EM-Embedding}, we can consider that $f_{N}$ and $\tilde{f}_{N}$ are embeddings. For the spaces $W$ and  $\tilde{W}$ there exists an space $T$ with maps $g_{W}:W\to T$ and $g_{\tilde{W}}:\tilde{W}\to T$ being embeddings. Then, by Theorem \ref{Emerson-Mayer} we get that for the equivariant map $g_{W}\circ f_{N}:N\to T$ there exists the map $\eta_{g_{W}\circ f_{N}}$ such that the diagram 
-
-    % https://q.uiver.app/#q=WzAsNixbMSwxLCJUIl0sWzAsMSwiWiJdLFsyLDEsIk4iXSxbMCwwLCJFIl0sWzEsMCwiYV97VH1eeyp9RSJdLFsyLDAsIlxcbnUiXSxbMCwxLCJhX3tUfSJdLFszLDFdLFs0LDAsIlxccmhvX3thX3tUfV57Kn1FfSIsMl0sWzIsMCwiZ197V31cXGNpcmMgZl97Tn0iXSxbNSwyLCJcXHJob197XFxudX0iXSxbNSw0LCJcXGV0YV97Z197V31cXGNpcmMgZl97Tn19IiwyXV0=
-\[\begin{tikzcd}
-	E & {a_{T}^{*}E} & \nu \\
-	Z & T & N
-	\arrow[from=1-1, to=2-1]
-	\arrow["{\rho_{a_{T}^{*}E}}"', from=1-2, to=2-2]
-	\arrow["{\eta_{g_{W}\circ f_{N}}}"', from=1-3, to=1-2]
-	\arrow["{\rho_{\nu}}", from=1-3, to=2-3]
-	\arrow["{a_{T}}", from=2-2, to=2-1]
-	\arrow["{g_{W}\circ f_{N}}", from=2-3, to=2-2]
-\end{tikzcd}\]
-
-\noindent where $\nu$ is the normal bundle of the embedding $(g_{W}\circ f_{N})\times g_{E}$, satisfying $g_{W}\circ f_{N}=\rho_{a_{T}^{*}E}\circ \eta_{g_{W}\circ f_{N}} \circ \xi_{\nu}$. In the same way, for the map $g_{\tilde{W}}\circ \tilde{f}_{N}$, there exists the embedding $\eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}:\tilde{\nu}\to a^{*}_{T}E$ satisfying the commutative diagram:
-
-% https://q.uiver.app/#q=WzAsNixbMSwxLCJUIl0sWzIsMSwiWiJdLFswLDEsIk4iXSxbMiwwLCJFIl0sWzEsMCwiYV97VH1eeyp9RSJdLFswLDAsIlxcdGlsZGV7XFxudX0iXSxbMCwxLCJhX3tUfSIsMl0sWzMsMV0sWzQsMCwiXFxyaG9fe2Ffe1R9XnsqfUV9Il0sWzIsMCwiZ197XFx0aWxkZXtXfX1cXGNpcmMgXFx0aWxkZXtmfV97Tn0iLDJdLFs1LDIsIlxccmhvX3tcXHRpbGRle1xcbnV9fSIsMl0sWzUsNCwiXFxldGFfe2dfe1d9XFxjaXJjIGZfe059fSJdXQ==
-\[\begin{tikzcd}
-	{\tilde{\nu}} & {a_{T}^{*}E} & E \\
-	N & T & Z
-	\arrow["{\eta_{g_{W}\circ f_{N}}}", from=1-1, to=1-2]
-	\arrow["{\rho_{\tilde{\nu}}}"', from=1-1, to=2-1]
-	\arrow["{\rho_{a_{T}^{*}E}}", from=1-2, to=2-2]
-	\arrow[from=1-3, to=2-3]
-	\arrow["{g_{\tilde{W}}\circ \tilde{f}_{N}}"', from=2-1, to=2-2]
-	\arrow["{a_{T}}"', from=2-2, to=2-3]
-\end{tikzcd}\]
-
-\noindent We claim that $\nu\cong \tilde{\nu}$ \textcolor{red}{We have problems here.}
-
-\begin{align*}
-    \nu:=\nu_{N}^{a_{T}^{*}E}&\cong a_{N}^{*}E\oplus \nu_{N}^{T}\\
-    &\cong a_{N}^{*}E\oplus \nu_{N}^{W}\oplus T\tilde{W}|_{N}\\
-    &\cong a_{N}^{*}E\oplus \nu_{N}^{W}\oplus \nu_{N}^{\tilde{W}}\oplus TN
-\end{align*}
-
-\noindent Now, considering the following diagram
-
-
-% https://q.uiver.app/#q=WzAsOCxbMCwzLCJNIl0sWzAsMiwiVCJdLFsxLDMsIk4iXSxbMSwyLCJcXG51XFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAtMSkoTikiXSxbMSwxLCJhX3tUfV57Kn1FXFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAtMSkoTikiXSxbMSwwLCJBIl0sWzIsMSwiYV97VH1eeyp9RVxcb3BsdXMgXFxtYXRoYmJ7Un1cXHNldG1pbnVzIChcXHhpX3thX3tUfV57Kn1FfVxcb3BsdXMgMSkoTikiXSxbMiwyLCJcXG51XFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAxKShOKSJdLFsyLDMsIlxceGlfe1xcbnV9XFxvcGx1cyAwIl0sWzAsMSwiZ197V31cXGNpcmMgZl97Tn0iXSxbMyw0LCJcXGV0YV97Z197V31cXGNpcmMgZl97Tn19IiwyXSxbMSw0LCJcXHhpX3thX3tUfV57Kn1FfVxcb3BsdXMgMCIsMCx7ImxhYmVsX3Bvc2l0aW9uIjoyMH1dLFs0LDUsImlfezF9Il0sWzIsNywiXFx4aV97XFxudX1cXG9wbHVzIDAiLDIseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNyw2LCJcXGV0YV97Z197XFx0aWxkZXtXfX1cXGNpcmMgXFx0aWxkZXtmfV97Tn19IiwyXSxbNiw1LCJpX3syfSIsMl1d
-\[\begin{tikzcd}
-	& A \\
-	& {a_{T}^{*}E\oplus \mathbb{R}\setminus (\xi_{a_{T}^{*}E}\oplus -1)(N)} & {a_{T}^{*}E\oplus \mathbb{R}\setminus (\xi_{a_{T}^{*}E}\oplus 1)(N)} \\
-	T & {\nu\oplus \mathbb{R}\setminus (\xi_{a_{T}^{*}E}\oplus -1)(N)} & {\nu\oplus \mathbb{R}\setminus (\xi_{a_{T}^{*}E}\oplus 1)(N)} \\
-	M & N
-	\arrow["{i_{1}}", from=2-2, to=1-2]
-	\arrow["{i_{2}}"', from=2-3, to=1-2]
-	\arrow["{\xi_{a_{T}^{*}E}\oplus 0}"{pos=0.2}, from=3-1, to=2-2]
-	\arrow["{\eta_{g_{W}\circ f_{N}}}"', from=3-2, to=2-2]
-	\arrow["{\eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}}"', from=3-3, to=2-3]
-	\arrow["{g_{W}\circ f_{M}}", from=4-1, to=3-1]
-	\arrow["{\xi_{\nu}\oplus 0}", from=4-2, to=3-2]
-	\arrow["{\xi_{\nu}\oplus 0}"'{pos=0.6}, from=4-2, to=3-3]
-\end{tikzcd}\]
-    \noindent we claim 
-    \begin{enumerate}
-        \item $i_{1}\circ \eta_{g_{W}\circ f_{N}}\circ \xi_{\nu}\oplus 0 = i_{2}\circ \eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}\circ \xi_{\nu}\oplus 0$.
-        \item $(\xi_{a_{T}^{*}E}\oplus 0 \circ g_{W}\circ f_{M})!(x_{M})=(\eta_{g_{W}\circ f_{N}}\circ \xi_{\nu}\oplus 0)!(x_{N})$
-    \end{enumerate}
-\end{proof}
-\end{comment}
-\begin{comment}
-    
-\begin{lemma}\label{accion tietze}
-    If $W$ is a $\Gamma$-proper space and $\iota: W\to \mathbb{R}^{w}$ is an embedding, then we can endow $\mathbb{R}^{w}$ with a $\Gamma$-proper space structure, making $\iota$ a $\Gamma$-equivariant map .
-\end{lemma}
-
-\begin{proof}
-    %We define the $\Gamma$-action on $\mathbb{R}^{w}$ as: for $y\in \mathbb{R}^{w}$ we have that $\gamma\cdot y := \iota(\gamma \cdot x)$ for $y=\iota(x)$ for some $x\in W$; $\gamma\cdot y = y$ for $y\in \mathbb{R}^{w}\setminus \iota(W)$.   
-    \textcolor{red}{Idea}
-    \begin{enumerate}
-        \item Consider the $\Gamma$-action on $\iota(W)\subseteq \mathbb{R}^{w}$: for $y\in \mathbb{R}^{w}$ we have that $\gamma\cdot y := \iota(\gamma \cdot x)$ for $y=\iota(x)$ for some $x\in W$
-        \item Extend the $\Gamma$-action on $\iota(W)$ to $\overline{\iota(W)}$ by continuity.
-        \item Use the Tietze theorem to extend the action map $\iota(W)\times \Gamma \to \mathbb{R}^{w}$, to all the normal spaces $\mathbb{R}^{w}\times \Gamma \to \mathbb{R}^{w}$ (\textcolor{red}{¿sigue siendo acción en el complemento de la variedad?}).
-    \end{enumerate}
-\end{proof}
-
-
-\begin{proof}
-    
-    Let the cycles $(M,\partial M, \pi_{M}, x_{M}), (N,\partial N, \pi_{N}, x_{N})$ and $(P,\partial P, \pi_{P}, x_{P})$ in $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ related as in \ref{Equivalence relation 1} such as the diagram 
-    
-    % https://q.uiver.app/#q=WzAsNixbMCwxLCJNIl0sWzEsMSwiTiJdLFsyLDEsIlAiXSxbMSwyLCJYIl0sWzAsMCwiVyJdLFsyLDAsIlxcdGlsZGV7V30iXSxbMCw0LCJmX3tNfSJdLFsxLDQsImZfe059IiwyXSxbMSw1LCJcXHRpbGRle2Z9X3tOfSJdLFsyLDUsIlxcdGlsZGV7Zn1fe1B9IiwyXSxbMCwzLCJcXHBpX3tNfSIsMl0sWzEsMywiXFxwaV97Tn0iLDJdLFsyLDMsIlxccGlfe1B9Il1d
-\[\begin{tikzcd}
-	W && {\tilde{W}} \\
-	M & N & P \\
-	& X
-	\arrow["{f_{M}}", from=2-1, to=1-1]
-	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
-	\arrow["{f_{N}}"', from=2-2, to=1-1]
-	\arrow["{\tilde{f}_{N}}", from=2-2, to=1-3]
-	\arrow["{\pi_{N}}"', from=2-2, to=3-2]
-	\arrow["{\tilde{f}_{P}}"', from=2-3, to=1-3]
-	\arrow["{\pi_{P}}", from=2-3, to=3-2]
-\end{tikzcd}\]
-    \noindent where by the Lemma \ref{EM-Embedding}, we can consider that $f_{N}$ and $\tilde{f}_{N}$ are embeddings. For the spaces $W$ and  $\tilde{W}$ there exists euclidean spaces with embbeddings $\iota_{W}:W\hookrightarrow \mathbb{R}^{w}$ and $\iota_{\tilde{W}}:\tilde{W}\hookrightarrow \mathbb{R}^{\tilde{w}}$. Then, by Theorem \ref{Emerson-Mayer} we get that for the equivariant map $g_{W}\circ f_{N}:N\to \mathbb{R}^{w+\tilde{w}}$ (by Lemma \ref{accion tietze}) there exists the map $\eta_{g_{W}\circ f_{N}}$ such that the diagram 
-
-    % https://q.uiver.app/#q=WzAsNixbMSwxLCJUIl0sWzAsMSwiWiJdLFsyLDEsIk4iXSxbMCwwLCJFIl0sWzEsMCwiYV97VH1eeyp9RSJdLFsyLDAsIlxcbnUiXSxbMCwxLCJhX3tUfSJdLFszLDFdLFs0LDAsIlxccmhvX3thX3tUfV57Kn1FfSIsMl0sWzIsMCwiZ197V31cXGNpcmMgZl97Tn0iXSxbNSwyLCJcXHJob197XFxudX0iXSxbNSw0LCJcXGV0YV97Z197V31cXGNpcmMgZl97Tn19IiwyXV0=
-\[\begin{tikzcd}
-	E & {a_{\mathbb{R}^{w+\tilde{w}}}^{*}E} & \nu \\
-	Z & \mathbb{R}^{w+\tilde{w}} & N
-	\arrow[from=1-1, to=2-1]
-	\arrow["{\rho_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}}"', from=1-2, to=2-2]
-	\arrow["{\eta_{g_{W}\circ f_{N}}}"', from=1-3, to=1-2]
-	\arrow["{\rho_{\nu}}", from=1-3, to=2-3]
-	\arrow["{a_{\mathbb{R}^{w+\tilde{w}}}}", from=2-2, to=2-1]
-	\arrow["{g_{W}\circ f_{N}}", from=2-3, to=2-2]
-\end{tikzcd}\]
-
-\noindent where, $g_{W}:W\hookrightarrow\mathbb{R}^{w+\tilde{w}}\cong \mathbb{R}^{w}\times\mathbb{R}^{\tilde{w}}$ is the composition of $\iota_{W}$ with the euclidean inclusion in the first factor, and
-$\nu$ is the normal bundle of the embedding $(g_{W}\circ f_{N})\times g_{E}$, satisfying $g_{W}\circ f_{N}=\rho_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\circ \eta_{g_{W}\circ f_{N}} \circ \xi_{\nu}$. In the same way, for the map $g_{\tilde{W}}\circ \tilde{f}_{N}$, there exists the embedding $\eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}:\tilde{\nu}\to a^{*}_{\mathbb{R}^{w+\tilde{w}}}E$ satisfying the commutative diagram:
-
-% https://q.uiver.app/#q=WzAsNixbMSwxLCJUIl0sWzIsMSwiWiJdLFswLDEsIk4iXSxbMiwwLCJFIl0sWzEsMCwiYV97VH1eeyp9RSJdLFswLDAsIlxcdGlsZGV7XFxudX0iXSxbMCwxLCJhX3tUfSIsMl0sWzMsMV0sWzQsMCwiXFxyaG9fe2Ffe1R9XnsqfUV9Il0sWzIsMCwiZ197XFx0aWxkZXtXfX1cXGNpcmMgXFx0aWxkZXtmfV97Tn0iLDJdLFs1LDIsIlxccmhvX3tcXHRpbGRle1xcbnV9fSIsMl0sWzUsNCwiXFxldGFfe2dfe1d9XFxjaXJjIGZfe059fSJdXQ==
-\[\begin{tikzcd}
-	{\tilde{\nu}} & {a_{\mathbb{R}^{w+\tilde{w}}}^{*}E} & E \\
-	N & \mathbb{R}^{w+\tilde{w}} & Z
-	\arrow["{\eta_{g_{W}\circ f_{N}}}", from=1-1, to=1-2]
-	\arrow["{\rho_{\tilde{\nu}}}"', from=1-1, to=2-1]
-	\arrow["{\rho_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}}", from=1-2, to=2-2]
-	\arrow[from=1-3, to=2-3]
-	\arrow["{g_{\tilde{W}}\circ \tilde{f}_{N}}"', from=2-1, to=2-2]
-	\arrow["{a_{\mathbb{R}^{w+\tilde{w}}}}"', from=2-2, to=2-3]
-\end{tikzcd}\]
-
-\noindent We claim that $\nu\cong \tilde{\nu}$:
-
-\begin{align*}
-    \nu:=\nu_{N}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}&\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus \nu_{N}^{\mathbb{R}^{w+\tilde{w}}}\\
-    &\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus \nu_{N}^{\mathbb{R}^{w}}\oplus T\mathbb{R}^{\tilde{w}}\\
-    &\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus \nu_{N}^{\mathbb{R}^{w}}\oplus \nu_{N}^{\tilde{W}}\oplus TN\\
-    &\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus (\nu_{N}^{W}\oplus \nu_{W}^{\mathbb{R}^{w}}|_{N})\oplus \nu_{N}^{\tilde{W}}\oplus TN
-\end{align*}
-where the first step is by the chain $N\subseteq \mathbb{R}^{w+\tilde{w}}\subseteq a_{\mathbb{R}^{w+\tilde{w}}}^{*}E$; second step is given by the fact that the embedding of $N$ in $\mathbb{R}^{w+\tilde{w}}$ along the map $g_{W}\circ f_{N}$ occurs only in the first $w$-components; third step is by the classical direct sum decomposition of a tangent bundle of an embedded submanifold; and the last step is the normal factorization given by the chain $N\subseteq W\subseteq \mathbb{R}^{w}$. In the same way we obtain that 
-
-\begin{align*}
-    \tilde{\nu}\cong \nu_{\mathbb{R}^{w+\tilde{w}}}^{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}|_{N}\oplus (\nu_{N}^{W}\oplus \nu_{W}^{\mathbb{R}^{w}}|_{N})\oplus \nu_{N}^{\tilde{W}}\oplus TN,
-\end{align*}
-
-\vspace{0.3cm}
-
-\noindent then $\nu\cong \tilde{\nu}$. Now, considering the following diagram
-
-
-% https://q.uiver.app/#q=WzAsOCxbMCwzLCJNIl0sWzAsMiwiVCJdLFsxLDMsIk4iXSxbMSwyLCJcXG51XFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAtMSkoTikiXSxbMSwxLCJhX3tUfV57Kn1FXFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAtMSkoTikiXSxbMSwwLCJBIl0sWzIsMSwiYV97VH1eeyp9RVxcb3BsdXMgXFxtYXRoYmJ7Un1cXHNldG1pbnVzIChcXHhpX3thX3tUfV57Kn1FfVxcb3BsdXMgMSkoTikiXSxbMiwyLCJcXG51XFxvcGx1cyBcXG1hdGhiYntSfVxcc2V0bWludXMgKFxceGlfe2Ffe1R9XnsqfUV9XFxvcGx1cyAxKShOKSJdLFsyLDMsIlxceGlfe1xcbnV9XFxvcGx1cyAwIl0sWzAsMSwiZ197V31cXGNpcmMgZl97Tn0iXSxbMyw0LCJcXGV0YV97Z197V31cXGNpcmMgZl97Tn19IiwyXSxbMSw0LCJcXHhpX3thX3tUfV57Kn1FfVxcb3BsdXMgMCIsMCx7ImxhYmVsX3Bvc2l0aW9uIjoyMH1dLFs0LDUsImlfezF9Il0sWzIsNywiXFx4aV97XFxudX1cXG9wbHVzIDAiLDIseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNyw2LCJcXGV0YV97Z197XFx0aWxkZXtXfX1cXGNpcmMgXFx0aWxkZXtmfV97Tn19IiwyXSxbNiw1LCJpX3syfSIsMl1d
-\[\begin{tikzcd}
-	& A \\
-	& {a_{\mathbb{R}^{w+\tilde{w}}}^{*}E\oplus \mathbb{R}\setminus (\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus -1)(N)} & {a_{\mathbb{R}^{w+\tilde{w}}}^{*}E\oplus \mathbb{R}\setminus (\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus 1)(N)} \\
-	\mathbb{R}^{w+\tilde{w}} & {\nu\oplus \mathbb{R}\setminus (\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus -1)(N)} & {\nu\oplus \mathbb{R}\setminus (\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus 1)(N)} \\
-	M & N
-	\arrow["{i_{1}}", from=2-2, to=1-2]
-	\arrow["{i_{2}}"', from=2-3, to=1-2]
-	\arrow["{\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus 0}"{pos=0.2}, from=3-1, to=2-2]
-	\arrow["{\eta_{g_{W}\circ f_{N}}}"', from=3-2, to=2-2]
-	\arrow["{\eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}}"', from=3-3, to=2-3]
-	\arrow["{g_{W}\circ f_{M}}", from=4-1, to=3-1]
-	\arrow["{\xi_{\nu}\oplus 0}", from=4-2, to=3-2]
-	\arrow["{\xi_{\nu}\oplus 0}"'{pos=0.6}, from=4-2, to=3-3]
-\end{tikzcd}\]
-    \noindent we claim 
-    \begin{enumerate}
-        \item $i_{1}\circ \eta_{g_{W}\circ f_{N}}\circ \xi_{\nu}\oplus 0 = i_{2}\circ \eta_{g_{\tilde{W}}\circ \tilde{f}_{N}}\circ \xi_{\nu}\oplus 0$.
-        \item $(\xi_{a_{\mathbb{R}^{w+\tilde{w}}}^{*}E}\oplus 0 \circ g_{W}\circ f_{M})!(x_{M})=(\eta_{g_{W}\circ f_{N}}\circ \xi_{\nu}\oplus 0)!(x_{N})$
-    \end{enumerate}
-\end{proof}
-
-\begin{proof}
-    
-\end{proof}
-
-
-\end{comment}
-
+$---------------------------------------------------$
 
 \begin{remark}
 Note that with this excision theorem we can consider the map $i_*$ with $i:X\setminus A\to X$, such that in the long exact sequence
@@ -2137,53 +1712,97 @@ then, we cannot allow for a cycle $[M,\partial M,\pi_M,x_M]\in \mathscr{H}_{*}^{
 this because $\pi_M|_{M\setminus \partial M}:M\setminus \partial M\to X\setminus A$ is no a proper map.
 \end{remark}
 
-\begin{lemma}
-If $y\in \mathscr{H}^{*}_{\Gamma}(M)$ such that for an open $\tilde{V}\subseteq M$,  and a closed $C\subseteq \tilde{U}$ we get that $y|_{\tilde{V}}:=ext_{C}^{\tilde{U}}(y|_C)=0\in \mathscr{H}^{*}(\tilde{U})$, then $[M,\partial M, \pi_M, y]=0\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$. \textcolor{red}{Posiblemente solo necesite que $y=i_{\tilde{U}}^{M}!(\tilde{y})$ tal que $\tilde{y}\in \mathscr{H}^{*}_{\Gamma}(\tilde{U})$. Por tanto,  con $\tilde{U}$ subconjunto abierto de $(M\setminus V)$.}
+
+
+$------------------------------$
+
+
+
+$------------------------------$
+
+
+
+
+\begin{lemma}\label{Lemota}
+If $[M,\partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_*(X,A;\Gamma)$ then, there exist a cycle $[W,\partial W, \pi_{W},x^{0}_{W}]\in \mathscr{H}^{pf}_*(X,A;\Gamma)$ such that $i!(\tilde{x}_M)=x^{0}_{W}$ for some $\tilde{x}_M\in \mathscr{H}_{\Gamma}^{*}(W,\partial W)$.
 \end{lemma}
-
 \begin{proof}
-Consider the space $W:=DNC(D(M),D(V))$, where $V=[\tilde{V}]$, the clases of $\tilde{V}$ in $D(M)$. We consider the cohomological exact sequence for the pair $(W,\partial W)$, where $\partial W = D(V)\times \{0\} \cup D(M)\times \{1\}$:
-
-% https://q.uiver.app/#q=WzAsNCxbMiwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgVykiXSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxtYXRoc2Nye0h9X3tcXEdhbW1hfV57Kn0oV157MH0pIl0sWzEsMCwiaV97XFxwYXJ0aWFsIE19XnsqfSJdLFswLDIsImwhPVxccGFydGlhbCJdLFszLDEsImleezAqfT1qXnsqfSJdXQ==
+Consider $l:\partial M\to C^{0}$ a $\Gamma$-embedding given by an open collar $C^{0}\subseteq M^{0}$, and define $$W:=DNC(M^{0},C^{0})= C^{0}\times \{0\}\cup M^{0}\times (0,1),$$
+which is a smooth manifold with $\partial W = C^{0}\times \{0\}$. We can extend the map $l\times \{0\}:\partial \to \partial W$ to a map $\gamma: M \to W$, then we get the following diagram
+%% https://q.uiver.app/#q=WzAsNixbMCwwLCJNIl0sWzEsMCwiVyJdLFswLDEsIlxccGFydGlhbCBNIl0sWzEsMSwiQ+KBsFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIk1eezB9XFx0aW1lc1xcezEvMlxcfSJdLFsyLDEsIk3igbBcXHRpbWVzXFx7MFxcfSJdLFswLDEsIlxcZ2FtbWEiXSxbMiwwLCJpX3tcXHBhcnRpYWwgTX0iXSxbMywxLCJpX3tcXHBhcnRpYWwgV30iXSxbMiwzLCJsXFx0aW1lcyBcXHswXFx9IiwyXSxbNCwxLCJpX3tNXnswfVxcdGltZXNcXHsxLzJcXH19IiwyXSxbMyw1LCJpX3tDXnswfX1ee01eezB9fVxcdGltZXMgSWRfe1xcezBcXH19IiwyXSxbNSw0LCJJZF97TV57MH19XFx0aW1lcyBcXHsxLzJcXH0iLDJdXQ==
 \[\begin{tikzcd}
-	{\mathscr{H}_{\Gamma}^{*}(W^{0})} & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*+1}(W^{0})}
-	\arrow["{i^{0*}=j^{*}}", from=1-1, to=1-2]
-	\arrow["{i_{\partial M}^{*}}", from=1-2, to=1-3]
-	\arrow["{l!=\partial}", from=1-3, to=1-4]
+	M & W & {M^{0}\times\{1/2\}} \\
+	{\partial M} & {C^{0}\times \{0\}} & {M^{0}\times\{0\}}
+	\arrow["\gamma", from=1-1, to=1-2]
+	\arrow["{i_{M^{0}\times\{1/2\}}}"', from=1-3, to=1-2]
+	\arrow["{i_{\partial M}}", from=2-1, to=1-1]
+	\arrow["{l\times \{0\}}"', from=2-1, to=2-2]
+	\arrow["{i_{\partial W}}", from=2-2, to=1-2]
+	\arrow["{i_{C^{0}}^{M^{0}}\times Id_{\{0\}}}"', from=2-2, to=2-3]
+	\arrow["{Id_{M^{0}}\times \{1/2\}}"', from=2-3, to=1-3]
 \end{tikzcd}\]
 
-\noindent where $W^{0}=D(M)\times (0,1)$ and the Mayer-Vietoris of $W=(M\times (\epsilon,1])\cup (M\times [t,1])^{c}$ with $t<\epsilon$:
-
-% https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShXKSJdLFsyLDAsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KE1cXHRpbWVzIChcXGVwc2lsb24sMV0pXFxvcGx1cyBcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfSgoTVxcdGltZXMgW3QsMV0pXntjfSkiXSxbMywwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXFx0aW1lcyAoXFxlcHNpbG9uLHQpKSJdLFswLDAsIlxcY2RvdHMiXSxbNCwwLCJcXGNkb3RzIl0sWzAsMSwiKHJlc3RyaW5naXIpIl0sWzEsMiwiZGlmZXJlbmNpYSJdLFszLDBdLFsyLDRdXQ==
+\noindent where this diagram let us illustrate the following facts:
+\begin{itemize}
+\item $i_{\partial W}:\partial W\to W$ is homotopic to the composition 
+% https://q.uiver.app/#q=WzAsNCxbNCwwLCJXIl0sWzAsMCwiQ+KBsFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIk1eezB9XFx0aW1lc1xcezEvMlxcfSJdLFsxLDAsIk3igbBcXHRpbWVzXFx7MFxcfSJdLFsyLDAsImlfe01eezB9XFx0aW1lc1xcezEvMlxcfX0iLDAseyJvZmZzZXQiOi0xfV0sWzEsMywiaV97Q157MH19XntNXnswfX1cXHRpbWVzIElkX3tcXHswXFx9fSIsMCx7Im9mZnNldCI6LTF9XSxbMywyLCJJZF97TV57MH19XFx0aW1lcyBcXHsxLzJcXH0iLDAseyJvZmZzZXQiOi0xfV1d
 \[\begin{tikzcd}
-	\cdots & {\mathscr{H}^{*}_{\Gamma}(W)} & {\mathscr{H}^{*}_{\Gamma}(M\times (\epsilon,1])\oplus \mathscr{H}^{*}_{\Gamma}((M\times [t,1])^{c})} & {\mathscr{H}^{*}_{\Gamma}(M\times (\epsilon,t))} & \cdots
-	\arrow[from=1-1, to=1-2]
-	\arrow["{(rest)}", from=1-2, to=1-3]
-	\arrow["dif", from=1-3, to=1-4]
-	\arrow[from=1-4, to=1-5]
+	{\partial W=C^{0}\times \{0\}} & {M^{0}\times\{0\}} & {M^{0}\times\{1/2\}} && W
+	\arrow["{i_{C^{0}}^{M^{0}}\times Id_{\{0\}}}", shift left, from=1-1, to=1-2]
+	\arrow["{Id_{M^{0}}\times \{1/2\}}", shift left, from=1-2, to=1-3]
+	\arrow["{i_{M^{0}\times\{1/2\}}}", shift left, from=1-3, to=1-5]
 \end{tikzcd}\]
-with $\mathscr{H}^{*}_{\Gamma}(M\times (\epsilon,1])\oplus \mathscr{H}^{*}_{\Gamma}((M\times [t,1])^{c})=0 \oplus 0 = 0$,therefore we get the isomorphism
-$$\mathscr{H}^{*}_{\Gamma}(M)\cong\mathscr{H}^{*+1}_{\Gamma}(W).$$
-With this observations we get that the cohomological long exact sequence turns to:
+\item Definition \ref{pushforward definition} says that $i_{\partial W}^{*}\circ \gamma!=(l\times \{0\})!\circ i_{\partial M}^{*}$ by the left square and 
+$$[(i_{C^{0}}^{M^{0}}\times Id_{\{0\}})\circ (l\times \{0\})]!\circ i_{\partial M}^{*}=(i_{M^{0}\times\{1/2\}}\circ Id_{M^{0}}\times \{1/2\})^{*}\circ \gamma!$$
+by the external rectangle. \textcolor{red}{Esta afirmacion depende de que permitamos aue el axioma de restricciones no se apliaue unicamanta a restringir a la frontera, sino a cualesauiera par de restricciones y salvo homotopia.}
+\item We have that $(i^{M}_{M^{0}}\circ l)!\circ i_{\partial M}^{*}=0$ by the long exact sequence of the pair $(M,\partial M)$. Since 
 
-% https://q.uiver.app/#q=WzAsOCxbMiwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShcXHBhcnRpYWwgVykiXSxbMSwwLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShXKSJdLFszLDAsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oV157MH0pIl0sWzAsMCwiXFxtYXRoc2Nye0h9X3tcXEdhbW1hfV57Kn0oV157MH0pIl0sWzEsMSwiXFxtYXRoc2Nye0h9X3tcXEdhbW1hfV57Kn0oTSkiXSxbMCwxLCJcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShEKE0pKSJdLFsyLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyp9KEQoVikpXFxvcGx1cyBcXG1hdGhzY3J7SH1fe1xcR2FtbWF9XnsqfShEKE0pKSJdLFszLDEsIlxcbWF0aHNjcntIfV97XFxHYW1tYX1eeyorMX0oRChNKSkiXSxbMSwwLCJpX3tcXHBhcnRpYWwgTX1eeyp9Il0sWzAsMiwibCE9XFxwYXJ0aWFsIl0sWzMsMSwiaV57MH0hPWpeeyp9Il0sWzEsNF0sWzMsNV0sWzUsNF0sWzQsNl0sWzAsNl0sWzIsN10sWzYsN11d
-\[\begin{tikzcd}
-	{\mathscr{H}_{\Gamma}^{*}(W^{0})} & {\mathscr{H}_{\Gamma}^{*}(W)} & {\mathscr{H}_{\Gamma}^{*}(\partial W)} & {\mathscr{H}_{\Gamma}^{*+1}(W^{0})} \\
-	{\mathscr{H}_{\Gamma}^{*}(D(M))} & {\mathscr{H}_{\Gamma}^{*}(M)} & {\mathscr{H}_{\Gamma}^{*}(D(V))\oplus \mathscr{H}_{\Gamma}^{*}(D(M))} & {\mathscr{H}_{\Gamma}^{*+1}(D(M))}
-	\arrow["{i^{0}!=j^{*}}", from=1-1, to=1-2]
-	\arrow[from=1-1, to=2-1]
-	\arrow["{i_{\partial M}^{*}}", from=1-2, to=1-3]
-	\arrow[from=1-2, to=2-2]
-	\arrow["{l!=\partial}", from=1-3, to=1-4]
-	\arrow[from=1-3, to=2-3]
-	\arrow[from=1-4, to=2-4]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=2-2, to=2-3]
-	\arrow[from=2-3, to=2-4]
-\end{tikzcd}\]
+we get the computation
+\begin{align*}
+i_{\partial W}^{*}\circ \gamma!(x_M)
+&= (i_{M^{0}\times\{1/2\}}\circ Id_{M^{0}}\times \{1/2\}\circ i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ \gamma!(x_M)\\
+&=  (i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ(i_{M^{0}\times\{1/2\}}\circ Id_{M^{0}}\times \{1/2\})^{*}\circ \gamma!(x_M)\\
+&=  (i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ [(i_{C^{0}}^{M^{0}}\times Id_{\{0\}})\circ (l\times \{0\})]!\circ i_{\partial M}^{*}(x_M)\\
+&=  (i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ 0\circ i_{\partial M}^{*}(x_M)=0
+\end{align*}
+\end{itemize}
+Therefore, $\gamma!(x_M)\in Ker(i_{\partial W}^{*})$, and by the long exact sequence of the pair $(W,\partial W)$, there exist an element $\tilde{x}_{M}\in \mathscr{H}(W,\partial W)$ such that $i_{W^{0}}!(\tilde{x}_{M})=\gamma!(x_M).$
+Defining $x^{0}_{M}:=\gamma!(x_M)$, by Remark \ref{relation 1} applied to $\gamma:M\to W$ we get
+\begin{align*}
+[M,\partial M, \pi_{M}, x_{M}]=[W,\partial W, \pi_{W},x^{0}_{W}].
+\end{align*}
+
 
 \end{proof}
 
+\begin{prop}
+The pushforward homology satisfy the excision property, i.e., for a proper $\Gamma$-CW pair $(X,A)$, there exist an isomorphism $$\mathscr{H}^{pf}_{*}(X,A)\cong \mathscr{H}^{pf}_{*}(X\setminus A).$$
+\end{prop}
+\begin{proof}
+
+We have to show that the map
+$$\phi_*: \mathscr{H}^{pf}_*(X-A,\emptyset;\Gamma)\to \mathscr{H}^{pf}_*(X,A,\Gamma):[M,\partial M,\pi_M,x_M]\mapsto [M,\partial M,\phi\circ\pi_M,x_M]$$
+is an isomorphism. We define the inverse map 
+$$h: \mathscr{H}^{pf}_*(X,A,\Gamma)\to \mathscr{H}^{pf}_*(X-A,\emptyset;\Gamma),$$
+by $h([M,\partial M,\pi_M,x^{0}_M])=[M^{0},\emptyset,\pi_M|_{M^{0}},\tilde{x}_M]$ where $[M,\partial M,\pi_M,x^{0}_M]\in $ is given Lemma \ref{Lemota} such that $i_{M^{0}}^{M}!(\tilde{x}_M)=x^{0}_M$
+and such that $\pi_M^{-1}(A)\cap (\partial M)^{c}=\emptyset$, by Remark \ref{Empujando}.
+
+\begin{itemize}
+\item For $[M,\emptyset,\pi_M,x_M]\in \mathscr{H}^{pf}_*(X\setminus A,\emptyset;\Gamma)$ we claim that the computation $$h\circ\phi_*([M,\emptyset,\pi_M,x_M])=h([M,\emptyset,\phi\circ\pi_M,x_M])=[M^{0},\emptyset,\phi\circ\pi_M|_{M^{0}},x^{0}_M]$$
+coincides with the original cycle, because $M^{0}=M$ and $i_{M^{0}}^{M}!=Id_{\mathscr{H}^*_{\Gamma}(M,\emptyset)}$.
+
+\item For $[M,\partial M,\pi_M,x_M^{0}]\in \mathscr{H}^{pf}_*(X, A;\Gamma)$ with $i_{M^{0}}^{M}!(\tilde{x}_M)=x^{0}_M$, therefore 
+\begin{align*}
+\phi_*\circ h([M,\partial M,\pi_M,x^{0}_M])
+&=\phi_*([M^{0},\emptyset,\pi_M|_{M^{0}},\tilde{x}_M])\\
+&=[M^{0},\emptyset,\phi\circ \pi_M\circ i_{M^{0}}^{M},\tilde{x}_M]\\
+&=[M,\partial M,\phi\circ \pi_M, i_{M^{0}}^{M}!(\tilde{x}_M)]\\
+&=[M,\partial M,\phi\circ \pi_M, x^{0}_M]
+\end{align*}
+where third equality is given by Remark \ref{relation 1} applied to the map $i_{M^{0}}^{M}:M^{0}\to M$.
+
+\end{itemize}
+\end{proof}
 
 
 \section{Applications}
