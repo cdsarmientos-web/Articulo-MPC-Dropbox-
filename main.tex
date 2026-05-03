@@ -606,7 +606,10 @@ we have that
     Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a proper $\Gamma$-CW pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
 \begin{enumerate}
     \item $(M,\partial M)$ is a $\Gamma$-proper manifold possibly with boundary with a $\mathscr{H}_{\Gamma}$-orientation.
-    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map such that $\pi_{M}(\partial M)\subseteq A$ and it can be factorized as composition $p\circ f$, where $p$ is a proper map.
+    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map such that $\pi_{M}(\partial M)\subseteq A$ and it can be factorized as composition $p\circ f$, where $p$ is a proper map. \textcolor{red}{Option 2} both $\pi_M|_{M\setminus \partial M}:M^{0}\to X\setminus A$ and $\pi_M|_{A}:\partial M\to A$ being proper maps.
+
+\textcolor{red}{Option 3} both $\pi_M|_{M\setminus \partial M}:M^{0}\to X\setminus A$ and $\pi_M|_{A}:\partial M\to A$ being factorized by proper maps.    
+    
     \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. If $(M,\partial M)$ is no a cocompact pair, then $(M,\partial M,\pi_{M},x_{M})$ is a cycle if and only if $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M):=\mathscr{H}_{\Gamma}^{n}(\tilde{M},\tilde{M}\setminus M)$, where $(\tilde{M},\partial \tilde{M})$ is a cocompact $\Gamma$-pair that contains $(M,\partial M)$ embedded.  
     \item Two cycles $(M,\partial M,\pi_M,x_M)$ and $(N,\partial N,\pi_N,x_N)$ are isomorphic cycles if there exist a diffeomorphism $\phi:M\to N$ such that $\pi_M=\pi_N\circ \phi$ and $\phi^{*}(x_{N})\cong x_{M}$.
     
@@ -1404,28 +1407,28 @@ When we have an homotopy between $CW$-spaces maps $X\to Y$, this is regularly id
 \end{prop}
 
 \begin{proof}
-    Given a proper $\Gamma$-homotopy $H:\mathbb{R}\times (X,A)\to (Y,B)$ between $g_{0}$ and $g_{1}$, we have to show that $g_{0*}=g_{1*}$, i.e., for a cycle $[M,\partial M,\pi,x]\in \mathscr{H}^{pf}_{n}(X,A;\Gamma)$ we need that 
+    Given a proper $\Gamma$-homotopy $H:\mathbb{R}\times (X,A)\to (Y,B)$ between $g_{0}$ and $g_{1}$, we have to show that $g_{0*}=g_{1*}$, i.e., for a cycle $[M,\partial M,\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{n}(X,A;\Gamma)$ we need that 
     \begin{align*}
-        [M,\partial M, g_{0}\circ\pi, x]=[M,\partial M, g_{1}\circ\pi, x]\in \mathscr{H}^{pf}_{n}(Y,B;\Gamma).
+        [M,\partial M, g_{0}\circ\pi_{M}, x_{M}]=[M,\partial M, g_{1}\circ\pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{n}(Y,B;\Gamma).
     \end{align*}
-    To prove this, consider the tuple $(\mathbb{R}\times M,\mathbb{R}\times \partial M,\widehat{\pi},x)$ and maps $f_{0},f_{1}:M\to \mathbb{R}\times M$, where  $$\widehat{\pi}=H\circ (id_{\mathbb{R}}\times \pi):(\mathbb{R}\times M,\mathbb{R}\times \partial M)\to (Y,B)$$ and $f_{i}(m)=(i,m)$ for $i=0,1$ and all $m\in M$.
+    To prove this, consider the tuple $(M\times \mathbb{R},\partial M\times \mathbb{R},\pi_{M\times \mathbb{R}},x_{M})$ and maps $f_{0},f_{1}:M\to M\times \mathbb{R}$, where  $$\pi_{M\times \mathbb{R}}=H\circ (\pi_{M}\times Id_{\mathbb{R}}):(M\times \mathbb{R},\partial M\times \mathbb{R})\to (Y,B)$$ and $f_{i}(m)=(i,m)$ for $i=0,1$ and all $m\in M$.
 % https://q.uiver.app/#q=WzAsNSxbMiwwLCJJXFx0aW1lcyBNIl0sWzIsMiwiSVxcdGltZXMgKFgsQSkiXSxbMiw0LCIoWSwgQikiXSxbNCwyLCIoTSxcXHBhcnRpYWwgTSkiXSxbMCwyLCIoTSxcXHBhcnRpYWwgTSkiXSxbNCwwLCJpX3swfSJdLFszLDAsImlfezF9IiwyXSxbNCwyLCJnX3swfVxcY2lyYyBcXHBpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJnX3sxfVxcY2lyYyBcXHBpIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XSxbMSwyLCJIIl0sWzAsMSwiSWRfe0l9XFx0aW1lcyBcXHBpIl1d
 \begin{center}
 \begin{tikzcd}
-	&& {(\mathbb{R}\times M, \mathbb{R}\times \partial M)} \\
+	&& {(M\times\mathbb{R}, \partial M \times\mathbb{R})} \\
 	\\
-	{(M,\partial M)} && {\mathbb{R}\times (X,A)} && {(M,\partial M)} \\
+	{(M,\partial M)} && {(X,A)\times\mathbb{R}} && {(M,\partial M)} \\
 	\\
 	&& {(Y, B)}
-	\arrow["{Id_{\mathbb{R}}\times \pi}", from=1-3, to=3-3]
+	\arrow["{\pi_{M}\times Id_{\mathbb{R}}}", from=1-3, to=3-3]
 	\arrow["{f_{0}}", from=3-1, to=1-3]
-	\arrow["{g_{0}\circ \pi}"', hook, from=3-1, to=5-3]
+	\arrow["{g_{0}\circ \pi_{M}}"', hook, from=3-1, to=5-3]
 	\arrow["H", from=3-3, to=5-3]
 	\arrow["{f_{1}}"', from=3-5, to=1-3]
-	\arrow["{g_{1}\circ \pi}", hook', from=3-5, to=5-3]
+	\arrow["{g_{1}\circ \pi_{M}}", hook', from=3-5, to=5-3]
 \end{tikzcd}
 \end{center}
-In this case, we get that $\widehat{\pi}\circ f_{i}=g_{i}\circ \pi$ for $i=0,1$, and for the cohomology element $x\in \mathscr{H}_{\Gamma}^{n+dim(M)}(M)$, we get that  $f_{0}!(x)=f_{1}!(x)$ in $\mathscr{H}_{\Gamma}^{n+dim(M)+1}(\mathbb{R}\times M)$, because considering the proyection $\rho:\mathbb{R}\times M\to M$, then $$(\rho\circ f_1)! = (\rho\circ f_2)!$$ where by the pushforward structure, $\rho!$ is an isomorphism, and by functoriality $f_1!(x)=f_2!(x)$.    
+In this case, we get that $\pi_{M\times\mathbb{R}}\circ f_{i}=g_{i}\circ \pi_{M}$ for $i=0,1$, and for the cohomology element $x_{M}\in \mathscr{H}_{\Gamma}^{n+dim(M)}(M)$, we get that  $f_{0}!(x_{M})=f_{1}!(x_{M})$ in $\mathscr{H}_{\Gamma}^{n+dim(M)+1}(M\times\mathbb{R})$, because considering the proyection $\rho_{M\times\mathbb{R}}:M\times\mathbb{R}\to M$, then $$(\rho_{M\times\mathbb{R}}\circ f_1)! = (\rho_{M\times\mathbb{R}}\circ f_2)!$$ where by the pushforward structure, $\rho_{M\times\mathbb{R}}!$ is an isomorphism, and by functoriality $f_1!(x)=f_2!(x)$.    
 \end{proof}
 
 In order to prove the long exact sequence condition, previously we discuss the following remark.
@@ -1796,10 +1799,11 @@ coincides with the original cycle, because $M^{0}=M$ and $i_{M^{0}}^{M}!=Id_{\ma
 \phi_*\circ h([M,\partial M,\pi_M,x^{0}_M])
 &=\phi_*([M^{0},\emptyset,\pi_M|_{M^{0}},\tilde{x}_M])\\
 &=[M^{0},\emptyset,\phi\circ \pi_M\circ i_{M^{0}}^{M},\tilde{x}_M]\\
-&=[M,\partial M,\phi\circ \pi_M, i_{M^{0}}^{M}!(\tilde{x}_M)]\\
-&=[M,\partial M,\phi\circ \pi_M, x^{0}_M]
+&=[M^{0},\emptyset,\pi_M\circ i_{M^{0}}^{M},\tilde{x}_M]\\
+&=[M,\partial M,\pi_M, i_{M^{0}}^{M}!(\tilde{x}_M)]\\
+&=[M,\partial M,\pi_M, x^{0}_M]
 \end{align*}
-where third equality is given by Remark \ref{relation 1} applied to the map $i_{M^{0}}^{M}:M^{0}\to M$.
+where fourth equality is given by Remark \ref{relation 1} applied to $i_{M^{0}}^{M}:M^{0}\to M$.
 
 \end{itemize}
 \end{proof}
@@ -2159,7 +2163,97 @@ If $E=-F$ (opposite in the sense of de Rham cohomology), then $\tau_{E,M}=-\tau_
 \item $\mathscr{H}^{pf}_{*}(M,\partial M;\Gamma)\cong \mathscr{H}^{*}_{\Gamma}(M,\partial M)$.
 \end{itemize}
 
+\section{Pushforward definition}
+\textcolor{red}{COndiciones sobre la cohomologia} Consider $f:M \to N$ a continuous map between manifolds without boundary. The pushforward $f!:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*-m+n}_{\Gamma}(N)$ is defined by the composition \textcolor{red}{El nivel $*$ en que nivel cambia por la resta}
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNKSJdLFsxLDAsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KFRfe2Z9KSJdLFsyLDAsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KERfZikiXSxbMywwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXnsyfVxcdGltZXMgTikiXSxbNCwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShOKSJdLFswLDEsIlxcdGF1X2YiXSxbMSwyLCJlXzBeey0xfSJdLFsyLDMsImVfezF9Il0sWzMsNCwiXFxtdSJdXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}^{*}_{\Gamma}(M)} & {\mathscr{H}^{*}_{\Gamma}(T_{f})} & {\mathscr{H}^{*}_{\Gamma}(D_f)} & {\mathscr{H}^{*}_{\Gamma}(M^{2}\times N)} & {\mathscr{H}^{*}_{\Gamma}(N)}
+	\arrow["{\tau_f}", from=1-1, to=1-2]
+	\arrow["{e_0^{-1}}", from=1-2, to=1-3]
+	\arrow["{e_{1}}", from=1-3, to=1-4]
+	\arrow["\mu", from=1-4, to=1-5]
+\end{tikzcd}\]
+where
+\begin{itemize}
+\item The map $\tau_f:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*}_{\Gamma}(T_f)$ is the Thom isomorphism for the normal bundle $T_f:= TM\oplus f^{*}TN \to M$.
 
+\item $D_f:=DNC(M^{2}\times N,M)=T_{f}\times \{0\}\sqcup ((M^{2}\times N)\times (0,1])$ for the embedding $(\Delta,f):M\to M^{2}\times N$, with $\Delta:M\to M^{2}$ the diagonal map. 
+
+\item The maps $e_i:\mathscr{H}^{*}_{\Gamma}(D_f)\to \mathscr{H}^{*}_{\Gamma}(C_i)$ for $i=0,1$, with $C_0 = T_f$ and $C_1 = M^{2}\times N$, is defined by \textcolor{red}{Como se definen estos mapas}. We have that $e_0$ is an isomorphism.  
+
+\item $\mu:\mathscr{H}^{*}_{\Gamma}(M^{2}\times N)\to \mathscr{H}^{*}_{\Gamma}(N)$ is defined by \textcolor{red}{La definicion de este mapa debe coincidir con la traza en $K$-teoria}.
+\end{itemize}
+
+Now, we want to determine the compatibility of this definition with some maps related to restrictions to closed subspaces in the following way: if $C_M$ and $C_N$ are closed submanifolds of $M$ and $N$ respectively, such that the following diagram is commutative
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiTiJdLFswLDEsIkNfe019Il0sWzEsMSwiQ197Tn0iXSxbMCwxLCJmIl0sWzIsMywiZl97Q30iLDJdLFsyLDAsImlfTSJdLFszLDEsImlfe059IiwyXV0=
+\[\begin{tikzcd}
+	M & N \\
+	{C_{M}} & {C_{N}}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["{i_{C_M}}", from=2-1, to=1-1]
+	\arrow["{f_{C}}"', from=2-1, to=2-2]
+	\arrow["{i_{{C_N}}}"', from=2-2, to=1-2]
+\end{tikzcd}\] 
+
+therefore we get the diagram 
+% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTSkiXSxbMSwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShUX3tmfSkiXSxbMiwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShEX2YpIl0sWzMsMCwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTV57Mn1cXHRpbWVzIE4pIl0sWzQsMCwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTikiXSxbMCwxLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShDX3tNfSkiXSxbMSwxLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShUX3tmX0N9KSJdLFsyLDEsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KERfe2ZfQ30pIl0sWzMsMSwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oQ197TX1eezJ9XFx0aW1lcyBDX3tOfSkiXSxbNCwxLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShDX3tOfSkiXSxbMCwxLCJcXHRhdV9mIl0sWzEsMiwiZV8wXnstMX0iXSxbMiwzLCJlX3sxfSJdLFszLDQsIlxcbXUiXSxbNSw2LCJcXHRhdV97Zl9DfSIsMl0sWzYsNywiZV8wXnstMX0iLDJdLFs3LDgsImVfezF9IiwyXSxbOCw5LCJcXG11IiwyXSxbMCw1LCJpX3tDX019XnsqfSIsMl0sWzQsOSwiaV97Q19OfV57Kn0iXSxbMSw2LCJBIiwyXSxbMiw3LCJEIl0sWzMsOCwiQiJdXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}^{*}_{\Gamma}(M)} & {\mathscr{H}^{*}_{\Gamma}(T_{f})} & {\mathscr{H}^{*}_{\Gamma}(D_f)} & {\mathscr{H}^{*}_{\Gamma}(M^{2}\times N)} & {\mathscr{H}^{*}_{\Gamma}(N)} \\
+	{\mathscr{H}^{*}_{\Gamma}(C_{M})} & {\mathscr{H}^{*}_{\Gamma}(T_{f_C})} & {\mathscr{H}^{*}_{\Gamma}(D_{f_C})} & {\mathscr{H}^{*}_{\Gamma}(C_{M}^{2}\times C_{N})} & {\mathscr{H}^{*}_{\Gamma}(C_{N})}
+	\arrow["{\tau_f}", from=1-1, to=1-2]
+	\arrow["{i_{C_M}^{*}}"', from=1-1, to=2-1]
+	\arrow["{e_0^{-1}}", from=1-2, to=1-3]
+	\arrow["(di_{C_M}\oplus f^*di_{C_N})^*"', from=1-2, to=2-2]
+	\arrow["{e_{1}}", from=1-3, to=1-4]
+	\arrow["{D((i_{C_M}^{2},i_{C_N}))^*}", from=1-3, to=2-3]
+	\arrow["\mu", from=1-4, to=1-5]
+	\arrow["{(i_{C_M}^{2},i_{C_N})^{*}}", from=1-4, to=2-4]
+	\arrow["{i_{C_N}^{*}}", from=1-5, to=2-5]
+	\arrow["{\tau_{f_C}}"', from=2-1, to=2-2]
+	\arrow["{e_0^{-1}}"', from=2-2, to=2-3]
+	\arrow["{e_{1}}"', from=2-3, to=2-4]
+	\arrow["\mu"', from=2-4, to=2-5]
+\end{tikzcd}\]
+
+where the vertical maps are given as follows
+\begin{itemize}
+\item The map $D((i_{C_M}^{2},i_{C_N}))^*:\mathscr{H}^{*}_{\Gamma}(D_f)\to \mathscr{H}^{*}_{\Gamma}(D_{f_{C}})$ is defined by the pullback of the map $D((i_{C_M}^{2},i_{C_N})):D_{f_{C}}\to D_{f}$, where the map $(i_{C_M}^{2},i_{C_N})$ is constructed following the commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMSwwLCJNXnsyfVxcdGltZXMgTiJdLFswLDAsIk0iXSxbMCwxLCJDX3tNfSJdLFsxLDEsIkNfe019XnsyfVxcdGltZXMgQ197Tn0iXSxbMSwwLCIoXFxEZWx0YSwgZikiXSxbMiwzLCIoXFxEZWx0YV97Q19NfSwgZl97Q30pIiwyXSxbMiwxLCJpX00iXSxbMywwLCIoaV9NXnsyfSxpX04pIiwyXV0=
+\[\begin{tikzcd}
+	M & {M^{2}\times N} \\
+	{C_{M}} & {C_{M}^{2}\times C_{N}}
+	\arrow["{(\Delta, f)}", from=1-1, to=1-2]
+	\arrow["{i_{C_M}}", from=2-1, to=1-1]
+	\arrow["{(\Delta_{C_M}, f_{C})}"', from=2-1, to=2-2]
+	\arrow["{(i_{C_M}^{2},i_{C_N})}"', from=2-2, to=1-2]
+\end{tikzcd}\]
+
+then, 
+$$D((i_{C_M}^{2},i_{C_N})):T_{f_C}\times \{0\}\sqcup ((C_M^{2}\times C_N)\times (0,1])\to T_{f}\times \{0\}\sqcup ((M^{2}\times N)\times (0,1])$$
+Where $$D((i_{C_M}^{2},i_{C_N}))|_{T_{f_C}}=di_{C_M}\oplus f^*di_{C_N}=i_{TC_M}\oplus i_{f_C^*TC_N}$$ and $$D((i_{C_M}^{2},i_{C_N}))|_{(C_M^{2}\times C_N)\times (0,1]}=(i_{C_M}^{2},i_{C_N})\times Id_{(0,1]}$$ 
+
+\textcolor{red}{Debemos probar que $D((i_{C_M}^{2},i_{C_N}))$ es un mapa propio.}
+
+
+\item $A$ Since $f:M\to N$ we get that $df:TM\to TN$ and $df_{C}:TC_{M}\to TC_{N}$, therefore we get the map $df\oplus df_C:T_f \to T_{f_{C}}$.
+
+\end{itemize}
+
+About the commutativity of the squares of the previous diagram (from left to right)
+\begin{enumerate}
+\item Naturality of the Thom isomorphism.
+\item Restriction of the deformation to the normal cone to its zero component.
+\item Restriction of the deformation to the normal cone to its one component.
+\item Naturality of $\mu$ (\textcolor{red}{Debemos revisar que se tenga la naturalidad en la traza en K-teoria, donde naturalidad significa la invarianza entre el orden en que se aplica traza o aplicar restriccion.})
+\end{enumerate}
+
+Therefore we can conclude that in this case $i_{{C_N}}^{*}\circ f!=f_{C}!\circ i_{{C_M}}^{*}$.
+
+\textcolor{red}{De toda esta construccion adicional a las observaciones quedan las siguientes tareas: }
+\begin{enumerate}
+\item Ha sido definido solo para variedades lisas (sin borde). Como se define para variedades con frontera.
+\item Debemos comparar con la posible construccion usando Emerson-Meyer.
+\end{enumerate}
 
 \newpage
 \bibliography{bibliografia}
