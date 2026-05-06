@@ -2164,6 +2164,75 @@ If $E=-F$ (opposite in the sense of de Rham cohomology), then $\tau_{E,M}=-\tau_
 \end{itemize}
 
 \section{Pushforward definition}
+
+\subsection{Groupoid cohomology}
+The following are some groupoids that we will have in mind in order to determine the pushforward structures of the cohomology theories that are of our interest.
+\begin{enumerate}
+\item If $\rho: E\to M$ is a vector bundle over a smooth manifold $E\to M$, then $E\rightrightarrows M$ with $s=t=\rho$.  
+\item $ M^{2}\times N\rightrightarrows M\times N$
+\item $ DNC(M^{2}\times N,M)\rightrightarrows DNC(M\times N,M)$
+\end{enumerate}
+
+\begin{defn}
+The $C^*$-algebra of a topological groupoid $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, which is denoted by  $C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, as follows 
+\begin{enumerate}
+\item Consider the set 
+$$C^{\infty}_c(\mathcal{G})=\{f:\mathcal{G}\to \mathbb{C}|f \text{ is smooth and }\overline{supp(f)} \text{ is compact} \}$$
+\item Consider the maximal norm $|| f ||_{max}=\sup_{\pi}||\pi(f)||_{B(\mathcal{H})} $ for $f\in C^{\infty}_c(\mathcal{G})$, where $\pi$ is any representation in a Hilbert space, that is
+$$\pi:C^{\infty}_c(\mathcal{G})\to B(\mathcal{H})$$
+and define $$C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0}):=\overline{C^{\infty}_c(\mathcal{G})}_{||\cdot||_{max}}$$
+\item The product that we will consider is giving by convolution as follows: if $f,g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, then $f*g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ with 
+$$(f*g)(\gamma):=\int_{\gamma_1\circ \gamma_2=\gamma}f(\gamma_1)g(\gamma_2) d\mu=\int_{\gamma_2\in\mathcal{G}_{s(\gamma)}}f(\gamma\circ \gamma_2^{-1})g(\gamma_2) d\mu$$
+where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar}.
+
+\item 
+\end{enumerate}
+
+
+
+
+\end{defn}
+
+
+\begin{remark}
+The following are some important facts
+\begin{enumerate}
+\item We can consider a smooth manifold $M$ such as a groupoid $M\rightrightarrows M$ with $s=t=Id_M:M\to M$.
+\item There exist a Fourier isomorphism $$C^*(E^*\rightrightarrows E^*)\cong C_0(E^*)\cong C^*(E\rightrightarrows M).$$ 
+\item For amenable groups, the reduced norm and the maximal norm are equivalent.
+\end{enumerate}
+
+\end{remark}
+
+
+\newpage
+% https://q.uiver.app/#q=WzAsOSxbMCwwLCJNXFxyaWdodHJpZ2h0YXJyb3dzX3t9Xnt9IE0iXSxbMCwxLCJUTV4qXFxvcGx1cyBmXipUTlxccmlnaHRyaWdodGFycm93c197fV57fSBUTV4qXFxvcGx1cyBmXipUTiJdLFswLDIsIlRNXFxvcGx1cyBmXipUTiBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE4iXSxbMCwzLCJUTSBcXHRpbWVzIFswLDFdIFxcbHRpbWVzIGZeKlROXFx0aW1lcyBbMCwxXSBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE5cXHRpbWVzIFswLDFdIl0sWzAsNCwiVE1cXGx0aW1lcyBmXipUTiBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE4iXSxbMCw1LCJOKE1eezJ9XFx0aW1lcyBOLE0sXFxEZWx0YVxcdGltZXMgZilcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gTihNXFx0aW1lcyBOLE0sSWRfTVxcdGltZXMgZikiXSxbMCw2LCJETkMoTV57Mn1cXHRpbWVzIE4sTSxcXERlbHRhXFx0aW1lcyBmKVxccmlnaHRyaWdodGFycm93c197fSBETkMoTVxcdGltZXMgTixNLElkX01cXHRpbWVzIGYpXnt9Il0sWzAsNywiTV57Mn1cXHRpbWVzIE5cXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee31NXFx0aW1lcyBOIl0sWzAsOCwiTlxccmlnaHRyaWdodGFycm93c197fV57fU4iXSxbMCwxLCJUaG9tIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzEsMiwiRm91cmllciIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFsyLDMsImVfMCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFszLDQsImVfMSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs0LDUsIkZhbHRhIG5vbWJyZSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs1LDYsImVfMCBcXCAoXFx0ZXh0e3F1aXphIHNvbG8gZW4gY29ob21vbG9naWF9KSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs2LDcsImVfMCBcXCAoXFx0ZXh0e3F1aXphIHNvbG8gZW4gY29ob21vbG9naWF9KSJdLFs3LDgsIk1vcml0YSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	{M\rightrightarrows_{}^{} M} \\
+	{TM^*\oplus f^*TN\rightrightarrows_{}^{} TM^*\oplus f^*TN} \\
+	{TM\oplus f^*TN \rightrightarrows_{}^{} f^*TN} \\
+	{TM \times [0,1] \ltimes f^*TN\times [0,1] \rightrightarrows_{}^{} f^*TN\times [0,1]} \\
+	{TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN} \\
+	{N(M^{2}\times N,M,\Delta\times f)\rightrightarrows_{}^{} N(M\times N,M,Id_M\times f)} \\
+	{DNC(M^{2}\times N,M,\Delta\times f)\rightrightarrows_{} DNC(M\times N,M,Id_M\times f)^{}} \\
+	{M^{2}\times N\rightrightarrows_{}^{}M\times N} \\
+	{N\rightrightarrows_{}^{}N}
+	\arrow["Thom", tail reversed, from=1-1, to=2-1]
+	\arrow["Fourier", tail reversed, from=2-1, to=3-1]
+	\arrow["{e_0}", tail reversed, from=3-1, to=4-1]
+	\arrow["{e_1}", tail reversed, from=4-1, to=5-1]
+	\arrow["{Falta nombre}", tail reversed, from=5-1, to=6-1]
+	\arrow["{e_0 \ (\text{quiza solo en cohomologia})}", tail reversed, from=6-1, to=7-1]
+	\arrow["{e_1 \ (\text{quiza solo en cohomologia})}", from=7-1, to=8-1]
+	\arrow["Morita", tail reversed, from=8-1, to=9-1]
+\end{tikzcd}\]
+
+
+\newpage
+
+
+\subsection{Pushforward for manifolds without boundary}
+
 \textcolor{red}{COndiciones sobre la cohomologia} Consider $f:M \to N$ a continuous map between manifolds without boundary. The pushforward $f!:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*-m+n}_{\Gamma}(N)$ is defined by the composition \textcolor{red}{El nivel $*$ en que nivel cambia por la resta}
 % https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNKSJdLFsxLDAsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KFRfe2Z9KSJdLFsyLDAsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KERfZikiXSxbMywwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXnsyfVxcdGltZXMgTikiXSxbNCwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShOKSJdLFswLDEsIlxcdGF1X2YiXSxbMSwyLCJlXzBeey0xfSJdLFsyLDMsImVfezF9Il0sWzMsNCwiXFxtdSJdXQ==
 \[\begin{tikzcd}
@@ -2254,6 +2323,10 @@ Therefore we can conclude that in this case $i_{{C_N}}^{*}\circ f!=f_{C}!\circ i
 \item Ha sido definido solo para variedades lisas (sin borde). Como se define para variedades con frontera.
 \item Debemos comparar con la posible construccion usando Emerson-Meyer.
 \end{enumerate}
+
+\subsection{Pushforward for manifolds with boundary}
+
+
 
 \newpage
 \bibliography{bibliografia}
