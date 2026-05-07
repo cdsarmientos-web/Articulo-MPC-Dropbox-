@@ -2168,9 +2168,37 @@ If $E=-F$ (opposite in the sense of de Rham cohomology), then $\tau_{E,M}=-\tau_
 \subsection{Groupoid cohomology}
 The following are some groupoids that we will have in mind in order to determine the pushforward structures of the cohomology theories that are of our interest.
 \begin{enumerate}
-\item If $\rho: E\to M$ is a vector bundle over a smooth manifold $E\to M$, then $E\rightrightarrows M$ with $s=t=\rho$.  
+\item If $\rho: E\to M$ is a vector bundle over a smooth manifold $E\to M$, then $E\rightrightarrows M$ with $s=t=\rho$.  A particular case that we will use is that if $\rho_E:E\to X$ and $\rho_F:F\to X$ are vector bundles over $X$, then we will consider the groupoid $E\oplus F\rightrightarrows F$, where $E\oplus F\to F$ is a vector bundle by the pull back
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHJob197Rn1eKkVcXGNvbmcgRVxcb3BsdXMgRiJdLFswLDEsIkYiXSxbMSwwLCJFIl0sWzEsMSwiWCJdLFsyLDMsIlxccmhvX0UiXSxbMSwzLCJcXHJob19GIiwyXSxbMCwyLCJcXHBpXzEiXSxbMCwxLCJcXHJob19GXiooXFxyaG9fRSlcXGNvbmcgXFxwaV8yIiwyXV0=
+\[\begin{tikzcd}
+	{\rho_{F}^*E\cong E\oplus F} & E \\
+	F & X
+	\arrow["{\pi_1}", from=1-1, to=1-2]
+	\arrow["{\rho_F^*(\rho_E)\cong \pi_2}"', from=1-1, to=2-1]
+	\arrow["{\rho_E}", from=1-2, to=2-2]
+	\arrow["{\rho_F}"', from=2-1, to=2-2]
+\end{tikzcd}\]
 \item $ M^{2}\times N\rightrightarrows M\times N$
 \item $ DNC(M^{2}\times N,M)\rightrightarrows DNC(M\times N,M)$
+
+
+\item If $f:M\to N$ is a smooth map, then consider the groupoid $TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$. This is an example of the groupoid $E\ltimes F\rightrightarrows_{}^{}F$ with $E$ and $F$ being vector bundles over $X$
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJFIl0sWzEsMCwiRiJdLFsxLDEsIlgiXSxbMCwxLCJcXHZhcnBoaSJdLFsxLDIsIlxccmhvX0YiXSxbMCwyLCJcXHJob19FIiwyXV0=
+\[\begin{tikzcd}
+	E & F \\
+	& X
+	\arrow["\varphi", from=1-1, to=1-2]
+	\arrow["{\rho_E}"', from=1-1, to=2-2]
+	\arrow["{\rho_F}", from=1-2, to=2-2]
+\end{tikzcd}\]
+where there is an action of $E$ over $F$ (in fibers) defined by $e\cdot f:= \varphi(e)+ f\in F$ for $e\in E$ and $f\in F$. Then, for the groupoid $E\ltimes F\rightrightarrows_{}^{}F$, we consider the structure:
+\begin{itemize}
+\item $\mathcal{G} = E\ltimes F= E\oplus F$ and $\mathcal{G}^{0}= F$.
+\item $s(e\oplus f) = f$ and $t(e\oplus f)= e\cdot f$. 
+\item If $s(e_1\oplus f_1)=t(e_2\oplus f_2)$, that means $f_1=e_2\cdot f$ (and therefore all of the elements are in the fibers of the same $x\in X$), then $$\mu((e_1\oplus f_1),(e_2\oplus f_2)) = (e_1+e_2)\oplus f_2.$$
+\item $i(f)=0\oplus f$. 
+\item $Inv(e\oplus f)= -e\oplus e\cdot f$.
+\end{itemize}
 \end{enumerate}
 
 \begin{defn}
@@ -2183,7 +2211,7 @@ $$\pi:C^{\infty}_c(\mathcal{G})\to B(\mathcal{H})$$
 and define $$C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0}):=\overline{C^{\infty}_c(\mathcal{G})}_{||\cdot||_{max}}$$
 \item The product that we will consider is giving by convolution as follows: if $f,g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, then $f*g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ with 
 $$(f*g)(\gamma):=\int_{\gamma_1\circ \gamma_2=\gamma}f(\gamma_1)g(\gamma_2) d\mu=\int_{\gamma_2\in\mathcal{G}_{s(\gamma)}}f(\gamma\circ \gamma_2^{-1})g(\gamma_2) d\mu$$
-where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar}.
+where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar de \cite{Will19}}.
 
 \item 
 \end{enumerate}
@@ -2200,12 +2228,13 @@ The following are some important facts
 \item We can consider a smooth manifold $M$ such as a groupoid $M\rightrightarrows M$ with $s=t=Id_M:M\to M$.
 \item There exist a Fourier isomorphism $$C^*(E^*\rightrightarrows E^*)\cong C_0(E^*)\cong C^*(E\rightrightarrows M).$$ 
 \item For amenable groups, the reduced norm and the maximal norm are equivalent.
+\item The diference between the product in $C(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)$ and $C(TM \oplus f^*TN \rightrightarrows_{}^{} f^*TN)$ 
+
 \end{enumerate}
 
 \end{remark}
 
 
-\newpage
 % https://q.uiver.app/#q=WzAsOSxbMCwwLCJNXFxyaWdodHJpZ2h0YXJyb3dzX3t9Xnt9IE0iXSxbMCwxLCJUTV4qXFxvcGx1cyBmXipUTlxccmlnaHRyaWdodGFycm93c197fV57fSBUTV4qXFxvcGx1cyBmXipUTiJdLFswLDIsIlRNXFxvcGx1cyBmXipUTiBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE4iXSxbMCwzLCJUTSBcXHRpbWVzIFswLDFdIFxcbHRpbWVzIGZeKlROXFx0aW1lcyBbMCwxXSBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE5cXHRpbWVzIFswLDFdIl0sWzAsNCwiVE1cXGx0aW1lcyBmXipUTiBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE4iXSxbMCw1LCJOKE1eezJ9XFx0aW1lcyBOLE0sXFxEZWx0YVxcdGltZXMgZilcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gTihNXFx0aW1lcyBOLE0sSWRfTVxcdGltZXMgZikiXSxbMCw2LCJETkMoTV57Mn1cXHRpbWVzIE4sTSxcXERlbHRhXFx0aW1lcyBmKVxccmlnaHRyaWdodGFycm93c197fSBETkMoTVxcdGltZXMgTixNLElkX01cXHRpbWVzIGYpXnt9Il0sWzAsNywiTV57Mn1cXHRpbWVzIE5cXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee31NXFx0aW1lcyBOIl0sWzAsOCwiTlxccmlnaHRyaWdodGFycm93c197fV57fU4iXSxbMCwxLCJUaG9tIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzEsMiwiRm91cmllciIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFsyLDMsImVfMCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFszLDQsImVfMSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs0LDUsIkZhbHRhIG5vbWJyZSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs1LDYsImVfMCBcXCAoXFx0ZXh0e3F1aXphIHNvbG8gZW4gY29ob21vbG9naWF9KSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs2LDcsImVfMCBcXCAoXFx0ZXh0e3F1aXphIHNvbG8gZW4gY29ob21vbG9naWF9KSJdLFs3LDgsIk1vcml0YSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
 \[\begin{tikzcd}
 	{M\rightrightarrows_{}^{} M} \\
@@ -2227,8 +2256,6 @@ The following are some important facts
 	\arrow["Morita", tail reversed, from=8-1, to=9-1]
 \end{tikzcd}\]
 
-
-\newpage
 
 
 \subsection{Pushforward for manifolds without boundary}
