@@ -2178,11 +2178,14 @@ The following are some groupoids that we will have in mind in order to determine
 	\arrow["{\rho_E}", from=1-2, to=2-2]
 	\arrow["{\rho_F}"', from=2-1, to=2-2]
 \end{tikzcd}\]
-\item $ M^{2}\times N\rightrightarrows M\times N$
-\item $ DNC(M^{2}\times N,M)\rightrightarrows DNC(M\times N,M)$
+\item If $f:M\to N$ is a smooth map between smooth manifolds $M^{2}\times N\rightrightarrows M\times N$ with $s((x,y),n)=(y,n)$;   $t((x,y),n)=(x,n)$; $$((x,y),n)((y,z),n)=((x,z),n)$$
+\item Applying the normal functor to the groupoid $M^{2}\times N\rightrightarrows M\times N$ with the embeddings $(\Delta_M\times f):M\to M^{2}\times N$ in the morpshism level and $(Id_M\times f):M\to M\times N$, we get the groupoid
+$$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)$$
+ 
+\item Applying the deformation to the normal cone functor to the groupoid $M^{2}\times N\rightrightarrows M\times N$ we get $$DNC(M^{2}\times N,M)\rightrightarrows DNC(M\times N,M)$$
 
 
-\item If $f:M\to N$ is a smooth map, then consider the groupoid $TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$. This is an example of the groupoid $E\ltimes F\rightrightarrows_{}^{}F$ with $E$ and $F$ being vector bundles over $X$
+\item If $f:M\to N$ is a smooth map, then consider the groupoid $$TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$$. This is an example of the groupoid $E\ltimes F\rightrightarrows_{}^{}F$ with $E$ and $F$ being vector bundles over $X$
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJFIl0sWzEsMCwiRiJdLFsxLDEsIlgiXSxbMCwxLCJcXHZhcnBoaSJdLFsxLDIsIlxccmhvX0YiXSxbMCwyLCJcXHJob19FIiwyXV0=
 \[\begin{tikzcd}
 	E & F \\
@@ -2201,6 +2204,40 @@ where there is an action of $E$ over $F$ (in fibers) defined by $e\cdot f:= \var
 \end{itemize}
 \end{enumerate}
 
+\begin{remark}
+We note that there exist a groupoid isomorphism 
+$$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)\ \ \  \cong\ \ \  TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$$
+where $[sus\oplus Id_{TN}-(df\circ \pi_2)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$ defined by $$[sus\oplus Id_{TN}-(df\circ \pi_2)]([(v,w),z])=(v-w)\oplus z-d_xf(w)$$ is a vector bundle isomorphism (well defined by the quotient structure of the normal bundle, and an isomorphism by the five lemma) such as the following diagram induce on the fibre of $x\sim ((x,x),f(x))\in M^{2}\times N$
+% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlRfeE0iXSxbMiwwLCJUX3hNXFxvcGx1cyBUX3hNXFxvcGx1cyBmXipUX3tmKHgpfU4iXSxbMywwLCJOX3soKHgseCksZih4KSl9KE1eezJ9XFx0aW1lcyBOLE0pIl0sWzMsMSwiVF94TVxcb3BsdXMgZl4qVF97Zih4KX1OIl0sWzEsMSwiVF94TSJdLFsyLDEsIlRfeE1cXG9wbHVzIFRfeE1cXG9wbHVzIGZeKlRfe2YoeCl9TiJdLFswLDEsIjAiXSxbNCwwLCIwIl0sWzQsMSwiMCJdLFszLDQsIltzdXMtKGRmXFxjaXJjIFxccGlfMildIl0sWzAsMV0sWzEsMiwiXFxEZWx0YV97VE19XFx0aW1lcyBkX3hmIl0sWzIsMywiXFxwaSJdLFsxLDUsIklkX3tUX3hNfSJdLFs3LDVdLFs1LDZdLFsyLDYsIklkIiwyXSxbNiw0LCJzdXMtKGRfeCBmXFxjaXJjIFxccGlfMikiLDJdLFszLDhdLFs0LDldXQ==
+\[\begin{tikzcd}
+	0 & {T_xM} & {T_xM\oplus T_xM\oplus f^*T_{f(x)}N} & {N_{((x,x),f(x))}(M^{2}\times N,M)} & 0 \\
+	0 & {T_xM} & {T_xM\oplus T_xM\oplus f^*T_{f(x)}N} & {T_xM\oplus f^*T_{f(x)}N} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["{\Delta_{TM}\times d_xf}", from=1-2, to=1-3]
+	\arrow["{Id_{T_xM}}", from=1-2, to=2-2]
+	\arrow["\pi", from=1-3, to=1-4]
+	\arrow["Id"', from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{[sus\oplus Id_{TN}-(df\circ \pi_2)]}", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["{sus\oplus Id_{TN}-(df\circ \pi_2)}"', from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}\]
+
+\noindent In the same fashion $N(M\times N, M)\cong f^*TN$ where $[Id_{f^*(TN)}-(df \circ \pi_1)]([v,z])=(z-d_xf(v))$ define the isomorphism
+$$[Id_{f^*(TN)}-(df \circ \pi_1)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$$ 
+This map is well defined because if for $x\sim (x,f(x))\in M\times N$
+$$(v_1,z_1)-(v_2,z_2)\in Im(Id_{T_xM}\oplus d_xf)$$
+it means that there exist $v\in T_xM$ such that $v_1-v_2=v$ and $z_1-z_2=d_xf(v)$, which is equivalent to equality of the images 
+$$z_1-d_xf(v_1)=z_2-d_xf(v_2),$$
+and it is an isomorphism by the five lemma.
+\end{remark}
+
+
+
+
+
 \begin{defn}
 The $C^*$-algebra of a topological groupoid $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, which is denoted by  $C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, as follows 
 \begin{enumerate}
@@ -2213,16 +2250,86 @@ and define $$C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0}):=\overline{C^{\
 $$(f*g)(\gamma):=\int_{\gamma_1\circ \gamma_2=\gamma}f(\gamma_1)g(\gamma_2) d\mu=\int_{\gamma_2\in\mathcal{G}_{s(\gamma)}}f(\gamma\circ \gamma_2^{-1})g(\gamma_2) d\mu$$
 where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar de \cite{Will19}}.
 
-\item 
 \end{enumerate}
-
-
-
-
 \end{defn}
 
 
 \begin{remark}
+We can consider the completion by the reduced norm too, but both completion coincides in the scope of amenability, which will be the back ground of our work. \textcolor{red}{Cita sobre amenabilidad y compleciones}
+\end{remark}
+
+When we have that $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$ is a saturated groupoid, that is there are a descomposition  
+$$\mathcal{G}\rightrightarrows \mathcal{G}^{0}=(\mathcal{G}_U\rightrightarrows U)\cup (\mathcal{G}_F\rightrightarrows F)$$
+where the first component is open and the second, which is its complement, is close of $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, we obtain a exact sequence\textcolor{red}{Cita sobre el uso de propiedad universal de la norma maximal, revisar Dixmier}
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQ14qKEdfVSkiXSxbMiwwLCJDXiooRykiXSxbMywwLCJDXiooR19GKSJdLFs0LDAsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCJldl8wIl0sWzMsNF1d
+\[\begin{tikzcd}
+	0 & {C^*(G_U)} & {C^*(G)} & {C^*(G_F)} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["{ev_0}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+
+Then, in the deformation to the normal cone, we get the exact sequence
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQ14qKE1eezJ9XFx0aW1lcyBOXFx0aW1lcyAoMCwxXSkiXSxbMSwxLCJDXiooRE5DKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFsxLDIsIkNeKihOKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFsyLDIsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCJldl8wIl0sWzMsNF1d
+\[\begin{tikzcd}
+	0 & {C^*(M^{2}\times N\times (0,1])} & \\
+	& {C^*(DNC(M^{2}\times N,M))} \\
+	& {C^*(N(M^{2}\times N,M))} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{ev_0}", from=2-2, to=3-2]
+	\arrow[from=3-2, to=3-3]
+\end{tikzcd}\]
+and by the six terms exact sequence in $K$-theory we get the exact sequence
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXnswfShNXnsyfVxcdGltZXMgTlxcdGltZXMgKDAsMV0pIl0sWzAsMSwiS157MH0oRE5DKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFswLDIsIkteezB9KE4oTV57Mn1cXHRpbWVzIE4sTSkpIl0sWzEsMCwiS157MH0oTihNXnsyfVxcdGltZXMgTixNKSkiXSxbMSwxLCJLXnswfShETkMoTV57Mn1cXHRpbWVzIE4sTSkpIl0sWzEsMiwiS157MH0oTV57Mn1cXHRpbWVzIE5cXHRpbWVzICgwLDFdKSJdLFswLDFdLFsxLDIsImV2XzAiLDJdLFs1LDRdLFs0LDMsImV2XzAiLDJdLFszLDBdLFsyLDVdXQ==
+\[\begin{tikzcd}
+	{K^{0}(M^{2}\times N\times (0,1])} & {K^{1}(N(M^{2}\times N,M))} \\
+	{K^{0}(DNC(M^{2}\times N,M))} & {K^{1}(DNC(M^{2}\times N,M))} \\
+	{K^{0}(N(M^{2}\times N,M))} & {K^{1}(M^{2}\times N\times (0,1])}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-1]
+	\arrow["{ev_0}"', from=2-1, to=3-1]
+	\arrow["{ev_0}"', from=2-2, to=1-2]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=2-2]
+\end{tikzcd}\]
+
+Since $(0,1]$ is a contractible space, then we get the contractibility of the algebra $C^*(M^{2}\times N\times (0,1])\cong C^{\infty}_0((0,1],M^{2}\times N)$, which means that $$K^*(M^{2}\times N\times (0,1])=0.$$
+Therefore, by the six terms exact sequence we get the isomorphisms
+\begin{align*}
+ev_0:K^{i}(DNC(M^{2}\times N,M))\to K^{i}(N(M^{2}\times N,M)), \ \ \ \ i=0,1.
+\end{align*}
+For each $t\in [0,1]$ there exist an evaluation map (where for $t\not=0$ it is no necessarilly an isomorphism) 
+\begin{align*}
+ev_t:K^{i}(DNC(M^{2}\times N,M))\to K^{i}(M^{2}\times N), \ \ \ \ i=0,1.
+\end{align*}
+
+
+
+\begin{remark}
+In general 
+\end{remark}
+
+
+\begin{exam}
+In $C^*(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product is
+\begin{align*}
+(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus \tilde{v}\cdot w)\ g(\tilde{v}\oplus w) d\mu,
+\end{align*}
+\noindent but in $C^*(TM\oplus f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product results 
+\begin{align*}
+(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus 0)\ g(\tilde{v}\oplus w) d\mu.
+\end{align*}
+
+\end{exam}
+\begin{remark}
+
+
+
+
+
+
 The following are some important facts
 \begin{enumerate}
 \item We can consider a smooth manifold $M$ such as a groupoid $M\rightrightarrows M$ with $s=t=Id_M:M\to M$.
@@ -2256,6 +2363,18 @@ The following are some important facts
 	\arrow["Morita", tail reversed, from=8-1, to=9-1]
 \end{tikzcd}\]
 
+
+\begin{remark}
+%Comentarios con Florian
+\begin{itemize}
+\item The use of saturated Groupoids to obtain the short exact sequence of $C^*$ functor. 
+\item Short exact sequence of $C(X\setminus \{x_0\})$ only works with the maximal norm.
+\item $K(A\times K)\cong K(A)$.
+\item The principal idea to stablish the evaluation maps is the use of the six exact sequence (See Florian's MSc Thesis)
+\item You have to take care about the part that plays the algebra $C^{*}((0,1])$ in the argument that $ev_0$ is an isomorphism.
+\item $(0,1]\sim_h \{*\}$, then $C_0((0,1])\cong \{0\}$. This will be usefull for the previous item
+\end{itemize}
+\end{remark}
 
 
 \subsection{Pushforward for manifolds without boundary}
