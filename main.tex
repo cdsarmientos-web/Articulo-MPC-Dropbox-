@@ -1301,7 +1301,7 @@ and with this the group operation is well defined.
 	\arrow["{\pi_{N}\amalg \pi_{M}}", from=2-3, to=3-2]
 \end{tikzcd}\]
 where $i_{1}!(x_{N})=x_{N}\oplus 0$.
-        \item Inverse element: \textcolor{blue}{Esta parte es suceptible al cambio de orientacion a compacta} For a cycle $[M, \partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$ the inverse element is $[-M, -\partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$, because their sum is equal to $$[M\amalg -M, \partial M \amalg -\partial M, \pi_{M}\amalg \pi_{-M}, x_{M}\oplus x_{M}].$$
+        \item Inverse element: For a cycle $[M, \partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$ the inverse element is $[-M, -\partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{*}(X,A;\Gamma)$, because their sum is equal to $$[M\amalg -M, \partial M \amalg -\partial M, \pi_{M}\amalg \pi_{-M}, x_{M}\oplus x_{M}].$$
         The $\mathscr{H}_{\Gamma}^{*}$-orientation of $M$ provides us an $\mathscr{H}_{\Gamma}^{*}$-orientation of the tangent bundle $\rho:TM\to M$, which means that the zero section $s:M\to TM$ satisfy that $s!=-\otimes \tau$, where the class $ \tau\in \mathscr{H}_{\Gamma}^{m}(TM)$ is such that the map $-\otimes \tau:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+m}(TM)$ is an isomorphism. For $-M$, the zero section $s^{-}:-M\to T(-M)$ is the same $s$ as a map, but we choose the opposite class satisfying that $$s^{-}!=-\otimes (-\tau):\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+m}(TM).$$
         Then, $s!(x_{M})=x_{M}\otimes \tau= -(x_{M}\otimes -\tau)=-s^{-}!(x_{M})$. With this, we define the map $s\amalg s^{-}:M\amalg -M \to TM$, where 
         $$(s\amalg s^{-})!:\mathscr{H}_{\Gamma}^{*}(M\amalg -M)\cong\mathscr{H}_{\Gamma}^{*}(M)\oplus \mathscr{H}_{\Gamma}^{*}(-M) \to \mathscr{H}_{\Gamma}^{*+m}(TM)$$
@@ -1317,7 +1317,7 @@ satisfy that $(s\amalg s^{-})!(x_{M}\oplus x_{M})=0\in \mathscr{H}_{\Gamma}^{*}(
 
 
 \begin{remark}
-    \textcolor{blue}{Esta parte es suceptible al cambio de orientacion a compacta} If $[M,\partial M, \pi_{M},x], [M,\partial M, \pi_{M},y]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, with $x,y\in \mathscr{H}_{\Gamma}^{*+dim(M)}(M)$ then 
+ If $[M,\partial M, \pi_{M},x], [M,\partial M, \pi_{M},y]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$, with $x,y\in \mathscr{H}_{\Gamma}^{*+dim(M)}(M)$ then 
     \begin{align*}
         [M,\partial M, \pi_{M},x] + [M,\partial M, \pi_{M},y] = [M,\partial M, \pi_{M},x + y],
     \end{align*}
@@ -2168,7 +2168,7 @@ If $E=-F$ (opposite in the sense of de Rham cohomology), then $\tau_{E,M}=-\tau_
 \subsection{Groupoid cohomology}
 The following are some groupoids that we will have in mind in order to determine the pushforward structures of the cohomology theories that are of our interest.
 \begin{enumerate}
-\item If $\rho: E\to M$ is a vector bundle over a smooth manifold $E\to M$, then $E\rightrightarrows M$ with $s=t=\rho$.  A particular case that we will use is that if $\rho_E:E\to X$ and $\rho_F:F\to X$ are vector bundles over $X$, then we will consider the groupoid $E\oplus F\rightrightarrows F$, where $E\oplus F\to F$ is a vector bundle by the pull back
+\item If $\rho: E\to M$ is a vector bundle over a smooth manifold $E\to M$, then $E\rightrightarrows M$ with $s=t=\rho$.  A particular case that we will use is that if $\rho_E:E\to X$ and $\rho_F:F\to X$ are vector bundles over $X$, then we will consider the groupoid $E\oplus F\rightrightarrows F$, where $\pi_2:E\oplus F\to F$ is a vector bundle by the pull back
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHJob197Rn1eKkVcXGNvbmcgRVxcb3BsdXMgRiJdLFswLDEsIkYiXSxbMSwwLCJFIl0sWzEsMSwiWCJdLFsyLDMsIlxccmhvX0UiXSxbMSwzLCJcXHJob19GIiwyXSxbMCwyLCJcXHBpXzEiXSxbMCwxLCJcXHJob19GXiooXFxyaG9fRSlcXGNvbmcgXFxwaV8yIiwyXV0=
 \[\begin{tikzcd}
 	{\rho_{F}^*E\cong E\oplus F} & E \\
@@ -2178,6 +2178,8 @@ The following are some groupoids that we will have in mind in order to determine
 	\arrow["{\rho_E}", from=1-2, to=2-2]
 	\arrow["{\rho_F}"', from=2-1, to=2-2]
 \end{tikzcd}\]
+where the groupoid operation is given by 
+$$(v\oplus w)(\tilde{v}\oplus w)=v+\tilde{v}\oplus w, \ \ \ \ (v\oplus w)^{-1}=-v\oplus w.$$
 \item If $f:M\to N$ is a smooth map between smooth manifolds $M^{2}\times N\rightrightarrows M\times N$ with $s((x,y),n)=(y,n)$;   $t((x,y),n)=(x,n)$; $$((x,y),n)((y,z),n)=((x,z),n)$$
 \item Applying the normal functor to the groupoid $M^{2}\times N\rightrightarrows M\times N$ with the embeddings $(\Delta_M\times f):M\to M^{2}\times N$ in the morpshism level and $(Id_M\times f):M\to M\times N$, we get the groupoid
 $$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)$$
@@ -2204,7 +2206,94 @@ where there is an action of $E$ over $F$ (in fibers) defined by $e\cdot f:= \var
 \end{itemize}
 \end{enumerate}
 
+
+
+
+\begin{defn}
+The $C^*$-algebra of a topological groupoid $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, which is denoted by  $C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ or $C^{*}(\mathcal{G})$ when the groupoid structure used is clear, as follows 
+\begin{enumerate}
+\item Consider the set 
+$$C^{\infty}_c(\mathcal{G})=\{f:\mathcal{G}\to \mathbb{C}|f \text{ is smooth and }\overline{supp(f)} \text{ is compact} \}$$
+\item Consider the maximal norm $|| f ||_{max}=\sup_{\pi}||\pi(f)||_{B(\mathcal{H})} $ for $f\in C^{\infty}_c(\mathcal{G})$, where $\pi$ is any representation in a Hilbert space, that is
+$$\pi:C^{\infty}_c(\mathcal{G})\to B(\mathcal{H})$$
+and define $$C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0}):=\overline{C^{\infty}_c(\mathcal{G})}_{||\cdot||_{max}}$$
+\item The product that we will consider is giving by convolution as follows: if $f,g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, then $f*g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ with 
+$$(f*g)(\gamma):=\int_{\gamma_1\circ \gamma_2=\gamma}f(\gamma_1)g(\gamma_2) d\mu=\int_{\gamma_2\in\mathcal{G}_{s(\gamma)}}f(\gamma\circ \gamma_2^{-1})g(\gamma_2) d\mu$$
+where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar de \cite{Will19}}.
+
+\end{enumerate}
+\end{defn}
+
+
 \begin{remark}
+We can consider the completion by the reduced norm too, but both completion coincides in the scope of amenability, which will be the back ground of our work. \textcolor{red}{Cita sobre amenabilidad y compleciones}
+\end{remark}
+
+
+
+
+
+Now, we are going to present a sequence of arguments in order to compose a morphism $f!:K^*(M)\to K^{*+k}(N)$ when a smooth proper map $f:M\to N$ between smooth manifolds without boundary is given.
+
+\vspace{0.3cm}
+
+First, we can interpret the $K$-theories of the spaces that apears in the Thom isomorphism of a vector bundle  $\rho_E:E\to M$ using groupoids, i.e., the isomorphism $$Thom:K^{*}(M)\to K^{*+k}(E)$$ can be described as the groupoid $K$-theory by
+$$Thom:K^{*}(M\rightrightarrows M)\to K^{*+k}(E\rightrightarrows E)$$
+where all source and target maps are identities of the respective space. Then, we get the isomorphism
+$$Thom:K^{*}(M\rightrightarrows M)\to K^{*+k}(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)$$
+
+
+
+For the groupoid $TM\oplus f^*TN \rightrightarrows f^*TN$ there exist the Fourier transform isomorphism $$\mathcal{F}:C_0(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)\ \ \to \ \ C^*(T^*M\oplus f^*TN \rightrightarrows f^*TN)$$
+defined for $f\in C_0(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)$ by 
+$$\mathcal{F}(\tilde{v}\oplus \tilde{w})=\int_{\phi\in T^*_{\rho_{f^*TN}(\tilde{w})}M}e^{i\phi(\tilde{v})}f(\phi\oplus \tilde{w})d\mu$$
+\noindent when $\mathcal{F}(f\cdot g)=\mathcal{F}(f)*\mathcal{F}(g)$, that is, the Fourier transform sends a pointwise multiplication of maps to their convolution, wich is the product that we get in the groupoid $C^*$-algebra. It is injective by isometry, and surjective by density of the Schwarts space that is a subset of the image of Fourier transform \textcolor{red}{Buena referencia, puede ser el Hollmander para detalles y su uso puede ser Montubert o Connes}. Therefore, we have an isomorphism $K(\mathcal{F})$ 
+$$K^{*+k}(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)\ \ \to \ \ K^{*+k}(T^*M\oplus f^*TN \rightrightarrows f^*TN)$$
+
+
+
+\begin{remark}\label{Normal accion}
+Considering the groupoid $TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$ we get the embedding $\theta:f^*TN\to TM\ltimes f^*TN$, by the zero section, i.e., $$\theta(x,v)=(x,0) \oplus (x,v).$$ If we compute the normal bundle, we will get
+$$N(TM\ltimes f^*TN \rightrightarrows f^*TN)\ \ = \ \ TM\oplus f^*TN \rightrightarrows f^*TN$$
+\end{remark}
+
+By the identification obtained in Remark \ref{Normal accion}, we get that $D_{\ltimes}$ the deformation to the normal cone applied to the groupoid $TM\ltimes f^*TN \rightrightarrows f^*TN$ and the submanifold embedding $\theta:f^*TN\to TM\ltimes f^*TN$ will be  
+$$D_{\ltimes}:=DNC(TM\ltimes f^*TN, f^*TN)\cong [TM\oplus f^*TN\times \{0\}]\cup[ TM\ltimes f^*TN\times (0,1]]$$
+and using this groupoid we get the maps in $K$-theory
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooVE1cXG9wbHVzIGZeKlROKSJdLFsyLDAsIkteKihUTVxcbHRpbWVzIGZeKlROKSJdLFsxLDAsIkteKihEX3tcXGx0aW1lc30pIl0sWzIsMCwiZXZee1xcbHRpbWVzfV8wIl0sWzIsMSwiZXZee1xcbHRpbWVzfV8xIiwyXV0=
+\[\begin{tikzcd}
+	{K^*(TM\oplus f^*TN)} & {K^*(D_{\ltimes})} & {K^*(TM\ltimes f^*TN)}
+	\arrow["{ev^{\ltimes}_0}", from=1-2, to=1-1]
+	\arrow["{ev^{\ltimes}_1}"', from=1-2, to=1-3]
+\end{tikzcd}\]
+where in this case, both $ev^{\ltimes}_0$ and $ev^{\ltimes}_1$ are isomorphisms \textcolor{red}{Una cita para este hecho puede estar bien, aunque no vamos a usar que $ev^{\ltimes}_1$ sea iso}.
+
+
+
+
+
+
+
+\begin{remark}
+Although that $K^*(TM\oplus f^*TN)\cong K^*(TM\ltimes f^*TN)$, but in general there is no a map between the $C^*$-algebras of convolution of the associated groupoids. In $C^*(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product is
+\begin{align*}
+(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus \tilde{v}\cdot w)\ g(\tilde{v}\oplus w) d\mu,
+\end{align*}
+\noindent but in $C^*(TM\oplus f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product results 
+\begin{align*}
+(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus w)\ g(\tilde{v}\oplus w) d\mu.
+\end{align*}
+where the main incidence of the $w\in f^*TN$ component is to relate all the components in this integration to the same fiber $T_{\rho_{TM}(v)}M=T_{\rho_{f^*TN}(w)}M$, but it is fixed during the integration. 
+\end{remark}
+
+
+
+
+
+
+\begin{remark}
+
+
 We note that there exist a groupoid isomorphism 
 $$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)\ \ \  \cong\ \ \  TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$$
 where $[sus\oplus Id_{TN}-(df\circ \pi_2)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$ defined by $$[sus\oplus Id_{TN}-(df\circ \pi_2)]([(v,w),z])=(v-w)\oplus z-d_xf(w)$$ is a vector bundle isomorphism (well defined by the quotient structure of the normal bundle, and an isomorphism by the five lemma) such as the following diagram induce on the fibre of $x\sim ((x,x),f(x))\in M^{2}\times N$
@@ -2238,26 +2327,6 @@ and it is an isomorphism by the five lemma.
 
 
 
-\begin{defn}
-The $C^*$-algebra of a topological groupoid $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, which is denoted by  $C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, as follows 
-\begin{enumerate}
-\item Consider the set 
-$$C^{\infty}_c(\mathcal{G})=\{f:\mathcal{G}\to \mathbb{C}|f \text{ is smooth and }\overline{supp(f)} \text{ is compact} \}$$
-\item Consider the maximal norm $|| f ||_{max}=\sup_{\pi}||\pi(f)||_{B(\mathcal{H})} $ for $f\in C^{\infty}_c(\mathcal{G})$, where $\pi$ is any representation in a Hilbert space, that is
-$$\pi:C^{\infty}_c(\mathcal{G})\to B(\mathcal{H})$$
-and define $$C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0}):=\overline{C^{\infty}_c(\mathcal{G})}_{||\cdot||_{max}}$$
-\item The product that we will consider is giving by convolution as follows: if $f,g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, then $f*g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ with 
-$$(f*g)(\gamma):=\int_{\gamma_1\circ \gamma_2=\gamma}f(\gamma_1)g(\gamma_2) d\mu=\int_{\gamma_2\in\mathcal{G}_{s(\gamma)}}f(\gamma\circ \gamma_2^{-1})g(\gamma_2) d\mu$$
-where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar de \cite{Will19}}.
-
-\end{enumerate}
-\end{defn}
-
-
-\begin{remark}
-We can consider the completion by the reduced norm too, but both completion coincides in the scope of amenability, which will be the back ground of our work. \textcolor{red}{Cita sobre amenabilidad y compleciones}
-\end{remark}
-
 When we have that $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$ is a saturated groupoid, that is there are a descomposition  
 $$\mathcal{G}\rightrightarrows \mathcal{G}^{0}=(\mathcal{G}_U\rightrightarrows U)\cup (\mathcal{G}_F\rightrightarrows F)$$
 where the first component is open and the second, which is its complement, is close of $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, we obtain a exact sequence\textcolor{red}{Cita sobre el uso de propiedad universal de la norma maximal, revisar Dixmier}
@@ -2270,7 +2339,7 @@ where the first component is open and the second, which is its complement, is cl
 	\arrow[from=1-4, to=1-5]
 \end{tikzcd}\]
 
-Then, in the deformation to the normal cone, we get the exact sequence
+\noindent Then, in the deformation to the normal cone, we get the exact sequence
 % https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQ14qKE1eezJ9XFx0aW1lcyBOXFx0aW1lcyAoMCwxXSkiXSxbMSwxLCJDXiooRE5DKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFsxLDIsIkNeKihOKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFsyLDIsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCJldl8wIl0sWzMsNF1d
 \[\begin{tikzcd}
 	0 & {C^*(M^{2}\times N\times (0,1])} & \\
@@ -2295,40 +2364,32 @@ and by the six terms exact sequence in $K$-theory we get the exact sequence
 	\arrow[from=3-2, to=2-2]
 \end{tikzcd}\]
 
-Since $(0,1]$ is a contractible space, then we get the contractibility of the algebra $C^*(M^{2}\times N\times (0,1])\cong C^{\infty}_0((0,1],M^{2}\times N)$, which means that $$K^*(M^{2}\times N\times (0,1])=0.$$
+Since $(0,1]$ is a contractible space, then we get the contractibility of the algebra $C^*(M^{2}\times N\times (0,1])\cong C^{\infty}_0((0,1],C^*(M^{2}\times N))$, which means that $$K^*(M^{2}\times N\times (0,1])=0.$$
 Therefore, by the six terms exact sequence we get the isomorphisms
 \begin{align*}
-ev_0:K^{i}(DNC(M^{2}\times N,M))\to K^{i}(N(M^{2}\times N,M)), \ \ \ \ i=0,1.
+ev_0:K^{*+k}(DNC(M^{2}\times N,M))\to K^{*+k}(N(M^{2}\times N,M)), \ \ \ \ i=0,1.
 \end{align*}
 For each $t\in [0,1]$ there exist an evaluation map (where for $t\not=0$ it is no necessarilly an isomorphism) 
 \begin{align*}
-ev_t:K^{i}(DNC(M^{2}\times N,M))\to K^{i}(M^{2}\times N), \ \ \ \ i=0,1.
+ev_t:K^{*+k}(DNC(M^{2}\times N,M))\to K^{*+k}(M^{2}\times N), \ \ \ \ i=0,1.
 \end{align*}
+which is the aplication of the $K$-theory functor over $C^*$-algebras to the maps
+\begin{align*}
+ev_t:C^*(DNC(M^{2}\times N,M))\to C^*(M^{2}\times N)
+\end{align*}
+where for a map $$\varphi:N_{M}^{M^{2}\times N}\times \{0\}\sqcup \ M^{2}\times N\times (0,1] \to \mathbb{C}$$ in $C^*(DNC(M^{2}\times N,M))$ we get $ev_t(\varphi):M^{2}\times N\to \mathbb{C}$ with $$ev_t(\varphi)((x,y),n):=\varphi((x,y),n,t)$$
+
+
+
+
+
+
+
+
 
 
 
 \begin{remark}
-In general 
-\end{remark}
-
-
-\begin{exam}
-In $C^*(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product is
-\begin{align*}
-(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus \tilde{v}\cdot w)\ g(\tilde{v}\oplus w) d\mu,
-\end{align*}
-\noindent but in $C^*(TM\oplus f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product results 
-\begin{align*}
-(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus 0)\ g(\tilde{v}\oplus w) d\mu.
-\end{align*}
-
-\end{exam}
-\begin{remark}
-
-
-
-
-
 
 The following are some important facts
 \begin{enumerate}
@@ -2338,8 +2399,8 @@ The following are some important facts
 \item The diference between the product in $C(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)$ and $C(TM \oplus f^*TN \rightrightarrows_{}^{} f^*TN)$ 
 
 \end{enumerate}
-
 \end{remark}
+
 
 
 % https://q.uiver.app/#q=WzAsOSxbMCwwLCJNXFxyaWdodHJpZ2h0YXJyb3dzX3t9Xnt9IE0iXSxbMCwxLCJUTV4qXFxvcGx1cyBmXipUTlxccmlnaHRyaWdodGFycm93c197fV57fSBUTV4qXFxvcGx1cyBmXipUTiJdLFswLDIsIlRNXFxvcGx1cyBmXipUTiBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE4iXSxbMCwzLCJUTSBcXHRpbWVzIFswLDFdIFxcbHRpbWVzIGZeKlROXFx0aW1lcyBbMCwxXSBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE5cXHRpbWVzIFswLDFdIl0sWzAsNCwiVE1cXGx0aW1lcyBmXipUTiBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE4iXSxbMCw1LCJOKE1eezJ9XFx0aW1lcyBOLE0sXFxEZWx0YVxcdGltZXMgZilcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gTihNXFx0aW1lcyBOLE0sSWRfTVxcdGltZXMgZikiXSxbMCw2LCJETkMoTV57Mn1cXHRpbWVzIE4sTSxcXERlbHRhXFx0aW1lcyBmKVxccmlnaHRyaWdodGFycm93c197fSBETkMoTVxcdGltZXMgTixNLElkX01cXHRpbWVzIGYpXnt9Il0sWzAsNywiTV57Mn1cXHRpbWVzIE5cXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee31NXFx0aW1lcyBOIl0sWzAsOCwiTlxccmlnaHRyaWdodGFycm93c197fV57fU4iXSxbMCwxLCJUaG9tIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzEsMiwiRm91cmllciIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFsyLDMsImVfMCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFszLDQsImVfMSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs0LDUsIkZhbHRhIG5vbWJyZSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs1LDYsImVfMCBcXCAoXFx0ZXh0e3F1aXphIHNvbG8gZW4gY29ob21vbG9naWF9KSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs2LDcsImVfMCBcXCAoXFx0ZXh0e3F1aXphIHNvbG8gZW4gY29ob21vbG9naWF9KSJdLFs3LDgsIk1vcml0YSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
