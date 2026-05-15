@@ -63,7 +63,7 @@ A $\Gamma$-CW complex is proper  when...
 
 
 \begin{defn}
-    A group is said to acts freely ans properly discontinuously on $X$ if each element for all $g\not = e$ hold that given any $x\in X$ there exists an open set $U$ in $X$ such that $x\in U$ and $(gU)\cap U=\emptyset$.
+    A group is said to acts freely and properly discontinuously on $X$ if each element for all $g\not = e$ hold that given any $x\in X$ there exists an open set $U$ in $X$ such that $x\in U$ and $(gU)\cap U=\emptyset$.
 \end{defn}
 
 
@@ -542,7 +542,7 @@ We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, 
     such that
     \begin{enumerate}
         \item For a composable proper $\Gamma$-equivariant, orientation preserving smooth maps we have that $(f\circ g)!=f!\circ g!$ and $Id_{X}!=Id_{\mathscr{H}_{\Gamma}^{*}(X)}$.
-        \item If $F:\mathbb{R}\times M\to N$ is a smooth $\Gamma$-equivariant orientation preserving map, then $F(0,-)!=F(1,-)!$.
+        \item If $F:\mathbb{R}\times M\to N$ is a smooth $\Gamma$-equivariant orientation preserving map,  then $F(0,-)!=F(1,-)!$.
         \item  If $E\to M$ is a smooth real $\mathscr{H}_{\Gamma}$-oriented $\Gamma$-vector bundle over a manifold with boundary $M$, then if $s:M\to E$ is the zero section, the pushforward map 
         \begin{align*}
             (s\oplus 1)!:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+dim(E)-dim(M)}(S(E\oplus\mathbb{R}))
@@ -606,9 +606,8 @@ we have that
     Let $\mathscr{H}_{\Gamma}^{*}$ be a multiplicative $\Gamma$-cohomology theory with a pushforward structure. Let $(X,A)$ be a proper $\Gamma$-CW pair, let $n\in\mathbb{Z}$, we define the abelian group $\mathscr{H}_{*}^{pf}(X,A;\Gamma)$ as the set of equivalence relations of tuples $(M,\partial M,\pi, x)$ (called {\bf cycles}), where:
 \begin{enumerate}
     \item $(M,\partial M)$ is a $\Gamma$-proper manifold possibly with boundary with a $\mathscr{H}_{\Gamma}$-orientation.
-    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map such that $\pi_{M}(\partial M)\subseteq A$ and it can be factorized as composition $p\circ f$, where $p$ is a proper map. \textcolor{red}{Option 2} both $\pi_M|_{M\setminus \partial M}:M^{0}\to X\setminus A$ and $\pi_M|_{A}:\partial M\to A$ being proper maps.
 
-\textcolor{red}{Option 3} both $\pi_M|_{M\setminus \partial M}:M^{0}\to X\setminus A$ and $\pi_M|_{A}:\partial M\to A$ being factorized by proper maps.    
+    \item $\pi_{M}:(M,\partial M)\to (X,A)$ is a continuous $\Gamma$-equivariant map such that both $\pi_M|_{M\setminus \pi_M^{-1}(A)}:M\setminus \pi_M^{-1}(A)\to X\setminus A$ and $\pi_M|_{\partial M}:\partial M\to A$ can be factorized as composition $p\circ f$, where $p$ is a proper map.
     
     \item $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M)$ such that $n=*+dim(M)$. If $(M,\partial M)$ is no a cocompact pair, then $(M,\partial M,\pi_{M},x_{M})$ is a cycle if and only if $x_{M}\in \mathscr{H}_{\Gamma}^{n}(M):=\mathscr{H}_{\Gamma}^{n}(\tilde{M},\tilde{M}\setminus M)$, where $(\tilde{M},\partial \tilde{M})$ is a cocompact $\Gamma$-pair that contains $(M,\partial M)$ embedded.  
     \item Two cycles $(M,\partial M,\pi_M,x_M)$ and $(N,\partial N,\pi_N,x_N)$ are isomorphic cycles if there exist a diffeomorphism $\phi:M\to N$ such that $\pi_M=\pi_N\circ \phi$ and $\phi^{*}(x_{N})\cong x_{M}$.
@@ -665,9 +664,15 @@ we have that
 \end{comment}
 
 
+\begin{defn}
+An homotopy between a pair of maps $f,g:M\to N$ is a continuous $\Gamma$-map $H:M\times \mathbb{R}\to N$ such that $f=H(\cdot, 0)$, $g=H(\cdot, 1)$ and $H$ can be factorized by $p\circ f$ with $p$ being a proper map i.e., for each $t\in \mathbb{R}$ the maps $H_t:=H(\cdot, t):M\to N$ can be continously factorized as $p_t\circ f$ with $p_t$ a proper map, 
+\end{defn}
+
+
 
 \begin{remark}
-If $[M,\partial M,\pi_{1},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ and $\pi_1$ is $\Gamma$-homotopic to a map $\pi_2:M\to X$. This is by the fact that there is a $\Gamma$-homotopy $F:M\times\mathbb{R}\to X$ such that $F(m,0)=\pi_1$ and $F(m,1)=\pi_2$ (with the trivial $\Gamma$-action on the second factor). Therefore we get the commutative diagram
+If $[M,\partial M,\pi_{1},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ and $\pi_1$ is $\Gamma$-homotopic to a map $\pi_2:M\to X$, then
+$$[M,\partial M,\pi_{1},x_{M}]=[M,\partial M,\pi_{2},x_{M}].$$ This is by the fact that there is a $\Gamma$-homotopy $F:M\times\mathbb{R}\to X$ such that $F(m,0)=\pi_1$ and $F(m,1)=\pi_2$ (with the trivial $\Gamma$-action on the second factor). Therefore we get the commutative diagram
 % https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzIsMSwiTSJdLFsxLDAsIk1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzEsMiwiWCJdLFswLDMsIlxccGlfezF9IiwyXSxbMSwzLCJcXHBpX3syfSJdLFswLDIsIklkX01cXHRpbWVzIDAiXSxbMSwyLCJJZF9NXFx0aW1lcyAxIiwyXSxbMiwzLCJGIiwyXV0=
 \[\begin{tikzcd}
 	& {M\times \mathbb{R}} & \\
@@ -679,7 +684,7 @@ If $[M,\partial M,\pi_{1},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma)$ and $\pi_1
 	\arrow["{Id_M\times 1}"', from=2-3, to=1-2]
 	\arrow["{\pi_{2}}", from=2-3, to=3-2]
 \end{tikzcd}\]
-Since $Id_{M\times \mathbb{R}}$ is an homotopy between $Id_{M}\times 0$ and $Id_M\times 1$, then by the pushforward structure $(Id_{M}\times 0)!(x_M)=(Id_M\times 1)!(x_M)$.
+Since $Id_{M\times \mathbb{R}}$ is an homotopy between $Id_{M}\times 0$ and $Id_M\times 1$, then by the pushforward structure, Definition \ref{pushforward definition}, we get that $$(Id_{M}\times 0)!(x_M)=(Id_M\times 1)!(x_M).$$
 \end{remark}
 
 
@@ -688,8 +693,8 @@ Since $Id_{M\times \mathbb{R}}$ is an homotopy between $Id_{M}\times 0$ and $Id_
 Considering the following homotopically equivalent $\Gamma$-CW proper pairs: 
 \begin{enumerate}
 \item $(X,A)$.
-\item $(X',A'):=(X\times \{1\}\cup A\times [0,1), A\times [0,1])$.
-\item $(X'', A''):=(X\times \{1\}\cup A\times [0,1), A\times \{1\})$.
+\item $(X',A'):=(X\times [0,1], A\times [0,1])$.
+\item $(X'', A''):=(X\times [0,1], A\times \{0\})$.
 \end{enumerate}
 Defining $i_X: X\to X'$ by $i_X=Id_X \times 1$, the isomorphism
 $$i_*:\mathscr{H}_*^{pf}(X,A;\Gamma)\to \mathscr{H}_*^{pf}(X',A';\Gamma)$$
@@ -697,13 +702,31 @@ maps a cycle $[M,\partial M, \pi_M,x_M]$ to $[M,\partial M, i_X\circ \pi_M,x_M]$
 % https://q.uiver.app/#q=WzAsMyxbMSwxLCIoWFxcdGltZXMgXFx7MVxcfVxcY3VwIEFcXHRpbWVzIFswLDEpLCBBXFx0aW1lcyBcXHswXFx9KSJdLFswLDEsIihYLEEpPShYXFx0aW1lcyBcXHsxXFx9LEFcXHRpbWVzIFxcezFcXH0pIl0sWzAsMCwiTSJdLFsxLDAsImlfe1h9IiwyXSxbMiwxLCJcXHBpX3tNfSIsMl0sWzIsMCwiXFxwaV97TX0nIl1d
 \[\begin{tikzcd}
 	M & \\
-	{(X,A)=(X\times \{1\},A\times \{1\})} & {(X\times \{1\}\cup A\times [0,1), A\times [0,1])}
+	{(X,A)=(X\times \{1\},A\times \{1\})} & {(X\times [0,1], A\times [0,1])}
 	\arrow["{\pi_{M}}"', from=1-1, to=2-1]
 	\arrow["{\pi_{M}'}", from=1-1, to=2-2]
 	\arrow["{i_{X}}"', from=2-1, to=2-2]
 \end{tikzcd}\]
 Therefore, considering the map
-$$H':M\times [0,1]\to (X',A'):(m,t)\mapsto (\pi_M(m),(1-t)\varphi(m)+t),$$ we get an homotopy between $\pi_M'':=H'(-,1)=\pi_M'$ and $H'(-,0):(M,\partial M)\to (X',A')$ which is a pair map, that is, $\pi_M(\partial M)\subseteq A'$ and $[\pi_M(\partial M)]^{c}\subseteq A'^{c}$, i.e., $[M,\partial M,\pi_M'',x_M]\in \mathscr{H}^{pf}_*(X'',A''.\Gamma)$ is a cycle such that $\pi_M''^{-1}(A'')\cap M^{0}=\emptyset$.
+$$H':M\times [0,1]\to (X',A'):(m,t)\mapsto (\pi_M(m),(1-t)\varphi(m)+t),$$ 
+which if we consider that $\pi_M=p\circ f$ by a proper map $p:R\to X$, then 
+% https://q.uiver.app/#q=WzAsNyxbMywwLCJNXFx0aW1lc1swLDFdIl0sWzQsMSwiUlxcdGltZXNbMCwxXSJdLFszLDEsIlhcXHRpbWVzIFswLDFdIl0sWzAsMCwiTSJdLFswLDEsIlgiXSxbMSwxLCJSIl0sWzIsMCwiXFxSaWdodGFycm93Il0sWzAsMSwiZlxcdGltZXMgKCgxLXQpXFx2YXJwaGkrdCkiXSxbMSwyLCJQXFx0aW1lcyBJZCJdLFswLDIsIkgnIiwyXSxbMyw1LCJmIl0sWzUsNCwicCJdLFszLDQsIlxccGlfTSIsMl1d
+\[\begin{tikzcd}
+	M && \Rightarrow & {M\times[0,1]} & \\
+	X & R && {X\times [0,1]} & {R\times[0,1]}
+	\arrow["{\pi_M}"', from=1-1, to=2-1]
+	\arrow["f", from=1-1, to=2-2]
+	\arrow["{H'}"', from=1-4, to=2-4]
+	\arrow["{f\times ((1-t)\varphi+t)}", from=1-4, to=2-5]
+	\arrow["p", from=2-2, to=2-1]
+	\arrow["{p \times Id}", from=2-5, to=2-4]
+\end{tikzcd}\]
+
+\noindent where $p\times Id$ is a proper map, by the fact that proyections are open maps and send compactos to compacts (by continuity), therefore, any covering of a preimage of a compact will be has finite subcover as the union of the finite subcoverings obtained by the proyections of the original cover.  
+
+\vspace{0.3cm}
+
+\noindent Then, we get an homotopy between $\pi_M'':=H'(-,1)=\pi_M'$ and $H'(-,0):(M,\partial M)\to (X',A')$ which is a pair map, that is, $\pi_M(\partial M)\subseteq A'$ and $[\pi_M(\partial M)]^{c}\subseteq A'^{c}$, i.e., $[M,\partial M,\pi_M'',x_M]\in \mathscr{H}^{pf}_*(X'',A'';\Gamma)$ is a cycle such that $\pi_M''^{-1}(A'')\cap M^{0}=\emptyset$.
 \end{remark}
 
 
@@ -812,51 +835,50 @@ Consider the tangent vector bundles $TW_{k}\to W_{k}$ for $k=1,2 $ and the uniqu
     
     %$TD_{1}=TW_{1}\oplus D_{1}$, we get that $TD_{1}|_{N}\cong TW_{1}|_{N}\oplus D_{1}|_{N}\cong TN\oplus \nu_{N}^{W}\oplus D_{1}|_{N}$ 
 \end{enumerate}
-Then, we get that $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$.
+Then, we get that $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$ \textcolor{red}{EN caso equivariante si podemos considerar el normal como un cociente?}.
 \end{proof}
 
 
 \begin{remark}\label{Espacio joint}
-For maps $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$ being $\Gamma$-embeddings, by Lemma \ref{lema normales isomorfos}, there exist $\Gamma$-vector bundles $D_{k}\to W_{k}$ for $k=1,2$, such that  $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$. With this isomorphism $\phi:\nu_{1}\to \nu_{2}$, we construct the manifold 
+For maps $i_{1}:N\to W_{1}$ and $i_{2}:N\to W_{2}$ being $\Gamma$-embeddings, by Lemma \ref{lema normales isomorfos}, there exist $\Gamma$-vector bundles $D_{k}\to W_{k}$ for $k=1,2$, such that  $\nu_{1}:=\nu_{N}^{D_{1}}\cong TD_{i}|_{N}/TN \cong \nu_{N}^{D_{2}}=:\nu_{2}$. With this $\Gamma$-equivariant vector bundle isomorphism $\phi:\nu_{1}\to \nu_{2}$, we construct the manifold 
 \begin{align*}
-    W:=(D_{1}\oplus \mathbb{R})_{\nu_{1}}\#_{\nu_{2}} (D_{2}\oplus\mathbb{R}),
+    W:=(D_{1}\oplus \mathbb{R})_{\nu_{1}\oplus \mathbb{R}}\#_{\nu_{2}\oplus \mathbb{R}} (D_{2}\oplus\mathbb{R}),
 \end{align*} 
 the joint of the vector bundles (manifolds) $D_{1}\oplus \mathbb{R}$ and $D_{2}\oplus \mathbb{R}$ along the submanifold $N$ across the normal bundles $\nu_{1}\oplus \mathbb{R}$ and $\nu_{2}\oplus \mathbb{R}$, where
 \begin{align*}
-\partial W &= [D_{1}|_{\partial W_{1}}\cup D_{2}|_{\partial W_{2}}]\oplus \mathbb{R} \setminus [\xi_{\nu_{1}}\circ i_{1}(N)\times \{1\}],
+\partial W &= [D_{1}|_{\partial W_{1}}\cup D_{2}|_{\partial W_{2}}]\oplus \mathbb{R} \setminus [\xi_{\nu_{1}}\circ i_{1}(N)\times \{0\}],
 \end{align*}
-where $\xi_{\nu_{k}}$ is the zero section of the vector bundle $\nu_{k}$. This is made by cutting the identified copies of $N$, $(\xi_{\nu_{1}}\circ i_{1}(N))\times \{1\}$ and $(\xi_{\nu_{2}}\circ i_{2}(N))\times \{1\}$, where this identification is obtained by the map $(\xi_{\nu_{2}}\times\{1\}\circ i_{2})\circ (\phi\times \{1\})\circ (\xi_{\nu_{1}}\times\{1\}\circ i_{1})^{-1}$, making the following diagram commutative in $W$, for any $r\in \mathbb{R}\setminus \{1\}$:  
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCJEX3sxfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwyLCJOIl0sWzIsMCwiRF97Mn1cXG9wbHVzIFxcbWF0aGJie1J9Il0sWzAsMSwiXFxudV97MX1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzIsMSwiXFxudV97Mn1cXHRpbWVzIFxcbWF0aGJie1J9Il0sWzEsMywiKGpfezF9XFxjaXJjIGlfezF9KVxcdGltZXNcXHtyXFx9Il0sWzEsNCwiKGpfezJ9XFxjaXJjIGlfezJ9KVxcdGltZXNcXHstclxcfSIsMl0sWzMsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNCwyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDQsImlkX3tOfVxcdGltZXMgKC0xXFxjZG90KC0pKSJdXQ==
+where $\xi_{\nu_{k}}$ is the zero section of the vector bundle $\nu_{k}$. This is made by cutting the identified copies of $N$, $(\xi_{\nu_{1}\oplus \mathbb{R}}\circ i_{1}(N))$ and $(\xi_{\nu_{2}\oplus \mathbb{R}}\circ i_{2}(N))$, where this identification is obtained by the map $i_{\nu_2\oplus \mathbb{R}}\circ (\phi\times Id_{\mathbb{R}}) \circ (i_{\nu_1\oplus \mathbb{R}})^{-1}$, using $\phi$ as a reversing orientation diffeomorphism and $i_{\nu_2\oplus \mathbb{R}}$ a reversing orientation embedding \textcolor{red}{EN el caso equivariante no se como asegurar su existencia} (see \cite{Kos92}, pg. 99), making the following diagram commutative being interpreted as a restricted identity in $W$, for $r=1$:  
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJEX3sxfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwyLCJOIl0sWzIsMCwiRF97Mn1cXG9wbHVzIFxcbWF0aGJie1J9Il0sWzAsMSwiXFxudV97MX1cXG9wbHVzIFxcbWF0aGJie1J9Il0sWzIsMSwiXFxudV97Mn1cXG9wbHVzIFxcbWF0aGJie1J9Il0sWzEsMywiKGpfezF9XFxjaXJjIGlfezF9KVxcb3BsdXNcXHtyXFx9Il0sWzEsNCwiKGpfezJ9XFxjaXJjIGlfezJ9KVxcb3BsdXNcXHtyXFx9IiwyXSxbMywwLCJpX3tcXG51XzFcXG9wbHVzIFxcbWF0aGJie1J9fSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzQsMiwiaV97XFxudV8yXFxvcGx1cyBcXG1hdGhiYntSfX0iLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDQsIlxccGhpXFxvcGx1cyBJZF97XFxtYXRoYmJ7Un19Il1d
 \[\begin{tikzcd}
 	{D_{1}\oplus \mathbb{R}} && {D_{2}\oplus \mathbb{R}} \\
-	{\nu_{1}\times \mathbb{R}} && {\nu_{2}\times \mathbb{R}} \\
+	{\nu_{1}\oplus \mathbb{R}} && {\nu_{2}\oplus \mathbb{R}} \\
 	& N
-	\arrow[hook, from=2-1, to=1-1]
-	\arrow["{\phi\times Id_{\mathbb{R}}}", from=2-1, to=2-3]
-	\arrow[hook, from=2-3, to=1-3]
-	\arrow["{(\xi_{\nu_{1}}\times\{r\})\circ i_{1}}", from=3-2, to=2-1]
-	\arrow["{(\xi_{\nu_{2}}\times\{r\})\circ i_{2}}"', from=3-2, to=2-3]
+	\arrow["{i_{\nu_1\oplus \mathbb{R}}}", hook, from=2-1, to=1-1]
+	\arrow["{\phi\oplus Id_{\mathbb{R}}}", from=2-1, to=2-3]
+	\arrow["{i_{\nu_2\oplus \mathbb{R}}}"', hook, from=2-3, to=1-3]
+	\arrow["{(\xi_{\nu_{1}}\circ i_{1})\oplus\{r\}}", from=3-2, to=2-1]
+	\arrow["{(\xi_{\nu_{2}}\circ i_{2})\oplus\{r\}}"', from=3-2, to=2-3]
 \end{tikzcd}\]
+\noindent Getting $(\xi_{\nu_{1}}\oplus \{1\})\circ i_{1} = (\xi_{\nu_{2}}\oplus \{1\})\circ i_{2}$ as maps from $N$ to $W$, and therefore making the commutativity of the following diagram,
 
-\noindent Getting $(\xi_{\nu_{1}}\times \{0\})\circ i_{1} = (\xi_{\nu_{2}}\times \{0\})\circ i_{2}$ as maps from $N$ to $W$, as the following diagram shows,
-
-% https://q.uiver.app/#q=WzAsNixbMSwyLCJOIl0sWzAsMSwiV197MX0iXSxbMiwxLCJXX3syfSJdLFsxLDAsIlciXSxbMCwyLCJNIl0sWzIsMiwiUCJdLFsxLDMsImpfezF9Il0sWzIsMywial97Mn0iLDJdLFswLDEsImlfezF9IiwyXSxbMCwyLCJpX3syfSJdLFs0LDEsImlfe019Il0sWzUsMiwiaV97UH0iLDJdLFszLDAsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+% https://q.uiver.app/#q=WzAsNixbMSwyLCJOIl0sWzAsMSwiV197MX0iXSxbMiwxLCJXX3syfSJdLFsxLDAsIlciXSxbMCwyLCJNIl0sWzIsMiwiUCJdLFsxLDMsIlxceGlfe0RfMX1cXG9wbHVzIDEiXSxbMiwzLCJcXHhpX3tEXzF9XFxvcGx1cyAxIiwyXSxbMCwxLCJpX3sxfSIsMl0sWzAsMiwiaV97Mn0iXSxbNCwxLCJpX3tNfSJdLFs1LDIsImlfe1B9IiwyXSxbMywwLCJcXHBpX3tXfSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
 \[\begin{tikzcd}
-	& W \\
+	& W & \\
 	{W_{1}} && {W_{2}} \\
 	M & N & P
 	\arrow["{\pi_{W}}", dashed, from=1-2, to=3-2]
-	\arrow["{\xi_{\nu_{1}}\times \{0\}}", from=2-1, to=1-2]
-	\arrow["{\xi_{\nu_{2}}\times \{0\}}"', from=2-3, to=1-2]
+	\arrow["{\xi_{D_1}\oplus 1}", from=2-1, to=1-2]
+	\arrow["{\xi_{D_1}\oplus 1}"', from=2-3, to=1-2]
 	\arrow["{i_{M}}", from=3-1, to=2-1]
 	\arrow["{i_{1}}"', from=3-2, to=2-1]
 	\arrow["{i_{2}}", from=3-2, to=2-3]
 	\arrow["{i_{P}}"', from=3-3, to=2-3]
 \end{tikzcd}\]
-We claim that 
+where $\xi_{D_k}\oplus 1|_{i_k(N)}=\xi_{\nu_k}\oplus 1$, for $k=1,2$. We claim that 
 \begin{itemize}
 \item $W$ is an oriented smooth manifold (see \cite{Kos92}, Chapter VI, Section 4).
-\item $W$ is a $\Gamma$-proper space. \textcolor{red}{Pendiente}
+\item $W$ is a $\Gamma$-proper space: By Remark \ref{remark fibrados}, $D_k\oplus \mathbb{R}$ is a $\Gamma$-proper space, and  since $\phi$ is a $\Gamma$-equivariant isomorpism, then $W$ is a $\Gamma$-proper space by the properness of these bundles.
 \item $W$ is a $\mathscr{H}_{\Gamma}^{*}$-oriented space. \textcolor{red}{Pendiente}
 \end{itemize}
 \end{remark}
@@ -1193,14 +1215,14 @@ To prove that $(\iota_{W}\circ \tau_{W})!(x_{M})=(\iota_{\tilde{W}}\circ \tau_{\
 	{W_{1}} && {W_{2}} \\
 	M & N & P
 	\arrow["{\pi_{W}}", dashed, from=1-2, to=3-2]
-	\arrow["{\xi_{\nu_{1}}\times \{0\}}", from=2-1, to=1-2]
-	\arrow["{\xi_{\nu_{2}}\times \{0\}}"', from=2-3, to=1-2]
+	\arrow["{\xi_{D_1}\oplus 1}", from=2-1, to=1-2]
+	\arrow["{\xi_{D_2}\oplus 1}"', from=2-3, to=1-2]
 	\arrow["{i_{M}}", from=3-1, to=2-1]
 	\arrow["{i_{1}}"', from=3-2, to=2-1]
 	\arrow["{i_{2}}", from=3-2, to=2-3]
 	\arrow["{i_{P}}"', from=3-3, to=2-3]
 \end{tikzcd}\]
-Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is satisfied the necessary condition that $((\xi_{\nu_{1}}\times \{0\})\circ i_{M})!(x_{M})=((\xi_{\nu_{2}}\times \{0\})\circ i_{P})!(x_{P})$, by functoriality of pushforward. We define $\pi_{W}:W\to N$ by $\pi_{W}(d\oplus r)= \pi_{W_{1}}(\rho_{1}(d))$ if $d\in D_{1}$, and $\pi_{W}(d\oplus r)= \pi_{W_{2}}(\rho_{2}(d))$ if $d\in D_{2}$, as in the following diagram:
+Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is satisfied the necessary condition that $((\xi_{D_1}\oplus 1)\circ i_{M})!(x_{M})=((\xi_{D_2}\oplus 1)\circ i_{P})!(x_{P})$, by functoriality of pushforward. We define $\pi_{W}:W\to N$ by $\pi_{W}(d\oplus r)= \pi_{W_{1}}(\rho_{1}(d))$ if $d\in D_{1}$, and $\pi_{W}(d\oplus r)= \pi_{W_{2}}(\rho_{2}(d))$ if $d\in D_{2}$, as in the following diagram:
 % https://q.uiver.app/#q=WzAsOSxbMCwxLCJXX3sxfSJdLFswLDIsIk0iXSxbMSwyLCJOIl0sWzIsMiwiUCJdLFsyLDEsIldfezJ9Il0sWzEsMCwiRF97MX1cXG9wbHVzIFxcbWF0aGJie1J9IFxcIyBEX3syfVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMSwzLCJYIl0sWzAsMCwiRF97MX0iXSxbMiwwLCJEX3syfSJdLFswLDUsImpfezF9IiwyXSxbNCw1LCJqX3syfSJdLFsxLDAsImlfe019Il0sWzIsMCwiaV97MX0iLDFdLFsyLDQsImlfezJ9IiwxXSxbMyw0LCJpX3tQfSIsMl0sWzEsNiwiXFxwaV97TX0iLDJdLFswLDYsIlxccGlfe1dfezF9fSIsMV0sWzQsNiwiXFxwaV97V197Mn19IiwxXSxbMyw2LCJcXHBpX3tQfSJdLFs1LDYsIlxccGlfe1d9IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzgsNCwiXFxyaG9fezJ9Il0sWzcsMCwiXFxyaG9fezF9IiwyXV0=
 \[\begin{tikzcd}
 	{D_{1}} & {D_{1}\oplus \mathbb{R} \# D_{2}\oplus \mathbb{R}} & {D_{2}} \\
@@ -1210,9 +1232,9 @@ Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is sat
 	\arrow["{\rho_{1}}"', from=1-1, to=2-1]
 	\arrow["{\pi_{W}}", dotted, from=1-2, to=4-2]
 	\arrow["{\rho_{2}}", from=1-3, to=2-3]
-	\arrow["{\xi_{\nu_{1}}\times \{0\}}"', from=2-1, to=1-2]
+	\arrow["{\xi_{D_{1}}\oplus 1}"', from=2-1, to=1-2]
 	\arrow["{\pi_{W_{1}}}"{description}, from=2-1, to=4-2]
-	\arrow["{\xi_{\nu_{2}}\times \{0\}}", from=2-3, to=1-2]
+	\arrow["{\xi_{D_{2}}\oplus 1}", from=2-3, to=1-2]
 	\arrow["{\pi_{W_{2}}}"{description}, from=2-3, to=4-2]
 	\arrow["{i_{M}}", from=3-1, to=2-1]
 	\arrow["{\pi_{M}}"', from=3-1, to=4-2]
@@ -1223,20 +1245,36 @@ Since $i_{M}!(x_{M})=i_{1}!(x_{N})$ and $i_{2}!(x_{N})=i_{P}!(x_{P})$, it is sat
 \end{tikzcd}\]
 
 
-\noindent Let us see that $\pi_{W}$ is well defined, because 
+\noindent Let us see that $\pi_{W}$ is well defined, because if $d=i_{\nu_1}(v)$ for some $v\in \nu_1$, then since  $\rho_{D_1}\circ i_{\nu_1}=i_1\circ\rho_{\nu_1}$
 \begin{align*}
-    \pi_{W}((\xi_{\nu_{1}}\circ i_{1}(n))\oplus r)&= \pi_{W_{1}}(\rho_{1}((\xi_{\nu_{1}}\circ i_{1}(n))\oplus r))\\
-    &= \pi_{W_{1}}(i_{1}(n))\\
-    &=\pi_{N}(n)
+    \pi_{W}(d\oplus r)&= \pi_{W_{1}}(\rho_{1}(i_{\nu_1}(v)))\\
+    &= \pi_{W_{1}}\circ i_1\circ\rho_{\nu_1}(v)\\
+    &= \pi_{N}\rho_{\nu_1}(v)
 \end{align*}
-and $\pi_{W}((\xi_{\nu_{2}}\circ i_{2}(n))\oplus -r)=\pi_{N}(n)$ too. Now, we must to verify that $\pi_{M}=\pi_{W} \circ \xi_{\nu_{1}}\circ i_{M}$: since $\pi_{M}= \pi_{W_{1}}\circ i_{M}$, we get
-\begin{align*}
-    (\pi_{W} \circ \xi_{\nu_{1}}\circ i_{M})(m)&=\pi_{W}(\xi_{\nu_{1}}(i_{M}(m))\oplus 0)\\
-    &=\pi_{W_{1}}(\rho_{1}(\xi_{\nu_{1}}(i_{M}(m))))\\
-    &=\pi_{W_{1}}((i_{M}(m)))\\
-    &=\pi_{M}(m);
-\end{align*}
-In a similar way we prove $\pi_{P}=\pi_{W} \circ \xi_{\nu_{2}}\circ i_{P}$. Then, we have proved that the cycles $(M,\partial M, \pi_{M},x_{M})$ and $(P,\partial P, \pi_{P},x_{P})$ are related by the cycle $(W,\partial W,\pi_{W}, (\xi_{\nu_{1}}\circ i_{M})!(x_{M}))$, obtaining the transitivity of the desired equivalence pushforward relation.
+following the diagram 
+
+
+% https://q.uiver.app/#q=WzAsOCxbMiwyLCJYIl0sWzIsMSwiTiJdLFsxLDAsIlxcbnVfMSJdLFszLDAsIlxcbnVfMiJdLFswLDAsIkRfMSJdLFs0LDAsIkRfMiJdLFswLDEsIldfMSJdLFs0LDEsIldfMiJdLFs1LDcsIlxccmhvX3tEXzJ9Il0sWzcsMCwiXFxwaV97V18yfSJdLFs2LDAsIlxccGlfe1dfMX0iLDJdLFsxLDAsIlxccGlfTiIsMl0sWzIsMSwiXFxyaG9fe1xcbnVfMX0iXSxbMywxLCJcXHJob197XFxudV8yfSIsMl0sWzIsNCwiaV97XFxudV8xfSIsMl0sWzQsNiwiXFxyaG9fe0RfMX0iLDJdLFszLDUsImlfe1xcbnVfMn0iXSxbMSw2LCJpXzEiLDJdLFsxLDcsImlfMiJdLFsyLDMsIlxccGhpIl1d
+\[\begin{tikzcd}
+	{D_1} & {\nu_1} && {\nu_2} & {D_2} \\
+	{W_1} && N && {W_2} \\
+	&& X
+	\arrow["{\rho_{D_1}}"', from=1-1, to=2-1]
+	\arrow["{i_{\nu_1}}"', from=1-2, to=1-1]
+	\arrow["\phi", from=1-2, to=1-4]
+	\arrow["{\rho_{\nu_1}}", from=1-2, to=2-3]
+	\arrow["{i_{\nu_2}}", from=1-4, to=1-5]
+	\arrow["{\rho_{\nu_2}}"', from=1-4, to=2-3]
+	\arrow["{\rho_{D_2}}", from=1-5, to=2-5]
+	\arrow["{\pi_{W_1}}"', from=2-1, to=3-3]
+	\arrow["{i_1}"', from=2-3, to=2-1]
+	\arrow["{i_2}", from=2-3, to=2-5]
+	\arrow["{\pi_N}"', from=2-3, to=3-3]
+	\arrow["{\pi_{W_2}}", from=2-5, to=3-3]
+\end{tikzcd}\]
+
+
+and  in the same way, if $d'=i_2(\phi(v))\in D_2$, then $\pi_{W}(d'\oplus r)=\pi_{N}\rho_{\nu_2}(\phi(v))=\pi_{N}\rho_{\nu_1}(v)$  $\pi_{W}(d\oplus r)$. Then, we have proved that the cycles $(M,\partial M, \pi_{M},x_{M})$ and $(P,\partial P, \pi_{P},x_{P})$ are related by the cycle $(W,\partial W,\pi_{W}, (\xi_{\nu_{1}}\circ i_{M})!(x_{M}))$, obtaining the transitivity of the desired equivalence pushforward relation.
 \end{enumerate}
 \end{proof}
 
@@ -1342,27 +1380,9 @@ satisfy that $(s\amalg s^{-})!(x_{M}\oplus x_{M})=0\in \mathscr{H}_{\Gamma}^{*}(
 \end{proof}
 
 
-\begin{remark}
-Thom: if $\rho_{E}:E\to M$ is a $\Gamma$-vector bundle, then $(M,\partial M,\pi_{M},x_{M})\sim (S(E),S(E)|_{\partial M}, \pi_{M}\circ\rho_{S(E)})$\textcolor{red}{Redactar mejor y demostrar}.
-
-\textcolor{red}{Revisar con Mario} If $\rho_{E}:E\to M$ is a $\Gamma$-vector bundle, then $(M,\partial M,\pi_{M},x_{M})\sim (D(E),D(E)|_{\partial M}, \pi_{M}\circ\rho_{E}|_{D(E)}, i_{D(E)}^{*}(\xi_{E}!(x_{M})))$, such as the following diagram suggest
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiRSJdLFsyLDAsIkQoRSkiXSxbMSwxLCJNIl0sWzAsMSwiXFx4aV97RX0iXSxbMiwxLCJpX3tEKEUpfSIsMl0sWzEsMywiXFxyaG9fe0V9IiwyXSxbMCwzLCJJZF97TX0iLDJdLFsyLDMsIlxccmhvX3tFfXxfe1MoRSl9Il1d
-\[\begin{tikzcd}
-	M & E & {D(E)} \\
-	& M
-	\arrow["{\xi_{E}}", from=1-1, to=1-2]
-	\arrow["{Id_{M}}"', from=1-1, to=2-2]
-	\arrow["{\rho_{E}}"', from=1-2, to=2-2]
-	\arrow["{i_{D(E)}}"', from=1-3, to=1-2]
-	\arrow["{\rho_{E}|_{D(E)}}", from=1-3, to=2-2]
-\end{tikzcd}\]
-where $i_{D(E)}^{*}\circ \xi_{E}!(x_{M})=\xi_{E}!(x_{M})$ by the fact that $Im(\xi_{E})\subseteq D(E)$.
-
-\end{remark}
-
 
 \begin{defn}
-For a map $g:(X,A)\to (Y,B)$, define $\mathscr{H}^{pf}_{*}(g):=g_{*}$ by 
+For a $\Gamma$-proper continuous map of pairs  $g:(X,A)\to (Y,B)$, define $\mathscr{H}^{pf}_{*}(g):=g_{*}$ by 
     \begin{align*}
         g_{*}:\mathscr{H}_{*}^{pf}(X,A;\Gamma)\to \mathscr{H}_{*}^{pf}(Y,B;\Gamma):[M,\partial M,\pi,x]\mapsto [M,\partial M,g\circ \pi,x].
     \end{align*}
@@ -1400,14 +1420,14 @@ When we have an homotopy between $CW$-spaces maps $X\to Y$, this is regularly id
 
 
 \begin{prop}
-    The pushforward homology satisfies $\Gamma$-homotopy invariance, i.e., if $g_{0}, g_{1}:(X,A)\to (Y,B)$ are proper $\Gamma$-homotopic maps of cocompact proper $\Gamma$-CW pairs, then for all $n\in \mathbb{Z}$, the induced maps are equal 
+    The pushforward homology satisfies $\Gamma$-homotopy invariance, i.e., if $g_{0}, g_{1}:(X,A)\to (Y,B)$ are proper $\Gamma$-homotopic maps of proper $\Gamma$-CW pairs, then for all $n\in \mathbb{Z}$, the induced maps are equal 
     \begin{align*}
         g_{0*}=g_{1*}: \mathscr{H}_{n}^{pf}(X,A;\Gamma)\to \mathscr{H}_{n}^{pf}(Y,B;\Gamma)
     \end{align*}
 \end{prop}
 
 \begin{proof}
-    Given a proper $\Gamma$-homotopy $H:\mathbb{R}\times (X,A)\to (Y,B)$ between $g_{0}$ and $g_{1}$, we have to show that $g_{0*}=g_{1*}$, i.e., for a cycle $[M,\partial M,\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{n}(X,A;\Gamma)$ we need that 
+    Given a $\Gamma$-homotopy $H:\mathbb{R}\times (X,A)\to (Y,B)$ between $g_{0}$ and $g_{1}$, such that $H:X\setminus H^{-1}(B)\to Y\setminus B$ and $H:A\to B$ can be factorizd as $p\circ f$ by a proper $p$,  we have to show that $g_{0*}=g_{1*}$, i.e., for a cycle $[M,\partial M,\pi_{M},x_{M}]\in \mathscr{H}^{pf}_{n}(X,A;\Gamma)$ we need that 
     \begin{align*}
         [M,\partial M, g_{0}\circ\pi_{M}, x_{M}]=[M,\partial M, g_{1}\circ\pi_{M}, x_{M}]\in \mathscr{H}^{pf}_{n}(Y,B;\Gamma).
     \end{align*}
@@ -1428,7 +1448,12 @@ When we have an homotopy between $CW$-spaces maps $X\to Y$, this is regularly id
 	\arrow["{g_{1}\circ \pi_{M}}", hook', from=3-5, to=5-3]
 \end{tikzcd}
 \end{center}
-In this case, we get that $\pi_{M\times\mathbb{R}}\circ f_{i}=g_{i}\circ \pi_{M}$ for $i=0,1$, and for the cohomology element $x_{M}\in \mathscr{H}_{\Gamma}^{n+dim(M)}(M)$, we get that  $f_{0}!(x_{M})=f_{1}!(x_{M})$ in $\mathscr{H}_{\Gamma}^{n+dim(M)+1}(M\times\mathbb{R})$, because considering the proyection $\rho_{M\times\mathbb{R}}:M\times\mathbb{R}\to M$, then $$(\rho_{M\times\mathbb{R}}\circ f_1)! = (\rho_{M\times\mathbb{R}}\circ f_2)!$$ where by the pushforward structure, $\rho_{M\times\mathbb{R}}!$ is an isomorphism, and by functoriality $f_1!(x)=f_2!(x)$.    
+In this case, we get that $\pi_{M\times\mathbb{R}}\circ f_{i}=g_{i}\circ \pi_{M}$ for $i=0,1$, and the maps
+\begin{align*}
+H\circ (\pi_M\times Id)|_{\partial M\times \mathbb{R}}&=H|_{A}\circ (\pi_M\times Id)|_{\partial M \times \mathbb{R}}\\
+H\circ (\pi_M\times Id)|_{([H\circ (\pi_M\times Id)]^{-1}(B))^{c}}&=H|_{[H^{-1}(B)]^{c}}\circ (\pi_M\times Id)|_{([H\circ (\pi_M\times Id)]^{-1}(B))^{c}}
+\end{align*}
+hold the condition of being factorized by proper maps. For the cohomology element $x_{M}\in \mathscr{H}_{\Gamma}^{n+dim(M)}(M)$, we get that  $$f_{0}!(x_{M})=f_{1}!(x_{M})$$ in $\mathscr{H}_{\Gamma}^{n+dim(M)+1}(M\times\mathbb{R}),$ by considering the proyection $\rho_{M\times\mathbb{R}}:M\times\mathbb{R}\to M$, then $$(\rho_{M\times\mathbb{R}}\circ f_1)! = (\rho_{M\times\mathbb{R}}\circ f_2)!$$ where by the pushforward structure, Definition \ref{pushforward definition}, $\rho_{M\times\mathbb{R}}!$ is an isomorphism and by functoriality $f_1!(x)=f_2!(x)$ \textcolor{red}{Se hace necesario que la Homotopia tambien se trate por factorizacion $p\circ f$ tanto para el cerrado como para el complemento, pues si se pide solo propia no es suficiente para argumentar $H$ restringido a $(H\circ (\pi_M\times Id))^{-1}(B)$ sea propia}.    
 \end{proof}
 
 In order to prove the long exact sequence condition, previously we discuss the following remark.
@@ -1537,7 +1562,7 @@ By exactness, we have that there exist $y\in \mathscr{H}_{\Gamma}^{*-1}(\partial
     &=[M, \emptyset,\pi_{W}\circ f_{M},x_{M}]\\
     &=[M, \emptyset,\pi_{M},x_{M}],
 \end{align*}
-where: the first one is the definition of $j_{*}$; second is by the fact that $j\circ \pi_{W}|_{\partial W}$ is homotopic to $\pi_{W}\circ l$ by the the homotopy between $i_{\partial W}:\partial W\to W$ and $l:\partial W\to W^{0}\subset W$; third one is by Remark \ref{relation 1} aplied to the map $l:W^{0}\hookrightarrow W$; fourth is by $l!=\partial$; fifth is $\partial(y)=f_{M}!(x_{M})$; sixth is Remark \ref{relation 1} applied to $f^{0}_{M}$ and the fact that $\pi_{W}|_{W^{0}}\circ f^{0}_{M}=\pi_{W}\circ f_{M}$; and the last one is $\pi_{M}=\pi_{W}\circ f_{M}$.
+where: the first one is the definition of $j_{*}$; second is by the fact that $j\circ \pi_{W}|_{\partial W}$ is homotopic to $j\circ \pi_{W}\circ l$ by the the homotopy between $i_{\partial W}:\partial W\to W$ and $l:\partial W\to W^{0}\subset W$, this homotopy is  composed with $\pi_W$ which is factorized by a proper map, and the compose $j\circ \pi_W=\pi_W$ (and does no change anything in the inverse image of compact sets because $j:A\to X$ is a proper map) ; third one is by Remark \ref{relation 1} aplied to the map $l:W^{0}\hookrightarrow W$; fourth is by $l!=\partial$; fifth is $\partial(y)=f_{M}!(x_{M})$; sixth is Remark \ref{relation 1} applied to $f^{0}_{M}$ and the fact that $\pi_{W}|_{W^{0}}\circ f^{0}_{M}=\pi_{W}\circ f_{M}$; and the last one is $\pi_{M}=\pi_{W}\circ f_{M}$.
 
     \item $Ker(i_{*})\supseteq Im(j_{*})$: We have to show that for a cycle $[M,\emptyset, \pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(A,\emptyset;\Gamma)$, we have that $i_{*}(j_{*}([M,\emptyset, \pi_{M},x_{M}]))=0$. We have that
     $$i_{*}(j_{*}([M,\emptyset, \pi_{M},x_{M}]))=[M,\emptyset, j\circ \pi_{M},x_{M}]\in \mathscr{H}_{*}^{pf}(X,A;\Gamma).$$
@@ -1586,12 +1611,7 @@ such that $f!(r_{\partial}(x_{M}))=0$ and $W$ a manifold without boundary. By Le
 \begin{align*}
     T:=(D_{M}\oplus \mathbb{R})_{\nu_{M}\oplus \mathbb{R}}\#_{\nu_{W}\oplus \mathbb{R}} (D_{W}\oplus\mathbb{R}),
 \end{align*} 
-We claim that
-\begin{enumerate}
-\item $\partial T$ is the identification of $\partial (D_{M})\cong D_{M}|_{\partial M}$ \textcolor{red}{pendiente}
-\end{enumerate}
-
-We have $\xi_{D_{M}\oplus \mathbb{R}}\circ i_{M^{0}}\circ l:\partial M \to D_{M}$ and $\xi_{D_{W}\oplus \mathbb{R}}\circ f:\partial M \to D_{W}$ are equals in $T$, i.e., composing with $i_{D_{M}\oplus \mathbb{R}}$ and $i_{D_{W}\oplus \mathbb{R}}$ respectively by Remark \ref{Espacio joint}.
+with $\partial T$ is the identification of $\partial (D_{M})\cong D_{M}|_{\partial M}$. We have $\xi_{D_{M}\oplus \mathbb{R}}\circ i_{M^{0}}\circ l:\partial M \to D_{M}$ and $\xi_{D_{W}\oplus \mathbb{R}}\circ f:\partial M \to D_{W}$ are equals in $T$, i.e., composing with $i_{D_{M}\oplus \mathbb{R}}$ and $i_{D_{W}\oplus \mathbb{R}}$ respectively by Remark \ref{Espacio joint}.
 
 
 With this, defining $\iota:M\to T$ as the natural embedding $i_{D_{M}\times\{0\}}\circ \xi_{D_{M}\oplus \mathbb{R}}$, and $\pi_{T}:T\to X$ is defined by $\pi_{T}(a)=\pi_{M}\circ\rho_{D_{M}\oplus \mathbb{R}}$ if $a\in D_{M}\oplus \mathbb{R}$, or $\pi_{T}(a)=\pi_{W}\circ\rho_{D_{W}\oplus \mathbb{R}}$ if $a\in D_{M}\oplus \mathbb{R}$, such as in Proposition \ref{Equivalence relation 1} obtaining in the same way that $\pi_{T}\circ \iota = \pi_{M}$. We get that $\iota\circ i_{\partial M} = i_{D_{W}\times\{0\}}\circ \xi_{D_{W}\oplus \mathbb{R}}\circ f$, where identifying $i_{\partial T}=i_{D_{W}\times\{0\}}$, obtaining the commutative diagram
@@ -1693,35 +1713,29 @@ where the first equality is by definition of $\partial$; second equality is by $
 
 
 
-$---------------------------------------------------$
+%$---------------------------------------------------$
 
-\begin{remark}
-Note that with this excision theorem we can consider the map $i_*$ with $i:X\setminus A\to X$, such that in the long exact sequence
+%\begin{remark}
+%Note that with this excision theorem we can consider the map $i_*$ with $i:X\setminus A\to X$, such that in the long exact sequence
 % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7SH1feyp9XntwZn0oWFxcc2V0bWludXMgQTsgXFxHYW1tYSkiXSxbMSwwLCJcXG1hdGhzY3J7SH1feyp9XntwZn0oWCxBOyBcXEdhbW1hKSJdLFswLDEsImlfKiJdXQ==
-\[\begin{tikzcd}
-	{\mathscr{H}_{*}^{pf}(X\setminus A; \Gamma)} & {\mathscr{H}_{*}^{pf}(X,A; \Gamma),}
-	\arrow["{i_*}", from=1-1, to=1-2]
-\end{tikzcd}\]
-then, we cannot allow for a cycle $[M,\partial M,\pi_M,x_M]\in \mathscr{H}_{*}^{pf}(X,A; \Gamma)$,  that $[M\setminus \partial M,\emptyset,\pi_M,x_M]$ being a cycle over $(X\setminus A, \emptyset)$
+%\[\begin{tikzcd}
+%	{\mathscr{H}_{*}^{pf}(X\setminus A; \Gamma)} & {\mathscr{H}_{*}^{pf}(X,A; \Gamma),}
+%	\arrow["{i_*}", from=1-1, to=1-2]
+%\end{tikzcd}\]
+%then, we cannot allow for a cycle $[M,\partial M,\pi_M,x_M]\in \mathscr{H}_{*}^{pf}(X,A; \Gamma)$,  that $[M\setminus \partial M,\emptyset,\pi_M,x_M]$ being a cycle over $(X\setminus A, \emptyset)$
 % https://q.uiver.app/#q=WzAsNCxbMCwxLCJYXFxzZXRtaW51cyBBIl0sWzEsMSwiWCJdLFsxLDAsIk0iXSxbMCwwLCJNXntcXGNpcmN9Il0sWzAsMSwiaSIsMl0sWzMsMiwiaV97TVxcc2V0bWludXMgXFxwYXJ0aWFsIE19Il0sWzMsMCwiXFxwaV9NfF97TV57XFxjaXJjfX0iLDJdLFsyLDEsIlxccGlfTSJdXQ==
-\[\begin{tikzcd}
-	{M^{\circ}} & M \\
-	{X\setminus A} & X
-	\arrow["{i_{M\setminus \partial M}}", from=1-1, to=1-2]
-	\arrow["{\pi_M|_{M^{\circ}}}"', from=1-1, to=2-1]
-	\arrow["{\pi_M}", from=1-2, to=2-2]
-	\arrow["i"', from=2-1, to=2-2]
-\end{tikzcd}\]
-this because $\pi_M|_{M\setminus \partial M}:M\setminus \partial M\to X\setminus A$ is no a proper map.
-\end{remark}
+%\[\begin{tikzcd}
+%	{M^{\circ}} & M \\
+%	{X\setminus A} & X
+%	\arrow["{i_{M\setminus \partial M}}", from=1-1, to=1-2]
+%	\arrow["{\pi_M|_{M^{\circ}}}"', from=1-1, to=2-1]
+%	\arrow["{\pi_M}", from=1-2, to=2-2]
+%	\arrow["i"', from=2-1, to=2-2]
+%\end{tikzcd}\]
+%this because $\pi_M|_{M\setminus \partial M}:M\setminus \partial %M\to X\setminus A$ is no a proper map.
+%\end{remark}
 
 
-
-$------------------------------$
-
-
-
-$------------------------------$
 
 
 
