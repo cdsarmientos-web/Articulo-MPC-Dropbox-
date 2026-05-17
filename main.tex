@@ -475,37 +475,22 @@ for all $i,j\in\mathbb{Z}$, which are compatible with the boundary maps.
 \end{defn}
 
 %\varinjlim and \varprojlim
+
+
+\begin{remark}
+The cohomological theories that we will threat are compactly suported cohomology theories, which mean that for not compact spaces, their cohomology will be computed as the relative cohomology of a releated compact space.
+\end{remark}
+
+
+
 \begin{defn}\label{thom}
     For a $d$-dimensional real $\Gamma$-vector bundle  $E\to X$ over a proper $\Gamma$-space $X$, a $\mathscr{H}_{\Gamma}$-orientation for $E$ is a class $\tau\in \mathscr{H}_{\Gamma}^{d}(E)$ such that for each proper $\Gamma$-map $f:Y\to X$, multiplication with $f^{*}\tau \in \mathscr{H}_{\Gamma}^{d}(f^{*}E)$ induces an isomorphism (refered as Thom-isomorphism)
     \begin{align*}
         -\otimes \tau:\mathscr{H}_{\Gamma}^{*}(Y)\to \mathscr{H}_{\Gamma}^{*+d}(f^{*}E).
     \end{align*}
-    We say that a smooth manifold with boundary $M$ is a $\mathscr{H}_{\Gamma}$-orientable if $TM$ is $\mathscr{H}_{\Gamma}$-orientable. When is chosen a fixed $\mathscr{H}_{\Gamma}$-orientation for a real $\Gamma$-vector bundle (or particularly for a manifold), we say that it is a $\mathscr{H}_{\Gamma}$-oriented bundle (or manifold) \textcolor{red}{Como arregla Luck la orientacion para pareja. Definir cohmologia de fibrado}.
+    We say that a smooth manifold with boundary $M$ is a $\mathscr{H}_{\Gamma}$-orientable if $TM$ is $\mathscr{H}_{\Gamma}$-orientable. When is chosen a fixed $\mathscr{H}_{\Gamma}$-orientation for a real $\Gamma$-vector bundle (or particularly for a manifold), we say that it is a $\mathscr{H}_{\Gamma}$-oriented bundle (or manifold) \textcolor{red}{Como arregla Luck la orientacion para pareja}.
 \end{defn}
 
-
-    
-\begin{defn}\label{orientacion compacta}\textcolor{blue}{Nueva definicion para lograr compacidad} For a $d$-dimensional real $\Gamma$-vector bundle  $E\to X$ over a proper $\Gamma$-space $X$, a $\mathscr{H}_{\Gamma}$-orientation for $E$ is a class \textcolor{blue}{$\tau\in \mathscr{H}_{\Gamma}^{d}(S(E\oplus \mathbb{R}))$} such that for each proper $\Gamma$-map $f:Y\to X$, 
-
-
-% https://q.uiver.app/#q=WzAsNSxbMCwxLCJZIl0sWzEsMSwiWCJdLFsxLDAsIlMoRVxcb3BsdXMgXFxtYXRoYmJ7Un0pIl0sWzIsMCwiRVxcb3BsdXMgXFxtYXRoYmJ7Un0iXSxbMCwwLCJmXnsqfVMoRVxcb3BsdXMgXFxtYXRoYmJ7Un0pIl0sWzAsMSwiZiJdLFsyLDFdLFsyLDMsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsMV0sWzQsMF1d
-\[\begin{tikzcd}
-	{f^{*}S(E\oplus \mathbb{R})} & {S(E\oplus \mathbb{R})} & {E\oplus \mathbb{R}} \\
-	Y & X
-	\arrow[from=1-1, to=2-1]
-	\arrow[hook, from=1-2, to=1-3]
-	\arrow[from=1-2, to=2-2]
-	\arrow[from=1-3, to=2-2]
-	\arrow["f", from=2-1, to=2-2]
-\end{tikzcd}\]
-\noindent multiplication with $f^{*}\tau \in \mathscr{H}_{\Gamma}^{d}(f^{*}S(E\oplus \mathbb{R}))$ induces an isomorphism (refered as Thom-isomorphism)
-    \begin{align*}
-        -\otimes \tau:\mathscr{H}_{\Gamma}^{*}(Y)\to \mathscr{H}_{\Gamma}^{*+d}(f^{*}S(E\oplus \mathbb{R})).
-    \end{align*}
-    We say that a smooth manifold with boundary $M$ is a $\mathscr{H}_{\Gamma}$-orientable if $TM$ is $\mathscr{H}_{\Gamma}$-orientable. When is chosen a fixed $\mathscr{H}_{\Gamma}$-orientation for a real $\Gamma$-vector bundle (or particularly for a manifold), we say that it is a $\mathscr{H}_{\Gamma}$-oriented bundle (or manifold).
-    \end{defn}
-
-\textcolor{red}{Decir que usamos teoria de cohomologia de soporte compacto. Ojala incluir cita para indicar que significa esto}
 
 \begin{remark}
     Note that in conditions of Definition \ref{thom}, if we run the multiplicative structure in order to get the map by multiplication of $\tau$, we need that 
@@ -545,15 +530,15 @@ We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, 
         \item If $F:\mathbb{R}\times M\to N$ is a smooth $\Gamma$-equivariant orientation preserving map,  then $F(0,-)!=F(1,-)!$.
         \item  If $E\to M$ is a smooth real $\mathscr{H}_{\Gamma}$-oriented $\Gamma$-vector bundle over a manifold with boundary $M$, then if $s:M\to E$ is the zero section, the pushforward map 
         \begin{align*}
-            (s\oplus 1)!:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+dim(E)-dim(M)}(S(E\oplus\mathbb{R}))
+            s!:\mathscr{H}_{\Gamma}^{*}(M)\to \mathscr{H}_{\Gamma}^{*+dim(E)-dim(M)}(E)
         \end{align*}
-        is the Thom isomorphism described in Definition \ref{thom} \textcolor{blue}{Note que no cambiamos la dimension del codominio, pues dim(S(E+R))=dim(E)}.
-        \item Let $N$ be a manifold with boundary and consider $N^{0}=N\setminus\partial N$. If $i^{0}:N^{0}\to N$ the inclusion, and if $U$ is an open collar around $\partial N$ in $N$ and let $l:\partial N\to U\to N^0$, the inclusion through the collar, then the pushforwards $i^0!$ and $l!$ corresponds to the maps appearing in the long exact sequence of the pair $(N,\partial N)$,
+        is the Thom isomorphism described in Definition \ref{thom}. 
+              \item Let $N$ be a manifold with boundary and consider $N^{0}=N\setminus\partial N$. If $i^{0}:N^{0}\to N$ the inclusion, and if $U$ is an open collar around $\partial N$ in $N$ and let $l:\partial N\to U\to N^0$, the inclusion through the collar, then the pushforwards $i^0!$ and $l!$ corresponds to the maps appearing in the long exact sequence of the pair $(N,\partial N)$,
     \begin{align*} 
     \cdots\to\mathscr{H}_{\Gamma}^{*-1}(\partial N)\xrightarrow{l!}\mathscr{H}_{\Gamma}^*(N^0)\xrightarrow{i^0!}\mathscr{H}_{\Gamma}^*(N)\to\cdots
     \end{align*}
     Here we are using the identification $\mathscr{H}_{\Gamma}^*(N^0)\cong\mathscr{H}_\Gamma^*(N,\partial N)$. Then, we mean that for the long exact sequence for the maps $i:\partial N \to N$ and $j:N\to (N,\partial N)$, we get that $l!=\delta^{*-1}$ and $i^{0}!=j^{*}$.
-    \item For any $f:(M,\partial M)\to (N,\partial N)$, we had that for the commutative diagram 
+    \item For any $f:(M,\partial M)\to (N,\partial N)$, we had that for the \textcolor{red}{up to homotopy} commutative diagram 
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiTiJdLFswLDEsIlxccGFydGlhbCBNIl0sWzEsMSwiXFxwYXJ0aWFsIE4iXSxbMiwzLCJmfF97XFxwYXJ0aWFsIE19IiwyXSxbMiwwLCJpX3tcXHBhcnRpYWwgTX0iXSxbMywxLCJpX3tcXHBhcnRpYWwgTn0iLDJdLFswLDEsImYiXV0=
 \[\begin{tikzcd}
 	M & N \\
@@ -564,6 +549,19 @@ We denote vector dimension of real smooth vector bundles by $dim_{\mathbb{R}}$, 
 	\arrow["{i_{\partial N}}"', from=2-2, to=1-2]
 \end{tikzcd}\]
 it is satisfied that $i_{\partial N}^{*}\circ f!=(f|_{\partial M})!\circ i_{\partial M}^{*}$.
+
+\item \textcolor{red}{Generalization of the Previous Item} Let $f:C_1\to N$ and $g:C_2\to N$ continuous maps form closet spaces $C_1$ and $C_2$. Then for the fiber product
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDXzEiXSxbMSwwLCJOIl0sWzEsMSwiQ18yIl0sWzAsMSwiQ18xIFxcdGltZXNfe2YsZ31DXzIiXSxbMCwxLCJmIl0sWzIsMSwiZyIsMl0sWzMsMiwiXFxwaV8yIiwyXSxbMywwLCJcXHBpXzEiXV0=
+\[\begin{tikzcd}
+	{C_1} & N \\
+	{C_1 \times_{f,g}C_2} & {C_2}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["{\pi_1}", from=2-1, to=1-1]
+	\arrow["{\pi_2}"', from=2-1, to=2-2]
+	\arrow["g"', from=2-2, to=1-2]
+\end{tikzcd}\]
+we get that $\pi_2!\circ (\pi_1)^*=g^*\circ f!$.
+
         \item If $f:M_{1}\to N_{1}$ and $g:M_{2}\to N_{2}$, then for the map
 \begin{align*}
 (f\sqcup g):M_{1}\sqcup M_{2}\to N_{1}\sqcup N_{2},
@@ -788,20 +786,6 @@ where, $\phi_{M}=\xi_{E^{W}}\circ f_{M}$, $\phi_{N}=\eta_{f_{N}}\circ \xi_{V}$ a
 \end{itemize}
 \end{proof}
 
-\begin{remark}\label{embedding to compact}
-Note that \textcolor{blue}{we can consider the embedding obtained in Lemma \ref{EM-Embedding} as an embedding $N\to W'$, with $W':=S(TE^{W}\oplus\mathbb{R})$ a compact manifold}, as the following commutative diagram induce
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJOIl0sWzEsMCwiRV57V30iXSxbMiwwLCJTKFRFXntXfVxcb3BsdXNcXG1hdGhiYntSfSkiXSxbMSwxLCJYIl0sWzAsMSwiXFxwaGlfe059Il0sWzEsMiwic1xcb3BsdXMxIl0sWzAsMywiXFxwaV97Tn0iLDJdLFsxLDMsIlxccGlfe0Vee1d9fSIsMl0sWzIsMywiXFxwaV97RV57V319XFxjaXJjXFxyaG9fe1RFXntXfX1cXGNpcmMgXFxwaV97MX0iXV0=
-\[\begin{tikzcd}
-	N & {E^{W}} & {W'} \\
-	& X
-	\arrow["{\phi_{N}}", from=1-1, to=1-2]
-	\arrow["{\pi_{N}}"', from=1-1, to=2-2]
-	\arrow["{s\oplus1}", from=1-2, to=1-3]
-	\arrow["{\pi_{E^{W}}}"', from=1-2, to=2-2]
-	\arrow["{\pi_{E^{W}}\circ\rho_{TE^{W}}\circ \pi_{1}}", from=1-3, to=2-2]
-\end{tikzcd}\]
-\noindent where $(s\oplus 1)\circ \phi_{N}$ is a composition of $\Gamma$-embeddings, and $$\rho_{TE^{W}}\circ \pi_{1}\circ(s\oplus 1)=id_{E^{W}}.$$ 
-\end{remark}
 
 
 \begin{lemma}\label{lema normales isomorfos}
@@ -822,7 +806,7 @@ Consider the tangent vector bundles $TW_{k}\to W_{k}$ for $k=1,2 $ and the uniqu
 	\arrow["{i_{2}}"', from=2-3, to=2-4]
 	\arrow["{a_{2}}"', from=2-4, to=2-5]
 \end{tikzcd}\]
-\textcolor{blue}{(We have that $Z$ is the universal proper $\Gamma$-CW complex (c.f. \cite{MV03}, p. 6) and, by Remark \ref{embedding to compact} we can consider $W_{i}$ as a compact proper $\Gamma$-manifold, making possible the application of Lemma \ref{integral lemma})} If we consider the $\Gamma$-vector bundles $D_{1}:=a_{1}^{*}E_{2}\oplus C_{1}$ and $D_{2}:=a_{2}^{*}E_{1}\oplus C_{2}$ over $W_{1}$ and $W_{2}$, respectively. With this in mind, denoting $E:=E_{1}\oplus E_{2}$, we note that:
+We have that $Z$ is the universal proper $\Gamma$-CW complex (c.f. \cite{MV03}, p. 6) and, by \cite{} we can consider $W_{i}$ as a compact proper $\Gamma$-manifold \textcolor{red}{Falta referencia de esto}, making possible the application of Lemma \ref{integral lemma}. If we consider the $\Gamma$-vector bundles $D_{1}:=a_{1}^{*}E_{2}\oplus C_{1}$ and $D_{2}:=a_{2}^{*}E_{1}\oplus C_{2}$ over $W_{1}$ and $W_{2}$, respectively. With this in mind, denoting $E:=E_{1}\oplus E_{2}$, we note that:
 \begin{enumerate}
     \item $TD_{1}|_{N}\cong TD_{2}|_{N}$: by one hand we have $TD_{1}\cong TW_{1}\oplus D_{1}$ by Remark \ref{Tangente de un fibrado vector}, and by the other hand \begin{align*}
         (a_{1}\circ i_{1})^{*}E&=i_{1}^{*}(a_{1}^{*}E_{1}\oplus a_{1}^{*}E_{2})\\
@@ -1745,7 +1729,20 @@ If $[M,\partial M, \pi_{M}, x_{M}]\in \mathscr{H}^{pf}_*(X,A;\Gamma)$ then, ther
 \end{lemma}
 \begin{proof}
 Consider $l:\partial M\to C^{0}$ a $\Gamma$-embedding given by an open collar $C^{0}\subseteq M^{0}$, and define $$W:=DNC(M^{0},C^{0})= C^{0}\times \{0\}\cup M^{0}\times (0,1),$$
-which is a smooth manifold with $\partial W = C^{0}\times \{0\}$. We can extend the map $l\times \{0\}:\partial \to \partial W$ to a map $\gamma: M \to W$, then we get the following diagram
+which is a smooth manifold with $\partial W = C^{0}\times \{0\}$. We can extend the map $l\times \{0\}:\partial \to \partial W$ to a map $\gamma: M \to W$, as follows
+\begin{enumerate}
+\item We extend the map $l:\partial M \to C^{0}$ to a map $\tilde{l}:M\to M^{0}$ in such a way that 
+\begin{enumerate}
+\item $\tilde{l}|_{\partial M}=l$ and $\tilde{l}|_{C^{c}}=Id_M|_{C^{c}}$.
+\item There exist $\widehat{l}:M^{0}\to M$ such that $\widehat{l}\circ\tilde{l}$ is homotopic to $Id_M$.
+\end{enumerate}
+\item Considering a map $\varphi:M\to [0,1]$ such that $\varphi^{-1}(0)=\partial M$ (which exists by the perfect normality of $M$), we construct $$\Gamma:M\to W: m\mapsto \Gamma(m)=(\tilde{l}(m),\varphi(m)).$$ 
+\end{enumerate}
+
+
+
+
+then we get the following diagram
 %% https://q.uiver.app/#q=WzAsNixbMCwwLCJNIl0sWzEsMCwiVyJdLFswLDEsIlxccGFydGlhbCBNIl0sWzEsMSwiQ+KBsFxcdGltZXMgXFx7MFxcfSJdLFsyLDAsIk1eezB9XFx0aW1lc1xcezEvMlxcfSJdLFsyLDEsIk3igbBcXHRpbWVzXFx7MFxcfSJdLFswLDEsIlxcZ2FtbWEiXSxbMiwwLCJpX3tcXHBhcnRpYWwgTX0iXSxbMywxLCJpX3tcXHBhcnRpYWwgV30iXSxbMiwzLCJsXFx0aW1lcyBcXHswXFx9IiwyXSxbNCwxLCJpX3tNXnswfVxcdGltZXNcXHsxLzJcXH19IiwyXSxbMyw1LCJpX3tDXnswfX1ee01eezB9fVxcdGltZXMgSWRfe1xcezBcXH19IiwyXSxbNSw0LCJJZF97TV57MH19XFx0aW1lcyBcXHsxLzJcXH0iLDJdXQ==
 \[\begin{tikzcd}
 	M & W & {M^{0}\times\{1/2\}} \\
@@ -1771,20 +1768,18 @@ which is a smooth manifold with $\partial W = C^{0}\times \{0\}$. We can extend 
 \end{tikzcd}\]
 \item Definition \ref{pushforward definition} says that $i_{\partial W}^{*}\circ \gamma!=(l\times \{0\})!\circ i_{\partial M}^{*}$ by the left square and 
 $$[(i_{C^{0}}^{M^{0}}\times Id_{\{0\}})\circ (l\times \{0\})]!\circ i_{\partial M}^{*}=(i_{M^{0}\times\{1/2\}}\circ Id_{M^{0}}\times \{1/2\})^{*}\circ \gamma!$$
-by the external rectangle. \textcolor{red}{Esta afirmacion depende de que permitamos aue el axioma de restricciones no se apliaue unicamanta a restringir a la frontera, sino a cualesauiera par de restricciones y salvo homotopia.}
-\item We have that $(i^{M}_{M^{0}}\circ l)!\circ i_{\partial M}^{*}=0$ by the long exact sequence of the pair $(M,\partial M)$. Since 
-
-we get the computation
+by the external rectangle. \textcolor{red}{Esta afirmacion depende de que permitamos que el axioma de restricciones no se aplique unicamente a restringir a la frontera, sino a cualesquiera par de restricciones y salvo homotopia.}
+\item We have that $(i^{M}_{M^{0}}\circ l)!\circ i_{\partial M}^{*}=0$ by the long exact sequence of the pair $(M,\partial M)$. Then, we get the computation
 \begin{align*}
 i_{\partial W}^{*}\circ \gamma!(x_M)
 &= (i_{M^{0}\times\{1/2\}}\circ Id_{M^{0}}\times \{1/2\}\circ i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ \gamma!(x_M)\\
 &=  (i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ(i_{M^{0}\times\{1/2\}}\circ Id_{M^{0}}\times \{1/2\})^{*}\circ \gamma!(x_M)\\
 &=  (i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ [(i_{C^{0}}^{M^{0}}\times Id_{\{0\}})\circ (l\times \{0\})]!\circ i_{\partial M}^{*}(x_M)\\
-&=  (i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ 0\circ i_{\partial M}^{*}(x_M)=0
+&=  (i_{C^{0}}^{M^{0}}\times Id_{\{0\}})^{*}\circ 0(x_M)=0
 \end{align*}
 \end{itemize}
-Therefore, $\gamma!(x_M)\in Ker(i_{\partial W}^{*})$, and by the long exact sequence of the pair $(W,\partial W)$, there exist an element $\tilde{x}_{M}\in \mathscr{H}(W,\partial W)$ such that $i_{W^{0}}!(\tilde{x}_{M})=\gamma!(x_M).$
-Defining $x^{0}_{M}:=\gamma!(x_M)$, by Remark \ref{relation 1} applied to $\gamma:M\to W$ we get
+Therefore, $\gamma!(x_M)\in Ker(i_{\partial W}^{*})$, and by the long exact sequence of the pair $(W,\partial W)$, there exist an element $\tilde{x}_{W}\in \mathscr{H}(W,\partial W)$ such that $i_{W^{0}}!(\tilde{x}_{W})=\gamma!(x_M).$
+Defining $x^{0}_{M}:=\gamma!(x_M)$, and $\pi_W:W\to X$ is defined  for $(m,t)\in W\subseteq M\times [0,1)$ by $$\pi_W((m,t))=\pi_M\circ \widehat{l}(m)$$ by Remark \ref{relation 1} applied to $\gamma:M\to W$ we get
 \begin{align*}
 [M,\partial M, \pi_{M}, x_{M}]=[W,\partial W, \pi_{W},x^{0}_{W}].
 \end{align*}
@@ -1822,8 +1817,400 @@ where fourth equality is given by Remark \ref{relation 1} applied to $i_{M^{0}}^
 \end{itemize}
 \end{proof}
 
-
 \section{Applications}
+
+\subsection{Pushforward for manifolds without boundary}
+In this section we are going to define a pushforward structure using the cohomology theory of spaces using the $K$-theory of $C^*$-algebras of groupoids. The following are some groupoids that we will have in mind in order to determine the pushforward structures of the cohomology theories that are of our interest.
+\begin{enumerate}
+\item We can consider a smooth manifold $M$ such as a groupoid $M\rightrightarrows_{Id}^{Id} M$ with $s=t=Id_M:M\to M$.
+\item If $\rho: E\to M$ is a vector bundle over a smooth manifold $E\to M$, then $E\rightrightarrows M$ with $s=t=\rho$.  A particular case that we will use is that if $\rho_E:E\to X$ and $\rho_F:F\to X$ are vector bundles over $X$, then we will consider the groupoid $E\oplus F\rightrightarrows F$, where $\pi_2:E\oplus F\to F$ is a vector bundle by the pull back
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHJob197Rn1eKkVcXGNvbmcgRVxcb3BsdXMgRiJdLFswLDEsIkYiXSxbMSwwLCJFIl0sWzEsMSwiWCJdLFsyLDMsIlxccmhvX0UiXSxbMSwzLCJcXHJob19GIiwyXSxbMCwyLCJcXHBpXzEiXSxbMCwxLCJcXHJob19GXiooXFxyaG9fRSlcXGNvbmcgXFxwaV8yIiwyXV0=
+\[\begin{tikzcd}
+	{\rho_{F}^*E\cong E\oplus F} & E \\
+	F & X
+	\arrow["{\pi_1}", from=1-1, to=1-2]
+	\arrow["{\rho_F^*(\rho_E)\cong \pi_2}"', from=1-1, to=2-1]
+	\arrow["{\rho_E}", from=1-2, to=2-2]
+	\arrow["{\rho_F}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+where the groupoid operation is given by 
+$$(v\oplus w)(\tilde{v}\oplus w)=v+\tilde{v}\oplus w, \ \ \ \ (v\oplus w)^{-1}=-v\oplus w.$$
+\item If $f:M\to N$ is a smooth map between smooth manifolds $M^{2}\times N\rightrightarrows M\times N$ with $s((x,y),n)=(y,n)$;   $t((x,y),n)=(x,n)$; $$((x,y),n)((y,z),n)=((x,z),n)$$
+\item Applying the normal functor to the groupoid $M^{2}\times N\rightrightarrows M\times N$ with the embeddings $(\Delta_M\times f):M\to M^{2}\times N$ in the morpshism level and $(Id_M\times f):M\to M\times N$, we get the groupoid
+$$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)$$
+ 
+\item Applying the deformation to the normal cone functor to the groupoid $M^{2}\times N\rightrightarrows M\times N$ we get $$DNC(M^{2}\times N,M)\rightrightarrows DNC(M\times N,M)$$
+
+
+\item If $f:M\to N$ is a smooth map, then consider the groupoid $$TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN.$$ This is an example of the groupoid $E\ltimes F\rightrightarrows_{}^{}F$ with $E$ and $F$ being vector bundles over $X$
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJFIl0sWzEsMCwiRiJdLFsxLDEsIlgiXSxbMCwxLCJcXHZhcnBoaSJdLFsxLDIsIlxccmhvX0YiXSxbMCwyLCJcXHJob19FIiwyXV0=
+\[\begin{tikzcd}
+	E & F \\
+	& X
+	\arrow["\varphi", from=1-1, to=1-2]
+	\arrow["{\rho_E}"', from=1-1, to=2-2]
+	\arrow["{\rho_F}", from=1-2, to=2-2]
+\end{tikzcd}\]
+where there is an action of $E$ over $F$ (in fibers) defined by $e\cdot f:= \varphi(e)+ f\in F$ for $e\in E$ and $f\in F$. Then, for the groupoid $E\ltimes F\rightrightarrows_{}^{}F$, we consider the structure:
+\begin{itemize}
+\item $\mathcal{G} = E\ltimes F= E\oplus F$ and $\mathcal{G}^{0}= F$.
+\item $s(e\oplus f) = f$ and $t(e\oplus f)= e\cdot f$. 
+\item If $s(e_1\oplus f_1)=t(e_2\oplus f_2)$, that means $f_1=e_2\cdot f$ (and therefore all of the elements are in the fibers of the same $x\in X$), then $$\mu((e_1\oplus f_1),(e_2\oplus f_2)) = (e_1+e_2)\oplus f_2.$$
+\item $i(f)=0\oplus f$. 
+\item $Inv(e\oplus f)= -e\oplus e\cdot f$.
+\end{itemize}
+\end{enumerate}
+
+
+
+
+\begin{defn}
+The $C^*$-algebra of a topological groupoid $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, which is denoted by  $C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ or $C^{*}(\mathcal{G})$ when the groupoid structure used is clear, as follows 
+\begin{enumerate}
+\item Consider the set 
+$$C^{\infty}_c(\mathcal{G})=\{f:\mathcal{G}\to \mathbb{C}|f \text{ is smooth and }\overline{supp(f)} \text{ is compact} \}$$
+\item Consider the maximal norm $|| f ||_{max}=\sup_{\pi}||\pi(f)||_{B(\mathcal{H})} $ for $f\in C^{\infty}_c(\mathcal{G})$, where $\pi$ is any representation in a Hilbert space, that is
+$$\pi:C^{\infty}_c(\mathcal{G})\to B(\mathcal{H})$$
+and define $$C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0}):=\overline{C^{\infty}_c(\mathcal{G})}_{||\cdot||_{max}}$$
+\item The product that we will consider is giving by convolution as follows: if $f,g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, then $f*g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ with 
+$$(f*g)(\gamma):=\int_{\gamma_1\circ \gamma_2=\gamma}f(\gamma_1)g(\gamma_2) d\mu=\int_{\gamma_2\in\mathcal{G}_{s(\gamma)}}f(\gamma\circ \gamma_2^{-1})g(\gamma_2) d\mu$$
+where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar de \cite{Will19}}.
+
+\end{enumerate}
+\end{defn}
+
+
+\begin{remark}
+We can consider the completion by the reduced norm too, but both completion coincides in the scope of amenability, which will be the back ground of our work. \textcolor{red}{Cita sobre amenabilidad y compleciones}
+\end{remark}
+
+
+
+
+
+Now, we are going to present a sequence of arguments in order to construct a morphism $f!:K^*(M)\to K^{*+k}(N)$ in Definition \ref{Pushforward definition K-theory} when a smooth proper map $f:M\to N$ between smooth manifolds without boundary is given. 
+
+\vspace{0.3cm}
+
+First, we can interpret the $K$-theories of the spaces that apears in the Thom isomorphism of a vector bundle  $\rho_E:E\to M$ using groupoids, i.e., the isomorphism $$Thom:K^{*}(M)\to K^{*+k}(E)$$ can be described as the groupoid $K$-theory by
+$$Thom:K^{*}(M\rightrightarrows M)\to K^{*+k}(E\rightrightarrows E)$$
+where all source and target maps are identities of the respective space. Then, we get the isomorphism
+$$Th:K^{*}(M\rightrightarrows M)\to K^{*+k}(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)$$
+
+
+
+For the groupoid $TM\oplus f^*TN \rightrightarrows f^*TN$ there exist the Fourier transform isomorphism $$\mathcal{F}:C_0(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)\ \ \to \ \ C^*(T^*M\oplus f^*TN \rightrightarrows f^*TN)$$
+defined for $f\in C_0(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)$ by 
+$$\mathcal{F}(\tilde{v}\oplus \tilde{w})=\int_{\phi\in T^*_{\rho_{f^*TN}(\tilde{w})}M}e^{i\phi(\tilde{v})}f(\phi\oplus \tilde{w})d\mu$$
+\noindent when $\mathcal{F}(f\cdot g)=\mathcal{F}(f)*\mathcal{F}(g)$, that is, the Fourier transform sends a pointwise multiplication of maps to their convolution, wich is the product that we get in the groupoid $C^*$-algebra. It is injective by isometry, and surjective by density of the Schwarts space that is a subset of the image of Fourier transform \textcolor{red}{Buena referencia, puede ser el Hollmander para detalles y su uso puede ser Montubert o Connes}. Therefore, we have an isomorphism $K(\mathcal{F})$ 
+$$K^{*+k}(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)\ \ \to \ \ K^{*+k}(T^*M\oplus f^*TN \rightrightarrows f^*TN)$$
+
+
+
+\begin{remark}\label{Normal accion}
+Considering the groupoid $TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$ we get the embedding $\theta:f^*TN\to TM\ltimes f^*TN$, by the zero section, i.e., $$\theta(x,v)=(x,0) \oplus (x,v).$$ If we compute the normal bundle, we will get
+\begin{align*}
+N(TM\ltimes f^*TN,f^*TN,\xi_{TM\ltimes f^*TN}) &\rightrightarrows N(f^*TN,f^*TN,Id)\\=TM\oplus f^*TN &\rightrightarrows f^*TN
+\end{align*}
+
+\end{remark}
+
+By the identification obtained in Remark \ref{Normal accion}, we get that $D_{\ltimes}$ the deformation to the normal cone applied to the groupoid $TM\ltimes f^*TN \rightrightarrows f^*TN$ and the submanifold embedding $\theta:f^*TN\to TM\ltimes f^*TN$ will be  
+$$D_{\ltimes}:=DNC(TM\ltimes f^*TN, f^*TN)\cong [TM\oplus f^*TN\times \{0\}]\cup[ TM\ltimes f^*TN\times (0,1]]$$
+and using this groupoid we get the maps in $K$-theory
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooVE1cXG9wbHVzIGZeKlROKSJdLFsyLDAsIkteKihUTVxcbHRpbWVzIGZeKlROKSJdLFsxLDAsIkteKihEX3tcXGx0aW1lc30pIl0sWzIsMCwiZXZee1xcbHRpbWVzfV8wIl0sWzIsMSwiZXZee1xcbHRpbWVzfV8xIiwyXV0=
+\[\begin{tikzcd}
+	{K^*(TM\oplus f^*TN)} & {K^*(D_{\ltimes})} & {K^*(TM\ltimes f^*TN)}
+	\arrow["{ev^{\ltimes}_0}", from=1-2, to=1-1]
+	\arrow["{ev^{\ltimes}_1}"', from=1-2, to=1-3]
+\end{tikzcd}\]
+where in this case, both $ev^{\ltimes}_0$ and $ev^{\ltimes}_1$ are isomorphisms \textcolor{red}{Una cita para este hecho puede estar bien, aunque no vamos a usar que $ev^{\ltimes}_1$ sea iso}.
+
+
+
+
+
+
+
+\begin{remark}
+Although that $K^*(TM\oplus f^*TN)\cong K^*(TM\ltimes f^*TN)$, but in general there is no a map between the $C^*$-algebras of convolution of the associated groupoids. In $C^*(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product is
+\begin{align*}
+(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus \tilde{v}\cdot w)\ g(\tilde{v}\oplus w) d\mu,
+\end{align*}
+\noindent but in $C^*(TM\oplus f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product results 
+\begin{align*}
+(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus w)\ g(\tilde{v}\oplus w) d\mu.
+\end{align*}
+where the main incidence of the $w\in f^*TN$ component is to relate all the components in this integration to the same fiber $T_{\rho_{TM}(v)}M=T_{\rho_{f^*TN}(w)}M$, but it is fixed during the integration. 
+\end{remark}
+
+
+
+
+
+
+\begin{remark}
+
+
+We note that there exist a groupoid isomorphism 
+$$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)\ \ \  \cong\ \ \  TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$$
+where $[sus\oplus Id_{TN}-(df\circ \pi_2)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$ defined by $$[sus\oplus Id_{TN}-(df\circ \pi_2)]([(v,w),z])=(v-w)\oplus z-d_xf(w)$$ is a vector bundle isomorphism (well defined by the quotient structure of the normal bundle, and an isomorphism by the five lemma) such as the following diagram induce on the fibre of $x\sim ((x,x),f(x))\in M^{2}\times N$
+% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlRfeE0iXSxbMiwwLCJUX3hNXFxvcGx1cyBUX3hNXFxvcGx1cyBmXipUX3tmKHgpfU4iXSxbMywwLCJOX3soKHgseCksZih4KSl9KE1eezJ9XFx0aW1lcyBOLE0pIl0sWzMsMSwiVF94TVxcb3BsdXMgZl4qVF97Zih4KX1OIl0sWzEsMSwiVF94TSJdLFsyLDEsIlRfeE1cXG9wbHVzIFRfeE1cXG9wbHVzIGZeKlRfe2YoeCl9TiJdLFswLDEsIjAiXSxbNCwwLCIwIl0sWzQsMSwiMCJdLFszLDQsIltzdXMtKGRmXFxjaXJjIFxccGlfMildIl0sWzAsMV0sWzEsMiwiXFxEZWx0YV97VE19XFx0aW1lcyBkX3hmIl0sWzIsMywiXFxwaSJdLFsxLDUsIklkX3tUX3hNfSJdLFs3LDVdLFs1LDZdLFsyLDYsIklkIiwyXSxbNiw0LCJzdXMtKGRfeCBmXFxjaXJjIFxccGlfMikiLDJdLFszLDhdLFs0LDldXQ==
+\[\begin{tikzcd}
+	0 & {T_xM} & {T_xM\oplus T_xM\oplus f^*T_{f(x)}N} & {N_{((x,x),f(x))}(M^{2}\times N,M)} & 0 \\
+	0 & {T_xM} & {T_xM\oplus T_xM\oplus f^*T_{f(x)}N} & {T_xM\oplus f^*T_{f(x)}N} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["{\Delta_{TM}\times d_xf}", from=1-2, to=1-3]
+	\arrow["{Id_{T_xM}}", from=1-2, to=2-2]
+	\arrow["\pi", from=1-3, to=1-4]
+	\arrow["Id"', from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{[sus\oplus Id_{TN}-(df\circ \pi_2)]}", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["{sus\oplus Id_{TN}-(df\circ \pi_2)}"', from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}\]
+
+\noindent In the same fashion $N(M\times N, M)\cong f^*TN$ where $[Id_{f^*(TN)}-(df \circ \pi_1)]([v,z])=(z-d_xf(v))$ define the isomorphism
+$$[Id_{f^*(TN)}-(df \circ \pi_1)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$$ 
+This map is well defined because if for $x\sim (x,f(x))\in M\times N$
+$$(v_1,z_1)-(v_2,z_2)\in Im(Id_{T_xM}\oplus d_xf)$$
+it means that there exist $v\in T_xM$ such that $v_1-v_2=v$ and $z_1-z_2=d_xf(v)$, which is equivalent to equality of the images 
+$$z_1-d_xf(v_1)=z_2-d_xf(v_2),$$
+and it is an isomorphism by the five lemma.
+\end{remark}
+
+
+
+
+
+When we have that $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$ is a saturated groupoid, that is there are a descomposition  
+$$\mathcal{G}\rightrightarrows \mathcal{G}^{0}=(\mathcal{G}_U\rightrightarrows U)\cup (\mathcal{G}_F\rightrightarrows F)$$
+where the first component is open and the second, which is its complement, is close of $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, we obtain a exact sequence\textcolor{red}{Cita sobre el uso de propiedad universal de la norma maximal, revisar Dixmier}
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQ14qKEdfVSkiXSxbMiwwLCJDXiooRykiXSxbMywwLCJDXiooR19GKSJdLFs0LDAsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCJldl8wIl0sWzMsNF1d
+\[\begin{tikzcd}
+	0 & {C^*(G_U)} & {C^*(G)} & {C^*(G_F)} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["{ev_0}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+
+\noindent Then, in the deformation to the normal cone, we get the exact sequence
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQ14qKE1eezJ9XFx0aW1lcyBOXFx0aW1lcyAoMCwxXSkiXSxbMSwxLCJDXiooRE5DKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFsxLDIsIkNeKihOKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFsyLDIsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCJldl8wIl0sWzMsNF1d
+\[\begin{tikzcd}
+	0 & {C^*(M^{2}\times N\times (0,1])} & \\
+	& {C^*(DNC(M^{2}\times N,M))} \\
+	& {C^*(N(M^{2}\times N,M))} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{ev_0}", from=2-2, to=3-2]
+	\arrow[from=3-2, to=3-3]
+\end{tikzcd}\]
+and by the six terms exact sequence in $K$-theory we get the exact sequence
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXnswfShNXnsyfVxcdGltZXMgTlxcdGltZXMgKDAsMV0pIl0sWzAsMSwiS157MH0oRE5DKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFswLDIsIkteezB9KE4oTV57Mn1cXHRpbWVzIE4sTSkpIl0sWzEsMCwiS157MH0oTihNXnsyfVxcdGltZXMgTixNKSkiXSxbMSwxLCJLXnswfShETkMoTV57Mn1cXHRpbWVzIE4sTSkpIl0sWzEsMiwiS157MH0oTV57Mn1cXHRpbWVzIE5cXHRpbWVzICgwLDFdKSJdLFswLDFdLFsxLDIsImV2XzAiLDJdLFs1LDRdLFs0LDMsImV2XzAiLDJdLFszLDBdLFsyLDVdXQ==
+\[\begin{tikzcd}
+	{K^{0}(M^{2}\times N\times (0,1])} & {K^{1}(N(M^{2}\times N,M))} \\
+	{K^{0}(DNC(M^{2}\times N,M))} & {K^{1}(DNC(M^{2}\times N,M))} \\
+	{K^{0}(N(M^{2}\times N,M))} & {K^{1}(M^{2}\times N\times (0,1])}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-1]
+	\arrow["{ev_0}"', from=2-1, to=3-1]
+	\arrow["{ev_0}"', from=2-2, to=1-2]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=2-2]
+\end{tikzcd}\]
+
+Since $(0,1]$ is a contractible space, then we get the contractibility of the algebra $C^*(M^{2}\times N\times (0,1])\cong C^{\infty}_0((0,1],C^*(M^{2}\times N))$, which means that $$K^*(M^{2}\times N\times (0,1])=0.$$
+Therefore, by the six terms exact sequence we get the isomorphisms
+\begin{align*}
+ev_0:K^{*+k}(DNC(M^{2}\times N,M))\to K^{*+k}(N(M^{2}\times N,M)), \ \ \ \ i=0,1.
+\end{align*}
+For each $t\in [0,1]$ there exist an evaluation map (where for $t\not=0$ it is no necessarilly an isomorphism) 
+\begin{align*}
+ev_t:K^{*+k}(DNC(M^{2}\times N,M))\to K^{*+k}(M^{2}\times N), \ \ \ \ i=0,1.
+\end{align*}
+which is the aplication of the $K$-theory functor over $C^*$-algebras to the maps
+\begin{align*}
+ev_t:C^*(DNC(M^{2}\times N,M))\to C^*(M^{2}\times N)
+\end{align*}
+where for a map $$\varphi:N_{M}^{M^{2}\times N}\times \{0\}\sqcup \ M^{2}\times N\times (0,1] \to \mathbb{C}$$ in $C^*(DNC(M^{2}\times N,M))$ we get $ev_t(\varphi):M^{2}\times N\to \mathbb{C}$ with $$ev_t(\varphi)((x,y),n):=\varphi((x,y),n,t)$$
+
+
+Finally, since the pair groupoid $M\times M\rightrightarrows M$ is Morita equivalent to the point groupoid $\{Id_{\{*\}}\}\rightrightarrows \{*\}$, then we get an isomorphism (\textcolor{red}{Necesitamos referencia})
+
+$$Mor:K^{*+k}(M^{2}\times N)\to K^{*+k}(N)$$
+\newpage
+\begin{defn}\label{Pushforward definition K-theory}
+We define the pushforward $f!:K^*(M)\to K^{*+k}(N)$ for a smooth map $f:M\to N$ between smooth manifolds without boundary as the composition proposed in the following diagram
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJLXnsqfShNKT1LXnsqfShNXFxyaWdodHJpZ2h0YXJyb3dzX3tJZH1ee0lkfSBNKSJdLFswLDEsIkteeyora30oVF4qTVxcb3BsdXMgZl4qVE5cXHJpZ2h0cmlnaHRhcnJvd3Nfe0lkfV57SWR9IFReKk1cXG9wbHVzIGZeKlROKSJdLFswLDIsIkteeyora30oVE1cXG9wbHVzIGZeKlROIFxccmlnaHRyaWdodGFycm93c197fV57fSBmXipUTikiXSxbMCwzLCJLXnsqK2t9KEROQyhUTSBcXGx0aW1lcyBmXipUTiwgZl4qVE4pIFxccmlnaHRyaWdodGFycm93c197fV57fSBETkMoZl4qVE4sZl4qVE4sSWQpKSJdLFswLDQsIkteeyp9KFRNXFxsdGltZXMgZl4qVE4gXFxyaWdodHJpZ2h0YXJyb3dzX3t9Xnt9IGZeKlROKSJdLFswLDUsIkteeyora30oRE5DKE1eezJ9XFx0aW1lcyBOLE0sXFxEZWx0YVxcdGltZXMgZilcXHJpZ2h0cmlnaHRhcnJvd3Nfe30gRE5DKE1cXHRpbWVzIE4sTSxJZF9NXFx0aW1lcyBmKV57fSkiXSxbMCw2LCJLXnsqK2t9KE1eezJ9XFx0aW1lcyBOXFxyaWdodHJpZ2h0YXJyb3dzX3t9Xnt9TVxcdGltZXMgTikiXSxbMCw3LCJLXnsqK2t9KE5cXHJpZ2h0cmlnaHRhcnJvd3Nfe0lkfV57SWR9Tik9S157Kn0oTikiXSxbMCwxLCJUaCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzEsMiwiXFxtYXRoY2Fse0Z9XnstMX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn0sImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsyLDMsIihldl97MH1ee1xcbHRpbWVzfSleey0xfSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzMsNCwiZXZfezF9XntcXGx0aW1lc30iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn0sImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs1LDYsImV2XzEiXSxbNiw3LCJNb3IiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn0sImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs0LDUsImV2X3swfV57LTF9IiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XV0=
+\[\begin{tikzcd}
+	{K^{*}(M)=K^{*}(M\rightrightarrows_{Id}^{Id} M)} \\
+	{K^{*+k}(T^*M\oplus f^*TN\rightrightarrows_{Id}^{Id} T^*M\oplus f^*TN)} \\
+	{K^{*+k}(TM\oplus f^*TN \rightrightarrows_{}^{} f^*TN)} \\
+	{K^{*+k}(DNC(TM \ltimes f^*TN, f^*TN) \rightrightarrows_{}^{} DNC(f^*TN,f^*TN,Id))} \\
+	{K^{*}(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)} \\
+	{K^{*+k}(DNC(M^{2}\times N,M,\Delta\times f)\rightrightarrows_{} DNC(M\times N,M,Id_M\times f)^{})} \\
+	{K^{*+k}(M^{2}\times N\rightrightarrows_{}^{}M\times N)} \\
+	{K^{*+k}(N\rightrightarrows_{Id}^{Id}N)=K^{*}(N)}
+	\arrow["Th", tail, two heads, from=1-1, to=2-1]
+	\arrow["{\mathcal{F}^{-1}}", tail, two heads, from=2-1, to=3-1]
+	\arrow["{(ev_{0}^{\ltimes})^{-1}}", tail, two heads, from=3-1, to=4-1]
+	\arrow["{ev_{1}^{\ltimes}}", tail, two heads, from=4-1, to=5-1]
+	\arrow["{ev_{0}^{-1}}", tail, two heads, from=5-1, to=6-1]
+	\arrow["{ev_1}", from=6-1, to=7-1]
+	\arrow["Mor", tail, two heads, from=7-1, to=8-1]
+\end{tikzcd}\]
+\end{defn}
+
+
+\begin{remark}
+About the previous definition we can point out the following features:
+\begin{itemize}
+\item The $K$-groups releated are in the mayor way belongs to the context of noncommutative geometry becasue they are the $K$-theory of the $C^*$-algebra of a non trivial (space) groupoid, except the two releated to the first Thom isomorphism and the last one which is the codomain of the Morita isomorphism.
+\item Almost all the morphism composed are isomorphism except $ev_1$ the evaluation of the deformation of the normal cone of the embeding $(\Delta, f):M\to M^{2}\times N$.
+\end{itemize}
+\end{remark}
+
+
+
+
+
+\begin{remark}
+\textcolor{red}{Ideas que no he aplicado explicitamente}
+\begin{itemize}
+
+\item $K(A\times K(\mathcal{H}))\cong K(A)$.
+\item You have to take care about the part that plays the algebra $C^{*}((0,1])$ in the argument that $ev_0$ is an isomorphism.  $C_0((0,1])\cong \{0\}$. 
+\end{itemize}
+\end{remark}
+
+
+
+\subsection{Pushforward for manifolds with boundary}
+We define the pushforward of a map of pairs $f:(M,\partial M)\to (N,\partial N)$, i.e, $f^{-1}(\partial N)=\partial M$, using the description of the pushforward of maps between manifolds without boundary, considering the following releated maps:
+\begin{itemize}
+\item $f_{0}:=f|_{M^{0}}:M^{0}\to N^{0}$.
+\item $f_D:D(M)\to D(N):[m]\mapsto [f(m)]$, which is a well defined map, because $D(M)=M_+\cup_{\partial M} M_{-}$ where $M_{\pm}=M$ are two disjoint copies of $M$, and $\partial M_{+}=\partial M=\partial M_{-}$ are pointwise identified in $D(M)$.
+\item $i_M^{D}:M\to M_+\subset D(M)$ is the natural inclusion. Since $(M_+)^{c}=M_-^{0}\subset D(M)$, then $M_+$ is a closed of the double of $M$, and  therefore $i_M^{D}$ is a proper map. About this map we want to poit out that $$(i_M^{D})^*:\mathscr{H}^{*}(D(M))\to \mathscr{H}^{*}(M)$$ is surjective, by an aplication of a Mayer-Vietoris sequence to the double $D(M)=M_+\cup_{\partial M} M_{-}$
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhzY3J7SH1eKihEKE0pKSJdLFsxLDAsIlxcbWF0aHNjcntIfV4qKE1fKylcXG9wbHVzIFxcbWF0aHNjcntIfV4qKE1fLSkiXSxbMiwwLCJcXG1hdGhzY3J7SH1eKihcXHBhcnRpYWwgTSkiXSxbMSwyLCIoaV97XFxwYXJ0aWFsIE19XnsrfSleKi0oaV97XFxwYXJ0aWFsIE19XnstfSleKiIsMix7Im9mZnNldCI6MX1dLFswLDEsIihpX3tNXyt9XkQpXipcXG9wbHVzKGlfe01fLX1eRCleKiIsMix7Im9mZnNldCI6MX1dXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}^*(D(M))} & {\mathscr{H}^*(M_+)\oplus \mathscr{H}^*(M_-)} & {\mathscr{H}^*(\partial M)}
+	\arrow["{(i_{M_+}^D)^*\oplus(i_{M_-}^D)^*}"', shift right, from=1-1, to=1-2]
+	\arrow["{(i_{\partial M}^{+})^*-(i_{\partial M}^{-})^*}"', shift right, from=1-2, to=1-3]
+\end{tikzcd}\]
+because if $\alpha \in \mathscr{H}^{*}(M)$, we get that $\alpha\oplus \alpha \in Ker((i_{\partial M}^{+})^*-(i_{\partial M}^{-})^*)$ which by exactness, there exist $D(\alpha)\in \mathscr{H}^*(D(M))$ such that $(i_{M_+}^D)^*(D(\alpha))=\alpha$.
+\item $i_{M^{0}}^{D}:M^{0}\to M_{-}^{0}\subset D(M)$ the canonical inclusion. We claim that the pushforward $i_{M^{0}}^{D}!$ coincides with the map that takes a cohomology element $\alpha\in \mathscr{H}^*(M^{0})$ and extended it by zero in $M_+$ to get an element $\hat{\alpha}\in \mathscr{H}^*(D(M))$. \textcolor{red}{Estamos en revision de esta afirmacion}   
+\end{itemize}
+
+The definition of the pushforward of $f:M\to N$ is defined following the next diagram of exact sequences  
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXG1hdGhzY3J7SH1eKihNXnswfSkiXSxbMCwxLCJcXG1hdGhzY3J7SH1eKihOXnswfSkiXSxbMSwwLCJcXG1hdGhzY3J7SH1eKihEKE0pKSJdLFsyLDAsIlxcbWF0aHNjcntIfV4qKE0pIl0sWzEsMSwiXFxtYXRoc2Nye0h9XiooRChOKSkiXSxbMiwxLCJcXG1hdGhzY3J7SH1eKihOKSJdLFszLDAsIjAiXSxbMywxLCIwIl0sWzAsMSwiZl8wISIsMl0sWzIsNCwiZl9EISJdLFszLDUsImYhIl0sWzEsNCwiaV97Tl57MH19XkQhIiwyXSxbMCwyLCJpX3tNXnswfX1eRCEiXSxbMiwzLCIoaV97TX1ee0R9KV4qIl0sWzQsNSwiKGlfe059XntEfSleKiIsMl0sWzMsNl0sWzUsN11d
+\[\begin{tikzcd}
+	{\mathscr{H}^*(M^{0})} & {\mathscr{H}^*(D(M))} & {\mathscr{H}^*(M)} & 0 \\
+	{\mathscr{H}^*(N^{0})} & {\mathscr{H}^*(D(N))} & {\mathscr{H}^*(N)} & 0
+	\arrow["{i_{M^{0}}^D!}", from=1-1, to=1-2]
+	\arrow["{f_0!}"', from=1-1, to=2-1]
+	\arrow["{(i_{M}^{D})^*}", from=1-2, to=1-3]
+	\arrow["{f_D!}", from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow["{f!}", from=1-3, to=2-3]
+	\arrow["{i_{N^{0}}^D!}"', from=2-1, to=2-2]
+	\arrow["{(i_{N}^{D})^*}"', from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+\end{tikzcd}\]
+
+\noindent The left square commutes by the functoriality of the pushforward of manifolds without boundary, and the right square define (in order to commute) the pushforward $f!:\mathscr{H}^*(M)\to \mathscr{H}^*(N)$ by $$f!(a):=(i_{N}^{D})^*\circ f_D!(b)$$ for $b\in \mathscr{H}^*(D(M))$ such that $(i_{M}^{D})^*(b)=a$. This map is well defined \textcolor{red}{Falta argumento}. It is also a group homomorphism by \textcolor{red}{Falta argumento}.
+
+
+\subsection{Review of Pushforward Axioms in $K$-theory}
+
+\textcolor{red}{Condiciones sobre la cohomologia} Consider $f:M \to N$ a continuous map between manifolds without boundary. The pushforward $f!:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*-m+n}_{\Gamma}(N)$ is defined by the composition 
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNKSJdLFsxLDAsIlxcbWF0aHNjcntIfV57KitrfV97XFxHYW1tYX0oVF97Zn0pIl0sWzIsMCwiXFxtYXRoc2Nye0h9XnsqK2t9X3tcXEdhbW1hfShEX2YpIl0sWzMsMCwiXFxtYXRoc2Nye0h9XnsqK2t9X3tcXEdhbW1hfShNXnsyfVxcdGltZXMgTikiXSxbNCwwLCJcXG1hdGhzY3J7SH1eeyora31fe1xcR2FtbWF9KE4pIl0sWzAsMSwiXFx0YXVfZiJdLFsxLDIsImVfMF57LTF9Il0sWzIsMywiZV97MX0iXSxbMyw0LCJNb3IiXV0=
+\[\begin{tikzcd}
+	{\mathscr{H}^{*}_{\Gamma}(M)} & {\mathscr{H}^{*+k}_{\Gamma}(T_{f})} & {\mathscr{H}^{*+k}_{\Gamma}(D_f)} & {\mathscr{H}^{*+k}_{\Gamma}(M^{2}\times N)} & {\mathscr{H}^{*+k}_{\Gamma}(N)}
+	\arrow["{\tau_f}", from=1-1, to=1-2]
+	\arrow["{e_0^{-1}}", from=1-2, to=1-3]
+	\arrow["{e_{1}}", from=1-3, to=1-4]
+	\arrow["Mor", from=1-4, to=1-5]
+\end{tikzcd}\]
+where
+\begin{itemize}
+\item The map $\tau_f:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*}_{\Gamma}(T_f)$ is the Thom isomorphism for the normal bundle $T_f:= TM\oplus f^{*}TN \to M$.
+
+\item $D_f:=DNC(M^{2}\times N,M)=T_{f}\times \{0\}\sqcup ((M^{2}\times N)\times (0,1])$ for the embedding $(\Delta,f):M\to M^{2}\times N$, with $\Delta:M\to M^{2}$ the diagonal map. 
+
+\item The maps $e_i:\mathscr{H}^{*}_{\Gamma}(D_f)\to \mathscr{H}^{*}_{\Gamma}(C_i)$ for $i=0,1$, with $C_0 = T_f$ and $C_1 = M^{2}\times N$, is defined by \textcolor{red}{Como se definen estos mapas}. We have that $e_0$ is an isomorphism.  
+
+\item $Mor:\mathscr{H}^{*}_{\Gamma}(M^{2}\times N)\to \mathscr{H}^{*}_{\Gamma}(N)$ is defined by \textcolor{red}{La definicion de este mapa debe coincidir con la traza en $K$-teoria}.
+\end{itemize}
+
+Now, we want to determine the compatibility of this definition with some maps related to restrictions to closed subspaces in the following way: if $C_M$ and $C_N$ are closed submanifolds of $M$ and $N$ respectively, such that the following diagram is commutative
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiTiJdLFswLDEsIkNfe019Il0sWzEsMSwiQ197Tn0iXSxbMCwxLCJmIl0sWzIsMywiZl97Q30iLDJdLFsyLDAsImlfTSJdLFszLDEsImlfe059IiwyXV0=
+\[\begin{tikzcd}
+	M & N \\
+	{C_{M}} & {C_{N}}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["{i_{C_M}}", from=2-1, to=1-1]
+	\arrow["{f_{C}}"', from=2-1, to=2-2]
+	\arrow["{i_{{C_N}}}"', from=2-2, to=1-2]
+\end{tikzcd}\] 
+
+therefore we get the diagram (Where $\triangle:=*+k$)
+% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTSkiXSxbMSwwLCJcXG1hdGhzY3J7SH1ee1xcdHJpYW5nbGV9X3tcXEdhbW1hfShUX3tmfSkiXSxbMiwwLCJcXG1hdGhzY3J7SH1ee1xcdHJpYW5nbGV9X3tcXEdhbW1hfShEX2YpIl0sWzMsMCwiXFxtYXRoc2Nye0h9XntcXHRyaWFuZ2xlfV97XFxHYW1tYX0oTV57Mn1cXHRpbWVzIE4pIl0sWzQsMCwiXFxtYXRoc2Nye0h9XntcXHRyaWFuZ2xlfV97XFxHYW1tYX0oTikiXSxbMCwxLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShDX3tNfSkiXSxbMSwxLCJcXG1hdGhzY3J7SH1ee1xcdHJpYW5nbGV9X3tcXEdhbW1hfShUX3tmX0N9KSJdLFsyLDEsIlxcbWF0aHNjcntIfV57XFx0cmlhbmdsZX1fe1xcR2FtbWF9KERfe2ZfQ30pIl0sWzMsMSwiXFxtYXRoc2Nye0h9XntcXHRyaWFuZ2xlfV97XFxHYW1tYX0oQ197TX1eezJ9XFx0aW1lcyBDX3tOfSkiXSxbNCwxLCJcXG1hdGhzY3J7SH1ee1xcdHJpYW5nbGV9X3tcXEdhbW1hfShDX3tOfSkiXSxbMCwxLCJcXHRhdV9mIl0sWzEsMiwiZV8wXnstMX0iXSxbMiwzLCJlX3sxfSJdLFszLDQsIk1vciJdLFs1LDYsIlxcdGF1X3tmX0N9IiwyXSxbNiw3LCJlXzBeey0xfSIsMl0sWzcsOCwiZV97MX0iLDJdLFs4LDksIk1vciIsMl0sWzAsNSwiaV97Q19NfV57Kn0iLDJdLFs0LDksImlfe0NfTn1eeyp9Il0sWzEsNiwiQSIsMl0sWzIsNywiRCJdLFszLDgsIkIiXV0=
+\[\begin{tikzcd}
+	{\mathscr{H}^{*}_{\Gamma}(M)} & {\mathscr{H}^{\triangle}_{\Gamma}(T_{f})} & {\mathscr{H}^{\triangle}_{\Gamma}(D_f)} & {\mathscr{H}^{\triangle}_{\Gamma}(M^{2}\times N)} & {\mathscr{H}^{\triangle}_{\Gamma}(N)} \\
+	{\mathscr{H}^{*}_{\Gamma}(C_{M})} & {\mathscr{H}^{\triangle}_{\Gamma}(T_{f_C})} & {\mathscr{H}^{\triangle}_{\Gamma}(D_{f_C})} & {\mathscr{H}^{\triangle}_{\Gamma}(C_{M}^{2}\times C_{N})} & {\mathscr{H}^{\triangle}_{\Gamma}(C_{N})}
+	\arrow["{\tau_f}", from=1-1, to=1-2]
+	\arrow["{i_{C_M}^{*}}"', from=1-1, to=2-1]
+	\arrow["{e_0^{-1}}", from=1-2, to=1-3]
+	\arrow["A"', from=1-2, to=2-2]
+	\arrow["{e_{1}}", from=1-3, to=1-4]
+	\arrow["D", from=1-3, to=2-3]
+	\arrow["Mor", from=1-4, to=1-5]
+	\arrow["B", from=1-4, to=2-4]
+	\arrow["{i_{C_N}^{*}}", from=1-5, to=2-5]
+	\arrow["{\tau_{f_C}}"', from=2-1, to=2-2]
+	\arrow["{e_0^{-1}}"', from=2-2, to=2-3]
+	\arrow["{e_{1}}"', from=2-3, to=2-4]
+	\arrow["Mor"', from=2-4, to=2-5]
+\end{tikzcd}\]
+where the vertical maps are given as follows
+\begin{itemize}
+\item The map $D((i_{C_M}^{2},i_{C_N}))^*:\mathscr{H}^{*}_{\Gamma}(D_f)\to \mathscr{H}^{*}_{\Gamma}(D_{f_{C}})$ is defined by the pullback of the map $D((i_{C_M}^{2},i_{C_N})):D_{f_{C}}\to D_{f}$, where the map $(i_{C_M}^{2},i_{C_N})$ is constructed following the commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMSwwLCJNXnsyfVxcdGltZXMgTiJdLFswLDAsIk0iXSxbMCwxLCJDX3tNfSJdLFsxLDEsIkNfe019XnsyfVxcdGltZXMgQ197Tn0iXSxbMSwwLCIoXFxEZWx0YSwgZikiXSxbMiwzLCIoXFxEZWx0YV97Q19NfSwgZl97Q30pIiwyXSxbMiwxLCJpX00iXSxbMywwLCIoaV9NXnsyfSxpX04pIiwyXV0=
+\[\begin{tikzcd}
+	M & {M^{2}\times N} \\
+	{C_{M}} & {C_{M}^{2}\times C_{N}}
+	\arrow["{(\Delta, f)}", from=1-1, to=1-2]
+	\arrow["{i_{C_M}}", from=2-1, to=1-1]
+	\arrow["{(\Delta_{C_M}, f_{C})}"', from=2-1, to=2-2]
+	\arrow["{(i_{C_M}^{2},i_{C_N})}"', from=2-2, to=1-2]
+\end{tikzcd}\]
+
+then, 
+$$D((i_{C_M}^{2},i_{C_N})):T_{f_C}\times \{0\}\sqcup ((C_M^{2}\times C_N)\times (0,1])\to T_{f}\times \{0\}\sqcup ((M^{2}\times N)\times (0,1])$$
+Where $$D((i_{C_M}^{2},i_{C_N}))|_{T_{f_C}}=di_{C_M}\oplus f^*di_{C_N}=i_{TC_M}\oplus i_{f_C^*TC_N}$$ and $$D((i_{C_M}^{2},i_{C_N}))|_{(C_M^{2}\times C_N)\times (0,1]}=(i_{C_M}^{2},i_{C_N})\times Id_{(0,1]}$$ 
+
+\textcolor{red}{Debemos probar que $D((i_{C_M}^{2},i_{C_N}))$ es un mapa propio.}
+
+
+\item $A$ Since $f:M\to N$ we get that $df:TM\to TN$ and $df_{C}:TC_{M}\to TC_{N}$, therefore we get the map $df\oplus df_C:T_f \to T_{f_{C}}$.
+
+\end{itemize}
+
+About the commutativity of the squares of the previous diagram (from left to right)
+\begin{enumerate}
+\item Naturality of the Thom isomorphism.
+\item Restriction of the deformation to the normal cone to its zero component.
+\item Restriction of the deformation to the normal cone to its one component.
+\item Naturality of $Mor$ (\textcolor{red}{Debemos revisar que se tenga la naturalidad en la traza en K-teoria, donde naturalidad significa la invarianza entre el orden en que se aplica traza o aplicar restriccion.})
+\end{enumerate}
+
+Therefore we can conclude that in this case $i_{{C_N}}^{*}\circ f!=f_{C}!\circ i_{{C_M}}^{*}$.
+
+
+
 
 \subsection{Review Baum-Douglas Homology}
 \subsubsection{Analytical $K$-holomogy}
@@ -2177,375 +2564,7 @@ If $E=-F$ (opposite in the sense of de Rham cohomology), then $\tau_{E,M}=-\tau_
 \item $\mathscr{H}^{pf}_{*}(M,\partial M;\Gamma)\cong \mathscr{H}^{*}_{\Gamma}(M,\partial M)$.
 \end{itemize}
 
-\section{Pushforward definition}
 
-\subsection{Groupoid cohomology}
-The following are some groupoids that we will have in mind in order to determine the pushforward structures of the cohomology theories that are of our interest.
-\begin{enumerate}
-\item If $\rho: E\to M$ is a vector bundle over a smooth manifold $E\to M$, then $E\rightrightarrows M$ with $s=t=\rho$.  A particular case that we will use is that if $\rho_E:E\to X$ and $\rho_F:F\to X$ are vector bundles over $X$, then we will consider the groupoid $E\oplus F\rightrightarrows F$, where $\pi_2:E\oplus F\to F$ is a vector bundle by the pull back
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHJob197Rn1eKkVcXGNvbmcgRVxcb3BsdXMgRiJdLFswLDEsIkYiXSxbMSwwLCJFIl0sWzEsMSwiWCJdLFsyLDMsIlxccmhvX0UiXSxbMSwzLCJcXHJob19GIiwyXSxbMCwyLCJcXHBpXzEiXSxbMCwxLCJcXHJob19GXiooXFxyaG9fRSlcXGNvbmcgXFxwaV8yIiwyXV0=
-\[\begin{tikzcd}
-	{\rho_{F}^*E\cong E\oplus F} & E \\
-	F & X
-	\arrow["{\pi_1}", from=1-1, to=1-2]
-	\arrow["{\rho_F^*(\rho_E)\cong \pi_2}"', from=1-1, to=2-1]
-	\arrow["{\rho_E}", from=1-2, to=2-2]
-	\arrow["{\rho_F}"', from=2-1, to=2-2]
-\end{tikzcd}\]
-where the groupoid operation is given by 
-$$(v\oplus w)(\tilde{v}\oplus w)=v+\tilde{v}\oplus w, \ \ \ \ (v\oplus w)^{-1}=-v\oplus w.$$
-\item If $f:M\to N$ is a smooth map between smooth manifolds $M^{2}\times N\rightrightarrows M\times N$ with $s((x,y),n)=(y,n)$;   $t((x,y),n)=(x,n)$; $$((x,y),n)((y,z),n)=((x,z),n)$$
-\item Applying the normal functor to the groupoid $M^{2}\times N\rightrightarrows M\times N$ with the embeddings $(\Delta_M\times f):M\to M^{2}\times N$ in the morpshism level and $(Id_M\times f):M\to M\times N$, we get the groupoid
-$$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)$$
- 
-\item Applying the deformation to the normal cone functor to the groupoid $M^{2}\times N\rightrightarrows M\times N$ we get $$DNC(M^{2}\times N,M)\rightrightarrows DNC(M\times N,M)$$
-
-
-\item If $f:M\to N$ is a smooth map, then consider the groupoid $$TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$$. This is an example of the groupoid $E\ltimes F\rightrightarrows_{}^{}F$ with $E$ and $F$ being vector bundles over $X$
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJFIl0sWzEsMCwiRiJdLFsxLDEsIlgiXSxbMCwxLCJcXHZhcnBoaSJdLFsxLDIsIlxccmhvX0YiXSxbMCwyLCJcXHJob19FIiwyXV0=
-\[\begin{tikzcd}
-	E & F \\
-	& X
-	\arrow["\varphi", from=1-1, to=1-2]
-	\arrow["{\rho_E}"', from=1-1, to=2-2]
-	\arrow["{\rho_F}", from=1-2, to=2-2]
-\end{tikzcd}\]
-where there is an action of $E$ over $F$ (in fibers) defined by $e\cdot f:= \varphi(e)+ f\in F$ for $e\in E$ and $f\in F$. Then, for the groupoid $E\ltimes F\rightrightarrows_{}^{}F$, we consider the structure:
-\begin{itemize}
-\item $\mathcal{G} = E\ltimes F= E\oplus F$ and $\mathcal{G}^{0}= F$.
-\item $s(e\oplus f) = f$ and $t(e\oplus f)= e\cdot f$. 
-\item If $s(e_1\oplus f_1)=t(e_2\oplus f_2)$, that means $f_1=e_2\cdot f$ (and therefore all of the elements are in the fibers of the same $x\in X$), then $$\mu((e_1\oplus f_1),(e_2\oplus f_2)) = (e_1+e_2)\oplus f_2.$$
-\item $i(f)=0\oplus f$. 
-\item $Inv(e\oplus f)= -e\oplus e\cdot f$.
-\end{itemize}
-\end{enumerate}
-
-
-
-
-\begin{defn}
-The $C^*$-algebra of a topological groupoid $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, which is denoted by  $C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ or $C^{*}(\mathcal{G})$ when the groupoid structure used is clear, as follows 
-\begin{enumerate}
-\item Consider the set 
-$$C^{\infty}_c(\mathcal{G})=\{f:\mathcal{G}\to \mathbb{C}|f \text{ is smooth and }\overline{supp(f)} \text{ is compact} \}$$
-\item Consider the maximal norm $|| f ||_{max}=\sup_{\pi}||\pi(f)||_{B(\mathcal{H})} $ for $f\in C^{\infty}_c(\mathcal{G})$, where $\pi$ is any representation in a Hilbert space, that is
-$$\pi:C^{\infty}_c(\mathcal{G})\to B(\mathcal{H})$$
-and define $$C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0}):=\overline{C^{\infty}_c(\mathcal{G})}_{||\cdot||_{max}}$$
-\item The product that we will consider is giving by convolution as follows: if $f,g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$, then $f*g\in C^{*}(\mathcal{G}\rightrightarrows \mathcal{G}^{0})$ with 
-$$(f*g)(\gamma):=\int_{\gamma_1\circ \gamma_2=\gamma}f(\gamma_1)g(\gamma_2) d\mu=\int_{\gamma_2\in\mathcal{G}_{s(\gamma)}}f(\gamma\circ \gamma_2^{-1})g(\gamma_2) d\mu$$
-where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar de \cite{Will19}}.
-
-\end{enumerate}
-\end{defn}
-
-
-\begin{remark}
-We can consider the completion by the reduced norm too, but both completion coincides in the scope of amenability, which will be the back ground of our work. \textcolor{red}{Cita sobre amenabilidad y compleciones}
-\end{remark}
-
-
-
-
-
-Now, we are going to present a sequence of arguments in order to compose a morphism $f!:K^*(M)\to K^{*+k}(N)$ when a smooth proper map $f:M\to N$ between smooth manifolds without boundary is given.
-
-\vspace{0.3cm}
-
-First, we can interpret the $K$-theories of the spaces that apears in the Thom isomorphism of a vector bundle  $\rho_E:E\to M$ using groupoids, i.e., the isomorphism $$Thom:K^{*}(M)\to K^{*+k}(E)$$ can be described as the groupoid $K$-theory by
-$$Thom:K^{*}(M\rightrightarrows M)\to K^{*+k}(E\rightrightarrows E)$$
-where all source and target maps are identities of the respective space. Then, we get the isomorphism
-$$Thom:K^{*}(M\rightrightarrows M)\to K^{*+k}(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)$$
-
-
-
-For the groupoid $TM\oplus f^*TN \rightrightarrows f^*TN$ there exist the Fourier transform isomorphism $$\mathcal{F}:C_0(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)\ \ \to \ \ C^*(T^*M\oplus f^*TN \rightrightarrows f^*TN)$$
-defined for $f\in C_0(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)$ by 
-$$\mathcal{F}(\tilde{v}\oplus \tilde{w})=\int_{\phi\in T^*_{\rho_{f^*TN}(\tilde{w})}M}e^{i\phi(\tilde{v})}f(\phi\oplus \tilde{w})d\mu$$
-\noindent when $\mathcal{F}(f\cdot g)=\mathcal{F}(f)*\mathcal{F}(g)$, that is, the Fourier transform sends a pointwise multiplication of maps to their convolution, wich is the product that we get in the groupoid $C^*$-algebra. It is injective by isometry, and surjective by density of the Schwarts space that is a subset of the image of Fourier transform \textcolor{red}{Buena referencia, puede ser el Hollmander para detalles y su uso puede ser Montubert o Connes}. Therefore, we have an isomorphism $K(\mathcal{F})$ 
-$$K^{*+k}(T^*M\oplus f^*TN \rightrightarrows T^*M \oplus f^*TN)\ \ \to \ \ K^{*+k}(T^*M\oplus f^*TN \rightrightarrows f^*TN)$$
-
-
-
-\begin{remark}\label{Normal accion}
-Considering the groupoid $TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$ we get the embedding $\theta:f^*TN\to TM\ltimes f^*TN$, by the zero section, i.e., $$\theta(x,v)=(x,0) \oplus (x,v).$$ If we compute the normal bundle, we will get
-$$N(TM\ltimes f^*TN \rightrightarrows f^*TN)\ \ = \ \ TM\oplus f^*TN \rightrightarrows f^*TN$$
-\end{remark}
-
-By the identification obtained in Remark \ref{Normal accion}, we get that $D_{\ltimes}$ the deformation to the normal cone applied to the groupoid $TM\ltimes f^*TN \rightrightarrows f^*TN$ and the submanifold embedding $\theta:f^*TN\to TM\ltimes f^*TN$ will be  
-$$D_{\ltimes}:=DNC(TM\ltimes f^*TN, f^*TN)\cong [TM\oplus f^*TN\times \{0\}]\cup[ TM\ltimes f^*TN\times (0,1]]$$
-and using this groupoid we get the maps in $K$-theory
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooVE1cXG9wbHVzIGZeKlROKSJdLFsyLDAsIkteKihUTVxcbHRpbWVzIGZeKlROKSJdLFsxLDAsIkteKihEX3tcXGx0aW1lc30pIl0sWzIsMCwiZXZee1xcbHRpbWVzfV8wIl0sWzIsMSwiZXZee1xcbHRpbWVzfV8xIiwyXV0=
-\[\begin{tikzcd}
-	{K^*(TM\oplus f^*TN)} & {K^*(D_{\ltimes})} & {K^*(TM\ltimes f^*TN)}
-	\arrow["{ev^{\ltimes}_0}", from=1-2, to=1-1]
-	\arrow["{ev^{\ltimes}_1}"', from=1-2, to=1-3]
-\end{tikzcd}\]
-where in this case, both $ev^{\ltimes}_0$ and $ev^{\ltimes}_1$ are isomorphisms \textcolor{red}{Una cita para este hecho puede estar bien, aunque no vamos a usar que $ev^{\ltimes}_1$ sea iso}.
-
-
-
-
-
-
-
-\begin{remark}
-Although that $K^*(TM\oplus f^*TN)\cong K^*(TM\ltimes f^*TN)$, but in general there is no a map between the $C^*$-algebras of convolution of the associated groupoids. In $C^*(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product is
-\begin{align*}
-(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus \tilde{v}\cdot w)\ g(\tilde{v}\oplus w) d\mu,
-\end{align*}
-\noindent but in $C^*(TM\oplus f^*TN \rightrightarrows_{}^{} f^*TN)$ the convolution product results 
-\begin{align*}
-(f*g)(v\oplus w)=\int_{\tilde{v}\in T_{\rho_{TM}(v)}M}f(v-\tilde{v}\oplus w)\ g(\tilde{v}\oplus w) d\mu.
-\end{align*}
-where the main incidence of the $w\in f^*TN$ component is to relate all the components in this integration to the same fiber $T_{\rho_{TM}(v)}M=T_{\rho_{f^*TN}(w)}M$, but it is fixed during the integration. 
-\end{remark}
-
-
-
-
-
-
-\begin{remark}
-
-
-We note that there exist a groupoid isomorphism 
-$$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)\ \ \  \cong\ \ \  TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$$
-where $[sus\oplus Id_{TN}-(df\circ \pi_2)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$ defined by $$[sus\oplus Id_{TN}-(df\circ \pi_2)]([(v,w),z])=(v-w)\oplus z-d_xf(w)$$ is a vector bundle isomorphism (well defined by the quotient structure of the normal bundle, and an isomorphism by the five lemma) such as the following diagram induce on the fibre of $x\sim ((x,x),f(x))\in M^{2}\times N$
-% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlRfeE0iXSxbMiwwLCJUX3hNXFxvcGx1cyBUX3hNXFxvcGx1cyBmXipUX3tmKHgpfU4iXSxbMywwLCJOX3soKHgseCksZih4KSl9KE1eezJ9XFx0aW1lcyBOLE0pIl0sWzMsMSwiVF94TVxcb3BsdXMgZl4qVF97Zih4KX1OIl0sWzEsMSwiVF94TSJdLFsyLDEsIlRfeE1cXG9wbHVzIFRfeE1cXG9wbHVzIGZeKlRfe2YoeCl9TiJdLFswLDEsIjAiXSxbNCwwLCIwIl0sWzQsMSwiMCJdLFszLDQsIltzdXMtKGRmXFxjaXJjIFxccGlfMildIl0sWzAsMV0sWzEsMiwiXFxEZWx0YV97VE19XFx0aW1lcyBkX3hmIl0sWzIsMywiXFxwaSJdLFsxLDUsIklkX3tUX3hNfSJdLFs3LDVdLFs1LDZdLFsyLDYsIklkIiwyXSxbNiw0LCJzdXMtKGRfeCBmXFxjaXJjIFxccGlfMikiLDJdLFszLDhdLFs0LDldXQ==
-\[\begin{tikzcd}
-	0 & {T_xM} & {T_xM\oplus T_xM\oplus f^*T_{f(x)}N} & {N_{((x,x),f(x))}(M^{2}\times N,M)} & 0 \\
-	0 & {T_xM} & {T_xM\oplus T_xM\oplus f^*T_{f(x)}N} & {T_xM\oplus f^*T_{f(x)}N} & 0
-	\arrow[from=1-1, to=1-2]
-	\arrow["{\Delta_{TM}\times d_xf}", from=1-2, to=1-3]
-	\arrow["{Id_{T_xM}}", from=1-2, to=2-2]
-	\arrow["\pi", from=1-3, to=1-4]
-	\arrow["Id"', from=1-3, to=2-3]
-	\arrow[from=1-4, to=1-5]
-	\arrow["{[sus\oplus Id_{TN}-(df\circ \pi_2)]}", from=1-4, to=2-4]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=2-2, to=2-3]
-	\arrow["{sus\oplus Id_{TN}-(df\circ \pi_2)}"', from=2-3, to=2-4]
-	\arrow[from=2-4, to=2-5]
-\end{tikzcd}\]
-
-\noindent In the same fashion $N(M\times N, M)\cong f^*TN$ where $[Id_{f^*(TN)}-(df \circ \pi_1)]([v,z])=(z-d_xf(v))$ define the isomorphism
-$$[Id_{f^*(TN)}-(df \circ \pi_1)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$$ 
-This map is well defined because if for $x\sim (x,f(x))\in M\times N$
-$$(v_1,z_1)-(v_2,z_2)\in Im(Id_{T_xM}\oplus d_xf)$$
-it means that there exist $v\in T_xM$ such that $v_1-v_2=v$ and $z_1-z_2=d_xf(v)$, which is equivalent to equality of the images 
-$$z_1-d_xf(v_1)=z_2-d_xf(v_2),$$
-and it is an isomorphism by the five lemma.
-\end{remark}
-
-
-
-
-
-When we have that $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$ is a saturated groupoid, that is there are a descomposition  
-$$\mathcal{G}\rightrightarrows \mathcal{G}^{0}=(\mathcal{G}_U\rightrightarrows U)\cup (\mathcal{G}_F\rightrightarrows F)$$
-where the first component is open and the second, which is its complement, is close of $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, we obtain a exact sequence\textcolor{red}{Cita sobre el uso de propiedad universal de la norma maximal, revisar Dixmier}
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQ14qKEdfVSkiXSxbMiwwLCJDXiooRykiXSxbMywwLCJDXiooR19GKSJdLFs0LDAsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCJldl8wIl0sWzMsNF1d
-\[\begin{tikzcd}
-	0 & {C^*(G_U)} & {C^*(G)} & {C^*(G_F)} & 0
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=1-2, to=1-3]
-	\arrow["{ev_0}", from=1-3, to=1-4]
-	\arrow[from=1-4, to=1-5]
-\end{tikzcd}\]
-
-\noindent Then, in the deformation to the normal cone, we get the exact sequence
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQ14qKE1eezJ9XFx0aW1lcyBOXFx0aW1lcyAoMCwxXSkiXSxbMSwxLCJDXiooRE5DKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFsxLDIsIkNeKihOKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFsyLDIsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCJldl8wIl0sWzMsNF1d
-\[\begin{tikzcd}
-	0 & {C^*(M^{2}\times N\times (0,1])} & \\
-	& {C^*(DNC(M^{2}\times N,M))} \\
-	& {C^*(N(M^{2}\times N,M))} & 0
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=1-2, to=2-2]
-	\arrow["{ev_0}", from=2-2, to=3-2]
-	\arrow[from=3-2, to=3-3]
-\end{tikzcd}\]
-and by the six terms exact sequence in $K$-theory we get the exact sequence
-% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXnswfShNXnsyfVxcdGltZXMgTlxcdGltZXMgKDAsMV0pIl0sWzAsMSwiS157MH0oRE5DKE1eezJ9XFx0aW1lcyBOLE0pKSJdLFswLDIsIkteezB9KE4oTV57Mn1cXHRpbWVzIE4sTSkpIl0sWzEsMCwiS157MH0oTihNXnsyfVxcdGltZXMgTixNKSkiXSxbMSwxLCJLXnswfShETkMoTV57Mn1cXHRpbWVzIE4sTSkpIl0sWzEsMiwiS157MH0oTV57Mn1cXHRpbWVzIE5cXHRpbWVzICgwLDFdKSJdLFswLDFdLFsxLDIsImV2XzAiLDJdLFs1LDRdLFs0LDMsImV2XzAiLDJdLFszLDBdLFsyLDVdXQ==
-\[\begin{tikzcd}
-	{K^{0}(M^{2}\times N\times (0,1])} & {K^{1}(N(M^{2}\times N,M))} \\
-	{K^{0}(DNC(M^{2}\times N,M))} & {K^{1}(DNC(M^{2}\times N,M))} \\
-	{K^{0}(N(M^{2}\times N,M))} & {K^{1}(M^{2}\times N\times (0,1])}
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-2, to=1-1]
-	\arrow["{ev_0}"', from=2-1, to=3-1]
-	\arrow["{ev_0}"', from=2-2, to=1-2]
-	\arrow[from=3-1, to=3-2]
-	\arrow[from=3-2, to=2-2]
-\end{tikzcd}\]
-
-Since $(0,1]$ is a contractible space, then we get the contractibility of the algebra $C^*(M^{2}\times N\times (0,1])\cong C^{\infty}_0((0,1],C^*(M^{2}\times N))$, which means that $$K^*(M^{2}\times N\times (0,1])=0.$$
-Therefore, by the six terms exact sequence we get the isomorphisms
-\begin{align*}
-ev_0:K^{*+k}(DNC(M^{2}\times N,M))\to K^{*+k}(N(M^{2}\times N,M)), \ \ \ \ i=0,1.
-\end{align*}
-For each $t\in [0,1]$ there exist an evaluation map (where for $t\not=0$ it is no necessarilly an isomorphism) 
-\begin{align*}
-ev_t:K^{*+k}(DNC(M^{2}\times N,M))\to K^{*+k}(M^{2}\times N), \ \ \ \ i=0,1.
-\end{align*}
-which is the aplication of the $K$-theory functor over $C^*$-algebras to the maps
-\begin{align*}
-ev_t:C^*(DNC(M^{2}\times N,M))\to C^*(M^{2}\times N)
-\end{align*}
-where for a map $$\varphi:N_{M}^{M^{2}\times N}\times \{0\}\sqcup \ M^{2}\times N\times (0,1] \to \mathbb{C}$$ in $C^*(DNC(M^{2}\times N,M))$ we get $ev_t(\varphi):M^{2}\times N\to \mathbb{C}$ with $$ev_t(\varphi)((x,y),n):=\varphi((x,y),n,t)$$
-
-
-
-
-
-
-
-
-
-
-
-\begin{remark}
-
-The following are some important facts
-\begin{enumerate}
-\item We can consider a smooth manifold $M$ such as a groupoid $M\rightrightarrows M$ with $s=t=Id_M:M\to M$.
-\item There exist a Fourier isomorphism $$C^*(E^*\rightrightarrows E^*)\cong C_0(E^*)\cong C^*(E\rightrightarrows M).$$ 
-\item For amenable groups, the reduced norm and the maximal norm are equivalent.
-\item The diference between the product in $C(TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN)$ and $C(TM \oplus f^*TN \rightrightarrows_{}^{} f^*TN)$ 
-
-\end{enumerate}
-\end{remark}
-
-
-
-% https://q.uiver.app/#q=WzAsOSxbMCwwLCJNXFxyaWdodHJpZ2h0YXJyb3dzX3t9Xnt9IE0iXSxbMCwxLCJUTV4qXFxvcGx1cyBmXipUTlxccmlnaHRyaWdodGFycm93c197fV57fSBUTV4qXFxvcGx1cyBmXipUTiJdLFswLDIsIlRNXFxvcGx1cyBmXipUTiBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE4iXSxbMCwzLCJUTSBcXHRpbWVzIFswLDFdIFxcbHRpbWVzIGZeKlROXFx0aW1lcyBbMCwxXSBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE5cXHRpbWVzIFswLDFdIl0sWzAsNCwiVE1cXGx0aW1lcyBmXipUTiBcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gZl4qVE4iXSxbMCw1LCJOKE1eezJ9XFx0aW1lcyBOLE0sXFxEZWx0YVxcdGltZXMgZilcXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee30gTihNXFx0aW1lcyBOLE0sSWRfTVxcdGltZXMgZikiXSxbMCw2LCJETkMoTV57Mn1cXHRpbWVzIE4sTSxcXERlbHRhXFx0aW1lcyBmKVxccmlnaHRyaWdodGFycm93c197fSBETkMoTVxcdGltZXMgTixNLElkX01cXHRpbWVzIGYpXnt9Il0sWzAsNywiTV57Mn1cXHRpbWVzIE5cXHJpZ2h0cmlnaHRhcnJvd3Nfe31ee31NXFx0aW1lcyBOIl0sWzAsOCwiTlxccmlnaHRyaWdodGFycm93c197fV57fU4iXSxbMCwxLCJUaG9tIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzEsMiwiRm91cmllciIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFsyLDMsImVfMCIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFszLDQsImVfMSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs0LDUsIkZhbHRhIG5vbWJyZSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs1LDYsImVfMCBcXCAoXFx0ZXh0e3F1aXphIHNvbG8gZW4gY29ob21vbG9naWF9KSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFs2LDcsImVfMCBcXCAoXFx0ZXh0e3F1aXphIHNvbG8gZW4gY29ob21vbG9naWF9KSJdLFs3LDgsIk1vcml0YSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
-\[\begin{tikzcd}
-	{M\rightrightarrows_{}^{} M} \\
-	{TM^*\oplus f^*TN\rightrightarrows_{}^{} TM^*\oplus f^*TN} \\
-	{TM\oplus f^*TN \rightrightarrows_{}^{} f^*TN} \\
-	{TM \times [0,1] \ltimes f^*TN\times [0,1] \rightrightarrows_{}^{} f^*TN\times [0,1]} \\
-	{TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN} \\
-	{N(M^{2}\times N,M,\Delta\times f)\rightrightarrows_{}^{} N(M\times N,M,Id_M\times f)} \\
-	{DNC(M^{2}\times N,M,\Delta\times f)\rightrightarrows_{} DNC(M\times N,M,Id_M\times f)^{}} \\
-	{M^{2}\times N\rightrightarrows_{}^{}M\times N} \\
-	{N\rightrightarrows_{}^{}N}
-	\arrow["Thom", tail reversed, from=1-1, to=2-1]
-	\arrow["Fourier", tail reversed, from=2-1, to=3-1]
-	\arrow["{e_0}", tail reversed, from=3-1, to=4-1]
-	\arrow["{e_1}", tail reversed, from=4-1, to=5-1]
-	\arrow["{Falta nombre}", tail reversed, from=5-1, to=6-1]
-	\arrow["{e_0 \ (\text{quiza solo en cohomologia})}", tail reversed, from=6-1, to=7-1]
-	\arrow["{e_1 \ (\text{quiza solo en cohomologia})}", from=7-1, to=8-1]
-	\arrow["Morita", tail reversed, from=8-1, to=9-1]
-\end{tikzcd}\]
-
-
-\begin{remark}
-%Comentarios con Florian
-\begin{itemize}
-\item The use of saturated Groupoids to obtain the short exact sequence of $C^*$ functor. 
-\item Short exact sequence of $C(X\setminus \{x_0\})$ only works with the maximal norm.
-\item $K(A\times K)\cong K(A)$.
-\item The principal idea to stablish the evaluation maps is the use of the six exact sequence (See Florian's MSc Thesis)
-\item You have to take care about the part that plays the algebra $C^{*}((0,1])$ in the argument that $ev_0$ is an isomorphism.
-\item $(0,1]\sim_h \{*\}$, then $C_0((0,1])\cong \{0\}$. This will be usefull for the previous item
-\end{itemize}
-\end{remark}
-
-
-\subsection{Pushforward for manifolds without boundary}
-
-\textcolor{red}{COndiciones sobre la cohomologia} Consider $f:M \to N$ a continuous map between manifolds without boundary. The pushforward $f!:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*-m+n}_{\Gamma}(N)$ is defined by the composition \textcolor{red}{El nivel $*$ en que nivel cambia por la resta}
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNKSJdLFsxLDAsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KFRfe2Z9KSJdLFsyLDAsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KERfZikiXSxbMywwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNXnsyfVxcdGltZXMgTikiXSxbNCwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShOKSJdLFswLDEsIlxcdGF1X2YiXSxbMSwyLCJlXzBeey0xfSJdLFsyLDMsImVfezF9Il0sWzMsNCwiXFxtdSJdXQ==
-\[\begin{tikzcd}
-	{\mathscr{H}^{*}_{\Gamma}(M)} & {\mathscr{H}^{*}_{\Gamma}(T_{f})} & {\mathscr{H}^{*}_{\Gamma}(D_f)} & {\mathscr{H}^{*}_{\Gamma}(M^{2}\times N)} & {\mathscr{H}^{*}_{\Gamma}(N)}
-	\arrow["{\tau_f}", from=1-1, to=1-2]
-	\arrow["{e_0^{-1}}", from=1-2, to=1-3]
-	\arrow["{e_{1}}", from=1-3, to=1-4]
-	\arrow["\mu", from=1-4, to=1-5]
-\end{tikzcd}\]
-where
-\begin{itemize}
-\item The map $\tau_f:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*}_{\Gamma}(T_f)$ is the Thom isomorphism for the normal bundle $T_f:= TM\oplus f^{*}TN \to M$.
-
-\item $D_f:=DNC(M^{2}\times N,M)=T_{f}\times \{0\}\sqcup ((M^{2}\times N)\times (0,1])$ for the embedding $(\Delta,f):M\to M^{2}\times N$, with $\Delta:M\to M^{2}$ the diagonal map. 
-
-\item The maps $e_i:\mathscr{H}^{*}_{\Gamma}(D_f)\to \mathscr{H}^{*}_{\Gamma}(C_i)$ for $i=0,1$, with $C_0 = T_f$ and $C_1 = M^{2}\times N$, is defined by \textcolor{red}{Como se definen estos mapas}. We have that $e_0$ is an isomorphism.  
-
-\item $\mu:\mathscr{H}^{*}_{\Gamma}(M^{2}\times N)\to \mathscr{H}^{*}_{\Gamma}(N)$ is defined by \textcolor{red}{La definicion de este mapa debe coincidir con la traza en $K$-teoria}.
-\end{itemize}
-
-Now, we want to determine the compatibility of this definition with some maps related to restrictions to closed subspaces in the following way: if $C_M$ and $C_N$ are closed submanifolds of $M$ and $N$ respectively, such that the following diagram is commutative
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiTiJdLFswLDEsIkNfe019Il0sWzEsMSwiQ197Tn0iXSxbMCwxLCJmIl0sWzIsMywiZl97Q30iLDJdLFsyLDAsImlfTSJdLFszLDEsImlfe059IiwyXV0=
-\[\begin{tikzcd}
-	M & N \\
-	{C_{M}} & {C_{N}}
-	\arrow["f", from=1-1, to=1-2]
-	\arrow["{i_{C_M}}", from=2-1, to=1-1]
-	\arrow["{f_{C}}"', from=2-1, to=2-2]
-	\arrow["{i_{{C_N}}}"', from=2-2, to=1-2]
-\end{tikzcd}\] 
-
-therefore we get the diagram 
-% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTSkiXSxbMSwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShUX3tmfSkiXSxbMiwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShEX2YpIl0sWzMsMCwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTV57Mn1cXHRpbWVzIE4pIl0sWzQsMCwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oTikiXSxbMCwxLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShDX3tNfSkiXSxbMSwxLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShUX3tmX0N9KSJdLFsyLDEsIlxcbWF0aHNjcntIfV57Kn1fe1xcR2FtbWF9KERfe2ZfQ30pIl0sWzMsMSwiXFxtYXRoc2Nye0h9XnsqfV97XFxHYW1tYX0oQ197TX1eezJ9XFx0aW1lcyBDX3tOfSkiXSxbNCwxLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShDX3tOfSkiXSxbMCwxLCJcXHRhdV9mIl0sWzEsMiwiZV8wXnstMX0iXSxbMiwzLCJlX3sxfSJdLFszLDQsIlxcbXUiXSxbNSw2LCJcXHRhdV97Zl9DfSIsMl0sWzYsNywiZV8wXnstMX0iLDJdLFs3LDgsImVfezF9IiwyXSxbOCw5LCJcXG11IiwyXSxbMCw1LCJpX3tDX019XnsqfSIsMl0sWzQsOSwiaV97Q19OfV57Kn0iXSxbMSw2LCJBIiwyXSxbMiw3LCJEIl0sWzMsOCwiQiJdXQ==
-\[\begin{tikzcd}
-	{\mathscr{H}^{*}_{\Gamma}(M)} & {\mathscr{H}^{*}_{\Gamma}(T_{f})} & {\mathscr{H}^{*}_{\Gamma}(D_f)} & {\mathscr{H}^{*}_{\Gamma}(M^{2}\times N)} & {\mathscr{H}^{*}_{\Gamma}(N)} \\
-	{\mathscr{H}^{*}_{\Gamma}(C_{M})} & {\mathscr{H}^{*}_{\Gamma}(T_{f_C})} & {\mathscr{H}^{*}_{\Gamma}(D_{f_C})} & {\mathscr{H}^{*}_{\Gamma}(C_{M}^{2}\times C_{N})} & {\mathscr{H}^{*}_{\Gamma}(C_{N})}
-	\arrow["{\tau_f}", from=1-1, to=1-2]
-	\arrow["{i_{C_M}^{*}}"', from=1-1, to=2-1]
-	\arrow["{e_0^{-1}}", from=1-2, to=1-3]
-	\arrow["(di_{C_M}\oplus f^*di_{C_N})^*"', from=1-2, to=2-2]
-	\arrow["{e_{1}}", from=1-3, to=1-4]
-	\arrow["{D((i_{C_M}^{2},i_{C_N}))^*}", from=1-3, to=2-3]
-	\arrow["\mu", from=1-4, to=1-5]
-	\arrow["{(i_{C_M}^{2},i_{C_N})^{*}}", from=1-4, to=2-4]
-	\arrow["{i_{C_N}^{*}}", from=1-5, to=2-5]
-	\arrow["{\tau_{f_C}}"', from=2-1, to=2-2]
-	\arrow["{e_0^{-1}}"', from=2-2, to=2-3]
-	\arrow["{e_{1}}"', from=2-3, to=2-4]
-	\arrow["\mu"', from=2-4, to=2-5]
-\end{tikzcd}\]
-
-where the vertical maps are given as follows
-\begin{itemize}
-\item The map $D((i_{C_M}^{2},i_{C_N}))^*:\mathscr{H}^{*}_{\Gamma}(D_f)\to \mathscr{H}^{*}_{\Gamma}(D_{f_{C}})$ is defined by the pullback of the map $D((i_{C_M}^{2},i_{C_N})):D_{f_{C}}\to D_{f}$, where the map $(i_{C_M}^{2},i_{C_N})$ is constructed following the commutative diagram
-% https://q.uiver.app/#q=WzAsNCxbMSwwLCJNXnsyfVxcdGltZXMgTiJdLFswLDAsIk0iXSxbMCwxLCJDX3tNfSJdLFsxLDEsIkNfe019XnsyfVxcdGltZXMgQ197Tn0iXSxbMSwwLCIoXFxEZWx0YSwgZikiXSxbMiwzLCIoXFxEZWx0YV97Q19NfSwgZl97Q30pIiwyXSxbMiwxLCJpX00iXSxbMywwLCIoaV9NXnsyfSxpX04pIiwyXV0=
-\[\begin{tikzcd}
-	M & {M^{2}\times N} \\
-	{C_{M}} & {C_{M}^{2}\times C_{N}}
-	\arrow["{(\Delta, f)}", from=1-1, to=1-2]
-	\arrow["{i_{C_M}}", from=2-1, to=1-1]
-	\arrow["{(\Delta_{C_M}, f_{C})}"', from=2-1, to=2-2]
-	\arrow["{(i_{C_M}^{2},i_{C_N})}"', from=2-2, to=1-2]
-\end{tikzcd}\]
-
-then, 
-$$D((i_{C_M}^{2},i_{C_N})):T_{f_C}\times \{0\}\sqcup ((C_M^{2}\times C_N)\times (0,1])\to T_{f}\times \{0\}\sqcup ((M^{2}\times N)\times (0,1])$$
-Where $$D((i_{C_M}^{2},i_{C_N}))|_{T_{f_C}}=di_{C_M}\oplus f^*di_{C_N}=i_{TC_M}\oplus i_{f_C^*TC_N}$$ and $$D((i_{C_M}^{2},i_{C_N}))|_{(C_M^{2}\times C_N)\times (0,1]}=(i_{C_M}^{2},i_{C_N})\times Id_{(0,1]}$$ 
-
-\textcolor{red}{Debemos probar que $D((i_{C_M}^{2},i_{C_N}))$ es un mapa propio.}
-
-
-\item $A$ Since $f:M\to N$ we get that $df:TM\to TN$ and $df_{C}:TC_{M}\to TC_{N}$, therefore we get the map $df\oplus df_C:T_f \to T_{f_{C}}$.
-
-\end{itemize}
-
-About the commutativity of the squares of the previous diagram (from left to right)
-\begin{enumerate}
-\item Naturality of the Thom isomorphism.
-\item Restriction of the deformation to the normal cone to its zero component.
-\item Restriction of the deformation to the normal cone to its one component.
-\item Naturality of $\mu$ (\textcolor{red}{Debemos revisar que se tenga la naturalidad en la traza en K-teoria, donde naturalidad significa la invarianza entre el orden en que se aplica traza o aplicar restriccion.})
-\end{enumerate}
-
-Therefore we can conclude that in this case $i_{{C_N}}^{*}\circ f!=f_{C}!\circ i_{{C_M}}^{*}$.
-
-\textcolor{red}{De toda esta construccion adicional a las observaciones quedan las siguientes tareas: }
-\begin{enumerate}
-\item Ha sido definido solo para variedades lisas (sin borde). Como se define para variedades con frontera.
-\item Debemos comparar con la posible construccion usando Emerson-Meyer.
-\end{enumerate}
-
-\subsection{Pushforward for manifolds with boundary}
 
 
 
