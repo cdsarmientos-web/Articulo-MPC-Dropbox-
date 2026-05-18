@@ -2125,6 +2125,62 @@ The definition of the pushforward of $f:M\to N$ is defined following the next di
 
 \subsection{Review of Pushforward Axioms in $K$-theory}
 
+
+
+\subsubsection{Extending by zero in $K$-theory}
+
+If $i_{M^{0}}^D:M^{0}\to D(M)$ is the canonical inclusion, we are going to show that $i_{M^{0}}^D!$ is obtained by a process of extedending by zero. First, consider the deformation of the map $i_{M^{0}}^D$
+$$D:=DNC(D(M),M^{0})=M^{0}\times \{0\}\sqcup D(M)\times (0,1]=M^{0}\times [0,1]\cup D(M)\times (0,1]$$
+where the last description is an (not disjoint) union of open subsets, and aplying the Mayer-Vietoris sequence 
+% https://q.uiver.app/#q=WzAsNCxbMSwxLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKVxcb3BsdXMgS14qKEQoTSlcXHRpbWVzICgwLDFdKSJdLFswLDEsIkteKihEKSJdLFsxLDAsIkteKihNXnswfVxcdGltZXMgKDAsMV0pIl0sWzAsMCwiS157Ki0xfShNXnswfVxcdGltZXMgKDAsMV0pIl0sWzEsMF0sWzAsMl0sWzMsMV1d
+\[\begin{tikzcd}
+	{K^{*-1}(M^{0}\times (0,1])} & {K^*(M^{0}\times (0,1])} \\
+	{K^*(D)} & {K^*(M^{0}\times [0,1])\oplus K^*(D(M)\times (0,1])}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=1-2]
+\end{tikzcd}\]
+since $K^{*-1}(M^{0}\times (0,1])=K^*(M^{0}\times (0,1])=K^*(D(M)\times (0,1])=0$, then we get the restriction isomorphism $K(r):K^*(D)\to K^*(M^{0}\times [0,1])\cong K^*(M^{0})$. Then we get the commutative diagram 
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooRCkiXSxbMSwwLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKVxcY29uZyBLXiooTV57MH0pIl0sWzEsMSwiS14qKEQoTSkpIl0sWzAsMSwiciIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMiwiZXZfMSIsMl0sWzEsMiwiZXh0Il1d
+\[\begin{tikzcd}
+	{K^*(D)} & {K^*(M^{0})} \\
+	& {K^*(D(M))}
+	\arrow["K(r)", tail, two heads, from=1-1, to=1-2]
+	\arrow["{ev_1}"', from=1-1, to=2-2]
+	\arrow["K(ext)", from=1-2, to=2-2]
+\end{tikzcd}\]
+
+\noindent where $ext:=ev_1\circ K(r)^{-1}$ is the $K$-functor applied to the completion of the map that send an $f\in C_{c}^{\infty}(M^{0})\subset C^*(M^{0})$ to $\hat{f}\in C_{c}^{\infty}(D)$ such that $\hat{f}((x,t))=f(x)$ if $x\in M^{0}$ and $\hat{f}((x,t))=0$ if $x\in D(M)\setminus M^{0}$. Then, composing with $ev_1$ we get $ev_1(\hat{f})(x)=f(x)$ if $x\in M^{0}$ and $ev_1(\hat{f})((x))=0$ if $x\in D(M)\setminus M^{0}$, i.e., $ext: C_{c}^{\infty}(M^{0})\to C_{c}^{\infty}(D(M))$ is the extension by zero to all $D(M)$.   \textcolor{red}{Falta buen argumento en complesiones sin decir que $r$ es invertible en $C^*$-algebras, pues esta es solo invertible en $K$-teoria}.
+
+  Since $r\sim_h ev_0$, we have that $K(r)=K(ev_0)$. Then we have in the evaluation maps
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKSJdLFsyLDAsIkteKihEKE0pKSJdLFsxLDAsIkteKihEKSJdLFsyLDEsImV2XzEiXSxbMiwwLCJldl8wIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XV0=
+\[\begin{tikzcd}
+	{K^*(M^{0}\times [0,1])} & {K^*(D)} & {K^*(D(M))}
+	\arrow["{ev_0}"', tail, two heads, from=1-2, to=1-1]
+	\arrow["{ev_1}", from=1-2, to=1-3]
+\end{tikzcd}\]
+that $K(ev_0)^{-1}\circ ev_1=K(r)^{-1}\circ ev_1=ext$. Now, we releate this morphism to the pushforward of $i_{M^{0}}^D:M^{0}\to D(M)$ as follows
+
+% https://q.uiver.app/#q=WzAsNixbMSwwLCJLXiooVE1eezB9XFxsdGltZXMgVE1eezB9KSJdLFswLDAsIkteKihNXnswfSkiXSxbMSwxLCJLXiooVE1eezB9XFxsdGltZXMgVE1eezB9XFxzcWN1cCAoTV57MH0pXjJcXHRpbWVzIEQoTSkgXFx0aW1lcyAoMCwxXSkiXSxbMCwxLCJLXiooRCkiXSxbMCwyLCJLXiooRChNKSkiXSxbMSwyLCJLXiooKE1eezB9KV4yXFx0aW1lcyBEKE0pKSJdLFs1LDQsIk1vciJdLFszLDQsIkteKihldl57RH1fezF9KSIsMl0sWzIsNSwiZXZfMSJdLFswLDIsImV2XzBeey0xfSJdLFsxLDAsIlxcdGhldGEiXSxbMSwzLCJLXiooZXZee0R9X3swfSleey0xfSIsMl0sWzMsMiwiXFxhbHBoYSJdXQ==
+\[\begin{tikzcd}
+	{K^*(M^{0})} & {K^*(TM^{0}\ltimes TM^{0})} \\
+	{K^*(D)} & {K^*(TM^{0}\ltimes TM^{0}\sqcup (M^{0})^2\times D(M) \times (0,1])} \\
+	{K^*(D(M))} & {K^*((M^{0})^2\times D(M))}
+	\arrow["\theta", from=1-1, to=1-2]
+	\arrow["{K^*(ev^{D}_{0})^{-1}}"', from=1-1, to=2-1]
+	\arrow["{ev_0^{-1}}", from=1-2, to=2-2]
+	\arrow["\alpha", from=2-1, to=2-2]
+	\arrow["{K^*(ev^{D}_{1})}"', from=2-1, to=3-1]
+	\arrow["{ev_1}", from=2-2, to=3-2]
+	\arrow["Mor", from=3-2, to=3-1]
+\end{tikzcd}\]
+
+\noindent such that $i_{M^{0}}^D!=Mor\circ ev_1\circ (ev_0)^{-1}\circ\theta$ and $\alpha:= ev_{0}^{-1}\circ\theta \circ K(ev_{0}^{D})$. We claim that $i_{M^{0}}^D!=K(ev_{1}^{D})\circ K(ev_{0}^{D})^{-1}=K^*(ext)$, and in order to prove this, we have to prove that the previous diagram commutes. The commutativity of the first square is given by the definition of $\alpha$. The commutativity of the second square... \textcolor{red}{Falta el argumento de esta conmutatividad}.
+
+
+\subsubsection{Naturality respect closed subsets}
+
+
 \textcolor{red}{Condiciones sobre la cohomologia} Consider $f:M \to N$ a continuous map between manifolds without boundary. The pushforward $f!:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*-m+n}_{\Gamma}(N)$ is defined by the composition 
 % https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhzY3J7SH1eeyp9X3tcXEdhbW1hfShNKSJdLFsxLDAsIlxcbWF0aHNjcntIfV57KitrfV97XFxHYW1tYX0oVF97Zn0pIl0sWzIsMCwiXFxtYXRoc2Nye0h9XnsqK2t9X3tcXEdhbW1hfShEX2YpIl0sWzMsMCwiXFxtYXRoc2Nye0h9XnsqK2t9X3tcXEdhbW1hfShNXnsyfVxcdGltZXMgTikiXSxbNCwwLCJcXG1hdGhzY3J7SH1eeyora31fe1xcR2FtbWF9KE4pIl0sWzAsMSwiXFx0YXVfZiJdLFsxLDIsImVfMF57LTF9Il0sWzIsMywiZV97MX0iXSxbMyw0LCJNb3IiXV0=
 \[\begin{tikzcd}
