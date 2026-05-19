@@ -422,7 +422,7 @@ A  \textit{$\Gamma$-homology theory} $\mathscr{H}_*^\Gamma$ with values in $R$-m
     \end{enumerate}
 \end{defn}  
 
-\begin{defn}[\cite{Luck05}]
+\begin{defn}[\cite{Luck05}]\label{long cohom}
   A \textit{$\Gamma$-cohomology theory} $\mathscr{H}_{\Gamma}^{*}$ with values in $R$-modules is a collection of covariant
   functors $\mathscr{H}_{\Gamma}^{n}$
   from the category of $\Gamma$-pairs to the category of $R$-modules, indexed by
@@ -2175,10 +2175,84 @@ that $K(ev_0)^{-1}\circ ev_1=K(r)^{-1}\circ ev_1=ext$. Now, we releate this morp
 	\arrow["Mor", from=3-2, to=3-1]
 \end{tikzcd}\]
 
-\noindent such that $i_{M^{0}}^D!=Mor\circ ev_1\circ (ev_0)^{-1}\circ\theta$ and $\alpha:= ev_{0}^{-1}\circ\theta \circ K(ev_{0}^{D})$. We claim that $i_{M^{0}}^D!=K(ev_{1}^{D})\circ K(ev_{0}^{D})^{-1}=K^*(ext)$, and in order to prove this, we have to prove that the previous diagram commutes. The commutativity of the first square is given by the definition of $\alpha$. The commutativity of the second square... \textcolor{red}{Falta el argumento de esta conmutatividad}.
+\noindent such that $i_{M^{0}}^D!=Mor\circ ev_1\circ (ev_0)^{-1}\circ\theta$ and $\alpha:= ev_{0}^{-1}\circ\theta \circ K(ev_{0}^{D})$. We claim that $i_{M^{0}}^D!=K(ev_{1}^{D})\circ K(ev_{0}^{D})^{-1}=K^*(ext)$, and in order to prove this, we have to prove that the previous diagram commutes. The commutativity of the first square is given by the definition of $\alpha$. The commutativity of the second square... \textcolor{red}{Falta el argumento de esta conmutatividad. Cambio de enfoque, probar la Morita de abajo y usar seccion cero para el cuadrado de arriba, sale bonito}.
 
 
-\subsubsection{Naturality respect closed subsets}
+
+\subsubsection{Long exact sequence}
+For a pair $(N,\partial N)$ we have the long exact sequence of Definition \ref{long cohom} 
+% https://q.uiver.app/#q=WzAsMyxbMSwwLCJcXG1hdGhzY3J7SH1eKihOLFxccGFydGlhbCBOKSJdLFsyLDAsIlxcbWF0aHNjcntIfV4qKE4pIl0sWzAsMCwiXFxtYXRoc2Nye0h9XiooXFxwYXJ0aWFsIE4pIl0sWzIsMCwiXFxwYXJ0aWFsIl0sWzAsMSwial4qIl1d
+\[\begin{tikzcd}
+	{\mathscr{H}^*(\partial N)} & {\mathscr{H}^*(N,\partial N)} & {\mathscr{H}^*(N)}
+	\arrow["\partial", from=1-1, to=1-2]
+	\arrow["{j^*}", from=1-2, to=1-3]
+\end{tikzcd}\]
+
+\noindent with $j:(N,\emptyset)\to (N,\partial N)$ and our purpose is to show that $j^*=i_{N^{0}}!$ \textcolor{red}{No es un pull back, sino un entendimiento de una extension por cero desde $N^{0}$} and $\partial = l!$, where $l:\partial N \to C^{0}\subset N^{0}$ where $C$ its a global collar with $C\cong \partial N \times [0,1)$. Then, we have the following diagram at level of $C^*$-algebras
+% https://q.uiver.app/#q=WzAsMTUsWzEsMCwiQ14qKFxccGFydGlhbCBOIFxcdGltZXMgKDAsMSkpIl0sWzIsMCwiQ14qKFxccGFydGlhbCBOIFxcdGltZXMgWzAsMSkpIl0sWzMsMCwiQ14qKFxccGFydGlhbCBOKSJdLFs0LDAsIjAiXSxbMCwwLCIwIl0sWzEsMiwiQ14qKE5eezB9KSJdLFsyLDIsIkNeKihOKSJdLFszLDIsIkNeKihcXHBhcnRpYWwgTikiXSxbNCwyLCIwIl0sWzAsMiwiMCJdLFsxLDEsIkNeKihETkMoTl57MH0sXFxwYXJ0aWFsIE4sIGwpKSJdLFszLDEsIkNeKihcXHBhcnRpYWwgTiBcXHRpbWVzIFswLDFdKSJdLFsyLDEsIkNeKihcXG92ZXJsaW5le0R9KSJdLFs0LDEsIjAiXSxbMCwxLCIwIl0sWzQsMF0sWzAsMV0sWzEsMl0sWzIsM10sWzksNV0sWzUsNl0sWzYsN10sWzcsOF0sWzEwLDAsImV2XzAiXSxbMTAsNSwiZXZfMSIsMl0sWzExLDIsImV2XntofV97MH0iLDJdLFsxMSw3LCJldl57aH1fezF9Il0sWzEwLDEyXSxbMTIsMTFdLFsxMiwxLCJcXG92ZXJsaW5le2V2XzB9IiwyXSxbMTIsNiwiXFxvdmVybGluZXtldl8xfSJdLFsxNCwxMF0sWzExLDEzXV0=
+\[\begin{tikzcd}
+	0 & {C^*(\partial N \times (0,1))} & {C^*(\partial N \times [0,1))} & {C^*(\partial N)} & 0 \\
+	0 & {C^*(DNC(N^{0},\partial N, l))} & {C^*(\overline{D})} & {C^*(\partial N \times [0,1])} & 0 \\
+	0 & {C^*(N^{0})} & {C^*(N)} & {C^*(\partial N)} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{ev_0}", from=2-2, to=1-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["{ev_1}"', from=2-2, to=3-2]
+	\arrow["{\overline{ev_0}}"', from=2-3, to=1-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow["{\overline{ev_1}}", from=2-3, to=3-3]
+	\arrow["{ev^{h}_{0}}"', from=2-4, to=1-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow["{ev^{h}_{1}}", from=2-4, to=3-4]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+\end{tikzcd}\]
+\noindent where $\overline{D}:=(\partial N \times [0,1) )\times \{0\} \sqcup N\times (0,1]$. This space is obtained as a restriction of a deformation in the following way:
+\begin{itemize}
+\item Consider a smooth map $z:D(N)=N^{+}\cup_{\partial N}N^{-}\to \mathbb{R}$ such that $z^{-1}(0)=\partial N$ and $z^{-1}([0,\infty))=N^{+}$, then we can consider it as a pair map $$z:(D(N),\partial N)\to (\mathbb{R},\{0\})$$  
+\item Consider the deformation of the embedding $i_{\partial N}:\partial N\to D(N)$ which is an extension of the map $i_{\partial N}:\partial N \to N$, where $N(D(N),\partial N)=N(N,\partial N)\cong \partial N\times \mathbb{R}$, then 
+$$DNC(D(N),\partial N)=\partial N \times \mathbb{R} \times \{0\} \sqcup D(N)\times (0,1]$$ 
+\item Consider the deformation of the inclusion $\{0\}\to \mathbb{R}$, i.e., $$DNC(\mathbb{R},\{0\})=\{0\}\times \mathbb{R}\times \{0\}\sqcup \mathbb{R}\times [0,1]^*=\mathbb{R}\times [0,1]$$
+\item Applying the deformation functor to the map of pair $z$, to get  
+$$DNC(z)=d_{\nu}z\sqcup (z\times Id):\partial N \times \mathbb{R} \times \{0\} \sqcup D(N)\times (0,1]\to \mathbb{R}\times [0,1],$$
+
+where $d_{\nu}z:\partial N \times \mathbb{R}\to \mathbb{R}\times \{0\}$ is such that $d_{\nu}z(n,v)=v$. Therefore we get that in terms of the inverse image,
+\begin{align*}
+\overline{D}&=d_{\nu}z^{-1}([0,\infty)\times \{0\})\cup (z\times Id)^{-1}([0,\infty)\times (0,1])\\&=DNC(z)^{-1}([0,\infty)\times [0,1]).
+\end{align*}
+\end{itemize} 
+We get the relation
+\begin{align*}
+\overline{D}&=(\partial N \times [0,1) )\times \{0\} \sqcup N\times (0,1]\\
+&=\partial N \times \{0\} \times [0,1] \sqcup \biggl(\partial N \times (0,1)\times \{0\}\sqcup N^{0}\times (0,1]\biggr)
+\end{align*}
+
+\noindent Then we get the following commutative diagram
+% https://q.uiver.app/#q=WzAsNixbMSwwLCJLXnsqKzF9KFxccGFydGlhbCBOIFxcdGltZXMgKDAsMSkpIl0sWzAsMCwiS14qKFxccGFydGlhbCBOKSJdLFsxLDIsIkteeyorMX0oTl57MH0pIl0sWzAsMiwiS14qKFxccGFydGlhbCBOKSJdLFsxLDEsIkteeyorMX0oRE5DKE5eezB9LFxccGFydGlhbCBOLCBsKSkiXSxbMCwxLCJLXiooXFxwYXJ0aWFsIE4gXFx0aW1lcyBbMCwxXSkiXSxbNCwwLCJldl8wIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNCwyLCJldl8xIl0sWzUsMSwiZXZee2h9X3swfSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzUsMywiZXZee2h9X3sxfSIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzMsMiwiXFxwYXJ0aWFsIiwyXSxbMSwwLCJUaCJdXQ==
+\[\begin{tikzcd}
+	{K^*(\partial N)} & {K^{*+1}(\partial N \times (0,1))} \\
+	{K^*(\partial N \times [0,1])} & {K^{*+1}(DNC(N^{0},\partial N, l))} \\
+	{K^*(\partial N)} & {K^{*+1}(N^{0})}
+	\arrow["Th", from=1-1, to=1-2]
+	\arrow["{ev^{h}_{0}}", tail, two heads, from=2-1, to=1-1]
+	\arrow["{ev^{h}_{1}}"', tail, two heads, from=2-1, to=3-1]
+	\arrow["{ev_0}"', tail, two heads, from=2-2, to=1-2]
+	\arrow["{ev_1}", from=2-2, to=3-2]
+	\arrow["\partial"', from=3-1, to=3-2]
+\end{tikzcd}\]
+where $ev^{h}_{0}\circ(ev^{h}_{1})^{-1}=Id$ by homotopy invariance, showing that $$\partial = ev_1\circ ev_{0}^{-1}\circ Th = l!$$
+\textcolor{red}{Falta el argumento de pushforward para encajes como $l$ en este caso}.
+
+
+
+
+\subsubsection{Naturality with respect to closed subsets}
 
 
 \textcolor{red}{Condiciones sobre la cohomologia} Consider $f:M \to N$ a continuous map between manifolds without boundary. The pushforward $f!:\mathscr{H}^{*}_{\Gamma}(M)\to \mathscr{H}^{*-m+n}_{\Gamma}(N)$ is defined by the composition 
