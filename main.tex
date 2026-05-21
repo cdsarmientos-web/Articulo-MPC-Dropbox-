@@ -2178,6 +2178,47 @@ that $K(ev_0)^{-1}\circ ev_1=K(r)^{-1}\circ ev_1=ext$. Now, we releate this morp
 \noindent such that $i_{M^{0}}^D!=Mor\circ ev_1\circ (ev_0)^{-1}\circ\theta$ and $\alpha:= ev_{0}^{-1}\circ\theta \circ K(ev_{0}^{D})$. We claim that $i_{M^{0}}^D!=K(ev_{1}^{D})\circ K(ev_{0}^{D})^{-1}=K^*(ext)$, and in order to prove this, we have to prove that the previous diagram commutes. The commutativity of the first square is given by the definition of $\alpha$. The commutativity of the second square... \textcolor{red}{Falta el argumento de esta conmutatividad. Cambio de enfoque, probar la Morita de abajo y usar seccion cero para el cuadrado de arriba, sale bonito}.
 
 
+\subsubsection{Thom isomorphism axiom}
+
+In order to verify that for the zero section $s:M\to E$ of a vector bundle $E\to M$, that $s!=\tau_E$, first we are going to show that for $f:M\to N$ there exist an easier description of the pushforward $f!$ using a deformation that involves only commutative algebras either than the noncommutative $C^*$-algebras related to our regular groupoid deformations. We claim that the following diagram commutes
+
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJLXiooTSkiXSxbMCwxLCJLXiooZl4qVE4vVE0pIl0sWzEsMCwiS14qKFReKk1cXG9wbHVzIGZeKlROKSJdLFsxLDEsIkteKihUTVxcbHRpbWVzIGZeKlROKSJdLFswLDIsIkteKihEKE4sTSxmKSkiXSxbMCwzLCJLXiooTikiXSxbMSwzLCJLXiooTV57Mn1cXHRpbWVzIE4pIl0sWzEsMiwiS14qKEQoTV57Mn1cXHRpbWVzIE4sTSwoXFxEZWx0YVxcdGltZXMgZikpKSJdLFswLDIsIlRoIl0sWzIsMywiKGV2XntcXGx0aW1lc31fezB9KV57LTF9XFxjaXJjIGV2XntcXGx0aW1lc31fezF9XFxjaXJjIFxcbWF0aGNhbHtGfSJdLFszLDcsIihldl97MH0pXnstMX0iXSxbNyw2LCJldl97MX0iXSxbNiw1LCJNb3IiXSxbNCw1LCJldl57RH1fezF9IiwyXSxbMSw0LCIoZXZee0R9X3swfSleey0xfSIsMl0sWzAsMSwiVGgiLDJdLFs3LDQsIk1vciIsMl0sWzMsMSwiTW9yIiwyXV0=
+\[\begin{tikzcd}
+	{K^*(M)} & {K^*(T^*M\oplus f^*TN)} \\
+	{K^*(f^*TN/TM)} & {K^*(TM\ltimes f^*TN)} \\
+	{K^*(D(N,M,f))} & {K^*(D(M^{2}\times N,M,(\Delta\times f)))} \\
+	{K^*(N)} & {K^*(M^{2}\times N)}
+	\arrow["Th", from=1-1, to=1-2]
+	\arrow["Th"', from=1-1, to=2-1]
+	\arrow["{(ev^{\ltimes}_{0})^{-1}\circ ev^{\ltimes}_{1}\circ \mathcal{F}}", from=1-2, to=2-2]
+	\arrow["{(ev^{D}_{0})^{-1}}"', from=2-1, to=3-1]
+	\arrow["Mor"', from=2-2, to=2-1]
+	\arrow["{(ev_{0})^{-1}}", from=2-2, to=3-2]
+	\arrow["{ev^{D}_{1}}"', from=3-1, to=4-1]
+	\arrow["Mor"', from=3-2, to=3-1]
+	\arrow["{ev_{1}}", from=3-2, to=4-2]
+	\arrow["Mor", from=4-2, to=4-1]
+\end{tikzcd}\]
+
+To prove this, we get that
+\begin{enumerate}
+\item The middle and bottom diagrams are commutative by a Morita equivalence given by a Hilsum-Skandalis isomorphism of 
+$$D(N,M,f)\cong_{HS}D(M^{2}\times N,M,(\Delta\times f))$$
+\item Since the top diagram is the result to apply the $K$-functor to the respective $C^*$-algebras to the diagram
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJNIl0sWzAsMSwiZl4qVE4vVE0iXSxbMSwwLCJUXipNXFxvcGx1cyBmXipUTiJdLFsxLDEsIlRNXFxsdGltZXMgZl4qVE4iXSxbMiwwLCJUTVxcb3BsdXMgZl4qVE4iXSxbMiwxLCJEKFRNXFxsdGltZXMgZl4qVE4sVE1cXG9wbHVzIGZeKlROKSJdLFswLDIsInMiXSxbMCwxLCJzIiwyXSxbMywxLCJIUyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDUsImluXzEiXSxbMiw0LCJcXG1hdGhjYWx7Rn0iXSxbNSwzLCJldl8wIl0sWzAsM11d
+\[\begin{tikzcd}
+	M & {T^*M\oplus f^*TN} & {TM\oplus f^*TN} \\
+	{f^*TN/TM} & {TM\ltimes f^*TN} & {D(TM\ltimes f^*TN,TM\oplus f^*TN)}
+	\arrow["s", from=1-1, to=1-2]
+	\arrow["s"', from=1-1, to=2-1]
+	\arrow[from=1-1, to=2-2]
+	\arrow["{\mathcal{F}}", from=1-2, to=1-3]
+	\arrow["{in_1}", from=1-3, to=2-3]
+	\arrow["HS", dashed, from=2-2, to=2-1]
+	\arrow["{ev_0}", from=2-3, to=2-2]
+\end{tikzcd}\]
+where $K^*(s)$ are the inverse of the respective Thom isomorphism, we claim that the both shapes, the right trapezium commutes as inclusions of the groupoid $M\rightrightarrows M$ in each morphism, and the triangle commutes because the Hilsum-Skandalis morphism commutes (as an identity) in the inclusion groupoid of $M\rightrightarrows M$ by the zero sections. \textcolor{red}{Tenemos las cuentas, incluirlas}.
+\end{enumerate}
 
 \subsubsection{Long exact sequence}
 For a pair $(N,\partial N)$ we have the long exact sequence of Definition \ref{long cohom} 
@@ -2339,7 +2380,14 @@ About the commutativity of the squares of the previous diagram (from left to rig
 
 Therefore we can conclude that in this case $i_{{C_N}}^{*}\circ f!=f_{C}!\circ i_{{C_M}}^{*}$.
 
+\subsection{Review of pushforward structure in Equivariant $K$-theory}
 
+\begin{itemize}
+\item The groupoids that are involved are the same but with the action of $\Gamma$ in such a way that for instance in the first step  $K_{\Gamma}^*(M)\cong K^*((\Gamma\ltimes M)\rightrightarrows M)$ (wich is an isomorphism for proper actions \textcolor{red}{requiere cita}), the groupoid is the $(\Gamma\ltimes M)\rightrightarrows M$ has the structure $s((r,m))=m$ and $t((r,m))=r\cdot m$.
+\item Same use os maps as in the non equivariant of the previos subsection. 
+\item The morita equivalence are preserved by the applying action of $\Gamma$.
+\item We have to describe the ways and modifications that we have to prove in order to preserve the propositions with the action.
+\end{itemize}
 
 
 \subsection{Review Baum-Douglas Homology}
