@@ -1796,7 +1796,7 @@ We have to show that the map
 $$\phi_*: \mathscr{H}^{pf}_*(X-A,\emptyset;\Gamma)\to \mathscr{H}^{pf}_*(X,A,\Gamma):[M,\partial M,\pi_M,x_M]\mapsto [M,\partial M,\phi\circ\pi_M,x_M]$$
 is an isomorphism. We define the inverse map 
 $$h: \mathscr{H}^{pf}_*(X,A,\Gamma)\to \mathscr{H}^{pf}_*(X-A,\emptyset;\Gamma),$$
-by $h([M,\partial M,\pi_M,x^{0}_M])=[M^{0},\emptyset,\pi_M|_{M^{0}},\tilde{x}_M]$ where $[M,\partial M,\pi_M,x^{0}_M]\in $ is given Lemma \ref{Lemota} such that $i_{M^{0}}^{M}!(\tilde{x}_M)=x^{0}_M$
+by $h([M,\partial M,\pi_M,x^{0}_M])=[M^{0},\emptyset,\pi_M|_{M^{0}},\tilde{x}_M]$ where $[M,\partial M,\pi_M,x^{0}_M]$ is given by Lemma \ref{Lemota} such that $i_{M^{0}}^{M}!(\tilde{x}_M)=x^{0}_M$
 and such that $\pi_M^{-1}(A)\cap (\partial M)^{c}=\emptyset$, by Remark \ref{Empujando}.
 
 \begin{itemize}
@@ -2120,67 +2120,34 @@ The definition of the pushforward of $f:M\to N$ is defined following the next di
 	\arrow[from=2-3, to=2-4]
 \end{tikzcd}\]
 
-\noindent The left square commutes by the functoriality of the pushforward of manifolds without boundary, and the right square define (in order to commute) the pushforward $f!:\mathscr{H}^*(M)\to \mathscr{H}^*(N)$ by $$f!(a):=(i_{N}^{D})^*\circ f_D!(b)$$ for $b\in \mathscr{H}^*(D(M))$ such that $(i_{M}^{D})^*(b)=a$. This map is well defined \textcolor{red}{Falta argumento}. It is also a group homomorphism by \textcolor{red}{Falta argumento}.
+\noindent The left square commutes by the functoriality of the pushforward of manifolds without boundary, and the right square define (in order to commute) the pushforward $f!:\mathscr{H}^*(M)\to \mathscr{H}^*(N)$ by $$f!(a):=(i_{N}^{D})^*\circ f_D!(b)$$ for $b\in \mathscr{H}^*(D(M))$ such that $(i_{M}^{D})^*(b)=a$. This map is 
+\begin{itemize}
+\item well defined: if $a\in \mathscr{H}^*(M)$, consider $b_1, b_2\in ((i_{M}^{D})^*)^{-1}(a)$, then $b_1-b_2\in Ker((i_{M}^{D})^*)=Im((i_{M^{0}}^{D})!)$. For $c\in \mathscr{H}^*(M^{0})$ such that $(i_{M^{0}}^{D})!(c)=b_1-b_2$, we have that $(i_{N}^{D})^*\circ f_{D}!(b_1)=(i_{N}^{D})^*\circ f_{D}!(b_2)$, then
+\begin{align*}
+f_{D}!(b_1-b_2)=f_{D}!\circ (i_{N^{0}}^{D})!(c)
+\end{align*}
+and by the bottom exact sequence releated to $N$, we get that  
+\begin{align*}
+(i_{N}^{D})^*\circ f_{D}!(b_1)-(i_{N}^{D})^*\circ f_{D}!(b_2)&=
+(i_{N}^{D})^*\circ f_{D}! \circ  (i_{M^{0}}^{D})!(c)\\&= (i_{N}^{D})^*\circ (i_{N^{0}}^{D})! \circ f_{0}!(c)=0,
+\end{align*}
+which means that $(i_{N}^{D})^*\circ f_{D}!(b_1)=(i_{N}^{D})^*\circ f_{D}!(b_2)$.
+\item  is also a group homomorphism by the fact that  the involved morphisms are group homomorphisms.
+\end{itemize}
+
+
 
 
 \subsection{Review of Pushforward Axioms in $K$-theory}
 
+\subsubsection{Functoriality}
+
+\subsubsection{Homotopy invariance}
 
 
-\subsubsection{Extending by zero in $K$-theory}
+\subsubsection{Pushforward of embeddings}
 
-If $i_{M^{0}}^D:M^{0}\to D(M)$ is the canonical inclusion, we are going to show that $i_{M^{0}}^D!$ is obtained by a process of extedending by zero. First, consider the deformation of the map $i_{M^{0}}^D$
-$$D:=DNC(D(M),M^{0})=M^{0}\times \{0\}\sqcup D(M)\times (0,1]=M^{0}\times [0,1]\cup D(M)\times (0,1]$$
-where the last description is an (not disjoint) union of open subsets, and aplying the Mayer-Vietoris sequence 
-% https://q.uiver.app/#q=WzAsNCxbMSwxLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKVxcb3BsdXMgS14qKEQoTSlcXHRpbWVzICgwLDFdKSJdLFswLDEsIkteKihEKSJdLFsxLDAsIkteKihNXnswfVxcdGltZXMgKDAsMV0pIl0sWzAsMCwiS157Ki0xfShNXnswfVxcdGltZXMgKDAsMV0pIl0sWzEsMF0sWzAsMl0sWzMsMV1d
-\[\begin{tikzcd}
-	{K^{*-1}(M^{0}\times (0,1])} & {K^*(M^{0}\times (0,1])} \\
-	{K^*(D)} & {K^*(M^{0}\times [0,1])\oplus K^*(D(M)\times (0,1])}
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=2-2, to=1-2]
-\end{tikzcd}\]
-since $K^{*-1}(M^{0}\times (0,1])=K^*(M^{0}\times (0,1])=K^*(D(M)\times (0,1])=0$, then we get the restriction isomorphism $K(r):K^*(D)\to K^*(M^{0}\times [0,1])\cong K^*(M^{0})$. Then we get the commutative diagram 
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooRCkiXSxbMSwwLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKVxcY29uZyBLXiooTV57MH0pIl0sWzEsMSwiS14qKEQoTSkpIl0sWzAsMSwiciIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMiwiZXZfMSIsMl0sWzEsMiwiZXh0Il1d
-\[\begin{tikzcd}
-	{K^*(D)} & {K^*(M^{0})} \\
-	& {K^*(D(M))}
-	\arrow["K(r)", tail, two heads, from=1-1, to=1-2]
-	\arrow["{ev_1}"', from=1-1, to=2-2]
-	\arrow["K(ext)", from=1-2, to=2-2]
-\end{tikzcd}\]
-
-\noindent where $ext:=ev_1\circ K(r)^{-1}$ is the $K$-functor applied to the completion of the map that send an $f\in C_{c}^{\infty}(M^{0})\subset C^*(M^{0})$ to $\hat{f}\in C_{c}^{\infty}(D)$ such that $\hat{f}((x,t))=f(x)$ if $x\in M^{0}$ and $\hat{f}((x,t))=0$ if $x\in D(M)\setminus M^{0}$. Then, composing with $ev_1$ we get $ev_1(\hat{f})(x)=f(x)$ if $x\in M^{0}$ and $ev_1(\hat{f})((x))=0$ if $x\in D(M)\setminus M^{0}$, i.e., $ext: C_{c}^{\infty}(M^{0})\to C_{c}^{\infty}(D(M))$ is the extension by zero to all $D(M)$.   \textcolor{red}{Falta buen argumento en complesiones sin decir que $r$ es invertible en $C^*$-algebras, pues esta es solo invertible en $K$-teoria}.
-
-  Since $r\sim_h ev_0$, we have that $K(r)=K(ev_0)$. Then we have in the evaluation maps
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKSJdLFsyLDAsIkteKihEKE0pKSJdLFsxLDAsIkteKihEKSJdLFsyLDEsImV2XzEiXSxbMiwwLCJldl8wIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XV0=
-\[\begin{tikzcd}
-	{K^*(M^{0}\times [0,1])} & {K^*(D)} & {K^*(D(M))}
-	\arrow["{ev_0}"', tail, two heads, from=1-2, to=1-1]
-	\arrow["{ev_1}", from=1-2, to=1-3]
-\end{tikzcd}\]
-that $K(ev_0)^{-1}\circ ev_1=K(r)^{-1}\circ ev_1=ext$. Now, we releate this morphism to the pushforward of $i_{M^{0}}^D:M^{0}\to D(M)$ as follows
-
-% https://q.uiver.app/#q=WzAsNixbMSwwLCJLXiooVE1eezB9XFxsdGltZXMgVE1eezB9KSJdLFswLDAsIkteKihNXnswfSkiXSxbMSwxLCJLXiooVE1eezB9XFxsdGltZXMgVE1eezB9XFxzcWN1cCAoTV57MH0pXjJcXHRpbWVzIEQoTSkgXFx0aW1lcyAoMCwxXSkiXSxbMCwxLCJLXiooRCkiXSxbMCwyLCJLXiooRChNKSkiXSxbMSwyLCJLXiooKE1eezB9KV4yXFx0aW1lcyBEKE0pKSJdLFs1LDQsIk1vciJdLFszLDQsIkteKihldl57RH1fezF9KSIsMl0sWzIsNSwiZXZfMSJdLFswLDIsImV2XzBeey0xfSJdLFsxLDAsIlxcdGhldGEiXSxbMSwzLCJLXiooZXZee0R9X3swfSleey0xfSIsMl0sWzMsMiwiXFxhbHBoYSJdXQ==
-\[\begin{tikzcd}
-	{K^*(M^{0})} & {K^*(TM^{0}\ltimes TM^{0})} \\
-	{K^*(D)} & {K^*(TM^{0}\ltimes TM^{0}\sqcup (M^{0})^2\times D(M) \times (0,1])} \\
-	{K^*(D(M))} & {K^*((M^{0})^2\times D(M))}
-	\arrow["\theta", from=1-1, to=1-2]
-	\arrow["{K^*(ev^{D}_{0})^{-1}}"', from=1-1, to=2-1]
-	\arrow["{ev_0^{-1}}", from=1-2, to=2-2]
-	\arrow["\alpha", from=2-1, to=2-2]
-	\arrow["{K^*(ev^{D}_{1})}"', from=2-1, to=3-1]
-	\arrow["{ev_1}", from=2-2, to=3-2]
-	\arrow["Mor", from=3-2, to=3-1]
-\end{tikzcd}\]
-
-\noindent such that $i_{M^{0}}^D!=Mor\circ ev_1\circ (ev_0)^{-1}\circ\theta$ and $\alpha:= ev_{0}^{-1}\circ\theta \circ K(ev_{0}^{D})$. We claim that $i_{M^{0}}^D!=K(ev_{1}^{D})\circ K(ev_{0}^{D})^{-1}=K^*(ext)$, and in order to prove this, we have to prove that the previous diagram commutes. The commutativity of the first square is given by the definition of $\alpha$. The commutativity of the second square... \textcolor{red}{Falta el argumento de esta conmutatividad. Cambio de enfoque, probar la Morita de abajo y usar seccion cero para el cuadrado de arriba, sale bonito}.
-
-
-\subsubsection{Thom isomorphism axiom}
-
-In order to verify that for the zero section $s:M\to E$ of a vector bundle $E\to M$, that $s!=\tau_E$, first we are going to show that for $f:M\to N$ there exist an easier description of the pushforward $f!$ using a deformation that involves only commutative algebras either than the noncommutative $C^*$-algebras related to our regular groupoid deformations. We claim that the following diagram commutes
+We are going to show that for $f:M\to N$ there exist an easier description of the pushforward $f!$ using a deformation that involves only commutative algebras either than the noncommutative $C^*$-algebras related to our regular groupoid deformations. We claim that the following diagram commutes
 
 % https://q.uiver.app/#q=WzAsOCxbMCwwLCJLXiooTSkiXSxbMCwxLCJLXiooZl4qVE4vVE0pIl0sWzEsMCwiS14qKFReKk1cXG9wbHVzIGZeKlROKSJdLFsxLDEsIkteKihUTVxcbHRpbWVzIGZeKlROKSJdLFswLDIsIkteKihEKE4sTSxmKSkiXSxbMCwzLCJLXiooTikiXSxbMSwzLCJLXiooTV57Mn1cXHRpbWVzIE4pIl0sWzEsMiwiS14qKEQoTV57Mn1cXHRpbWVzIE4sTSwoXFxEZWx0YVxcdGltZXMgZikpKSJdLFswLDIsIlRoIl0sWzIsMywiKGV2XntcXGx0aW1lc31fezB9KV57LTF9XFxjaXJjIGV2XntcXGx0aW1lc31fezF9XFxjaXJjIFxcbWF0aGNhbHtGfSJdLFszLDcsIihldl97MH0pXnstMX0iXSxbNyw2LCJldl97MX0iXSxbNiw1LCJNb3IiXSxbNCw1LCJldl57RH1fezF9IiwyXSxbMSw0LCIoZXZee0R9X3swfSleey0xfSIsMl0sWzAsMSwiVGgiLDJdLFs3LDQsIk1vciIsMl0sWzMsMSwiTW9yIiwyXV0=
 \[\begin{tikzcd}
@@ -2204,6 +2171,63 @@ To prove this, we get that
 \begin{enumerate}
 \item The middle and bottom diagrams are commutative by a Morita equivalence given by a Hilsum-Skandalis isomorphism of 
 $$D(N,M,f)\cong_{HS}D(M^{2}\times N,M,(\Delta\times f))$$
+
+In order to see this, first consider the groupoid space $$D(N,M,f)\rightrightarrows D(N,M,f)$$ and the deformation functor applyied to the map $\pi_2:M\times N \to N$ getting $$D(\pi_2,Id):D(M\times N,M,Id\times f)\to D(N,M,f)$$
+
+Then, we consider the pullback groupoid (\cite{Will19}, Example 2.37) 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJeKkQoXFxwaV8yLElkKV4qIEQoTixNLGYpIl0sWzAsMSwiRChNXFx0aW1lcyBOLE0sSWRcXHRpbWVzIGYpIl0sWzEsMSwiIEQoTixNLGYpIl0sWzEsMCwiIEQoTixNLGYpIl0sWzEsMiwiRChcXHBpXzIsSWQpIiwyXSxbMywyLCIiLDAseyJvZmZzZXQiOi0zfV0sWzMsMiwiIiwwLHsib2Zmc2V0IjozfV0sWzAsMSwiXFxwaV8yIiwwLHsib2Zmc2V0IjotM31dLFswLDEsIlxccGlfMSIsMix7Im9mZnNldCI6M31dXQ==
+\[\begin{tikzcd}
+	{^*D(\pi_2,Id)^* D(N,M,f)} & { D(N,M,f)} \\
+	{D(M\times N,M,Id\times f)} & { D(N,M,f)}
+	\arrow["{\pi_2}", shift left=3, from=1-1, to=2-1]
+	\arrow["{\pi_1}"', shift right=3, from=1-1, to=2-1]
+	\arrow[shift left=3, from=1-2, to=2-2]
+	\arrow[shift right=3, from=1-2, to=2-2]
+	\arrow["{D(\pi_2,Id)}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+where we get the identification of this pullback with the pull back of the spaces groupoids $$^*D(\pi_2,Id)^* D(N,M,f) =\ ^*\pi^*(f^*TN/TM)\sqcup\ ^*\pi_2\times Id^*(N\times (0,1])$$
+getting the saturated groupoid 
+% https://q.uiver.app/#q=WzAsNSxbMSwxLCJcXHNxY3VwIl0sWzAsMCwiZl4qVE5cXHRpbWVzX3tcXHBpfWZeKlROIl0sWzAsMiwiZl4qVE4iXSxbMiwwLCJNXnsyfVxcdGltZXMgTlxcdGltZXMgKDAsMV0iXSxbMiwyLCJNXFx0aW1lcyBOXFx0aW1lcyAoMCwxXSJdLFsxLDIsIiIsMCx7Im9mZnNldCI6LTN9XSxbMSwyLCIiLDEseyJvZmZzZXQiOjN9XSxbMyw0LCIiLDAseyJvZmZzZXQiOi0zfV0sWzMsNCwiIiwxLHsib2Zmc2V0IjozfV1d
+\[\begin{tikzcd}
+	{f^*TN\times_{\pi}f^*TN} && {M^{2}\times N\times (0,1]} \\
+	& \sqcup \\
+	{f^*TN} && {M\times N\times (0,1]}
+	\arrow[shift left=3, from=1-1, to=3-1]
+	\arrow[shift right=3, from=1-1, to=3-1]
+	\arrow[shift left=3, from=1-3, to=3-3]
+	\arrow[shift right=3, from=1-3, to=3-3]
+\end{tikzcd}\]
+We claim that this obtained groupoid is morita equivalent to the deformation groupoid $$D(M^{2}\times N,M,\Delta\times f)\rightrightarrows D(M\times N,M,f)$$
+This will be guarantized if we define a generalized isomorphism in zero parts of both groupoids. This is defined by the following generalized morphisms compose
+% https://q.uiver.app/#q=WzAsOCxbNCwwLCJmXipUTlxcdGltZXNfe1xccGl9Zl4qVE4iXSxbNCwxLCJmXipUTiJdLFsyLDAsImZeKlROL1RNIl0sWzAsMCwiVE1cXGx0aW1lcyBmXipUTiJdLFsyLDEsImZeKlROL1RNIl0sWzMsMCwiZl4qVE4iXSxbMCwxLCJmXipUTiJdLFsxLDAsImZeKlROIl0sWzAsMSwiIiwwLHsib2Zmc2V0IjotM31dLFswLDEsIiIsMSx7Im9mZnNldCI6M31dLFszLDYsIiIsMCx7Im9mZnNldCI6LTN9XSxbMyw2LCIiLDEseyJvZmZzZXQiOjN9XSxbNyw2LCJJZCJdLFsyLDQsIiIsMCx7Im9mZnNldCI6LTN9XSxbMiw0LCIiLDEseyJvZmZzZXQiOjN9XSxbNyw0LCJcXHBpIiwyXSxbNSw0LCJcXHBpIl0sWzUsMSwiSWQiLDJdXQ==
+\[\begin{tikzcd}
+	{TM\ltimes f^*TN} & {f^*TN} & {f^*TN/TM} & {f^*TN} & {f^*TN\times_{\pi}f^*TN} \\
+	{f^*TN} && {f^*TN/TM} && {f^*TN}
+	\arrow[shift left=3, from=1-1, to=2-1]
+	\arrow[shift right=3, from=1-1, to=2-1]
+	\arrow["Id", from=1-2, to=2-1]
+	\arrow["\pi"', from=1-2, to=2-3]
+	\arrow[shift left=3, from=1-3, to=2-3]
+	\arrow[shift right=3, from=1-3, to=2-3]
+	\arrow["\pi", from=1-4, to=2-3]
+	\arrow["Id"', from=1-4, to=2-5]
+	\arrow[shift left=3, from=1-5, to=2-5]
+	\arrow[shift right=3, from=1-5, to=2-5]
+\end{tikzcd}\]
+where the leteral actions are given in the following way
+\begin{itemize}
+\item $TM\ltimes f^*TN f^*TN\curvearrowright f^*TN$ with anchor the identity and for $w\in f^*TN$, then  $(v\oplus w)\cdot w= v\ltimes w\in f^*TN$.
+\item $f^*TN/TM$ has a bilateral trivial action over $f^*TN$, where the only posible product is for any $w\in f^*TN$, $$[w]\cdot w= w\cdot [w]:=w.$$
+\item $f^*TN\curvearrowleft f^*TN\times_{\pi}f^*TN$ with anchor the identity and for $w\in f^*TN$, then  $w\cdot (w\oplus \tilde{w})=\tilde{w}\in f^*TN$.
+\end{itemize}
+
+With these actions we have that both generalized morphisms are invertible by
+\begin{enumerate}
+\item All anchors are invariant respect the domain groupoid action in each part of the diagram.
+\item All anchors are principal groupoid bundles of the respective domain groupoid action. \textcolor{red}{Poner las cuentas}
+\end{enumerate}
+
+
 \item Since the top diagram is the result to apply the $K$-functor to the respective $C^*$-algebras to the diagram
 % https://q.uiver.app/#q=WzAsNixbMCwwLCJNIl0sWzAsMSwiZl4qVE4vVE0iXSxbMSwwLCJUXipNXFxvcGx1cyBmXipUTiJdLFsxLDEsIlRNXFxsdGltZXMgZl4qVE4iXSxbMiwwLCJUTVxcb3BsdXMgZl4qVE4iXSxbMiwxLCJEKFRNXFxsdGltZXMgZl4qVE4sVE1cXG9wbHVzIGZeKlROKSJdLFswLDIsInMiXSxbMCwxLCJzIiwyXSxbMywxLCJIUyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDUsImluXzEiXSxbMiw0LCJcXG1hdGhjYWx7Rn0iXSxbNSwzLCJldl8wIl0sWzAsM11d
 \[\begin{tikzcd}
@@ -2219,6 +2243,66 @@ $$D(N,M,f)\cong_{HS}D(M^{2}\times N,M,(\Delta\times f))$$
 \end{tikzcd}\]
 where $K^*(s)$ are the inverse of the respective Thom isomorphism, we claim that the both shapes, the right trapezium commutes as inclusions of the groupoid $M\rightrightarrows M$ in each morphism, and the triangle commutes because the Hilsum-Skandalis morphism commutes (as an identity) in the inclusion groupoid of $M\rightrightarrows M$ by the zero sections. \textcolor{red}{Tenemos las cuentas, incluirlas}.
 \end{enumerate}
+
+\subsubsection{Extending by zero interpretation}
+If we consider in the previous section an embedding given by the inclusion of an open set $U\subseteq M^{0}$, that is $f=i_{U}^{M^{0}}:U\to M^{0}$ we simplify the previous result, by the fact that $N(M^{0},U,i_{U}^{M^{0}})\cong U$, therefore the Tom isomorphism will be replaced by an identity map. In the deformation of the map $i_{U}^{M^{0}}$ we get
+$$D:=DNC(M^{0},U,i_{U}^{M^{0}})=U\times \{0\}\sqcup M^{0}\times (0,1]=U\times [0,1]\cup M^{0}\times (0,1]$$
+where the last description is an (not disjoint) union of open subsets, and aplying the Mayer-Vietoris sequence 
+% https://q.uiver.app/#q=WzAsNCxbMSwxLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKVxcb3BsdXMgS14qKEQoTSlcXHRpbWVzICgwLDFdKSJdLFswLDEsIkteKihEKSJdLFsxLDAsIkteKihNXnswfVxcdGltZXMgKDAsMV0pIl0sWzAsMCwiS157Ki0xfShNXnswfVxcdGltZXMgKDAsMV0pIl0sWzEsMF0sWzAsMl0sWzMsMV1d
+\[\begin{tikzcd}
+	{K^{*-1}(U\times (0,1])} & {K^*(U\times (0,1])} \\
+	{K^*(D)} & {K^*(U\times [0,1])\oplus K^*(M^{0}\times (0,1])}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=1-2]
+\end{tikzcd}\]
+since $K^{*-1}(U\times (0,1])=K^*(U\times (0,1])=K^*(M^{0}\times (0,1])=0$, then we get the restriction isomorphism $K(r):K^*(D)\to K^*(U\times [0,1])\cong K^*(U)$. Then we get the commutative diagram 
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooRCkiXSxbMSwwLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKVxcY29uZyBLXiooTV57MH0pIl0sWzEsMSwiS14qKEQoTSkpIl0sWzAsMSwiciIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMiwiZXZfMSIsMl0sWzEsMiwiZXh0Il1d
+\[\begin{tikzcd}
+	{K^*(D)} & {K^*(U)} \\
+	& {K^*(M^{0})}
+	\arrow["K(r)", tail, two heads, from=1-1, to=1-2]
+	\arrow["{ev_1}"', from=1-1, to=2-2]
+	\arrow["K(ext)", from=1-2, to=2-2]
+\end{tikzcd}\]
+
+\noindent where $ext:=ev_1\circ K(r)^{-1}$ is the $K$-functor applied to the completion of the map that send an $f\in C_{c}^{\infty}(U)\subset C^*(M^{0})$ to $\hat{f}\in C_{c}^{\infty}(D)$ such that $\hat{f}((x,t))=f(x)$ if $x\in U$ and $\hat{f}((x,t))=0$ if $x\in M^{0}\setminus U$. Then, composing with $ev_1$ we get $ev_1(\hat{f})(x)=f(x)$ if $x\in U$ and $ev_1(\hat{f})((x))=0$ if $x\in M^{0}\setminus U$, i.e., $ext: C_{c}^{\infty}(U)\to C_{c}^{\infty}(M^{0})$ is the extension by zero to all $M^{0}$.   \textcolor{red}{Falta buen argumento en complesiones sin decir que $r$ es invertible en $C^*$-algebras, pues esta es solo invertible en $K$-teoria}. Since $r\sim_h ev_0$, we have that $K(r)=K(ev_0)$. Then we have in the evaluation maps
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLXiooTV57MH1cXHRpbWVzIFswLDFdKSJdLFsyLDAsIkteKihEKE0pKSJdLFsxLDAsIkteKihEKSJdLFsyLDEsImV2XzEiXSxbMiwwLCJldl8wIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XV0=
+\[\begin{tikzcd}
+	{K^*(U\times [0,1])} & {K^*(D)} & {K^*(M^{0})}
+	\arrow["{ev_0}"', tail, two heads, from=1-2, to=1-1]
+	\arrow["{ev_1}", from=1-2, to=1-3]
+\end{tikzcd}\]
+that $K(ev_0)^{-1}\circ ev_1=K(r)^{-1}\circ ev_1=ext$. 
+
+\vspace{0.3cm}
+
+Now, if we consider the open inclusion $i_{U}^{M}:U\to M$, for $U\subseteq M^{0}$ an open set, we get that $i_{U}^{M}!$ is also an extension by zero, by the construction of pushforward to manigolds with boundary   
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXG1hdGhzY3J7SH1eKihVKSJdLFswLDEsIlxcbWF0aHNjcntIfV4qKE1eezB9KSJdLFsxLDAsIlxcbWF0aHNjcntIfV4qKEQoVSkpIl0sWzIsMCwiXFxtYXRoc2Nye0h9XiooVSkiXSxbMSwxLCJcXG1hdGhzY3J7SH1eKihEKE0pKSJdLFsyLDEsIlxcbWF0aHNjcntIfV4qKE0pIl0sWzMsMCwiMCJdLFszLDEsIjAiXSxbMCwxLCIoaV97VX1ee019KV8wISIsMl0sWzIsNCwiKGlfe1V9XntNfSlfRCEiXSxbMyw1LCIoaV97VX1ee019KSEiXSxbMSw0LCJpX3tNXnswfX1eRCEiLDJdLFswLDIsImlfe1V9XkQhIl0sWzIsMywiKGlfe1V9XntEfSleKiJdLFs0LDUsIihpX3tNfV57RH0pXioiLDJdLFszLDZdLFs1LDddXQ==
+\[\begin{tikzcd}
+	{\mathscr{H}^*(U)} & {\mathscr{H}^*(D(U))} & {\mathscr{H}^*(U)} & 0 \\
+	{\mathscr{H}^*(M^{0})} & {\mathscr{H}^*(D(M))} & {\mathscr{H}^*(M)} & 0
+	\arrow["{i_{U}^D!}", from=1-1, to=1-2]
+	\arrow["{(i_{U}^{M})_0!}"', from=1-1, to=2-1]
+	\arrow["{(i_{U}^{D})^*}", from=1-2, to=1-3]
+	\arrow["{(i_{U}^{M})_D!}", from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow["{(i_{U}^{M})!}", from=1-3, to=2-3]
+	\arrow["{i_{M^{0}}^D!}"', from=2-1, to=2-2]
+	\arrow["{(i_{M}^{D})^*}"', from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+\end{tikzcd}\]
+we get that the top exact sequence split by the pushforward of the map $i_{U}^D:U\to D(U)=U\sqcup U$, that is $(i_{U}^D)^*\circ i_{U}^D!=Id_{\mathscr{H}^*(U)}$, and with this, we get
+\begin{align*}
+(i_{U}^{M})!&=(i_{M}^{D})^*\circ (i_{U}^{M})_D!\circ (i_{U}^{D})_{0}!
+\end{align*}
+where $(i_{U}^{M})_D!=i_{D(U)}^{D(M)}!$ and both $(i_{U}^{D})_{0}!$ and $i_{D(U)}^{D(M)}!$ are extensions by zero, then $i_{U}^{M}!$ is an extension by zero to $M$.
+
+
+
+\subsubsection{Thom isomorphism axiom}
+
+In order to verify that for the zero section $s:M\to E$ of a vector bundle $E\to M$, that $s!=\tau_E$, 
 
 \subsubsection{Long exact sequence}
 For a pair $(N,\partial N)$ we have the long exact sequence of Definition \ref{long cohom} 
