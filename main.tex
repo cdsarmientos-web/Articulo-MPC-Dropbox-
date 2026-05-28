@@ -1783,11 +1783,14 @@ Defining $x^{0}_{M}:=\gamma!(x_M)$, and $\pi_W:W\to X$ is defined  for $(m,t)\in
 \begin{align*}
 [M,\partial M, \pi_{M}, x_{M}]=[W,\partial W, \pi_{W},x^{0}_{W}].
 \end{align*}
-
-
 \end{proof}
 
-\begin{prop}
+
+
+
+
+
+\begin{prop}\label{Excision}
 The pushforward homology satisfy the excision property, i.e., for a proper $\Gamma$-CW pair $(X,A)$, there exist an isomorphism $$\mathscr{H}^{pf}_{*}(X,A)\cong \mathscr{H}^{pf}_{*}(X\setminus A).$$
 \end{prop}
 \begin{proof}
@@ -1797,7 +1800,7 @@ $$\phi_*: \mathscr{H}^{pf}_*(X-A,\emptyset;\Gamma)\to \mathscr{H}^{pf}_*(X,A,\Ga
 is an isomorphism. We define the inverse map 
 $$h: \mathscr{H}^{pf}_*(X,A,\Gamma)\to \mathscr{H}^{pf}_*(X-A,\emptyset;\Gamma),$$
 by $h([M,\partial M,\pi_M,x^{0}_M])=[M^{0},\emptyset,\pi_M|_{M^{0}},\tilde{x}_M]$ where $[M,\partial M,\pi_M,x^{0}_M]$ is given by Lemma \ref{Lemota} such that $i_{M^{0}}^{M}!(\tilde{x}_M)=x^{0}_M$
-and such that $\pi_M^{-1}(A)\cap (\partial M)^{c}=\emptyset$, by Remark \ref{Empujando}.
+and such that $\pi_M^{-1}(A)\cap (\partial M)^{c}=\emptyset$, by Remark \ref{Empujando} (this map is well defined, by Remark \ref{Bien definida} below)
 
 \begin{itemize}
 \item For $[M,\emptyset,\pi_M,x_M]\in \mathscr{H}^{pf}_*(X\setminus A,\emptyset;\Gamma)$ we claim that the computation $$h\circ\phi_*([M,\emptyset,\pi_M,x_M])=h([M,\emptyset,\phi\circ\pi_M,x_M])=[M^{0},\emptyset,\phi\circ\pi_M|_{M^{0}},x^{0}_M]$$
@@ -1816,6 +1819,46 @@ where fourth equality is given by Remark \ref{relation 1} applied to $i_{M^{0}}^
 
 \end{itemize}
 \end{proof}
+
+\begin{remark}\label{Bien definida}
+The map $h$ in the proof of Proposition \ref{Excision} is a well defined map, because if $$[M,\partial M,\pi_M, x_M]=[M',\partial M',\pi_{M'}, x_{M'}],$$ then by Lemma \ref{Lemota} we get in $\mathscr{H}^{pf}_*(X, A;\Gamma)$
+\begin{align*}
+[M,\partial M,\pi_M, x_M]&=[W,\partial W, \pi_{W},i_{W^{0}}!(\widetilde{x}_{W})]\\
+[M',\partial M',\pi_{M'}, x_{M'}]&=[W',\partial W', \pi_{W'},i_{W'^{0}}!(\widetilde{x}_{W'})],
+\end{align*}
+Then by transitivity (Proposition \ref{Equivalence relation 1}), there exist a cycle $[T,\partial T, \pi_T, x_T]\in\mathscr{H}^{pf}_*(X, A;\Gamma)$, such that the following diagram is commutative 
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJXIl0sWzEsMCwiVCJdLFsxLDEsIlgiXSxbMiwxLCJXJyJdLFswLDEsImZfVyJdLFszLDEsImZfe1cnfSIsMl0sWzAsMiwiXFxwaV97V30iLDJdLFszLDIsIlxccGlfe1cnfSJdLFsxLDIsIlxccGlfe1R9Il1d
+\[\begin{tikzcd}
+	& T & \\
+	W & X & {W'}
+	\arrow["{\pi_{T}}", from=1-2, to=2-2]
+	\arrow["{f_W}", from=2-1, to=1-2]
+	\arrow["{\pi_{W}}"', from=2-1, to=2-2]
+	\arrow["{f_{W'}}"', from=2-3, to=1-2]
+	\arrow["{\pi_{W'}}", from=2-3, to=2-2]
+\end{tikzcd}\]
+and $f_W!(i_{W^{0}}!(\widetilde{x}_{W})) = x_T = f_{W'}!(i_{W'^{0}}!(\widetilde{x}_{W'}))$. Then we can consider the double $D(T)$ and the respective $\pi_{D(T)}:D(T)\to X$ get it by gluining $\pi_T$ over the boundary of $T$, getting the diagram 
+% https://q.uiver.app/#q=WzAsNSxbMCwxLCJXXnswfSJdLFsxLDAsIlQiXSxbMSwyLCJYIl0sWzIsMSwiVydeezB9Il0sWzEsMSwiRChUKSJdLFswLDEsImZfV1xcY2lyYyBpX3tXXnswfX0iXSxbMywxLCJmX3tXJ31cXGNpcmMgaV97VydeezB9fSIsMl0sWzAsMiwiXFxwaV97V157MH19IiwyXSxbMywyLCJcXHBpX3tXJ157MH19Il0sWzEsNCwiaV9UXntEfSJdLFs0LDIsIlxccGlfe0QoVCl9IiwyLHsibGFiZWxfcG9zaXRpb24iOjEwfV1d
+\[\begin{tikzcd}
+	& T & \\
+	{W^{0}} & {D(T)} & {W'^{0}} \\
+	& X
+	\arrow["{i_T^{D}}", from=1-2, to=2-2]
+	\arrow["{f_W\circ i_{W^{0}}}", from=2-1, to=1-2]
+	\arrow["{\pi_{W^{0}}}"', from=2-1, to=3-2]
+	\arrow["{\pi_{D(T)}}"'{pos=0.1}, from=2-2, to=3-2]
+	\arrow["{f_{W'}\circ i_{W'^{0}}}"', from=2-3, to=1-2]
+	\arrow["{\pi_{W'^{0}}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+Applying the tecnique of Remark \ref{Empujando}, we can get an homotopically equivalent pair $(X,A)$ such that $\pi_{D(T)}:D(T)\to X\setminus A$, getting by the previous diagram that in $\mathscr{H}^{pf}_*(X\setminus A,\emptyset;\Gamma)$,
+\begin{align*}
+h([M,\partial M,\pi_M, x_M])&=[W^{0},\emptyset,\pi_{W^{0}},\widetilde{x}_{W}]\\
+&=[W'^{0},\emptyset,\pi_{W'^{0}},\widetilde{x}_{W'}]\\
+&=h([M',\partial M',\pi_{M'}, x_{M'}]).
+\end{align*} 
+\end{remark}
+
+
 
 \section{Applications}
 
@@ -2069,7 +2112,7 @@ We define the pushforward $f!:K^*(M)\to K^{*+k}(N)$ for a smooth map $f:M\to N$ 
 About the previous definition we can point out the following features:
 \begin{itemize}
 \item The $K$-groups releated are in the mayor way belongs to the context of noncommutative geometry becasue they are the $K$-theory of the $C^*$-algebra of a non trivial (space) groupoid, except the two releated to the first Thom isomorphism and the last one which is the codomain of the Morita isomorphism.
-\item Almost all the morphism composed are isomorphism except $ev_1$ the evaluation of the deformation of the normal cone of the embeding $(\Delta, f):M\to M^{2}\times N$.
+\item Almost all the morphism composed are isomorphism except $ev_1$ the evaluation of the deformation of the normal cone of the embedding $(\Delta, f):M\to M^{2}\times N$.
 \end{itemize}
 \end{remark}
 
@@ -2466,7 +2509,22 @@ Therefore we can conclude that in this case $i_{{C_N}}^{*}\circ f!=f_{C}!\circ i
 
 \subsection{Review of pushforward structure in Equivariant $K$-theory}
 
+
+The pushforward in the equivariant case is defined in the same way as in Definition \ref{} but applying changing including in the used groupoids the action of $\Gamma$ in eeach step. All of the isomorphisms, equivalences and functorial properties will be behave well with this approach. In order to clarify this we will expose the explicit structure in each step.
+
+\vspace{0.3cm}
+
+Let $\Gamma$ be a countable discrete group, and let $f:M\to N$ be an equivariant smooth map between $\Gamma$-proper smooth manifolds (possibly with boundary). Consider the following groupoids:
 \begin{itemize}
+\item $M\rtimes \Gamma\rightrightarrows M$
+\end{itemize} 
+
+
+
+
+\begin{itemize}
+
+
 \item The groupoids that are involved are the same but with the action of $\Gamma$ in such a way that for instance in the first step  $K_{\Gamma}^*(M)\cong K^*((\Gamma\ltimes M)\rightrightarrows M)$ (wich is an isomorphism for proper actions \textcolor{red}{requiere cita}), the groupoid is the $(\Gamma\ltimes M)\rightrightarrows M$ has the structure $s((r,m))=m$ and $t((r,m))=r\cdot m$.
 \item Same use os maps as in the non equivariant of the previos subsection. 
 \item The morita equivalence are preserved by the applying action of $\Gamma$.
