@@ -1860,7 +1860,7 @@ h([M,\partial M,\pi_M, x_M])&=[W^{0},\emptyset,\pi_{W^{0}},\widetilde{x}_{W}]\\
 
 
 
-\section{Applications}
+\section{Pushforward Structure in K-Theory}
 
 \subsection{Pushforward for manifolds without boundary}
 In this section we are going to define a pushforward structure using the cohomology theory of spaces using the $K$-theory of $C^*$-algebras of groupoids. The following are some groupoids that we will have in mind in order to determine the pushforward structures of the cohomology theories that are of our interest.
@@ -1924,7 +1924,7 @@ where $\mu$ is a measure \textcolor{red}{Semidensidades y quiza medida de Haar d
 
 
 \begin{remark}
-We can consider the completion by the reduced norm too, but both completion coincides in the scope of amenability, which will be the back ground of our work. \textcolor{red}{Cita sobre amenabilidad y compleciones}
+We can consider the completion by the reduced norm too, but both completions coincide in the scope of amenability, which will be the back ground of our work. \textcolor{red}{Cita sobre amenabilidad y compleciones}
 \end{remark}
 
 
@@ -2028,7 +2028,7 @@ and it is an isomorphism by the five lemma.
 
 
 
-When we have that $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$ is a saturated groupoid, that is there are a descomposition  
+When we have that $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$ is a saturated groupoid, that is there exist a descomposition  
 $$\mathcal{G}\rightrightarrows \mathcal{G}^{0}=(\mathcal{G}_U\rightrightarrows U)\cup (\mathcal{G}_F\rightrightarrows F)$$
 where the first component is open and the second, which is its complement, is close of $\mathcal{G}\rightrightarrows \mathcal{G}^{0}$, we obtain a exact sequence\textcolor{red}{Cita sobre el uso de propiedad universal de la norma maximal, revisar Dixmier}
 % https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQ14qKEdfVSkiXSxbMiwwLCJDXiooRykiXSxbMywwLCJDXiooR19GKSJdLFs0LDAsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCJldl8wIl0sWzMsNF1d
@@ -2111,7 +2111,7 @@ We define the pushforward $f!:K^*(M)\to K^{*+k}(N)$ for a smooth map $f:M\to N$ 
 \begin{remark}
 About the previous definition we can point out the following features:
 \begin{itemize}
-\item The $K$-groups releated are in the mayor way belongs to the context of noncommutative geometry becasue they are the $K$-theory of the $C^*$-algebra of a non trivial (space) groupoid, except the two releated to the first Thom isomorphism and the last one which is the codomain of the Morita isomorphism.
+\item The $K$-groups releated are in the mayor way belongs to the context of noncommutative geometry because they are the $K$-theory of the $C^*$-algebra of a non trivial (space) groupoid, except both releated to the first Thom isomorphism and the last one which is the codomain of the Morita isomorphism.
 \item Almost all the morphism composed are isomorphism except $ev_1$ the evaluation of the deformation of the normal cone of the embedding $(\Delta, f):M\to M^{2}\times N$.
 \end{itemize}
 \end{remark}
@@ -2185,8 +2185,11 @@ which means that $(i_{N}^{D})^*\circ f_{D}!(b_1)=(i_{N}^{D})^*\circ f_{D}!(b_2)$
 
 \subsubsection{Functoriality}
 
+\textcolor{red}{Aplicacion articulo Carrillo-Karegar} 
+
 \subsubsection{Homotopy invariance}
 
+\textcolor{red}{Tenemos las cuentas}
 
 \subsubsection{Pushforward of embeddings}
 
@@ -2241,7 +2244,7 @@ getting the saturated groupoid
 	\arrow[shift right=3, from=1-3, to=3-3]
 \end{tikzcd}\]
 We claim that this obtained groupoid is morita equivalent to the deformation groupoid $$D(M^{2}\times N,M,\Delta\times f)\rightrightarrows D(M\times N,M,f)$$
-This will be guarantized if we define a generalized isomorphism in zero parts of both groupoids. This is defined by the following generalized morphisms compose
+This will be guaranteed if we define a generalized isomorphism in zero parts of both groupoids. This is defined by the following generalized morphisms compose
 % https://q.uiver.app/#q=WzAsOCxbNCwwLCJmXipUTlxcdGltZXNfe1xccGl9Zl4qVE4iXSxbNCwxLCJmXipUTiJdLFsyLDAsImZeKlROL1RNIl0sWzAsMCwiVE1cXGx0aW1lcyBmXipUTiJdLFsyLDEsImZeKlROL1RNIl0sWzMsMCwiZl4qVE4iXSxbMCwxLCJmXipUTiJdLFsxLDAsImZeKlROIl0sWzAsMSwiIiwwLHsib2Zmc2V0IjotM31dLFswLDEsIiIsMSx7Im9mZnNldCI6M31dLFszLDYsIiIsMCx7Im9mZnNldCI6LTN9XSxbMyw2LCIiLDEseyJvZmZzZXQiOjN9XSxbNyw2LCJJZCJdLFsyLDQsIiIsMCx7Im9mZnNldCI6LTN9XSxbMiw0LCIiLDEseyJvZmZzZXQiOjN9XSxbNyw0LCJcXHBpIiwyXSxbNSw0LCJcXHBpIl0sWzUsMSwiSWQiLDJdXQ==
 \[\begin{tikzcd}
 	{TM\ltimes f^*TN} & {f^*TN} & {f^*TN/TM} & {f^*TN} & {f^*TN\times_{\pi}f^*TN} \\
@@ -2507,10 +2510,16 @@ About the commutativity of the squares of the previous diagram (from left to rig
 
 Therefore we can conclude that in this case $i_{{C_N}}^{*}\circ f!=f_{C}!\circ i_{{C_M}}^{*}$.
 
+\subsubsection{Group axiom 1}
+\subsubsection{Group axiom 2}
+\subsubsection{Group axiom 3}
+
+
+
 \subsection{Review of pushforward structure in Equivariant $K$-theory}
 
 
-The pushforward in the equivariant case is defined in the same way as in Definition \ref{} but applying changing including in the used groupoids the action of $\Gamma$ in eeach step. All of the isomorphisms, equivalences and functorial properties will be behave well with this approach. In order to clarify this we will expose the explicit structure in each step.
+The pushforward in the equivariant case is defined in the same way as in Definition \ref{Pushforward definition K-theory} but applying changing including in the used groupoids the action of $\Gamma$ in eeach step. All of the isomorphisms, equivalences and functorial properties will be behave well with this approach. In order to clarify this we will expose the explicit structure in each step.
 
 \vspace{0.3cm}
 
@@ -2526,11 +2535,12 @@ Let $\Gamma$ be a countable discrete group, and let $f:M\to N$ be an equivariant
 
 
 \item The groupoids that are involved are the same but with the action of $\Gamma$ in such a way that for instance in the first step  $K_{\Gamma}^*(M)\cong K^*((\Gamma\ltimes M)\rightrightarrows M)$ (wich is an isomorphism for proper actions \textcolor{red}{requiere cita}), the groupoid is the $(\Gamma\ltimes M)\rightrightarrows M$ has the structure $s((r,m))=m$ and $t((r,m))=r\cdot m$.
-\item Same use os maps as in the non equivariant of the previos subsection. 
+\item Same use of maps as in the non equivariant of the previous subsection. 
 \item The morita equivalence are preserved by the applying action of $\Gamma$.
 \item We have to describe the ways and modifications that we have to prove in order to preserve the propositions with the action.
 \end{itemize}
 
+\section{Classical K-homologies}
 
 \subsection{Review Baum-Douglas Homology}
 \subsubsection{Analytical $K$-holomogy}
@@ -2844,8 +2854,47 @@ then we mean that between $(M,E,f)$ and $-(M',E',f')$ there exist a bordism such
     \end{enumerate}
 \end{defn}
 
-\subsection{Periodic Cyclic Homology}
-\subsection{Pushforward homology as a quotient group}
+\section{Main Isomorphism Theorem}
+
+Estructura:
+Recoger de la linea narrativa que hemos construido una Estructura pushforward para la K teoria, y por tanto por el Teorema \ref{} tenemos una K-homologia asociada. 
+
+\begin{remark} If $H\leq \Gamma$ is a finite subgroup, consider the following generalized morphism
+  % https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXEdhbW1hL0hcXHJ0aW1lcyBcXEdhbW1hIl0sWzAsMSwiXFxHYW1tYS9IIl0sWzEsMCwiXFxHYW1tYSJdLFsyLDAsIkgiXSxbMiwxLCIqIl0sWzMsNCwiYyIsMCx7Im9mZnNldCI6LTN9XSxbMyw0LCJjIiwwLHsib2Zmc2V0IjozfV0sWzAsMSwicyIsMix7Im9mZnNldCI6LTN9XSxbMCwxLCJ0IiwyLHsib2Zmc2V0IjozfV0sWzIsMSwiXFxwaSJdLFsyLDQsImMiLDJdXQ==
+\[\begin{tikzcd}
+	{\Gamma/H\rtimes \Gamma} & \Gamma & H \\
+	{\Gamma/H} && {*}
+	\arrow["s"', shift left=3, from=1-1, to=2-1]
+	\arrow["t"', shift right=3, from=1-1, to=2-1]
+	\arrow["\pi", from=1-2, to=2-1]
+	\arrow["c"', from=1-2, to=2-3]
+	\arrow["c", shift left=3, from=1-3, to=2-3]
+	\arrow["c", shift right=3, from=1-3, to=2-3]
+\end{tikzcd}\]
+where the left action of $\Gamma/H\rtimes \Gamma$ over $\Gamma$ is given by $([\alpha\gamma^{-1}],\gamma)\cdot \alpha:=\alpha\gamma^{-1}$, and right action of $H$ is given by $\gamma\cdot h:=h^{-1}\gamma$. This generalized morphism is a Morita Equivalence because it is a generalized isomorphism, by the fact that
+\begin{itemize}
+\item the left action of  $\Gamma/H\rtimes \Gamma$ over $\Gamma$ is free and proper: free because if $([\alpha\gamma^{-1}],\gamma)\cdot \alpha=\alpha$, that is $\alpha\gamma^{-1}= \alpha$, then $\gamma = e$ and $([\alpha\gamma^{-1}],\gamma)=i(a_{L}(\alpha))$ which it is the identity of the left action over $\alpha$; and proper by the injectivity of the map $$\varphi:(\Gamma/H\rtimes \Gamma)\ _s\times_{a_L}\Gamma\ni(([\alpha\gamma^{-1}],\gamma), \alpha)\mapsto (\alpha\gamma^{-1},\gamma)\in \Gamma \times \Gamma$$
+because if $K\subset \Gamma\times \Gamma$ is compact (finite), then $\varphi^{-1}(K)$ will be compact too.
+\item the right action of $H$ over $\Gamma$ is free and proper because the action is defined using the symmetric group operation and $H$ is finite, then all the isotropy subgroups of the action are also finite. 
+\end{itemize}
+\end{remark}
+
+\begin{enumerate}
+\item Lema1: iso en puntos para caso no equivariante
+\item Teorema: Iso de K-homologias (Gamma un punto)
+\item Remark: Iso de K-homologias equivariantes con Gamma finito.
+\item Lema2: Iso en orbitas. Para que esto este completamente demostrado, debemos asegurar que tenemos induccion en orbitas, y que el pushforward conmuta con la induccion.
+
+\end{enumerate}
+
+
+\begin{prop}
+If $H\leq \Gamma$ is a finite subgroup, then $$K^{pf}_{*}(\Gamma/H;\Gamma)\cong K^{pf}_{*}(\{e\};H)$$
+\end{prop}
+
+
+\section{Periodic Cyclic Homology and Chern Character}
+\section{Pushforward homology as a quotient group}
 Consider the free abelian group generated by the collection of isomorphic cycles $(M,\partial M, \pi_M,x_M)$ related to $(X,A)$ just like in Definition \ref{}, denoted by $\mathbb{Z}_{\mathscr{H}^{*}_{\Gamma}}[Cyc]$, and consider the subgroup $\mathcal{R}_{\mathscr{H}^{*}_{\Gamma}}[Cyc]$ generated by:
 \begin{itemize}
 \item $[M\sqcup N, \partial M\sqcup\partial N,\pi_{M}\sqcup \pi_{N},x_{M}\oplus x_{N}]-[M, \partial M, \pi_{M}, x_{M}]-[N, \partial N, \pi_{N},x_{N}]$.
