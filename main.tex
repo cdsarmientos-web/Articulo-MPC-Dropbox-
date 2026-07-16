@@ -1858,7 +1858,9 @@ h([M,\partial M,\pi_M, x_M])&=[W^{0},\emptyset,\pi_{W^{0}},\widetilde{x}_{W}]\\
 \end{align*} 
 \end{remark}
 
-
+\begin{thm}\label{Resultado 1}
+The groups $\mathscr{H}^{pf}_{*}(X,A;\Gamma)$ and maps $\partial:\mathscr{H}^{pf}_{*+1}(X,A;\Gamma)\to \mathscr{H}^{pf}_{*}(A;\Gamma)$ define a generalized homology theory over the category of $\Gamma$-proper CW pairs. 
+\end{thm}
 
 \section{Pushforward Structure in K-Theory}
 
@@ -2856,8 +2858,54 @@ then we mean that between $(M,E,f)$ and $-(M',E',f')$ there exist a bordism such
 
 \section{Main Isomorphism Theorem}
 
-Estructura:
-Recoger de la linea narrativa que hemos construido una Estructura pushforward para la K teoria, y por tanto por el Teorema \ref{} tenemos una K-homologia asociada. 
+
+\begin{lemma}\label{iso en puntos}
+For $i=0,1$ we get that $K^{pf}_i(*)\cong K^{an}_i(*)$.
+\end{lemma}
+\begin{proof}
+Considering the Poincar\'e duality isomorphism $\mathcal{PD}:K^{i}(*)\to K^{an}_i(*)$, we define a map $\mu:K^{pf}_i(*)\to K^{an}_i(*)$ such that $$\mu([M,\emptyset,\pi_M,x_M])=\mathcal{PD}(\pi_{M}!(x_{M})),$$
+where we get that this is an isomorphism by the following facts.
+\begin{itemize}
+\item $\mu$ is well defined: If $[M,\emptyset,\pi_M,x_M]=[N,\emptyset,\pi_N,x_N]\in K^{pf}_i(*)$,  
+where $f_{M}!(x_{M})= f_{N}!(x_{N})\in K^{i}(W)$ as in the commutative diagram below
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzIsMSwiTiJdLFsxLDIsIioiXSxbMSwwLCJXIl0sWzAsMiwiXFxwaV9NIiwyXSxbMSwyLCJcXHBpX04iXSxbMCwzLCJmX00iXSxbMSwzLCJmX04iLDJdLFszLDIsIlxccGlfVyJdXQ==
+\[\begin{tikzcd}
+	& W & \\
+	M && N \\
+	& {*}
+	\arrow["{\pi_W}", from=1-2, to=3-2]
+	\arrow["{f_M}", from=2-1, to=1-2]
+	\arrow["{\pi_M}"', from=2-1, to=3-2]
+	\arrow["{f_N}"', from=2-3, to=1-2]
+	\arrow["{\pi_N}", from=2-3, to=3-2]
+\end{tikzcd}\]
+Then we get that $\pi_{M}!(x_{M})=\pi_{W}!\circ f_{M}!(x_{M})=\pi_{W}!\circ f_{N}!(x_{N})= \pi_{N}!(x_{N})$, therefore $\mathcal{PD}(\pi_{M}!(x_{M}))= \mathcal{PD}(\pi_{N}!(x_{N}))$.
+\item $\mu$ is injective: If $\mu([M,\emptyset,\pi_M,x_M])\cong \mu([N,\emptyset,\pi_N,x_N]),$
+by the Poincare Duality we get that $\pi_{M}!(x_{M})\cong \pi_{N}!(x_{N})$ which imply that $[M,\emptyset,\pi_M,x_M]=[N,\emptyset,\pi_N,x_N]$ by the diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzIsMSwiTiJdLFsxLDIsIioiXSxbMSwwLCIqIl0sWzAsMiwiXFxwaV9NIiwyXSxbMSwyLCJcXHBpX04iXSxbMCwzLCJcXHBpX00iXSxbMSwzLCJcXHBpX04iLDJdLFszLDIsIklkXyoiXV0=
+\[\begin{tikzcd}
+	& {*} & \\
+	M && N \\
+	& {*}
+	\arrow["{Id_*}", from=1-2, to=3-2]
+	\arrow["{\pi_M}", from=2-1, to=1-2]
+	\arrow["{\pi_M}"', from=2-1, to=3-2]
+	\arrow["{\pi_N}"', from=2-3, to=1-2]
+	\arrow["{\pi_N}", from=2-3, to=3-2]
+\end{tikzcd}\]
+\item $\mu$ is surjective: We have that $1\in \mathbb{Z}\cong K^{an}_i(*)$ is an element in $Im(\mu)$ by the fact that $\mu([*,\emptyset,Id, \mathcal{PD}^{-1}(1)])=1$. 
+\end{itemize} 
+\end{proof}
+
+Therefore, by the Eilenberg-Steenrod axioms, Theorem \ref{Resultado 1} and Lemma \ref{iso en puntos} we get the next theorem.
+
+\begin{thm}\label{Resultado 2}
+For any \textcolor{red}{(finite)} CW-pair, we get $K^{pf}_i(X,A)\cong K^{an}_i(X,A)$, getting that pushforward homology and analytic homology are isomorphic generalized homology theories over the $K$-theory on the category of \textcolor{red}{(finite)} CW-pairs. 
+\end{thm}
+
+\begin{remark}
+The Theorem \ref{Resultado 2} can be generalized to the equivariant case on the category of $\Gamma$-proper CW pair with the same computations when $\Gamma$ is a finite group \textcolor{red}{Explicar mas profundo}.
+\end{remark}
 
 \begin{remark} If $H\leq \Gamma$ is a finite subgroup, consider the following generalized morphism
   % https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXEdhbW1hL0hcXHJ0aW1lcyBcXEdhbW1hIl0sWzAsMSwiXFxHYW1tYS9IIl0sWzEsMCwiXFxHYW1tYSJdLFsyLDAsIkgiXSxbMiwxLCIqIl0sWzMsNCwiYyIsMCx7Im9mZnNldCI6LTN9XSxbMyw0LCJjIiwwLHsib2Zmc2V0IjozfV0sWzAsMSwicyIsMix7Im9mZnNldCI6LTN9XSxbMCwxLCJ0IiwyLHsib2Zmc2V0IjozfV0sWzIsMSwiXFxwaSJdLFsyLDQsImMiLDJdXQ==
@@ -2871,13 +2919,92 @@ Recoger de la linea narrativa que hemos construido una Estructura pushforward pa
 	\arrow["c", shift left=3, from=1-3, to=2-3]
 	\arrow["c", shift right=3, from=1-3, to=2-3]
 \end{tikzcd}\]
-where the left action of $\Gamma/H\rtimes \Gamma$ over $\Gamma$ is given by $([\alpha\gamma^{-1}],\gamma)\cdot \alpha:=\alpha\gamma^{-1}$, and right action of $H$ is given by $\gamma\cdot h:=h^{-1}\gamma$. This generalized morphism is a Morita Equivalence because it is a generalized isomorphism, by the fact that
+where the left action of $\Gamma/H\rtimes \Gamma$ over $\Gamma$ is given by $([\alpha\gamma^{-1}],\gamma)\cdot \alpha:=\alpha\gamma^{-1}$, and right action of $H$ is given by $\gamma\cdot h:=h^{-1}\gamma$. This generalized morphism is an equivalence (see \cite{Will19}, Definition 2.29) because it is a generalized isomorphism, by the fact that
 \begin{itemize}
 \item the left action of  $\Gamma/H\rtimes \Gamma$ over $\Gamma$ is free and proper: free because if $([\alpha\gamma^{-1}],\gamma)\cdot \alpha=\alpha$, that is $\alpha\gamma^{-1}= \alpha$, then $\gamma = e$ and $([\alpha\gamma^{-1}],\gamma)=i(a_{L}(\alpha))$ which it is the identity of the left action over $\alpha$; and proper by the injectivity of the map $$\varphi:(\Gamma/H\rtimes \Gamma)\ _s\times_{a_L}\Gamma\ni(([\alpha\gamma^{-1}],\gamma), \alpha)\mapsto (\alpha\gamma^{-1},\gamma)\in \Gamma \times \Gamma$$
 because if $K\subset \Gamma\times \Gamma$ is compact (finite), then $\varphi^{-1}(K)$ will be compact too.
 \item the right action of $H$ over $\Gamma$ is free and proper because the action is defined using the symmetric group operation and $H$ is finite, then all the isotropy subgroups of the action are also finite. 
+\item both actions over $\Gamma$ commute, because if $\alpha\in \Gamma$ then
+\begin{align*}
+(([\alpha\gamma^{-1}],\gamma)\cdot\alpha)\cdot h&=(\alpha\gamma^{-1})\cdot h=h^{-1}(\alpha\gamma^{-1})=(h^{-1}\alpha)\gamma^{-1}\\&=([(h^{-1}\alpha)\gamma^{-1}],\gamma)\cdot(h^{-1}\alpha)=([\alpha\gamma^{-1}],\gamma)\cdot(\alpha\cdot h)
+\end{align*}
+where the last equation is given by the $H$-right action over $\Gamma$ and $$[(h^{-1}\alpha)\gamma^{-1}]=[\alpha\gamma^{-1}]\in \Gamma/H.$$
+\item the anchors are open: $a_{L}=\pi:\Gamma\to \Gamma/H$ is open by the fact that $\Gamma$ is a countable discrete group, then since for $U=\{\gamma\}$ basic open of $\Gamma$, we get that $\pi(U)=[\gamma]$ is an open of $\Gamma/H$, because $\pi^{-1}(\pi(U))=H\gamma$ is an open set of $\Gamma$; $a_{R}:\Gamma\to \{*\}$ is open because $a_{R}(U)=\{*\}$.
+\item the orbit space of the right $H$-action over $\Gamma$ is isomorphic to the unit space of the groupoid $(\Gamma/H\rtimes \Gamma)\rightrightarrows \Gamma/H$, that is, $\Gamma/H\cong \Gamma/H$; by the other hand, $\Gamma/(\Gamma/H\rtimes \Gamma)\cong \{*\}$ because for any pair $\alpha,\beta \in \Gamma$ we have that $[\alpha]=[\beta]$ by
+\begin{align*}
+([\beta],\beta^{-1}\alpha)\cdot \alpha = \beta
+\end{align*} 
 \end{itemize}
 \end{remark}
+
+
+\begin{prop}
+If $H\leq \Gamma$ is a finite subgroup, then $$K^{pf}_{*}(\Gamma/H;\Gamma)\cong K^{pf}_{*}(\{e\};H)$$
+\end{prop}
+\begin{proof}
+Given a $[M,\emptyset,\pi_{M},x_{M}]\in K^{pf}_{*}(\Gamma/H;\Gamma)$, consider the following generalized morphism
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJNXFx0aW1lc197XFxHYW1tYS9IfShcXEdhbW1hL0hcXHJ0aW1lcyBcXEdhbW1hKSJdLFsyLDAsIlxcd2lkZXRpbGRle019X3tcXEdhbW1hfVxccnRpbWVzIEgiXSxbMSwwLCJNXFx0aW1lc197XFxHYW1tYS9IfVxcR2FtbWEiXSxbMCwxLCJNIl0sWzIsMSwiXFx3aWRldGlsZGV7TX1fe1xcR2FtbWF9Il0sWzIsNCwiXFx3aWRldGlsZGV7XFxwaX0iLDJdLFsyLDMsIlxccGlfezF9Il0sWzAsMywiIiwyLHsib2Zmc2V0IjotM31dLFswLDMsIiIsMix7Im9mZnNldCI6M31dLFsxLDQsIiIsMix7Im9mZnNldCI6LTN9XSxbMSw0LCIiLDIseyJvZmZzZXQiOjN9XV0=
+\[\begin{tikzcd}
+	{M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)} & {M\times_{\Gamma/H}\Gamma} & {\widetilde{M}_{\Gamma}\rtimes H} \\
+	M && {\widetilde{M}_{\Gamma}}
+	\arrow[shift left=3, from=1-1, to=2-1]
+	\arrow[shift right=3, from=1-1, to=2-1]
+	\arrow["{\pi_{1}}", from=1-2, to=2-1]
+	\arrow["{\widetilde{\pi}}"', from=1-2, to=2-3]
+	\arrow[shift left=3, from=1-3, to=2-3]
+	\arrow[shift right=3, from=1-3, to=2-3]
+\end{tikzcd}\]
+where \textcolor{red}{falta describir los dos grupoides} $$M\times_{\Gamma/H}\Gamma:=\{(m,\gamma)\in M \times \Gamma: \pi_{M}(m)=[\gamma]\}$$ with $\Gamma$-action given by $(m,\gamma)\cdot \gamma'= (m \cdot \gamma',\gamma \gamma')$ (this is well defined since $\pi_{M}$ is $\Gamma$-equivariant and $\Gamma/H$ is understood as right cosets) and $$\widetilde{M}_{\Gamma}:= (M\times_{\Gamma/H}\Gamma)/\Gamma$$ is the space of $\Gamma$-orbits (this is a smooth manifold by the properness of the $\Gamma$-action \textcolor{red}{cita}) with class map $\widetilde{\pi}:M\times_{\Gamma/H}\Gamma\to \widetilde{M}_{\Gamma}$.
+
+\vspace{0.3cm}
+
+\noindent In this generalized morphism there are the following \textit{free} and \textit{proper} actions over $M\times_{\Gamma/H}\Gamma$,
+\begin{itemize}
+\item The left action of $M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is defined, for $(m,\alpha)\in M\times_{\Gamma/H}\Gamma$ and $\gamma\in \Gamma$, by $$(m\gamma^{-1},(\pi_{M}(m\gamma^{-1}),\gamma))\cdot(m,\alpha):=(m\gamma^{-1},\alpha\gamma^{-1})$$
+with anchor given by the first projection $a_{L}=\pi_{1}:M\times_{\Gamma/H}\Gamma\to M$. \textcolor{red}{free and proper}
+\item The right action of $\widetilde{M}_{\Gamma}\rtimes H$, for $(m,\alpha)\in M\times_{\Gamma/H}\Gamma$ and $h\in H$, by $$(m,\alpha)\cdot(\overline{(m,\alpha)}, h):= (m,h^{-1}\alpha)$$ with anchor given by the class map $a_{R}=\widetilde{\pi}:M\times_{\Gamma/H}\Gamma\to \widetilde{M}_{\Gamma}$.\textcolor{red}{free and proper}
+\end{itemize}
+These both actions over $M\times_{\Gamma/H}\Gamma$ commute:
+\begin{align*}
+&[(m\gamma^{-1},(\pi_{M}(m\gamma^{-1}),\gamma))\cdot(m,\alpha)]\cdot (\overline{(m,\alpha)},h)\\&= (m\gamma^{-1},\alpha\gamma^{-1})\cdot (\overline{(m,\alpha)},h)\\
+&= (m\gamma^{-1},h^{-1}\alpha\gamma^{-1})\\
+&=(m\gamma^{-1},(\pi_{M}(m\gamma^{-1}),\gamma))\cdot (m,h^{-1}\alpha)\\
+&=(m\gamma^{-1},(\pi_{M}(m\gamma^{-1}),\gamma))\cdot[(m,\alpha)\cdot (\overline{(m,\alpha)},h)]
+\end{align*}
+\begin{itemize}
+\item There is a groupoid isomorphism between  $M\rtimes \Gamma \rightrightarrows M$ and $M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\rightrightarrows M$, by $$\psi: M\rtimes \Gamma \to M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma):(m,\gamma)\mapsto(m,(\pi_{M}(m),\gamma))$$
+
+\item This stablish a map $\varphi_{\Gamma}^{H}:K^{*}_{\Gamma}(M)\cong K^{*}(M\rtimes \Gamma)\to K^{*}(\widetilde{M}_{\Gamma}\rtimes H)\cong K^{*}_{H}(\widetilde{M}_{\Gamma})$ \textcolor{red}{Bajo afirmacion de amenabilidad (buscar referencia)}.
+\item This let us to define $h_{\Gamma}^{H}:K^{pf}_{*}(\Gamma/H;\Gamma)\to K^{pf}_{*}(\{e\};H)$ by $$[M,\emptyset,\pi_{M},x_{M}]\mapsto [\widetilde{M}_{\Gamma},\emptyset,\pi_{\widetilde{M}_{\Gamma}}, \varphi_{\Gamma}^{H}(x_{M})]$$
+
+\end{itemize}
+
+Now, consider the generalized morphism
+% https://q.uiver.app/#q=WzAsNSxbMSwwLCJOXFx0aW1lcyBcXEdhbW1hIl0sWzAsMCwiTlxccnRpbWVzIEgiXSxbMCwxLCJOIl0sWzIsMSwiTlxcdGltZXNfe0h9XFxHYW1tYSJdLFsyLDAsIihOXFx0aW1lc197SH1cXEdhbW1hKVxcdGltZXNfe1xcR2FtbWEvSH0oXFxHYW1tYS9IXFxydGltZXMgXFxHYW1tYSkiXSxbNCwzLCIiLDIseyJvZmZzZXQiOi0zfV0sWzQsMywiIiwxLHsib2Zmc2V0IjozfV0sWzAsM10sWzAsMl0sWzEsMiwiIiwwLHsib2Zmc2V0IjotM31dLFsxLDIsIiIsMCx7Im9mZnNldCI6M31dXQ==
+\[\begin{tikzcd}
+	{N\rtimes H} & {N\times \Gamma} & {(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)} \\
+	N && {N\times_{H}\Gamma}
+	\arrow[shift left=3, from=1-1, to=2-1]
+	\arrow[shift right=3, from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-1]
+	\arrow[from=1-2, to=2-3]
+	\arrow[shift left=3, from=1-3, to=2-3]
+	\arrow[shift right=3, from=1-3, to=2-3]
+\end{tikzcd}\]
+where $N\times_{H}\Gamma:= (N\times \Gamma)/H$ is the $H$-orbit space of $N\times \Gamma$ under the action given by $(n,\gamma)\cdot h:= (n\cdot h^{-1},hn)$ \textcolor{red}{suceptible a cambios cuando se revise compatibilidad}
+\begin{itemize}
+\item $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is an isomorphic groipoid to $(N\times_{H}\Gamma)\rtimes \Gamma \rightrightarrows N\times_{H}\Gamma$
+\item $\varphi^{\Gamma}_{H}:K^{*}_{H}(N)\to K^{*}_{\Gamma}(N\times_{H}\Gamma)$.
+\item  $h^{\Gamma}_{H}:K^{pf}_{*}(\{e\};H) \to K^{pf}_{*}(\Gamma/H;\Gamma)$ by $$[N,\emptyset,\pi_{N},x_{N}]\mapsto [N\times_{H}\Gamma,\emptyset,\pi_{N\times_{H}\Gamma}, \varphi^{\Gamma}_{H}(x_{N})]$$
+\end{itemize}
+We claim that $h^{\Gamma}_{H}$ and $h_{\Gamma}^{H}$ are inverse each other.
+\begin{itemize}
+\item $\widetilde{(N\times_{H}\Gamma)}_{\Gamma}\cong N$.
+\item $\widetilde{M}_{\Gamma}\times_{H}\Gamma\cong M$.
+\end{itemize}
+\end{proof}
+
+
 
 \begin{enumerate}
 \item Lema1: iso en puntos para caso no equivariante
@@ -2888,9 +3015,6 @@ because if $K\subset \Gamma\times \Gamma$ is compact (finite), then $\varphi^{-1
 \end{enumerate}
 
 
-\begin{prop}
-If $H\leq \Gamma$ is a finite subgroup, then $$K^{pf}_{*}(\Gamma/H;\Gamma)\cong K^{pf}_{*}(\{e\};H)$$
-\end{prop}
 
 
 \section{Periodic Cyclic Homology and Chern Character}
