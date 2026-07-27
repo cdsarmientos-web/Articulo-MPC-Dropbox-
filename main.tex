@@ -2954,7 +2954,7 @@ Given a $[M,\emptyset,\pi_{M},x_{M}]\in K^{pf}_{*}(\Gamma/H;\Gamma)$, consider t
 	\arrow[shift left=3, from=1-3, to=2-3]
 	\arrow[shift right=3, from=1-3, to=2-3]
 \end{tikzcd}\]
-where $(m,(\pi_{M}(m),\gamma))\in M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\rightrightarrows M$ is defined by $$s((m,(\pi_{M}(m),\gamma)))=m\gamma\ \ \ \text{and}\ \ \ t((m,(\pi_{M}(m),\gamma)))=m,$$ i.e., $s$ is the action and $t$ is given by first projection. Also, we have that $$M\times_{\Gamma/H}\Gamma:=\{(m,\gamma)\in M \times \Gamma: \pi_{M}(m)=[\gamma]\}$$ with $\Gamma$-action given by $(m,\gamma)\cdot \gamma'= (m \cdot \gamma',\gamma \gamma')$ (this is well defined since $\pi_{M}$ is $\Gamma$-equivariant and $\Gamma/H$ is understood as right cosets) and $$\widetilde{M}_{\Gamma}:= (M\times_{\Gamma/H}\Gamma)/\Gamma$$ is the space of $\Gamma$-orbits (this is a smooth manifold by the properness of the $\Gamma$-action \textcolor{red}{cita}) with class map $\widetilde{\pi}:M\times_{\Gamma/H}\Gamma\to \widetilde{M}_{\Gamma}$.
+where $(m,(\pi_{M}(m),\gamma))\in M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\rightrightarrows M$ is defined by $$s((m,(\pi_{M}(m),\gamma)))=m\gamma\ \ \ \text{and}\ \ \ t((m,(\pi_{M}(m),\gamma)))=m,$$ i.e., $s$ is the action and $t$ is given by first projection. Also, we have that $$M\times_{\Gamma/H}\Gamma:=\{(m,\gamma)\in M \times \Gamma: \pi_{M}(m)=[\gamma]\}$$ with $\Gamma$-action given by $(m,\gamma)\cdot \gamma'= (m \cdot \gamma',\gamma \gamma')$ (this is well defined since $\pi_{M}$ is $\Gamma$-equivariant and $\Gamma/H$ is understood as right cosets) and $$\widetilde{M}_{\Gamma}:= (M\times_{\Gamma/H}\Gamma)/\Gamma$$ is the space of $\Gamma$-orbits (this is a smooth manifold by the properness of the $\Gamma$-action \textcolor{red}{cita}) with class map $\widetilde{\pi}:M\times_{\Gamma/H}\Gamma\to \widetilde{M}_{\Gamma}$. We have that $\widetilde{M}_{\Gamma}$ is a $H$-space with action $$\overline{(m,\gamma)}\cdot h=\overline{(m,h^{-1}\gamma)}.$$
 
 \vspace{0.3cm}
 
@@ -2991,15 +2991,36 @@ Now, consider the generalized morphism
 	\arrow[shift left=3, from=1-3, to=2-3]
 	\arrow[shift right=3, from=1-3, to=2-3]
 \end{tikzcd}\]
-where $N\times_{H}\Gamma:= (N\times \Gamma)/H$ is the $H$-orbit space of $N\times \Gamma$ under the action given by $(n,\gamma)\cdot h:= (n\cdot h^{-1},hn)$ \textcolor{red}{suceptible a cambios cuando se revise compatibilidad}
+where $N\times_{H}\Gamma:= (N\times \Gamma)/H$ is the $H$-orbit space of $N\times \Gamma$ under the action given by $(n,\gamma)\cdot h:= (n\cdot h^{-1},hn)$. We have that $N\times_{H}\Gamma$ is a $\Gamma$-space with action $$[n,\gamma]\cdot \alpha= [n,\gamma\alpha],$$ and with map $\pi_{N\times_{H}\Gamma}:N\times_{H}\Gamma\to \Gamma/H: [n,\gamma]\mapsto [\gamma]=H\gamma$.
 \begin{itemize}
-\item $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is an isomorphic groipoid to $(N\times_{H}\Gamma)\rtimes \Gamma \rightrightarrows N\times_{H}\Gamma$
-\item $\varphi^{\Gamma}_{H}:K^{*}_{H}(N)\to K^{*}_{\Gamma}(N\times_{H}\Gamma)$.
+\item $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is an isomorphic groupoid to $(N\times_{H}\Gamma)\rtimes \Gamma \rightrightarrows N\times_{H}\Gamma$
+\item $\varphi^{\Gamma}_{H}:K^{*}_{H}(N)\to K^{*}_{\Gamma}(N\times_{H}\Gamma)$ is the group homomorphism that is obtained by the Morita equivalence between the respectives groupoids.
 \item  $h^{\Gamma}_{H}:K^{pf}_{*}(\{e\};H) \to K^{pf}_{*}(\Gamma/H;\Gamma)$ by $$[N,\emptyset,\pi_{N},x_{N}]\mapsto [N\times_{H}\Gamma,\emptyset,\pi_{N\times_{H}\Gamma}, \varphi^{\Gamma}_{H}(x_{N})]$$
 \end{itemize}
 We claim that $h^{\Gamma}_{H}$ and $h_{\Gamma}^{H}$ are inverse each other.
 \begin{itemize}
-\item $\widetilde{(N\times_{H}\Gamma)}_{\Gamma}\cong N$.
+\item $\widetilde{(N\times_{H}\Gamma)}_{\Gamma}\cong N$: define the map $\phi:N\to \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ by $$\phi(n)=\overline{([n,e],e)}.$$ This is an $H$-homeomorphism: The $H$-action is preserved by
+\begin{align*}
+\phi(nh)&=\overline{([nh,e],e)}=\overline{([n,h],e)}=\overline{([n,e]\cdot h,e)}\\&=\overline{([n,e],h^{-1})}=\overline{([n,e],e)}\cdot h=\phi(n)\cdot h.
+\end{align*}
+For injectivity, consider that for $n,n'\in N$, $$\overline{([n,e],e)}=\overline{([n',e],e)},$$ then there exist $\gamma \in \Gamma$ such that $([n,e],e)=([n',e]\gamma,\gamma),$ hence $\gamma=e$ and $[n,e]=[n',e]$, then there exist $h\in H$ such that $(n,e)=(nh^{-1},h)$ then $h=e$ and therefore $n=n'$.  Surjectivity follows by 
+\begin{align*}
+\phi(n(\gamma\alpha^{-1}))&=\overline{([n(\gamma\alpha^{-1}),e],e)}=\overline{([n,\gamma\alpha^{-1}],e)}\\&=\overline{([n,\gamma]\cdot\alpha^{-1},e)}=\overline{([n,\gamma],\alpha)}
+\end{align*}
+
+for any $\overline{([n,\gamma],\alpha)}\in \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ with $[\gamma]=[\alpha]\in \Gamma/H$, that is $\gamma\alpha^{-1}\in H$.
+  
+\item   $\varphi_{\Gamma}^{H}\circ \varphi^{\Gamma}_{H}(x_{N})=\phi!(x_{N})$ \textcolor{red}{NO lo he probado}
+
+\item We get that $h_{\Gamma}^{H}\circ h^{\Gamma}_{H}=Id_{K^{pf}_{*}(\{e\};H)}$ because applying Remark \ref{relation 1} applied to the homeomorphism $\phi:N\to \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ we get 
+
+\begin{align*}
+h_{\Gamma}^{H}\circ h^{\Gamma}_{H}([N,\emptyset,\pi_{N},x_{N}])&=[\widetilde{(N\times_{H}\Gamma)}_{\Gamma},\emptyset,\pi_{\widetilde{(N\times_{H}\Gamma)}_{\Gamma}}, \varphi_{\Gamma}^{H}\circ \varphi^{\Gamma}_{H}(x_{N})]\\
+&=[\widetilde{(N\times_{H}\Gamma)}_{\Gamma},\emptyset,\pi_{\widetilde{(N\times_{H}\Gamma)}_{\Gamma}}, \phi!(x_{N})]\\
+&=[N,\emptyset,\pi_{\widetilde{(N\times_{H}\Gamma)}_{\Gamma}}\circ \phi,x_{N}]\\
+&=[N,\emptyset,\pi_{N},x_{N}]        
+\end{align*}
+  
 \item $\widetilde{M}_{\Gamma}\times_{H}\Gamma\cong M$.
 \end{itemize}
 \end{proof}
