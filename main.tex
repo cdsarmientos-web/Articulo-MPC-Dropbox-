@@ -2972,6 +2972,19 @@ These both actions over $M\times_{\Gamma/H}\Gamma$ commute:
 &=(m\gamma^{-1},(\pi_{M}(m\gamma^{-1}),\gamma))\cdot[(m,\alpha)\cdot (\overline{(m,\alpha)},h)]
 \end{align*}
 \begin{itemize}
+
+\item The orbits of $M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ in $M\times_{\Gamma/H}\Gamma$ are homeomorphic to $\widetilde{M}_{\Gamma}$: the homeomorphism is defined by
+\begin{align*}
+\phi:(M\times_{\Gamma/H}\Gamma)/(M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma))\to \widetilde{M}_{\Gamma}:[(m,\gamma)]\mapsto \overline{(m,\gamma)}
+\end{align*}
+where it is well defined because
+\begin{align*}
+\phi([(m,\gamma)])=\overline{(m,\gamma)}&=\overline{(m\alpha^{-1},\gamma\alpha^{-1})}=\phi([(m\alpha^{-1},\gamma\alpha^{-1})])\\&=\phi([(m\alpha^{-1},(\pi_{M}(m\alpha^{-1}),\alpha))\cdot(m,\gamma)]),
+\end{align*}
+it is injective because $\overline{(m,\gamma)}=\overline{(m',\gamma')}$ imply that $$(m,\gamma)=(m'\alpha,\gamma'\alpha)=(m\alpha,(\pi_{M}(m'\alpha),\alpha^{-1}))\cdot(m',\gamma'),$$
+that is $[(m,\gamma)]=[(m',\gamma')]$; and it is surjective by for any $\overline{(m,\gamma)}\in \widetilde{M}_{\Gamma}$, $(m,\gamma)\in M\times_{\Gamma/H} \Gamma$, then $\phi([(m,\gamma)])=\overline{(m,\gamma)}$.
+\item The orbit space of $\widetilde{M}_{\Gamma}\rtimes H$ over $M\times_{\Gamma/H}\Gamma$ is homeomorphic to $M$: \textcolor{red}{falta}
+
 \item There is a groupoid isomorphism between  $M\rtimes \Gamma \rightrightarrows M$ and $M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\rightrightarrows M$, by $$\psi: M\rtimes \Gamma \to M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma):(m,\gamma)\mapsto(m,(\pi_{M}(m),\gamma))$$
 
 \item This stablish a map $\varphi_{\Gamma}^{H}:K^{*}_{\Gamma}(M)\cong K^{*}(M\rtimes \Gamma)\to K^{*}(\widetilde{M}_{\Gamma}\rtimes H)\cong K^{*}_{H}(\widetilde{M}_{\Gamma})$ \textcolor{red}{Bajo afirmacion de amenabilidad (buscar referencia)}.
