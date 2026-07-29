@@ -2982,8 +2982,16 @@ where it is well defined because
 \phi([(m,\gamma)])=\overline{(m,\gamma)}&=\overline{(m\alpha^{-1},\gamma\alpha^{-1})}=\phi([(m\alpha^{-1},\gamma\alpha^{-1})])\\&=\phi([(m\alpha^{-1},(\pi_{M}(m\alpha^{-1}),\alpha))\cdot(m,\gamma)]),
 \end{align*}
 it is injective because $\overline{(m,\gamma)}=\overline{(m',\gamma')}$ imply that $$(m,\gamma)=(m'\alpha,\gamma'\alpha)=(m\alpha,(\pi_{M}(m'\alpha),\alpha^{-1}))\cdot(m',\gamma'),$$
-that is $[(m,\gamma)]=[(m',\gamma')]$; and it is surjective by for any $\overline{(m,\gamma)}\in \widetilde{M}_{\Gamma}$, $(m,\gamma)\in M\times_{\Gamma/H} \Gamma$, then $\phi([(m,\gamma)])=\overline{(m,\gamma)}$.
-\item The orbit space of $\widetilde{M}_{\Gamma}\rtimes H$ over $M\times_{\Gamma/H}\Gamma$ is homeomorphic to $M$: \textcolor{red}{falta}
+that is $[(m,\gamma)]=[(m',\gamma')]$; and it is surjective by for any $\overline{(m,\gamma)}\in \widetilde{M}_{\Gamma}$, $(m,\gamma)\in M\times_{\Gamma/H} \Gamma$, then $\phi([(m,\gamma)])=\overline{(m,\gamma)}$. \textcolor{red}{Continuidad}
+\item The orbit space of $\widetilde{M}_{\Gamma}\rtimes H$ over $M\times_{\Gamma/H}\Gamma$ is homeomorphic to $M$: Consider the map 
+\begin{align*}
+\phi:(M\times_{\Gamma/H}\Gamma)/(\widetilde{M}_{\Gamma}\rtimes H)\to M:[(m,\gamma)]\mapsto m,
+\end{align*}
+where this map is straightforward well defined and surjective, and it is injective because if $[(m,\gamma)],[(m',\gamma')]\in (M\times_{\Gamma/H}\Gamma)/(\widetilde{M}_{\Gamma}\rtimes H)$ such that $$\phi([(m,\gamma)])=m=m'=\phi([(m',\gamma')]),$$
+and since $[\gamma]=\pi_{M}(m)=\pi_{M}(m')=[\gamma']$, i.e., $\gamma=h\gamma'$ for some $h\in H$, then $$(m,\gamma)=(m',h\gamma')=(m',\gamma')\cdot(\overline{(m',\gamma')},h^{-1}),$$
+which imply $[(m,\gamma)]=[(m',\gamma')]$.\textcolor{red}{Continuidad}
+
+\item The anchor maps are open \textcolor{red}{Falta}
 
 \item There is a groupoid isomorphism between  $M\rtimes \Gamma \rightrightarrows M$ and $M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\rightrightarrows M$, by $$\psi: M\rtimes \Gamma \to M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma):(m,\gamma)\mapsto(m,(\pi_{M}(m),\gamma))$$
 
@@ -3005,6 +3013,33 @@ Now, consider the generalized morphism
 	\arrow[shift right=3, from=1-3, to=2-3]
 \end{tikzcd}\]
 where $N\times_{H}\Gamma:= (N\times \Gamma)/H$ is the $H$-orbit space of $N\times \Gamma$ under the action given by $(n,\gamma)\cdot h:= (n\cdot h^{-1},hn)$. We have that $N\times_{H}\Gamma$ is a $\Gamma$-space with action $$[n,\gamma]\cdot \alpha= [n,\gamma\alpha],$$ and with map $\pi_{N\times_{H}\Gamma}:N\times_{H}\Gamma\to \Gamma/H: [n,\gamma]\mapsto [\gamma]=H\gamma$.
+
+In this generalized morphism there are the following actions over $N\times \Gamma$
+\begin{itemize}
+\item The left action of $N\rtimes H$ over $N\times \Gamma$ is defined by \textcolor{red}{Free and proper}
+$$(nh^{-1},h)\cdot (n,\gamma):=(nh^{-1},h\gamma).$$
+\item The right action of $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ over $N\times \Gamma$ is defined by \textcolor{red}{Free and proper}$$(n,\gamma)\cdot ([n,\gamma],([\gamma],\alpha))=(n,\gamma\alpha).$$
+\item Both action commutes
+$$(nh^{-1},h\gamma)\cdot ([n,\gamma],([\gamma],\alpha))= (nh^{-1},h\gamma\alpha)= (nh^{-1},h)\cdot(n,\gamma\alpha).$$
+\item The orbit space of the action of $N\rtimes H$ over $N\times \Gamma$ is homeomorphic to $N\times_{H}\Gamma$ by the map
+\begin{align*}
+\phi:(N\times \Gamma)/(N\rtimes \Gamma)\to N\times_{H}\Gamma: [(n,\gamma)]\mapsto [n,\gamma]
+\end{align*}
+which is well defined, because $$\phi([(n,\gamma)])=[n,\gamma]=[nh^{-1},h\gamma]=\phi([(nh^{-1},h)\cdot(n,\gamma)]),$$
+straighforward surjective and injective by the fact that if $[n,\gamma]=[n',\gamma']\in N\times_{H}\Gamma$, then there exist $h\in H$ such that $$(n,\gamma)=(n'h^{-1},h\gamma')=(n'h^{-1},h)\cdot(n,\gamma),$$
+which imply $[(n,\gamma)]=[(n',\gamma')]\in (N\times \Gamma)/(N\rtimes \Gamma)$. \textcolor{red}{COntinuidad}
+\item The orbit space of the action of $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ over $N\times \Gamma$ is homeomorphic to $N$ by the map
+\begin{align*}
+\phi:(N\times \Gamma)/(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\to N: [(n,\gamma)]\to n
+\end{align*}
+which is straightforward well defined and surjective, and for injectivity, if  $[(n,\gamma)],[(n',\gamma')]$ such that $\phi([(n,\gamma)])=n=n'=\phi([(n',\gamma')])$, then by $$(n,\gamma)\cdot ([n,\gamma],([\gamma],\gamma^{-1}\gamma'))=(n,\gamma(\gamma^{-1}\gamma'))=(n,\gamma')=(n',\gamma')$$ 
+and with this, $[(n,\gamma)]=[(n',\gamma')]\in (N\times \Gamma)/(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$. \textcolor{red}{Continuidad}
+\item The anchor maps are open \textcolor{red}{Falta}
+\end{itemize}
+
+
+
+
 \begin{itemize}
 \item $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is an isomorphic groupoid to $(N\times_{H}\Gamma)\rtimes \Gamma \rightrightarrows N\times_{H}\Gamma$
 \item $\varphi^{\Gamma}_{H}:K^{*}_{H}(N)\to K^{*}_{\Gamma}(N\times_{H}\Gamma)$ is the group homomorphism that is obtained by the Morita equivalence between the respectives groupoids.
