@@ -2190,8 +2190,100 @@ which means that $(i_{N}^{D})^*\circ f_{D}!(b_1)=(i_{N}^{D})^*\circ f_{D}!(b_2)$
 \textcolor{red}{Aplicacion articulo Carrillo-Karegar} 
 
 \subsubsection{Homotopy invariance}
+If $f_{t}:M\to N$ is a $\Gamma$-homotopy, then $\rho:f^{*}_{0}TN\to M$ and $\rho:f^{*}_{1}TN\to M$ are isomorphic $\Gamma$-vector bundles by an isomorphism $\psi:f^{*}_{0}TN\to f^{*}_{1}TN$, and so $T^{*}M \oplus f^{*}_{0}TN\cong T^{*}M \oplus f^{*}_{1}TN$ too, by a commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUTSBcXG9wbHVzIGZeeyp9X3swfVROIl0sWzEsMSwiZl57Kn1fezF9VE4iXSxbMSwwLCJUTSBcXG9wbHVzIGZeeyp9X3sxfVROIl0sWzAsMSwiZl57Kn1fezB9VE4iXSxbMCwyLCJJZF97VE19XFxvcGx1cyBcXHBzaSIsMCx7Im9mZnNldCI6LTF9XSxbMiwxLCJcXHBpX3syfSJdLFswLDMsIlxccGlfezJ9IiwyXSxbMywxLCJcXHBzaSJdXQ==
+\[\begin{tikzcd}
+	{TM \oplus f^{*}_{0}TN} & {TM \oplus f^{*}_{1}TN} \\
+	{f^{*}_{0}TN} & {f^{*}_{1}TN}
+	\arrow["{Id_{TM}\oplus \psi}", shift left, from=1-1, to=1-2]
+	\arrow["{\pi_{2}}"', from=1-1, to=2-1]
+	\arrow["{\pi_{2}}", from=1-2, to=2-2]
+	\arrow["\psi", from=2-1, to=2-2]
+\end{tikzcd}\]
+Therefore there exist a group isomorphism $\phi$ such that we get the following commutative diagram in $K$-theory
+% https://q.uiver.app/#q=WzAsMyxbMSwwLCJLXnsqfV97XFxHYW1tYX0oTSkiXSxbMCwxLCJLXnsqfV97XFxHYW1tYX0oVF57Kn1NIFxcb3BsdXMgZl57Kn1fezB9VE4pIl0sWzIsMSwiS157Kn1fe1xcR2FtbWF9KFReeyp9TSBcXG9wbHVzIGZeeyp9X3sxfVROKSJdLFswLDEsIlRoX3swfSIsMl0sWzEsMiwiXFxwaGkiXSxbMCwyLCJUaF97MX0iXV0=
+\[\begin{tikzcd}
+	& {K^{*}_{\Gamma}(M)} & \\
+	{K^{*}_{\Gamma}(T^{*}M \oplus f^{*}_{0}TN)} && {K^{*}_{\Gamma}(T^{*}M \oplus f^{*}_{1}TN)}
+	\arrow["{Th_{0}}"', from=1-2, to=2-1]
+	\arrow["{Th_{1}}", from=1-2, to=2-3]
+	\arrow["\phi", from=2-1, to=2-3]
+\end{tikzcd}\]
+Now, applying the Fourier transform isomorphism we have the following commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXnsqfV97XFxHYW1tYX0oVF57Kn1NIFxcb3BsdXMgZl57Kn1fezB9VE4pIl0sWzIsMCwiS157Kn1fe1xcR2FtbWF9KFReeyp9TSBcXG9wbHVzIGZeeyp9X3sxfVROKSJdLFswLDEsIkteeyp9X3tcXEdhbW1hfShUTSBcXG9wbHVzIGZeeyp9X3swfVROKSJdLFsyLDEsIkteeyp9X3tcXEdhbW1hfShUTSBcXG9wbHVzIGZeeyp9X3sxfVROKSJdLFswLDEsIlxccGhpIl0sWzEsM10sWzIsM10sWzAsMl1d
+\[\begin{tikzcd}
+	{K^{*}_{\Gamma}(T^{*}M \oplus f^{*}_{0}TN)} && {K^{*}_{\Gamma}(T^{*}M \oplus f^{*}_{1}TN)} \\
+	{K^{*}_{\Gamma}(TM \oplus f^{*}_{0}TN)} && {K^{*}_{\Gamma}(TM \oplus f^{*}_{1}TN)}
+	\arrow["\phi", from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=2-3]
+\end{tikzcd}\]
 
-\textcolor{red}{Tenemos las cuentas}
+
+Since $TM \oplus f^{*}_{0}TN\cong TM \oplus f^{*}_{1}TN$ as $\Gamma$-vector bundles over  $f^{*}_{0}TN\cong f^{*}_{1}TN$ respectively, we get the following lemma
+
+\begin{lemma}\label{homotopy ltimes}
+ If $f_{t}:M\to N$ is a $\Gamma$-homotopy, then there exist a groupoid isomorphism between the groupoids for $TM \ltimes f^{*}_{i}TN\rightrightarrows f^{*}_{i}TN$ for $i=0,1$.
+\end{lemma}
+\begin{proof}
+We have to show that the map $$(Id_{TM}\oplus \psi,\psi):(TM \ltimes f^{*}_{0}TN\rightrightarrows f^{*}_{0}TN)\to (TM \ltimes f^{*}_{1}TN\rightrightarrows f^{*}_{1}TN)$$ 
+induce a groupoid isomorphism. The differential of the homotopy $f_{t}$ give us (\textcolor{red}{Cita de diferencial de homotopia da el diagrama}) the commutative diagram 
+% https://q.uiver.app/#q=WzAsNCxbMiwxLCJmXnsqfV97MX1UTiJdLFsxLDAsImZeeyp9X3swfVROIl0sWzAsMSwiVE0iXSxbMSwyLCJNIl0sWzEsMCwiXFxwc2kiXSxbMiwxLCJkZl97MH0iXSxbMiwwLCJkZl97MX0iLDIseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMiwzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMSwzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}
+	& {f^{*}_{0}TN} & \\
+	TM && {f^{*}_{1}TN} \\
+	& M
+	\arrow["\psi", from=1-2, to=2-3]
+	\arrow[dashed, from=1-2, to=3-2]
+	\arrow["{df_{0}}", from=2-1, to=1-2]
+	\arrow["{df_{1}}"'{pos=0.7}, from=2-1, to=2-3]
+	\arrow[dashed, from=2-1, to=3-2]
+	\arrow[dashed, from=2-3, to=3-2]
+\end{tikzcd}\]
+
+\noindent Therefore, we have that $\psi(v\cdot w)=v\cdot \psi(w)$ because
+\begin{align*}
+\psi(v\cdot w)=\psi(df_{0}(v)+ w)=\psi(df_{0}(v))+\psi(w)=df_{1}(v)+\psi(w)=
+v\cdot \psi(w),
+\end{align*}
+which means that $(Id_{TM}\oplus \psi,\psi)\circ s_{0}=s_{1}$. The groupoid operation is preserved
+\begin{align*}
+(Id_{TM}\oplus \psi)(v'\oplus v\cdot w)\cdot(Id_{TM}\oplus \psi)(v\oplus w))&=(v'\oplus \psi(v\cdot w))\cdot (v\oplus \psi(w))\\& =(v'\oplus v\cdot \psi(w))\cdot (v\oplus \psi(w))\\& =(v'+v)\oplus \psi(w)\\&=(Id_{TM}\oplus \psi)((v'+v)\oplus w)\\&=(Id_{TM}\oplus \psi)((v'\oplus v\cdot w)\cdot(v\oplus w)).
+\end{align*}
+\end{proof}
+
+ 
+
+
+Denote $D_{\ltimes,i}:= DNC(Id_{TM}\oplus \psi,\psi)$, by Lemma \ref{homotopy ltimes}, we get the groupoid isomorphism $D_{\ltimes,0}\cong D_{\ltimes,1}$, and with this the commutative diagram
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXnsqfV97XFxHYW1tYX0oVE0gXFxvcGx1cyBmXnsqfV97MH1UTikiXSxbMiwwLCJLXnsqfV97XFxHYW1tYX0oVE0gXFxvcGx1cyBmXnsqfV97MX1UTikiXSxbMCwxLCJLXnsqfV97XFxHYW1tYX0oRF97XFxsdGltZXMsMH0pIl0sWzIsMSwiS157Kn1fe1xcR2FtbWF9KERfe1xcbHRpbWVzLDF9KSJdLFswLDIsIkteeyp9X3tcXEdhbW1hfShUTSBcXGx0aW1lcyBmXnsqfV97MH1UTikiXSxbMiwyLCJLXnsqfV97XFxHYW1tYX0oVE0gXFxsdGltZXMgZl57Kn1fezF9VE4pIl0sWzAsMV0sWzAsMl0sWzIsNF0sWzEsM10sWzMsNV0sWzQsNV1d
+\[\begin{tikzcd}
+	{K^{*}_{\Gamma}(TM \oplus f^{*}_{0}TN)} && {K^{*}_{\Gamma}(TM \oplus f^{*}_{1}TN)} \\
+	{K^{*}_{\Gamma}(D_{\ltimes,0})} && {K^{*}_{\Gamma}(D_{\ltimes,1})} \\
+	{K^{*}_{\Gamma}(TM \ltimes f^{*}_{0}TN)} && {K^{*}_{\Gamma}(TM \ltimes f^{*}_{1}TN)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+
+\noindent Finally, by the homotopy $f_{t}:M\to N$, we get the homotopy $$(\Delta, f_{t}):M\to M^{2}\times N,$$ hence we get a groupoid isomorphism $D_{f_{0}}\cong D_{f_{1}}$, where $D_{f_{i}}:=DNC((\Delta, f_{t}),(Id,f_{t}))$, and with this we get the commutative diagram
+
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJLXnsqfV97XFxHYW1tYX0oVE0gXFxsdGltZXMgZl57Kn1fezB9VE4pIl0sWzIsMCwiS157Kn1fe1xcR2FtbWF9KFRNIFxcbHRpbWVzIGZeeyp9X3sxfVROKSJdLFswLDEsIkteeyp9X3tcXEdhbW1hfShEX3tmXzB9KSJdLFsyLDEsIkteeyp9X3tcXEdhbW1hfShEX3tmXzF9KSJdLFsxLDIsIkteeyp9X3tcXEdhbW1hfShNXnsyfVxcdGltZXMgTikiXSxbMCwxXSxbMiw0XSxbMCwyXSxbMSwzXSxbMyw0XV0=
+\[\begin{tikzcd}
+	{K^{*}_{\Gamma}(TM \ltimes f^{*}_{0}TN)} && {K^{*}_{\Gamma}(TM \ltimes f^{*}_{1}TN)} \\
+	{K^{*}_{\Gamma}(D_{f_0})} && {K^{*}_{\Gamma}(D_{f_1})} \\
+	& {K^{*}_{\Gamma}(M^{2}\times N)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=3-2]
+	\arrow[from=2-3, to=3-2]
+\end{tikzcd}\]
+Then, we have been prove that $f_{0}!=f_{1}!$, that is, the $K$-theory pushforward holds homotopy invariance.
 
 \subsubsection{Pushforward of embeddings}
 
