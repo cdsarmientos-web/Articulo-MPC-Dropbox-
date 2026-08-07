@@ -1999,31 +1999,95 @@ where the main incidence of the $w\in f^*TN$ component is to relate all the comp
 
 We note that there exist a groupoid isomorphism 
 $$N(M^{2}\times N,M)\rightrightarrows N(M\times N,M)\ \ \  \cong\ \ \  TM\ltimes f^*TN \rightrightarrows_{}^{} f^*TN$$
-where $[sus\oplus Id_{TN}-(df\circ \pi_2)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$ defined by $$[sus\oplus Id_{TN}-(df\circ \pi_2)]([(v,w),z])=(v-w)\oplus z-d_xf(w)$$ is a vector bundle isomorphism (well defined by the quotient structure of the normal bundle, and an isomorphism by the five lemma) such as the following diagram induce on the fibre of $x\sim ((x,x),f(x))\in M^{2}\times N$
-% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlRfeE0iXSxbMiwwLCJUX3hNXFxvcGx1cyBUX3hNXFxvcGx1cyBmXipUX3tmKHgpfU4iXSxbMywwLCJOX3soKHgseCksZih4KSl9KE1eezJ9XFx0aW1lcyBOLE0pIl0sWzMsMSwiVF94TVxcb3BsdXMgZl4qVF97Zih4KX1OIl0sWzEsMSwiVF94TSJdLFsyLDEsIlRfeE1cXG9wbHVzIFRfeE1cXG9wbHVzIGZeKlRfe2YoeCl9TiJdLFswLDEsIjAiXSxbNCwwLCIwIl0sWzQsMSwiMCJdLFszLDQsIltzdXMtKGRmXFxjaXJjIFxccGlfMildIl0sWzAsMV0sWzEsMiwiXFxEZWx0YV97VE19XFx0aW1lcyBkX3hmIl0sWzIsMywiXFxwaSJdLFsxLDUsIklkX3tUX3hNfSJdLFs3LDVdLFs1LDZdLFsyLDYsIklkIiwyXSxbNiw0LCJzdXMtKGRfeCBmXFxjaXJjIFxccGlfMikiLDJdLFszLDhdLFs0LDldXQ==
+where $[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]:N(M^{2}\times N,M)\to TM\oplus f^*TN$ defined by $$[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([(v_{1},v_{2}),w])=(v_{1}-v_{2})\oplus d_mf(v_{2})-w$$ is a vector bundle isomorphism (well defined by the quotient structure of the normal bundle, and an isomorphism by the five lemma) such as the following diagram induce on the fibre of $m\sim ((m,m),f(m))\in M^{2}\times N$
+% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlRfbU0iXSxbMiwwLCJUX21NXFxvcGx1cyBUX21NXFxvcGx1cyBmXipUX3tmKG0pfU4iXSxbMywwLCJOX3soKG0sbSksZihtKSl9KE1eezJ9XFx0aW1lcyBOLE0pIl0sWzMsMSwiVF9tTVxcb3BsdXMgZl4qVF97ZihtKX1OIl0sWzEsMSwiVF9tTSJdLFsyLDEsIlRfbU1cXG9wbHVzIFRfbU1cXG9wbHVzIGZeKlRfe2YobSl9TiJdLFswLDEsIjAiXSxbNCwwLCIwIl0sWzQsMSwiMCJdLFszLDQsIltzdXMoXFxwaV97MX0sXFxwaV97Mn0pXFxvcGx1cyAoZGZcXGNpcmMgXFxwaV8yKS1cXHBpX3szfV0iLDJdLFswLDFdLFsxLDIsIlxcRGVsdGFfe1RNfVxcdGltZXMgZF9tZiJdLFsyLDMsIlxccGkiXSxbMSw1LCJJZF97VF9tTX0iLDJdLFs3LDVdLFs1LDZdLFsyLDYsIklkIiwyXSxbNiw0LCJzdXMoXFxwaV97MX0sXFxwaV97Mn0pXFxvcGx1cyAoZGZcXGNpcmMgXFxwaV8yKS1cXHBpX3szfSIsMix7Im9mZnNldCI6MX1dLFszLDhdLFs0LDldXQ==
 \[\begin{tikzcd}
-	0 & {T_xM} & {T_xM\oplus T_xM\oplus f^*T_{f(x)}N} & {N_{((x,x),f(x))}(M^{2}\times N,M)} & 0 \\
-	0 & {T_xM} & {T_xM\oplus T_xM\oplus f^*T_{f(x)}N} & {T_xM\oplus f^*T_{f(x)}N} & 0
+	0 & {T_mM} & {T_mM\oplus T_mM\oplus f^*T_{f(m)}N} & {N_{((m,m),f(m))}(M^{2}\times N,M)} & 0 \\
+	0 & {T_mM} & {T_mM\oplus T_mM\oplus f^*T_{f(m)}N} & {T_mM\oplus f^*T_{f(m)}N} & 0
 	\arrow[from=1-1, to=1-2]
-	\arrow["{\Delta_{TM}\times d_xf}", from=1-2, to=1-3]
-	\arrow["{Id_{T_xM}}", from=1-2, to=2-2]
+	\arrow["{\Delta_{TM}\times d_mf}", from=1-2, to=1-3]
+	\arrow["{Id_{T_mM}}"', from=1-2, to=2-2]
 	\arrow["\pi", from=1-3, to=1-4]
 	\arrow["Id"', from=1-3, to=2-3]
 	\arrow[from=1-4, to=1-5]
-	\arrow["{[sus\oplus Id_{TN}-(df\circ \pi_2)]}", from=1-4, to=2-4]
+	\arrow["{[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]}"', from=1-4, to=2-4]
 	\arrow[from=2-1, to=2-2]
 	\arrow[from=2-2, to=2-3]
-	\arrow["{sus\oplus Id_{TN}-(df\circ \pi_2)}"', from=2-3, to=2-4]
+	\arrow["{sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}}"', shift right, from=2-3, to=2-4]
 	\arrow[from=2-4, to=2-5]
 \end{tikzcd}\]
 
-\noindent In the same fashion $N(M\times N, M)\cong f^*TN$ where $[Id_{f^*(TN)}-(df \circ \pi_1)]([v,z])=(z-d_xf(v))$ define the isomorphism
-$$[Id_{f^*(TN)}-(df \circ \pi_1)]:N(M^{2}\times N,M)\to TM\oplus f^*TN$$ 
-This map is well defined because if for $x\sim (x,f(x))\in M\times N$
-$$(v_1,z_1)-(v_2,z_2)\in Im(Id_{T_xM}\oplus d_xf)$$
-it means that there exist $v\in T_xM$ such that $v_1-v_2=v$ and $z_1-z_2=d_xf(v)$, which is equivalent to equality of the images 
-$$z_1-d_xf(v_1)=z_2-d_xf(v_2),$$
-and it is an isomorphism by the five lemma.
+It is well defined because if $((v_{1},v_{2}),w)\sim ((\overline{v_{1}},\overline{v_{2}}),\overline{w})$, that is, $$((v_{1},v_{2}),w)-((\overline{v_{1}},\overline{v_{2}}),\overline{w})\in Img(\Delta_{TM}\times df)$$
+which means that there exist $v\in T_{m}M$ such that $v_{1}-\overline{v_{1}}=v=v_{2}-\overline{v_{2}}$ and $w-\overline{w}=d_{m}f(v)$, we get
+\begin{align*}
+&[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([(v_{1},v_{2}),w])\\&= (v_{1}-v_{2})\oplus d_mf(v_{2})-w\\
+&= (\overline{v_{1}}-\overline{v_{2}})\oplus d_mf(v_{2})-d_{m}f(v)-\overline{w}\\
+&= (\overline{v_{1}}-\overline{v_{2}})\oplus d_mf(v_{2})-d_{m}f(v_{2}-\overline{v_{2}})-\overline{w}\\
+&= (\overline{v_{1}}-\overline{v_{2}})\oplus d_{m}f(\overline{v_{2}})-\overline{w}\\
+&= [sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([(\overline{v_{1}},\overline{v_{2}}),\overline{w}]).
+\end{align*}
+
+
+\noindent In the same fashion $N(M\times N, M)\cong f^*TN$ where $[(df \circ \pi_1)-\pi_{2}]([v,w])=d_mf(v)-w$ define the isomorphism
+$$[(df \circ \pi_1)-\pi_{2}]:N(M\times N,M)\to  f^*TN$$ 
+This map is well defined because if for $m\sim (m,f(m))\in M\times N$
+$$(v,w)-(\overline{v},\overline{w})\in Im(Id_{T_mM}\oplus d_mf)$$
+it means that there exist $\hat{v}\in T_mM$ such that $v-\overline{v}=\hat{v}$ and $w-\overline{w}=d_mf(\hat{v})$, which is equivalent to equality of the images 
+$$d_mf(v)-w=d_mf(\overline{v})-\overline{w},$$
+and it is an isomorphism by the five lemma applied to the diagram
+% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlRfbU0iXSxbMiwwLCJUX21NXFxvcGx1cyBmXipUX3tmKG0pfU4iXSxbMywwLCJOX3soKG0sbSksZihtKSl9KE1cXHRpbWVzIE4sTSkiXSxbMywxLCJmXipUX3tmKG0pfU4iXSxbMSwxLCJUX21NIl0sWzIsMSwiVF9tTVxcb3BsdXMgZl4qVF97ZihtKX1OIl0sWzAsMSwiMCJdLFs0LDAsIjAiXSxbNCwxLCIwIl0sWzMsNCwiWyhkZiBcXGNpcmMgXFxwaV8xKS1cXHBpX3syfV0iLDJdLFswLDFdLFsxLDIsIklkX3tUTX1cXHRpbWVzIGRfbWYiXSxbMiwzLCJcXHBpIl0sWzEsNSwiSWRfe1RfbU19IiwyXSxbNyw1XSxbNSw2XSxbMiw2LCJJZCIsMl0sWzYsNCwiKGRmIFxcY2lyYyBcXHBpXzEpLVxccGlfezJ9IiwyLHsib2Zmc2V0IjoxfV0sWzMsOF0sWzQsOV1d
+\[\begin{tikzcd}
+	0 & {T_mM} & {T_mM\oplus f^*T_{f(m)}N} & {N_{((m,m),f(m))}(M\times N,M)} & 0 \\
+	0 & {T_mM} & {T_mM\oplus f^*T_{f(m)}N} & {f^*T_{f(m)}N} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["{Id_{TM}\times d_mf}", from=1-2, to=1-3]
+	\arrow["{Id_{T_mM}}"', from=1-2, to=2-2]
+	\arrow["\pi", from=1-3, to=1-4]
+	\arrow["Id"', from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{[(df \circ \pi_1)-\pi_{2}]}"', from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["{(df \circ \pi_1)-\pi_{2}}"', shift right, from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}\] 
+With these isomorphisms we get the desired groupoid isomorphism by the commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJOX3soKG0sbSksZihtKSl9KE1cXHRpbWVzIE4sTSkiXSxbMiwxLCJmXipUX3tmKG0pfU4iXSxbMCwwLCJOX3soKG0sbSksZihtKSl9KE1eezJ9XFx0aW1lcyBOLE0pIl0sWzIsMCwiVE1cXGx0aW1lcyBmXipUX3tmKG0pfU4iXSxbMCwxLCJbKGRmIFxcY2lyYyBcXHBpXzEpLVxccGlfezJ9XSIsMl0sWzIsMCwiW1xccGlfezJ9XFx0aW1lcyBcXHBpX3szfV0iLDAseyJvZmZzZXQiOi0zfV0sWzIsMCwiW1xccGlfezF9XFx0aW1lcyBcXHBpX3szfV0iLDIseyJvZmZzZXQiOjN9XSxbMiwzLCJbc3VzKFxccGlfezF9LFxccGlfezJ9KVxcb3BsdXMgKGRmXFxjaXJjIFxccGlfMiktXFxwaV97M31dIiwwLHsib2Zmc2V0IjotMn1dLFszLDEsIlxccGlfezJ9IiwwLHsib2Zmc2V0IjotM31dLFszLDEsIlxcbHRpbWVzIiwyLHsib2Zmc2V0IjozfV1d
+\[\begin{tikzcd}
+	{N_{((m,m),f(m))}(M^{2}\times N,M)} && {TM\ltimes f^*T_{f(m)}N} \\
+	{N_{((m,m),f(m))}(M\times N,M)} && {f^*T_{f(m)}N}
+	\arrow["{[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]}", shift left=2, from=1-1, to=1-3]
+	\arrow["{[\pi_{2}\times \pi_{3}]}", shift left=3, from=1-1, to=2-1]
+	\arrow["{[\pi_{1}\times \pi_{3}]}"', shift right=3, from=1-1, to=2-1]
+	\arrow["{\pi_{2}}", shift left=3, from=1-3, to=2-3]
+	\arrow["\ltimes"', shift right=3, from=1-3, to=2-3]
+	\arrow["{[(df \circ \pi_1)-\pi_{2}]}"', from=2-1, to=2-3]
+\end{tikzcd}\]
+
+\noindent where for the source
+\begin{align*}
+&\pi_{2}\circ[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([v_{1},v_{2},w])\\&=\pi_{2}(v_{1}-v_{2}\oplus d_{m}f(v_{2})-w)\\&=d_{m}f(v_{2})-w\\
+&=((d_{m}f\circ \pi_{1})-\pi_{2})([v_{2},w])\\
+&=((d_{m}f\circ \pi_{1})-\pi_{2})\circ [\pi_{2}\times \pi_{3}]([v_{1},v_{2},w])
+\end{align*}
+and for the target we get
+\begin{align*}
+&\ltimes\circ[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([v_{1},v_{2},w])\\
+&=\ltimes (v_{1}-v_{2}\oplus d_{m}f(v_{2})-w)\\
+&= d_{m}f(v_{1})-d_{m}f(v_{2})+ d_{m}f(v_{2})-w\\
+&= d_{m}f(v_{1})-w\\
+&=[(df \circ \pi_1)-\pi_{2}]([v_{1},w])\\
+&=[(df \circ \pi_1)-\pi_{2}]\circ[\pi_{1}\times \pi_{3}]([v_{1},v_{2},w]),
+\end{align*}
+\noindent in such a way that $[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]$ respect the groupoid operations by
+\begin{align*}
+&[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([v_{1},v_{2},w][v_{2},v_{3},w])\\
+&=[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([v_{1},v_{3},w])\\
+&= v_{1}-v_{3}\oplus d_{m}f(v_{3})-w\\
+&=v_{1}-v_{2}+v_{2}-v_{3}\oplus d_{m}f(v_{3})-w\\
+&= (v_{1}-v_{2}\oplus d_{m}f(v_{2})-w)\cdot (v_{2}-v_{3}\oplus d_{m}f(v_{3})-w)\\
+&=[sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([v_{1},v_{2},w])\\&\cdot [sus(\pi_{1},\pi_{2})\oplus (df\circ \pi_2)-\pi_{3}]([v_{2},v_{3},w])
+\end{align*}
 \end{remark}
 
 
