@@ -2254,8 +2254,100 @@ which means that $(i_{N}^{D})^*\circ f_{D}!(b_1)=(i_{N}^{D})^*\circ f_{D}!(b_2)$
 \textcolor{red}{Aplicacion articulo Carrillo-Karegar} 
 
 \subsubsection{Homotopy invariance}
+If $f_{t}:M\to N$ is a $\Gamma$-homotopy, then $\rho:f^{*}_{0}TN\to M$ and $\rho:f^{*}_{1}TN\to M$ are isomorphic $\Gamma$-vector bundles by an isomorphism $\psi:f^{*}_{0}TN\to f^{*}_{1}TN$, and so $T^{*}M \oplus f^{*}_{0}TN\cong T^{*}M \oplus f^{*}_{1}TN$ too, by a commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUTSBcXG9wbHVzIGZeeyp9X3swfVROIl0sWzEsMSwiZl57Kn1fezF9VE4iXSxbMSwwLCJUTSBcXG9wbHVzIGZeeyp9X3sxfVROIl0sWzAsMSwiZl57Kn1fezB9VE4iXSxbMCwyLCJJZF97VE19XFxvcGx1cyBcXHBzaSIsMCx7Im9mZnNldCI6LTF9XSxbMiwxLCJcXHBpX3syfSJdLFswLDMsIlxccGlfezJ9IiwyXSxbMywxLCJcXHBzaSJdXQ==
+\[\begin{tikzcd}
+	{TM \oplus f^{*}_{0}TN} & {TM \oplus f^{*}_{1}TN} \\
+	{f^{*}_{0}TN} & {f^{*}_{1}TN}
+	\arrow["{Id_{TM}\oplus \psi}", shift left, from=1-1, to=1-2]
+	\arrow["{\pi_{2}}"', from=1-1, to=2-1]
+	\arrow["{\pi_{2}}", from=1-2, to=2-2]
+	\arrow["\psi", from=2-1, to=2-2]
+\end{tikzcd}\]
+Therefore there exist a group isomorphism $\phi$ such that we get the following commutative diagram in $K$-theory
+% https://q.uiver.app/#q=WzAsMyxbMSwwLCJLXnsqfV97XFxHYW1tYX0oTSkiXSxbMCwxLCJLXnsqfV97XFxHYW1tYX0oVF57Kn1NIFxcb3BsdXMgZl57Kn1fezB9VE4pIl0sWzIsMSwiS157Kn1fe1xcR2FtbWF9KFReeyp9TSBcXG9wbHVzIGZeeyp9X3sxfVROKSJdLFswLDEsIlRoX3swfSIsMl0sWzEsMiwiXFxwaGkiXSxbMCwyLCJUaF97MX0iXV0=
+\[\begin{tikzcd}
+	& {K^{*}_{\Gamma}(M)} & \\
+	{K^{*}_{\Gamma}(T^{*}M \oplus f^{*}_{0}TN)} && {K^{*}_{\Gamma}(T^{*}M \oplus f^{*}_{1}TN)}
+	\arrow["{Th_{0}}"', from=1-2, to=2-1]
+	\arrow["{Th_{1}}", from=1-2, to=2-3]
+	\arrow["\phi", from=2-1, to=2-3]
+\end{tikzcd}\]
+Now, applying the Fourier transform isomorphism we have the following commutative diagram
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXnsqfV97XFxHYW1tYX0oVF57Kn1NIFxcb3BsdXMgZl57Kn1fezB9VE4pIl0sWzIsMCwiS157Kn1fe1xcR2FtbWF9KFReeyp9TSBcXG9wbHVzIGZeeyp9X3sxfVROKSJdLFswLDEsIkteeyp9X3tcXEdhbW1hfShUTSBcXG9wbHVzIGZeeyp9X3swfVROKSJdLFsyLDEsIkteeyp9X3tcXEdhbW1hfShUTSBcXG9wbHVzIGZeeyp9X3sxfVROKSJdLFswLDEsIlxccGhpIl0sWzEsM10sWzIsM10sWzAsMl1d
+\[\begin{tikzcd}
+	{K^{*}_{\Gamma}(T^{*}M \oplus f^{*}_{0}TN)} && {K^{*}_{\Gamma}(T^{*}M \oplus f^{*}_{1}TN)} \\
+	{K^{*}_{\Gamma}(TM \oplus f^{*}_{0}TN)} && {K^{*}_{\Gamma}(TM \oplus f^{*}_{1}TN)}
+	\arrow["\phi", from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=2-3]
+\end{tikzcd}\]
 
-\textcolor{red}{Tenemos las cuentas}
+
+Since $TM \oplus f^{*}_{0}TN\cong TM \oplus f^{*}_{1}TN$ as $\Gamma$-vector bundles over  $f^{*}_{0}TN\cong f^{*}_{1}TN$ respectively, we get the following lemma
+
+\begin{lemma}\label{homotopy ltimes}
+ If $f_{t}:M\to N$ is a $\Gamma$-homotopy, then there exist a groupoid isomorphism between the groupoids for $TM \ltimes f^{*}_{i}TN\rightrightarrows f^{*}_{i}TN$ for $i=0,1$.
+\end{lemma}
+\begin{proof}
+We have to show that the map $$(Id_{TM}\oplus \psi,\psi):(TM \ltimes f^{*}_{0}TN\rightrightarrows f^{*}_{0}TN)\to (TM \ltimes f^{*}_{1}TN\rightrightarrows f^{*}_{1}TN)$$ 
+induce a groupoid isomorphism. The differential of the homotopy $f_{t}$ give us (\textcolor{red}{Cita de diferencial de homotopia da el diagrama}) the commutative diagram 
+% https://q.uiver.app/#q=WzAsNCxbMiwxLCJmXnsqfV97MX1UTiJdLFsxLDAsImZeeyp9X3swfVROIl0sWzAsMSwiVE0iXSxbMSwyLCJNIl0sWzEsMCwiXFxwc2kiXSxbMiwxLCJkZl97MH0iXSxbMiwwLCJkZl97MX0iLDIseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMiwzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMSwzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}
+	& {f^{*}_{0}TN} & \\
+	TM && {f^{*}_{1}TN} \\
+	& M
+	\arrow["\psi", from=1-2, to=2-3]
+	\arrow[dashed, from=1-2, to=3-2]
+	\arrow["{df_{0}}", from=2-1, to=1-2]
+	\arrow["{df_{1}}"'{pos=0.7}, from=2-1, to=2-3]
+	\arrow[dashed, from=2-1, to=3-2]
+	\arrow[dashed, from=2-3, to=3-2]
+\end{tikzcd}\]
+
+\noindent Therefore, we have that $\psi(v\cdot w)=v\cdot \psi(w)$ because
+\begin{align*}
+\psi(v\cdot w)=\psi(df_{0}(v)+ w)=\psi(df_{0}(v))+\psi(w)=df_{1}(v)+\psi(w)=
+v\cdot \psi(w),
+\end{align*}
+which means that $(Id_{TM}\oplus \psi,\psi)\circ s_{0}=s_{1}$. The groupoid operation is preserved
+\begin{align*}
+(Id_{TM}\oplus \psi)(v'\oplus v\cdot w)\cdot(Id_{TM}\oplus \psi)(v\oplus w))&=(v'\oplus \psi(v\cdot w))\cdot (v\oplus \psi(w))\\& =(v'\oplus v\cdot \psi(w))\cdot (v\oplus \psi(w))\\& =(v'+v)\oplus \psi(w)\\&=(Id_{TM}\oplus \psi)((v'+v)\oplus w)\\&=(Id_{TM}\oplus \psi)((v'\oplus v\cdot w)\cdot(v\oplus w)).
+\end{align*}
+\end{proof}
+
+ 
+
+
+Denote $D_{\ltimes,i}:= DNC(Id_{TM}\oplus \psi,\psi)$, by Lemma \ref{homotopy ltimes}, we get the groupoid isomorphism $D_{\ltimes,0}\cong D_{\ltimes,1}$, and with this the commutative diagram
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXnsqfV97XFxHYW1tYX0oVE0gXFxvcGx1cyBmXnsqfV97MH1UTikiXSxbMiwwLCJLXnsqfV97XFxHYW1tYX0oVE0gXFxvcGx1cyBmXnsqfV97MX1UTikiXSxbMCwxLCJLXnsqfV97XFxHYW1tYX0oRF97XFxsdGltZXMsMH0pIl0sWzIsMSwiS157Kn1fe1xcR2FtbWF9KERfe1xcbHRpbWVzLDF9KSJdLFswLDIsIkteeyp9X3tcXEdhbW1hfShUTSBcXGx0aW1lcyBmXnsqfV97MH1UTikiXSxbMiwyLCJLXnsqfV97XFxHYW1tYX0oVE0gXFxsdGltZXMgZl57Kn1fezF9VE4pIl0sWzAsMV0sWzAsMl0sWzIsNF0sWzEsM10sWzMsNV0sWzQsNV1d
+\[\begin{tikzcd}
+	{K^{*}_{\Gamma}(TM \oplus f^{*}_{0}TN)} && {K^{*}_{\Gamma}(TM \oplus f^{*}_{1}TN)} \\
+	{K^{*}_{\Gamma}(D_{\ltimes,0})} && {K^{*}_{\Gamma}(D_{\ltimes,1})} \\
+	{K^{*}_{\Gamma}(TM \ltimes f^{*}_{0}TN)} && {K^{*}_{\Gamma}(TM \ltimes f^{*}_{1}TN)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+
+\noindent Finally, by the homotopy $f_{t}:M\to N$, we get the homotopy $$(\Delta, f_{t}):M\to M^{2}\times N,$$ hence we get a groupoid isomorphism $D_{f_{0}}\cong D_{f_{1}}$, where $D_{f_{i}}:=DNC((\Delta, f_{t}),(Id,f_{t}))$, and with this we get the commutative diagram
+
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJLXnsqfV97XFxHYW1tYX0oVE0gXFxsdGltZXMgZl57Kn1fezB9VE4pIl0sWzIsMCwiS157Kn1fe1xcR2FtbWF9KFRNIFxcbHRpbWVzIGZeeyp9X3sxfVROKSJdLFswLDEsIkteeyp9X3tcXEdhbW1hfShEX3tmXzB9KSJdLFsyLDEsIkteeyp9X3tcXEdhbW1hfShEX3tmXzF9KSJdLFsxLDIsIkteeyp9X3tcXEdhbW1hfShNXnsyfVxcdGltZXMgTikiXSxbMCwxXSxbMiw0XSxbMCwyXSxbMSwzXSxbMyw0XV0=
+\[\begin{tikzcd}
+	{K^{*}_{\Gamma}(TM \ltimes f^{*}_{0}TN)} && {K^{*}_{\Gamma}(TM \ltimes f^{*}_{1}TN)} \\
+	{K^{*}_{\Gamma}(D_{f_0})} && {K^{*}_{\Gamma}(D_{f_1})} \\
+	& {K^{*}_{\Gamma}(M^{2}\times N)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=3-2]
+	\arrow[from=2-3, to=3-2]
+\end{tikzcd}\]
+Then, we have been prove that $f_{0}!=f_{1}!$, that is, the $K$-theory pushforward holds homotopy invariance.
 
 \subsubsection{Pushforward of embeddings}
 
@@ -3046,8 +3138,16 @@ where it is well defined because
 \phi([(m,\gamma)])=\overline{(m,\gamma)}&=\overline{(m\alpha^{-1},\gamma\alpha^{-1})}=\phi([(m\alpha^{-1},\gamma\alpha^{-1})])\\&=\phi([(m\alpha^{-1},(\pi_{M}(m\alpha^{-1}),\alpha))\cdot(m,\gamma)]),
 \end{align*}
 it is injective because $\overline{(m,\gamma)}=\overline{(m',\gamma')}$ imply that $$(m,\gamma)=(m'\alpha,\gamma'\alpha)=(m\alpha,(\pi_{M}(m'\alpha),\alpha^{-1}))\cdot(m',\gamma'),$$
-that is $[(m,\gamma)]=[(m',\gamma')]$; and it is surjective by for any $\overline{(m,\gamma)}\in \widetilde{M}_{\Gamma}$, $(m,\gamma)\in M\times_{\Gamma/H} \Gamma$, then $\phi([(m,\gamma)])=\overline{(m,\gamma)}$.
-\item The orbit space of $\widetilde{M}_{\Gamma}\rtimes H$ over $M\times_{\Gamma/H}\Gamma$ is homeomorphic to $M$: \textcolor{red}{falta}
+that is $[(m,\gamma)]=[(m',\gamma')]$; and it is surjective by for any $\overline{(m,\gamma)}\in \widetilde{M}_{\Gamma}$, $(m,\gamma)\in M\times_{\Gamma/H} \Gamma$, then $\phi([(m,\gamma)])=\overline{(m,\gamma)}$. \textcolor{red}{Continuidad}
+\item The orbit space of $\widetilde{M}_{\Gamma}\rtimes H$ over $M\times_{\Gamma/H}\Gamma$ is homeomorphic to $M$: Consider the map 
+\begin{align*}
+\phi:(M\times_{\Gamma/H}\Gamma)/(\widetilde{M}_{\Gamma}\rtimes H)\to M:[(m,\gamma)]\mapsto m,
+\end{align*}
+where this map is straightforward well defined and surjective, and it is injective because if $[(m,\gamma)],[(m',\gamma')]\in (M\times_{\Gamma/H}\Gamma)/(\widetilde{M}_{\Gamma}\rtimes H)$ such that $$\phi([(m,\gamma)])=m=m'=\phi([(m',\gamma')]),$$
+and since $[\gamma]=\pi_{M}(m)=\pi_{M}(m')=[\gamma']$, i.e., $\gamma=h\gamma'$ for some $h\in H$, then $$(m,\gamma)=(m',h\gamma')=(m',\gamma')\cdot(\overline{(m',\gamma')},h^{-1}),$$
+which imply $[(m,\gamma)]=[(m',\gamma')]$.\textcolor{red}{Continuidad}
+
+\item The anchor maps are open \textcolor{red}{Falta}
 
 \item There is a groupoid isomorphism between  $M\rtimes \Gamma \rightrightarrows M$ and $M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\rightrightarrows M$, by $$\psi: M\rtimes \Gamma \to M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma):(m,\gamma)\mapsto(m,(\pi_{M}(m),\gamma))$$
 
@@ -3069,6 +3169,33 @@ Now, consider the generalized morphism
 	\arrow[shift right=3, from=1-3, to=2-3]
 \end{tikzcd}\]
 where $N\times_{H}\Gamma:= (N\times \Gamma)/H$ is the $H$-orbit space of $N\times \Gamma$ under the action given by $(n,\gamma)\cdot h:= (n\cdot h^{-1},hn)$. We have that $N\times_{H}\Gamma$ is a $\Gamma$-space with action $$[n,\gamma]\cdot \alpha= [n,\gamma\alpha],$$ and with map $\pi_{N\times_{H}\Gamma}:N\times_{H}\Gamma\to \Gamma/H: [n,\gamma]\mapsto [\gamma]=H\gamma$.
+
+In this generalized morphism there are the following actions over $N\times \Gamma$
+\begin{itemize}
+\item The left action of $N\rtimes H$ over $N\times \Gamma$ is defined by \textcolor{red}{Free and proper}
+$$(nh^{-1},h)\cdot (n,\gamma):=(nh^{-1},h\gamma).$$
+\item The right action of $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ over $N\times \Gamma$ is defined by \textcolor{red}{Free and proper}$$(n,\gamma)\cdot ([n,\gamma],([\gamma],\alpha))=(n,\gamma\alpha).$$
+\item Both action commutes
+$$(nh^{-1},h\gamma)\cdot ([n,\gamma],([\gamma],\alpha))= (nh^{-1},h\gamma\alpha)= (nh^{-1},h)\cdot(n,\gamma\alpha).$$
+\item The orbit space of the action of $N\rtimes H$ over $N\times \Gamma$ is homeomorphic to $N\times_{H}\Gamma$ by the map
+\begin{align*}
+\phi:(N\times \Gamma)/(N\rtimes \Gamma)\to N\times_{H}\Gamma: [(n,\gamma)]\mapsto [n,\gamma]
+\end{align*}
+which is well defined, because $$\phi([(n,\gamma)])=[n,\gamma]=[nh^{-1},h\gamma]=\phi([(nh^{-1},h)\cdot(n,\gamma)]),$$
+straighforward surjective and injective by the fact that if $[n,\gamma]=[n',\gamma']\in N\times_{H}\Gamma$, then there exist $h\in H$ such that $$(n,\gamma)=(n'h^{-1},h\gamma')=(n'h^{-1},h)\cdot(n,\gamma),$$
+which imply $[(n,\gamma)]=[(n',\gamma')]\in (N\times \Gamma)/(N\rtimes \Gamma)$. \textcolor{red}{COntinuidad}
+\item The orbit space of the action of $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ over $N\times \Gamma$ is homeomorphic to $N$ by the map
+\begin{align*}
+\phi:(N\times \Gamma)/(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\to N: [(n,\gamma)]\to n
+\end{align*}
+which is straightforward well defined and surjective, and for injectivity, if  $[(n,\gamma)],[(n',\gamma')]$ such that $\phi([(n,\gamma)])=n=n'=\phi([(n',\gamma')])$, then by $$(n,\gamma)\cdot ([n,\gamma],([\gamma],\gamma^{-1}\gamma'))=(n,\gamma(\gamma^{-1}\gamma'))=(n,\gamma')=(n',\gamma')$$ 
+and with this, $[(n,\gamma)]=[(n',\gamma')]\in (N\times \Gamma)/(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$. \textcolor{red}{Continuidad}
+\item The anchor maps are open \textcolor{red}{Falta}
+\end{itemize}
+
+
+
+
 \begin{itemize}
 \item $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is an isomorphic groupoid to $(N\times_{H}\Gamma)\rtimes \Gamma \rightrightarrows N\times_{H}\Gamma$
 \item $\varphi^{\Gamma}_{H}:K^{*}_{H}(N)\to K^{*}_{\Gamma}(N\times_{H}\Gamma)$ is the group homomorphism that is obtained by the Morita equivalence between the respectives groupoids.
