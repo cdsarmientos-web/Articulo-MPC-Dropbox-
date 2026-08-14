@@ -2253,6 +2253,13 @@ which means that $(i_{N}^{D})^*\circ f_{D}!(b_1)=(i_{N}^{D})^*\circ f_{D}!(b_2)$
 
 \textcolor{red}{Aplicacion articulo Carrillo-Karegar} 
 
+The 
+
+\begin{thm}[\cite{CK26}]
+kjl
+\end{thm}
+
+
 \subsubsection{Homotopy invariance}
 If $f_{t}:M\to N$ is a $\Gamma$-homotopy, then $\rho:f^{*}_{0}TN\to M$ and $\rho:f^{*}_{1}TN\to M$ are isomorphic $\Gamma$-vector bundles by an isomorphism $\psi:f^{*}_{0}TN\to f^{*}_{1}TN$, and so $T^{*}M \oplus f^{*}_{0}TN\cong T^{*}M \oplus f^{*}_{1}TN$ too, by a commutative diagram
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJUTSBcXG9wbHVzIGZeeyp9X3swfVROIl0sWzEsMSwiZl57Kn1fezF9VE4iXSxbMSwwLCJUTSBcXG9wbHVzIGZeeyp9X3sxfVROIl0sWzAsMSwiZl57Kn1fezB9VE4iXSxbMCwyLCJJZF97VE19XFxvcGx1cyBcXHBzaSIsMCx7Im9mZnNldCI6LTF9XSxbMiwxLCJcXHBpX3syfSJdLFswLDMsIlxccGlfezJ9IiwyXSxbMywxLCJcXHBzaSJdXQ==
@@ -3117,7 +3124,13 @@ where $(m,(\pi_{M}(m),\gamma))\in M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\rig
 \noindent In this generalized morphism there are the following \textit{free} and \textit{proper} actions over $M\times_{\Gamma/H}\Gamma$,
 \begin{itemize}
 \item The left action of $M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is defined, for $(m,\alpha)\in M\times_{\Gamma/H}\Gamma$ and $\gamma\in \Gamma$, by $$(m\gamma^{-1},(\pi_{M}(m\gamma^{-1}),\gamma))\cdot(m,\alpha):=(m\gamma^{-1},\alpha\gamma^{-1})$$
-with anchor given by the first projection $a_{L}=\pi_{1}:M\times_{\Gamma/H}\Gamma\to M$. \textcolor{red}{free and proper}
+with anchor given by the first projection $a_{L}=\pi_{1}:M\times_{\Gamma/H}\Gamma\to M$. 
+
+This action is free because $(m\gamma^{-1},\alpha\gamma^{-1})=(m,\alpha)$  imply that $\alpha\gamma^{-1}=\alpha$, then $\gamma=e$, whic means that the unique invariant action product over $(m,\alpha)$ is by $u(m,\alpha)=(m,(\pi_{M}(m),e))$. It is also a proper action because the map 
+\begin{align*}
+\phi:(M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma))\ _{s}\times_{a_{L}}(M\times_{\gamma/H}\Gamma)\to (M\times_{\gamma/H}\Gamma)^{2}
+\end{align*}
+with $\phi=$ is a continuous inyective map \textcolor{red}{argumento aun flojo porque luego planeabamos construir una inversa sin caracterizar bien la imagen de $\phi$}
 \item The right action of $\widetilde{M}_{\Gamma}\rtimes H$, for $(m,\alpha)\in M\times_{\Gamma/H}\Gamma$ and $h\in H$, by $$(m,\alpha)\cdot(\overline{(m,\alpha)}, h):= (m,h^{-1}\alpha)$$ with anchor given by the class map $a_{R}=\widetilde{\pi}:M\times_{\Gamma/H}\Gamma\to \widetilde{M}_{\Gamma}$.\textcolor{red}{free and proper}
 \end{itemize}
 These both actions over $M\times_{\Gamma/H}\Gamma$ commute:
