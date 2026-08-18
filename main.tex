@@ -3164,9 +3164,50 @@ which imply $[(m,\gamma)]=[(m',\gamma')]$.\textcolor{red}{Continuidad}
 
 \item There is a groupoid isomorphism between  $M\rtimes \Gamma \rightrightarrows M$ and $M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)\rightrightarrows M$, by $$\psi: M\rtimes \Gamma \to M\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma):(m,\gamma)\mapsto(m,(\pi_{M}(m),\gamma))$$
 
-\item This stablish a map $\varphi_{\Gamma}^{H}:K^{*}_{\Gamma}(M)\cong K^{*}(M\rtimes \Gamma)\to K^{*}(\widetilde{M}_{\Gamma}\rtimes H)\cong K^{*}_{H}(\widetilde{M}_{\Gamma})$ \textcolor{red}{Bajo afirmacion de amenabilidad (buscar referencia)}.
-\item This let us to define $h_{\Gamma}^{H}:K^{pf}_{*}(\Gamma/H;\Gamma)\to K^{pf}_{*}(\{e\};H)$ by $$[M,\emptyset,\pi_{M},x_{M}]\mapsto [\widetilde{M}_{\Gamma},\emptyset,\pi_{\widetilde{M}_{\Gamma}}, \varphi_{\Gamma}^{H}(x_{M})]$$
+\item This stablish a map $\varphi_{\Gamma}^{H}:K^{*}_{\Gamma}(M)\cong K^{*}(M\rtimes \Gamma)\to K^{*}(\widetilde{M}_{\Gamma}\rtimes H)\cong K^{*}_{H}(\widetilde{M}_{\Gamma})$ \textcolor{red}{Bajo afirmacion de amenabilidad (buscar referencia)}. For $f:M\to M'$ a $\Gamma$-equivariant map we get
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXnsqfV97XFxHYW1tYX0oTSkiXSxbMSwwLCJLXnsqfV97XFxHYW1tYX0oXFx0aWxkZXtNfV97XFxHYW1tYX0pIl0sWzEsMSwiS157Kn1fe1xcR2FtbWF9KFxcdGlsZGV7TSd9X3tcXEdhbW1hfSkiXSxbMCwxLCJLXnsqfV97XFxHYW1tYX0oTScpIl0sWzAsMywiZiEiLDJdLFswLDEsIlxcdmFycGhpX3tNfSJdLFsxLDIsIlxcdGlsZGV7Zn0hIl0sWzMsMiwiXFx2YXJwaGlfe00nfSIsMl1d
+\[\begin{tikzcd}
+	{K^{*}_{\Gamma}(M)} & {K^{*}_{\Gamma}(\tilde{M}_{\Gamma})} \\
+	{K^{*}_{\Gamma}(M')} & {K^{*}_{\Gamma}(\tilde{M'}_{\Gamma})}
+	\arrow["{\varphi_{M}}", from=1-1, to=1-2]
+	\arrow["{f!}"', from=1-1, to=2-1]
+	\arrow["{\tilde{f}!}", from=1-2, to=2-2]
+	\arrow["{\varphi_{M'}}"', from=2-1, to=2-2]
+\end{tikzcd}\]
 
+\textcolor{red}{Pendiente demostracion}
+
+
+
+\item This let us to define $h_{\Gamma}^{H}:K^{pf}_{*}(\Gamma/H;\Gamma)\to K^{pf}_{*}(\{e\};H)$ by $$[M,\emptyset,\pi_{M},x_{M}]\mapsto [\widetilde{M}_{\Gamma},\emptyset,\pi_{\widetilde{M}_{\Gamma}}, \varphi_{\Gamma}^{H}(x_{M})]$$
+This is a well defined map because if $[M,\emptyset,\pi_{M},x_{M}]=[M',\emptyset,\pi_{M'},x_{M'}]$ by a diagram 
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJNIl0sWzIsMSwiTSciXSxbMSwwLCJXIl0sWzEsMiwiXFxHYW1tYS9IIl0sWzAsMiwiZl97TX0iXSxbMSwyLCJmX3tNJ30iLDJdLFsxLDMsIlxccGlfe00nfSJdLFswLDMsIlxccGlfe019IiwyXSxbMiwzLCJcXHBpX3tXfSIsMl1d
+\[\begin{tikzcd}
+	& W & \\
+	M && {M'} \\
+	& {\Gamma/H}
+	\arrow["{\pi_{W}}"', from=1-2, to=3-2]
+	\arrow["{f_{M}}", from=2-1, to=1-2]
+	\arrow["{\pi_{M}}"', from=2-1, to=3-2]
+	\arrow["{f_{M'}}"', from=2-3, to=1-2]
+	\arrow["{\pi_{M'}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+\noindent then, by the functoriality of the construction $\tilde{()}_{\Gamma}$,
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHdpZGV0aWxkZXtNfV97XFxHYW1tYX0iXSxbMiwxLCJcXHdpZGV0aWxkZXtNJ31fe1xcR2FtbWF9Il0sWzEsMCwiXFx3aWRldGlsZGV7V31fe1xcR2FtbWF9Il0sWzEsMiwiKiJdLFswLDIsIlxcd2lkZXRpbGRle2Zfe019fSJdLFsxLDIsIlxcd2lkZXRpbGRle2Zfe00nfX0iLDJdLFsxLDMsImNfe1xcd2lkZXRpbGRle00nfV97XFxHYW1tYX19Il0sWzAsMywiY197XFx3aWRldGlsZGV7TX1fe1xcR2FtbWF9fSIsMl0sWzIsMywiY197XFx3aWRldGlsZGV7V31fe1xcR2FtbWF9fSIsMl1d
+\[\begin{tikzcd}
+	& {\widetilde{W}_{\Gamma}} & \\
+	{\widetilde{M}_{\Gamma}} && {\widetilde{M'}_{\Gamma}} \\
+	& {*}
+	\arrow["{c_{\widetilde{W}_{\Gamma}}}"', from=1-2, to=3-2]
+	\arrow["{\widetilde{f_{M}}}", from=2-1, to=1-2]
+	\arrow["{c_{\widetilde{M}_{\Gamma}}}"', from=2-1, to=3-2]
+	\arrow["{\widetilde{f_{M'}}}"', from=2-3, to=1-2]
+	\arrow["{c_{\widetilde{M'}_{\Gamma}}}", from=2-3, to=3-2]
+\end{tikzcd}\]
+and by the naturality of $\varphi_{M}$, we get
+\begin{align*}
+\widetilde{f_{M}}!(\varphi_{\widetilde{M}_{\Gamma}}(x_{M}))=\varphi_{W}(f_{M}!(x_{M}))=\varphi_{W}(f_{M'}!(x_{M'}))=\widetilde{f_{M'}}!(\varphi_{\widetilde{M'}_{\Gamma}}(x_{M'}))
+\end{align*}
 \end{itemize}
 
 Now, consider the generalized morphism
@@ -3211,8 +3252,21 @@ and with this, $[(n,\gamma)]=[(n',\gamma')]\in (N\times \Gamma)/(N\times_{H}\Gam
 
 \begin{itemize}
 \item $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is an isomorphic groupoid to $(N\times_{H}\Gamma)\rtimes \Gamma \rightrightarrows N\times_{H}\Gamma$
-\item $\varphi^{\Gamma}_{H}:K^{*}_{H}(N)\to K^{*}_{\Gamma}(N\times_{H}\Gamma)$ is the group homomorphism that is obtained by the Morita equivalence between the respectives groupoids.
+\item $\varphi^{\Gamma}_{H}:K^{*}_{H}(N)\to K^{*}_{\Gamma}(N\times_{H}\Gamma)$ is the group homomorphism that is obtained by the Morita equivalence between the respectives groupoids. This map satisfy the naturality such that for any $H$-equivariant map $f:N\to N'$ we get 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXnsqfV97SH0oTikiXSxbMCwxLCJLXnsqfV97SH0oTicpIl0sWzEsMCwiS157Kn1fe1xcR2FtbWF9KE5cXHRpbWVzX3tIfVxcR2FtbWEpIl0sWzEsMSwiS157Kn1fe1xcR2FtbWF9KE4nXFx0aW1lc197SH1cXEdhbW1hKSJdLFswLDEsImYhIiwyXSxbMiwzLCIoZlxcdGltZXNfe0h9XFxHYW1tYSkhIl0sWzEsMywiXFx2YXJwaGlfe04nfSIsMl0sWzAsMiwiXFx2YXJwaGlfe059Il1d
+\[\begin{tikzcd}
+	{K^{*}_{H}(N)} & {K^{*}_{\Gamma}(N\times_{H}\Gamma)} \\
+	{K^{*}_{H}(N')} & {K^{*}_{\Gamma}(N'\times_{H}\Gamma)}
+	\arrow["{\varphi_{N}}", from=1-1, to=1-2]
+	\arrow["{f!}"', from=1-1, to=2-1]
+	\arrow["{(f\times_{H}\Gamma)!}", from=1-2, to=2-2]
+	\arrow["{\varphi_{N'}}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+\textcolor{red}{Falta probar}
+
 \item  $h^{\Gamma}_{H}:K^{pf}_{*}(\{e\};H) \to K^{pf}_{*}(\Gamma/H;\Gamma)$ by $$[N,\emptyset,\pi_{N},x_{N}]\mapsto [N\times_{H}\Gamma,\emptyset,\pi_{N\times_{H}\Gamma}, \varphi^{\Gamma}_{H}(x_{N})]$$
+and such as in the case of $h_{\Gamma}^{H}$, this map $h_{H}^{\Gamma}$ is well defined by the functoriality of $()\times_{H}\Gamma$ and the naturality $(f\times_{H}\Gamma)!\circ \varphi_{N}=\varphi_{N'}\circ f!$
 \end{itemize}
 We claim that $h^{\Gamma}_{H}$ and $h_{\Gamma}^{H}$ are inverse each other.
 \begin{itemize}
@@ -3228,6 +3282,24 @@ For injectivity, consider that for $n,n'\in N$, $$\overline{([n,e],e)}=\overline
 for any $\overline{([n,\gamma],\alpha)}\in \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ with $[\gamma]=[\alpha]\in \Gamma/H$, that is $\gamma\alpha^{-1}\in H$.
   
 \item   $\varphi_{\Gamma}^{H}\circ \varphi^{\Gamma}_{H}(x_{N})=\phi!(x_{N})$ \textcolor{red}{NO lo he probado}
+
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJLX3tcXEdhbW1hfV57Kn0oTSkiXSxbMCwxLCJLX3tcXEdhbW1hfV57Kn0oXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKSJdLFsxLDEsIktfe0h9XnsqfShcXHdpZGV0aWxkZXsoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKV97XFxHYW1tYX19KSJdLFsyLDEsIktfe1xcR2FtbWF9XnsqfShcXHdpZGV0aWxkZXsoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKX1fe1xcR2FtbWF9XFx0aW1lc197SH1cXEdhbW1hKSJdLFsxLDAsIktfe0h9XnsqfShcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX0pIl0sWzIsMCwiS197XFxHYW1tYX1eeyp9KFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSkiXSxbMSwyLCJLX3tIfV57Kn0oXFx3aWRldGlsZGV7TV97XFxHYW1tYX19KSJdLFsyLDIsIktfe1xcR2FtbWF9XnsqfShcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEpIl0sWzAsNCwiXFx2YXJwaGlfe019Il0sWzQsNSwiXFx2YXJwaGlfe1xcd2lkZXRpbGRle01fe1xcR2FtbWF9fX0iXSxbMCwxLCJcXHdpZGVoYXRcXHBoaSEiXSxbNCwyLCJcXHdpZGV0aWxkZXtcXHdpZGVoYXR7XFxwaGl9fSEiXSxbMSwyLCJcXHZhcnBoaV97XFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hfSIsMl0sWzUsMywiKFxcd2lkZXRpbGRle1xcd2lkZWhhdHtcXHBoaX19XFx0aW1lc197SH1cXEdhbW1hKSEiXSxbMiwzLCJcXHZhcnBoaV97KFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSlfe1xcR2FtbWF9fSIsMl0sWzIsNl0sWzMsNywiXFx3aWRlaGF0XFxwaGlfeyhcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEpX3tcXEdhbW1hfVxcdGltZXNfe0h9XFxHYW1tYX0hIl0sWzYsNywiXFxiZXRhIiwyXSxbMSw2LCJcXHRoZXRhIiwyXV0=
+\[\begin{tikzcd}
+	{K_{\Gamma}^{*}(M)} & {K_{H}^{*}(\widetilde{M_{\Gamma}})} & {K_{\Gamma}^{*}(\widetilde{M_{\Gamma}}\times_{H}\Gamma)} \\
+	{K_{\Gamma}^{*}(\widetilde{M_{\Gamma}}\times_{H}\Gamma)} & {K_{H}^{*}(\widetilde{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)_{\Gamma}})} & {K_{\Gamma}^{*}(\widetilde{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)}_{\Gamma}\times_{H}\Gamma)} \\
+	& {K_{H}^{*}(\widetilde{M_{\Gamma}})} & {K_{\Gamma}^{*}(\widetilde{M_{\Gamma}}\times_{H}\Gamma)}
+	\arrow["{\varphi_{M}}", from=1-1, to=1-2]
+	\arrow["{\widehat\phi!}", from=1-1, to=2-1]
+	\arrow["{\varphi_{\widetilde{M_{\Gamma}}}}", from=1-2, to=1-3]
+	\arrow["{\widetilde{\widehat{\phi}}!}", from=1-2, to=2-2]
+	\arrow["{(\widetilde{\widehat{\phi}}\times_{H}\Gamma)!}", from=1-3, to=2-3]
+	\arrow["{\varphi_{\widetilde{M_{\Gamma}}\times_{H}\Gamma}}"', from=2-1, to=2-2]
+	\arrow["\theta"', from=2-1, to=3-2]
+	\arrow["{\varphi_{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)_{\Gamma}}}"', from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow["{\widehat\phi_{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)_{\Gamma}\times_{H}\Gamma}!}", from=2-3, to=3-3]
+	\arrow["\beta"', from=3-2, to=3-3]
+\end{tikzcd}\]
 
 \item We get that $h_{\Gamma}^{H}\circ h^{\Gamma}_{H}=Id_{K^{pf}_{*}(\{e\};H)}$ because applying Remark \ref{relation 1} applied to the homeomorphism $\phi:N\to \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ we get 
 
