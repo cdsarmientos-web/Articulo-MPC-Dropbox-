@@ -3270,20 +3270,19 @@ and such as in the case of $h_{\Gamma}^{H}$, this map $h_{H}^{\Gamma}$ is well d
 \end{itemize}
 We claim that $h^{\Gamma}_{H}$ and $h_{\Gamma}^{H}$ are inverse each other.
 \begin{itemize}
-\item $\widetilde{(N\times_{H}\Gamma)}_{\Gamma}\cong N$: define the map $\phi:N\to \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ by $$\phi(n)=\overline{([n,e],e)}.$$ This is an $H$-homeomorphism: The $H$-action is preserved by
+\item $\widetilde{(N\times_{H}\Gamma)}_{\Gamma}\cong N$: define the map $\widehat{\phi}:N\to \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ by $$\widehat{\phi}(n)=\overline{([n,e],e)}.$$ This is an $H$-homeomorphism: The $H$-action is preserved by
 \begin{align*}
-\phi(nh)&=\overline{([nh,e],e)}=\overline{([n,h],e)}=\overline{([n,e]\cdot h,e)}\\&=\overline{([n,e],h^{-1})}=\overline{([n,e],e)}\cdot h=\phi(n)\cdot h.
+\widehat{\phi}(nh)&=\overline{([nh,e],e)}=\overline{([n,h],e)}=\overline{([n,e]\cdot h,e)}\\&=\overline{([n,e],h^{-1})}=\overline{([n,e],e)}\cdot h=\widehat{\phi}(n)\cdot h.
 \end{align*}
 For injectivity, consider that for $n,n'\in N$, $$\overline{([n,e],e)}=\overline{([n',e],e)},$$ then there exist $\gamma \in \Gamma$ such that $([n,e],e)=([n',e]\gamma,\gamma),$ hence $\gamma=e$ and $[n,e]=[n',e]$, then there exist $h\in H$ such that $(n,e)=(nh^{-1},h)$ then $h=e$ and therefore $n=n'$.  Surjectivity follows by 
 \begin{align*}
-\phi(n(\gamma\alpha^{-1}))&=\overline{([n(\gamma\alpha^{-1}),e],e)}=\overline{([n,\gamma\alpha^{-1}],e)}\\&=\overline{([n,\gamma]\cdot\alpha^{-1},e)}=\overline{([n,\gamma],\alpha)}
+\widehat{\phi}(n(\gamma\alpha^{-1}))&=\overline{([n(\gamma\alpha^{-1}),e],e)}=\overline{([n,\gamma\alpha^{-1}],e)}\\&=\overline{([n,\gamma]\cdot\alpha^{-1},e)}=\overline{([n,\gamma],\alpha)}
 \end{align*}
 
 for any $\overline{([n,\gamma],\alpha)}\in \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ with $[\gamma]=[\alpha]\in \Gamma/H$, that is $\gamma\alpha^{-1}\in H$.
   
 \item   $\varphi_{\Gamma}^{H}\circ \varphi^{\Gamma}_{H}(x_{N})=\phi!(x_{N})$ \textcolor{red}{NO lo he probado}
-
-% https://q.uiver.app/#q=WzAsOCxbMCwwLCJLX3tcXEdhbW1hfV57Kn0oTSkiXSxbMCwxLCJLX3tcXEdhbW1hfV57Kn0oXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKSJdLFsxLDEsIktfe0h9XnsqfShcXHdpZGV0aWxkZXsoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKV97XFxHYW1tYX19KSJdLFsyLDEsIktfe1xcR2FtbWF9XnsqfShcXHdpZGV0aWxkZXsoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKX1fe1xcR2FtbWF9XFx0aW1lc197SH1cXEdhbW1hKSJdLFsxLDAsIktfe0h9XnsqfShcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX0pIl0sWzIsMCwiS197XFxHYW1tYX1eeyp9KFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSkiXSxbMSwyLCJLX3tIfV57Kn0oXFx3aWRldGlsZGV7TV97XFxHYW1tYX19KSJdLFsyLDIsIktfe1xcR2FtbWF9XnsqfShcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEpIl0sWzAsNCwiXFx2YXJwaGlfe019Il0sWzQsNSwiXFx2YXJwaGlfe1xcd2lkZXRpbGRle01fe1xcR2FtbWF9fX0iXSxbMCwxLCJcXHdpZGVoYXRcXHBoaSEiXSxbNCwyLCJcXHdpZGV0aWxkZXtcXHdpZGVoYXR7XFxwaGl9fSEiXSxbMSwyLCJcXHZhcnBoaV97XFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hfSIsMl0sWzUsMywiKFxcd2lkZXRpbGRle1xcd2lkZWhhdHtcXHBoaX19XFx0aW1lc197SH1cXEdhbW1hKSEiXSxbMiwzLCJcXHZhcnBoaV97KFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSlfe1xcR2FtbWF9fSIsMl0sWzIsNl0sWzMsNywiXFx3aWRlaGF0XFxwaGlfeyhcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEpX3tcXEdhbW1hfVxcdGltZXNfe0h9XFxHYW1tYX0hIl0sWzYsNywiXFxiZXRhIiwyXSxbMSw2LCJcXHRoZXRhIiwyXV0=
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJLX3tcXEdhbW1hfV57Kn0oTSkiXSxbMCwxLCJLX3tcXEdhbW1hfV57Kn0oXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKSJdLFsxLDEsIktfe0h9XnsqfShcXHdpZGV0aWxkZXsoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKV97XFxHYW1tYX19KSJdLFsyLDEsIktfe1xcR2FtbWF9XnsqfShcXHdpZGV0aWxkZXsoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKX1fe1xcR2FtbWF9XFx0aW1lc197SH1cXEdhbW1hKSJdLFsxLDAsIktfe0h9XnsqfShcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX0pIl0sWzIsMCwiS197XFxHYW1tYX1eeyp9KFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSkiXSxbMSwyLCJLX3tIfV57Kn0oXFx3aWRldGlsZGV7TV97XFxHYW1tYX19KSJdLFsyLDIsIktfe1xcR2FtbWF9XnsqfShcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEpIl0sWzAsNCwiXFx2YXJwaGlfe019Il0sWzQsNSwiXFx2YXJwaGlfe1xcd2lkZXRpbGRle01fe1xcR2FtbWF9fX0iXSxbMCwxLCJcXHdpZGVoYXRcXHBoaSEiXSxbNCwyLCJcXHdpZGV0aWxkZXtcXHdpZGVoYXR7XFxwaGl9fSEiXSxbMSwyLCJcXHZhcnBoaV97XFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hfSIsMl0sWzUsMywiKFxcd2lkZXRpbGRle1xcd2lkZWhhdHtcXHBoaX19XFx0aW1lc197SH1cXEdhbW1hKSEiXSxbMiwzLCJcXHZhcnBoaV97KFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSlfe1xcR2FtbWF9fSIsMl0sWzIsNiwiXFx3aWRldGlsZGV7XFx3aWRlaGF0e1xccGhpfX1eey0xfSEiXSxbMyw3LCIoXFx3aWRldGlsZGV7XFx3aWRlaGF0e1xccGhpfX1eey0xfVxcdGltZXNfe0h9XFxHYW1tYSkhIl0sWzYsNywiXFx2YXJwaGlfe1xcd2lkZXRpbGRle01fe1xcR2FtbWF9fX0iLDJdXQ==
 \[\begin{tikzcd}
 	{K_{\Gamma}^{*}(M)} & {K_{H}^{*}(\widetilde{M_{\Gamma}})} & {K_{\Gamma}^{*}(\widetilde{M_{\Gamma}}\times_{H}\Gamma)} \\
 	{K_{\Gamma}^{*}(\widetilde{M_{\Gamma}}\times_{H}\Gamma)} & {K_{H}^{*}(\widetilde{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)_{\Gamma}})} & {K_{\Gamma}^{*}(\widetilde{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)}_{\Gamma}\times_{H}\Gamma)} \\
@@ -3294,12 +3293,54 @@ for any $\overline{([n,\gamma],\alpha)}\in \widetilde{(N\times_{H}\Gamma)}_{\Gam
 	\arrow["{\widetilde{\widehat{\phi}}!}", from=1-2, to=2-2]
 	\arrow["{(\widetilde{\widehat{\phi}}\times_{H}\Gamma)!}", from=1-3, to=2-3]
 	\arrow["{\varphi_{\widetilde{M_{\Gamma}}\times_{H}\Gamma}}"', from=2-1, to=2-2]
-	\arrow["\theta"', from=2-1, to=3-2]
 	\arrow["{\varphi_{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)_{\Gamma}}}"', from=2-2, to=2-3]
-	\arrow[from=2-2, to=3-2]
-	\arrow["{\widehat\phi_{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)_{\Gamma}\times_{H}\Gamma}!}", from=2-3, to=3-3]
-	\arrow["\beta"', from=3-2, to=3-3]
+	\arrow["{\widetilde{\widehat{\phi}}^{-1}!}", from=2-2, to=3-2]
+	\arrow["{(\widetilde{\widehat{\phi}}^{-1}\times_{H}\Gamma)!}", from=2-3, to=3-3]
+	\arrow["{\varphi_{\widetilde{M_{\Gamma}}}}"', from=3-2, to=3-3]
 \end{tikzcd}\]
+
+The bottom path of this diagram holds that $$\varphi_{\widetilde{M}_{\Gamma}}\circ \widetilde{\widehat{\phi}}^{-1}!\circ \varphi_{\widetilde{M}_{\Gamma}\times_{H}\Gamma}=Id_{K_{\Gamma}^{*}(\widetilde{M_{\Gamma}}\times_{H}\Gamma)}$$
+and this is given by the correspondence
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMSwwLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMiwwLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHJ0aW1lcyBIIl0sWzIsMSwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19Il0sWzMsMCwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lcyBcXEdhbW1hIl0sWzQsMSwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hIl0sWzQsMCwiKFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSlcXHJ0aW1lcyBcXEdhbW1hIl0sWzAsMSwiIiwyLHsib2Zmc2V0IjotM31dLFswLDEsIiIsMSx7Im9mZnNldCI6M31dLFsyLDEsIlxccGlfezF9Il0sWzMsNCwiIiwyLHsib2Zmc2V0IjotM31dLFszLDQsIiIsMSx7Im9mZnNldCI6M31dLFsyLDQsIlxcd2lkZXRpbGRle1xcd2lkZWhhdHtcXHBoaX19XnstMX1cXGNpcmMgXFxwaSIsMl0sWzcsNiwiIiwyLHsib2Zmc2V0IjotM31dLFs3LDYsIiIsMSx7Im9mZnNldCI6M31dLFs1LDYsIlxccGkiLDJdLFs1LDQsIlxccGlfezF9Il0sWzAsMiwiQWMxIiwwLHsiY3VydmUiOi00fV0sWzMsMiwiQWMyIiwyLHsiY3VydmUiOjR9XSxbMyw1LCJBYzMiLDAseyJjdXJ2ZSI6LTR9XSxbNyw1LCJBYzQiLDIseyJjdXJ2ZSI6NH1dXQ==
+\[\begin{tikzcd}
+	{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} & {\widetilde{M_{\Gamma}}\times_{H}\Gamma} & {\widetilde{M_{\Gamma}}\rtimes H} & {\widetilde{M_{\Gamma}}\times \Gamma} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} \\
+	{\widetilde{M_{\Gamma}}\times_{H}\Gamma} && {\widetilde{M_{\Gamma}}} && {\widetilde{M_{\Gamma}}\times_{H}\Gamma}
+	\arrow["Ac1", curve={height=-24pt}, from=1-1, to=1-2]
+	\arrow[shift left=3, from=1-1, to=2-1]
+	\arrow[shift right=3, from=1-1, to=2-1]
+	\arrow["{\pi_{1}}", from=1-2, to=2-1]
+	\arrow["{\widetilde{\widehat{\phi}}^{-1}\circ \pi}"', from=1-2, to=2-3]
+	\arrow["Ac2"', curve={height=24pt}, from=1-3, to=1-2]
+	\arrow["Ac3", curve={height=-24pt}, from=1-3, to=1-4]
+	\arrow[shift left=3, from=1-3, to=2-3]
+	\arrow[shift right=3, from=1-3, to=2-3]
+	\arrow["{\pi_{1}}", from=1-4, to=2-3]
+	\arrow["\pi"', from=1-4, to=2-5]
+	\arrow["Ac4"', curve={height=24pt}, from=1-5, to=1-4]
+	\arrow[shift left=3, from=1-5, to=2-5]
+	\arrow[shift right=3, from=1-5, to=2-5]
+\end{tikzcd}\]
+Here the actions are given as follows:
+\begin{align*}
+(Ac1):\ \ \ ([\overline{(m,\gamma)},\alpha]g^{-1},g)\cdot([\overline{(m,\gamma)},\alpha],\beta)= ([\overline{(m,\gamma)},\alpha]g^{-1},\beta g^{-1}), \ \ with \  H\alpha=H\beta
+\end{align*}
+
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMSwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKSBcXGNpcmNfe1xcd2lkZXRpbGRle01fe1xcR2FtbWF9fX0gKFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXMgXFxHYW1tYSkiXSxbMiwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMiwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCIiLDIseyJvZmZzZXQiOi0zfV0sWzAsMSwiIiwxLHsib2Zmc2V0IjozfV0sWzIsMSwiXFxwaV97MX0iXSxbNCwzLCIiLDIseyJvZmZzZXQiOi0zfV0sWzQsMywiIiwxLHsib2Zmc2V0IjozfV0sWzAsMiwiQWMxIiwwLHsiY3VydmUiOi00fV0sWzQsMiwiQWM0IiwyLHsiY3VydmUiOjR9XSxbMiwzLCJcXHBpIiwyXV0=
+\[\begin{tikzcd}
+	{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma) \circ_{\widetilde{M_{\Gamma}}} (\widetilde{M_{\Gamma}}\times \Gamma)} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} \\
+	{\widetilde{M_{\Gamma}}\times_{H}\Gamma} && {\widetilde{M_{\Gamma}}\times_{H}\Gamma}
+	\arrow["Ac1", curve={height=-24pt}, from=1-1, to=1-2]
+	\arrow[shift left=3, from=1-1, to=2-1]
+	\arrow[shift right=3, from=1-1, to=2-1]
+	\arrow["{\pi_{1}}", from=1-2, to=2-1]
+	\arrow["\pi"', from=1-2, to=2-3]
+	\arrow["Ac4"', curve={height=24pt}, from=1-3, to=1-2]
+	\arrow[shift left=3, from=1-3, to=2-3]
+	\arrow[shift right=3, from=1-3, to=2-3]
+\end{tikzcd}\]
+
+
+
 
 \item We get that $h_{\Gamma}^{H}\circ h^{\Gamma}_{H}=Id_{K^{pf}_{*}(\{e\};H)}$ because applying Remark \ref{relation 1} applied to the homeomorphism $\phi:N\to \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ we get 
 
