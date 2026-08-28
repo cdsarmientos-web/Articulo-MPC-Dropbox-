@@ -3251,7 +3251,22 @@ and with this, $[(n,\gamma)]=[(n',\gamma')]\in (N\times \Gamma)/(N\times_{H}\Gam
 
 
 \begin{itemize}
-\item $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is an isomorphic groupoid to $(N\times_{H}\Gamma)\rtimes \Gamma \rightrightarrows N\times_{H}\Gamma$
+\item $(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)$ is an isomorphic groupoid to $(N\times_{H}\Gamma)\rtimes \Gamma \rightrightarrows N\times_{H}\Gamma$ by the groupoid isomorphism
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCIoTlxcdGltZXNfe0h9XFxHYW1tYSlcXHJ0aW1lcyBcXEdhbW1hIl0sWzAsMSwiTlxcdGltZXNfe0h9XFxHYW1tYSJdLFsxLDEsIk5cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMSwwLCIoTlxcdGltZXNfe0h9XFxHYW1tYSlcXHRpbWVzX3tcXEdhbW1hL0h9KFxcR2FtbWEvSFxccnRpbWVzIFxcR2FtbWEpIl0sWzAsMSwiIiwwLHsib2Zmc2V0IjotM31dLFswLDEsIiIsMSx7Im9mZnNldCI6M31dLFszLDIsIiIsMCx7Im9mZnNldCI6LTN9XSxbMywyLCIiLDEseyJvZmZzZXQiOjN9XSxbMCwzLCJcXHRoZXRhIl0sWzEsMiwiSWQiLDJdXQ==
+\[\begin{tikzcd}
+	{(N\times_{H}\Gamma)\rtimes \Gamma} & {(N\times_{H}\Gamma)\times_{\Gamma/H}(\Gamma/H\rtimes \Gamma)} \\
+	{N\times_{H}\Gamma} & {N\times_{H}\Gamma}
+	\arrow["\theta", from=1-1, to=1-2]
+	\arrow[shift left=3, from=1-1, to=2-1]
+	\arrow[shift right=3, from=1-1, to=2-1]
+	\arrow[shift left=3, from=1-2, to=2-2]
+	\arrow[shift right=3, from=1-2, to=2-2]
+	\arrow["Id"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+where $\theta(([n,\alpha],\beta))=([n,\alpha],(H\alpha,\beta))$.
+
 \item $\varphi^{\Gamma}_{H}:K^{*}_{H}(N)\to K^{*}_{\Gamma}(N\times_{H}\Gamma)$ is the group homomorphism that is obtained by the Morita equivalence between the respectives groupoids. This map satisfy the naturality such that for any $H$-equivariant map $f:N\to N'$ we get 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXnsqfV97SH0oTikiXSxbMCwxLCJLXnsqfV97SH0oTicpIl0sWzEsMCwiS157Kn1fe1xcR2FtbWF9KE5cXHRpbWVzX3tIfVxcR2FtbWEpIl0sWzEsMSwiS157Kn1fe1xcR2FtbWF9KE4nXFx0aW1lc197SH1cXEdhbW1hKSJdLFswLDEsImYhIiwyXSxbMiwzLCIoZlxcdGltZXNfe0h9XFxHYW1tYSkhIl0sWzEsMywiXFx2YXJwaGlfe04nfSIsMl0sWzAsMiwiXFx2YXJwaGlfe059Il1d
 \[\begin{tikzcd}
@@ -3300,34 +3315,49 @@ for any $\overline{([n,\gamma],\alpha)}\in \widetilde{(N\times_{H}\Gamma)}_{\Gam
 \end{tikzcd}\]
 
 The bottom path of this diagram holds that $$\varphi_{\widetilde{M}_{\Gamma}}\circ \widetilde{\widehat{\phi}}^{-1}!\circ \varphi_{\widetilde{M}_{\Gamma}\times_{H}\Gamma}=Id_{K_{\Gamma}^{*}(\widetilde{M_{\Gamma}}\times_{H}\Gamma)}$$
-and this is given by the correspondence
-% https://q.uiver.app/#q=WzAsOCxbMCwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMSwwLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMiwwLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHJ0aW1lcyBIIl0sWzIsMSwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19Il0sWzMsMCwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lcyBcXEdhbW1hIl0sWzQsMSwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hIl0sWzQsMCwiKFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSlcXHJ0aW1lcyBcXEdhbW1hIl0sWzAsMSwiIiwyLHsib2Zmc2V0IjotM31dLFswLDEsIiIsMSx7Im9mZnNldCI6M31dLFsyLDEsIlxccGlfezF9Il0sWzMsNCwiIiwyLHsib2Zmc2V0IjotM31dLFszLDQsIiIsMSx7Im9mZnNldCI6M31dLFsyLDQsIlxcd2lkZXRpbGRle1xcd2lkZWhhdHtcXHBoaX19XnstMX1cXGNpcmMgXFxwaSIsMl0sWzcsNiwiIiwyLHsib2Zmc2V0IjotM31dLFs3LDYsIiIsMSx7Im9mZnNldCI6M31dLFs1LDYsIlxccGkiLDJdLFs1LDQsIlxccGlfezF9Il0sWzAsMiwiQWMxIiwwLHsiY3VydmUiOi00fV0sWzMsMiwiQWMyIiwyLHsiY3VydmUiOjR9XSxbMyw1LCJBYzMiLDAseyJjdXJ2ZSI6LTR9XSxbNyw1LCJBYzQiLDIseyJjdXJ2ZSI6NH1dXQ==
+and this is given by the composition of the correspondences
+
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMSwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxcdGltZXNfe1xcR2FtbWEvSH1cXEdhbW1hIl0sWzIsMCwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFxydGltZXMgSCJdLFsyLDEsIlxcd2lkZXRpbGRle01fe1xcR2FtbWF9fSJdLFswLDEsIiIsMix7Im9mZnNldCI6LTN9XSxbMCwxLCIiLDEseyJvZmZzZXQiOjN9XSxbMiwxLCJcXHBpX3sxfSJdLFszLDQsIiIsMix7Im9mZnNldCI6LTN9XSxbMyw0LCIiLDEseyJvZmZzZXQiOjN9XSxbMiw0LCJcXHdpZGV0aWxkZXtcXHdpZGVoYXR7XFxwaGl9fV57LTF9XFxjaXJjIFxccGkiLDJdLFswLDIsIkFjMSIsMCx7ImN1cnZlIjotNH1dLFszLDIsIkFjMiIsMix7ImN1cnZlIjo0fV1d
 \[\begin{tikzcd}
-	{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} & {\widetilde{M_{\Gamma}}\times_{H}\Gamma} & {\widetilde{M_{\Gamma}}\rtimes H} & {\widetilde{M_{\Gamma}}\times \Gamma} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} \\
-	{\widetilde{M_{\Gamma}}\times_{H}\Gamma} && {\widetilde{M_{\Gamma}}} && {\widetilde{M_{\Gamma}}\times_{H}\Gamma}
+	{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\times_{\Gamma/H}\Gamma} & {\widetilde{M_{\Gamma}}\rtimes H} \\
+	{\widetilde{M_{\Gamma}}\times_{H}\Gamma} && {\widetilde{M_{\Gamma}}}
 	\arrow["Ac1", curve={height=-24pt}, from=1-1, to=1-2]
 	\arrow[shift left=3, from=1-1, to=2-1]
 	\arrow[shift right=3, from=1-1, to=2-1]
 	\arrow["{\pi_{1}}", from=1-2, to=2-1]
 	\arrow["{\widetilde{\widehat{\phi}}^{-1}\circ \pi}"', from=1-2, to=2-3]
 	\arrow["Ac2"', curve={height=24pt}, from=1-3, to=1-2]
-	\arrow["Ac3", curve={height=-24pt}, from=1-3, to=1-4]
 	\arrow[shift left=3, from=1-3, to=2-3]
 	\arrow[shift right=3, from=1-3, to=2-3]
-	\arrow["{\pi_{1}}", from=1-4, to=2-3]
-	\arrow["\pi"', from=1-4, to=2-5]
-	\arrow["Ac4"', curve={height=24pt}, from=1-5, to=1-4]
-	\arrow[shift left=3, from=1-5, to=2-5]
-	\arrow[shift right=3, from=1-5, to=2-5]
 \end{tikzcd}\]
-Here the actions are given as follows:
-\begin{align*}
-(Ac1):\ \ \ ([\overline{(m,\gamma)},\alpha]g^{-1},g)\cdot([\overline{(m,\gamma)},\alpha],\beta)= ([\overline{(m,\gamma)},\alpha]g^{-1},\beta g^{-1}), \ \ with \  H\alpha=H\beta
-\end{align*}
 
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMSwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKSBcXGNpcmNfe1xcd2lkZXRpbGRle01fe1xcR2FtbWF9fX0gKFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXMgXFxHYW1tYSkiXSxbMiwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMiwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCIiLDIseyJvZmZzZXQiOi0zfV0sWzAsMSwiIiwxLHsib2Zmc2V0IjozfV0sWzIsMSwiXFxwaV97MX0iXSxbNCwzLCIiLDIseyJvZmZzZXQiOi0zfV0sWzQsMywiIiwxLHsib2Zmc2V0IjozfV0sWzAsMiwiQWMxIiwwLHsiY3VydmUiOi00fV0sWzQsMiwiQWM0IiwyLHsiY3VydmUiOjR9XSxbMiwzLCJcXHBpIiwyXV0=
+and
+
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHJ0aW1lcyBIIl0sWzAsMSwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19Il0sWzEsMCwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lcyBcXEdhbW1hIl0sWzIsMSwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hIl0sWzIsMCwiKFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSlcXHJ0aW1lcyBcXEdhbW1hIl0sWzAsMSwiIiwyLHsib2Zmc2V0IjotM31dLFswLDEsIiIsMSx7Im9mZnNldCI6M31dLFs0LDMsIiIsMix7Im9mZnNldCI6LTN9XSxbNCwzLCIiLDEseyJvZmZzZXQiOjN9XSxbMiwzLCJcXHBpIiwyXSxbMiwxLCJcXHBpX3sxfSJdLFswLDIsIkFjMyIsMCx7ImN1cnZlIjotNH1dLFs0LDIsIkFjNCIsMix7ImN1cnZlIjo0fV1d
 \[\begin{tikzcd}
-	{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma) \circ_{\widetilde{M_{\Gamma}}} (\widetilde{M_{\Gamma}}\times \Gamma)} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} \\
+	{\widetilde{M_{\Gamma}}\rtimes H} & {\widetilde{M_{\Gamma}}\times \Gamma} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} \\
+	{\widetilde{M_{\Gamma}}} && {\widetilde{M_{\Gamma}}\times_{H}\Gamma}
+	\arrow["Ac3", curve={height=-24pt}, from=1-1, to=1-2]
+	\arrow[shift left=3, from=1-1, to=2-1]
+	\arrow[shift right=3, from=1-1, to=2-1]
+	\arrow["{\pi_{1}}", from=1-2, to=2-1]
+	\arrow["\pi"', from=1-2, to=2-3]
+	\arrow["Ac4"', curve={height=24pt}, from=1-3, to=1-2]
+	\arrow[shift left=3, from=1-3, to=2-3]
+	\arrow[shift right=3, from=1-3, to=2-3]
+\end{tikzcd}\]
+
+where here the actions are given as follows: for $\alpha,\beta,\gamma \in \Gamma$, $h\in H$ and $m\in M$,                         
+\begin{align*}
+&(Ac1):\ \ \ ([\overline{(m,\gamma)},\alpha]g^{-1},g)\cdot([\overline{(m,\gamma)},\alpha],\beta)= ([\overline{(m,\gamma)},\alpha]g^{-1},\beta g^{-1}), \ \ with \  H\alpha=H\beta \\
+&(Ac2):\ \ \ ([\overline{(m,\gamma)},\alpha],\beta)\cdot (\overline{(m,\beta\alpha^{-1})}h)=([\overline{(m,\gamma)},\alpha],h^{-1}\beta)\\
+&(Ac3):\ \ \ (\overline{(m,\gamma)}h^{-1},h)\cdot (\overline{(m,\gamma)},\alpha) = (\overline{(m,\gamma)}h^{-1},h\alpha) \\ 
+&(Ac4):\ \ \ (\overline{(m,\gamma)},\alpha)\cdot ([\overline{(m,\gamma)},\alpha],\beta) = (\overline{(m,\gamma)},\alpha\beta)
+\end{align*}
+The composition obtained is
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMSwwLCIoKFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSlcXHRpbWVzX3tcXEdhbW1hL0h9XFxHYW1tYSkgXFxjaXJjX3tcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX19IChcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzIFxcR2FtbWEpIl0sWzIsMSwiXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hIl0sWzIsMCwiKFxcd2lkZXRpbGRle01fe1xcR2FtbWF9fVxcdGltZXNfe0h9XFxHYW1tYSlcXHJ0aW1lcyBcXEdhbW1hIl0sWzAsMSwiIiwyLHsib2Zmc2V0IjotM31dLFswLDEsIiIsMSx7Im9mZnNldCI6M31dLFsyLDEsIlxccGlfezF9Il0sWzQsMywiIiwyLHsib2Zmc2V0IjotM31dLFs0LDMsIiIsMSx7Im9mZnNldCI6M31dLFswLDIsIkFjMSIsMCx7ImN1cnZlIjotNH1dLFs0LDIsIkFjNCIsMix7ImN1cnZlIjo0fV0sWzIsMywiXFxwaSIsMl1d
+\[\begin{tikzcd}
+	{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} & {((\widetilde{M_{\Gamma}}\times_{H}\Gamma)\times_{\Gamma/H}\Gamma) \circ_{\widetilde{M_{\Gamma}}} (\widetilde{M_{\Gamma}}\times \Gamma)} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} \\
 	{\widetilde{M_{\Gamma}}\times_{H}\Gamma} && {\widetilde{M_{\Gamma}}\times_{H}\Gamma}
 	\arrow["Ac1", curve={height=-24pt}, from=1-1, to=1-2]
 	\arrow[shift left=3, from=1-1, to=2-1]
@@ -3339,8 +3369,40 @@ Here the actions are given as follows:
 	\arrow[shift right=3, from=1-3, to=2-3]
 \end{tikzcd}\]
 
+where $(\widetilde{M_{\Gamma}}\times_{H}\Gamma) \circ_{\widetilde{M_{\Gamma}}} (\widetilde{M_{\Gamma}}\times \Gamma)$ (see \cite{AKM21}) is defined by
+\begin{align*}
+(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\ _{\widehat{\phi}^{-1}\circ \pi}\times_{\pi_{1}} (\widetilde{M_{\Gamma}}\times \Gamma) / \sim_{diag}
+\end{align*}
+
+that is, the quotient of the diagonal action of the groupoid $\widetilde{M}_{\Gamma}\rtimes H\rightrightarrows \widetilde{M}_{\Gamma}$ over the pullback of the maps $\theta^{-1}\circ \pi:(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\times_{\Gamma/H}\Gamma \to{\widetilde{M_{\Gamma}}}$ and $\pi_{1}:(\widetilde{M_{\Gamma}}\times \Gamma)\to{\widetilde{M_{\Gamma}}}$
+
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCIoXFx3aWRldGlsZGV7TX1fe1xcR2FtbWF9XFx0aW1lc197SH1cXEdhbW1hKVxcdGltZXNfe1xcR2FtbWEvSH1cXEdhbW1hIl0sWzAsMSwiXFx3aWRldGlsZGV7KFxcd2lkZXRpbGRle019X3tcXEdhbW1hfVxcdGltZXNfe0h9XFxHYW1tYSl9X3tcXEdhbW1hfSJdLFsxLDEsIlxcd2lkZXRpbGRle019X3tcXEdhbW1hfSJdLFswLDEsIlxccGkiLDJdLFsxLDIsIlxcd2lkZWhhdHtcXHBoaX1eey0xfSIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMiwiXFx3aWRlaGF0e1xccGhpfV57LTF9XFxjaXJjIFxccGkiXV0=
+\[\begin{tikzcd}
+	{(\widetilde{M}_{\Gamma}\times_{H}\Gamma)\times_{\Gamma/H}\Gamma} & \\
+	{\widetilde{(\widetilde{M}_{\Gamma}\times_{H}\Gamma)}_{\Gamma}} & {\widetilde{M}_{\Gamma}}
+	\arrow["\pi"', from=1-1, to=2-1]
+	\arrow["{\widehat{\phi}^{-1}\circ \pi}", from=1-1, to=2-2]
+	\arrow["{\widehat{\phi}^{-1}}"', tail, two heads, from=2-1, to=2-2]
+\end{tikzcd}\]
 
 
+The previous correspondence composition is isomorphic to the identity correspondence 
+% https://q.uiver.app/#q=WzAsNSxbMiwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMiwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMSwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwwLCIoXFx3aWRldGlsZGV7TV97XFxHYW1tYX19XFx0aW1lc197SH1cXEdhbW1hKVxccnRpbWVzIFxcR2FtbWEiXSxbMCwxLCJcXHdpZGV0aWxkZXtNX3tcXEdhbW1hfX1cXHRpbWVzX3tIfVxcR2FtbWEiXSxbMSwwLCJzIiwwLHsib2Zmc2V0IjotM31dLFsxLDAsInQiLDIseyJvZmZzZXQiOjN9XSxbMyw0LCJzIiwwLHsib2Zmc2V0IjotM31dLFszLDQsInQiLDIseyJvZmZzZXQiOjN9XSxbMiwwLCJzIiwyXSxbMiw0LCJ0Il1d
+\[\begin{tikzcd}
+	{(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} & {(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma} \\
+	{\widetilde{M_{\Gamma}}\times_{H}\Gamma} && {\widetilde{M_{\Gamma}}\times_{H}\Gamma}
+	\arrow["s", shift left=3, from=1-1, to=2-1]
+	\arrow["t"', shift right=3, from=1-1, to=2-1]
+	\arrow["t", from=1-2, to=2-1]
+	\arrow["s"', from=1-2, to=2-3]
+	\arrow["s", shift left=3, from=1-3, to=2-3]
+	\arrow["t"', shift right=3, from=1-3, to=2-3]
+\end{tikzcd}\]
+
+by the map defined by the assign $$f(([\overline{(m,\gamma)},\alpha],g)):=[([\overline{(m,\gamma)},\alpha],\alpha);(\overline{(m,\gamma)},\alpha g)]_{\widetilde{M}_{\Gamma}}$$ which determines a left and right $(\widetilde{M}_{\Gamma}\rtimes H)$-equivariant homeomorphism. 
+\begin{align*}
+f:(\widetilde{M_{\Gamma}}\times_{H}\Gamma)\rtimes \Gamma \to (\widetilde{M_{\Gamma}}\times_{H}\Gamma) \circ_{\widetilde{M_{\Gamma}}} (\widetilde{M_{\Gamma}}\times \Gamma)
+\end{align*}
 
 \item We get that $h_{\Gamma}^{H}\circ h^{\Gamma}_{H}=Id_{K^{pf}_{*}(\{e\};H)}$ because applying Remark \ref{relation 1} applied to the homeomorphism $\phi:N\to \widetilde{(N\times_{H}\Gamma)}_{\Gamma}$ we get 
 
